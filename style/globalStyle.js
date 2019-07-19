@@ -17,10 +17,15 @@ const GlobalStyle = createGlobalStyle`
       /* font-family: commuters-sans, sans-serif; */
       /* font-family: 'Open Sans', sans-serif; */
       font-family: 'Montserrat', sans-serif;
-
       /* overflow: hidden; */
       /* overflow-x: hidden; */
       position: relative;
+
+  }
+
+
+  .push-down {
+    flex: 1;
   }
   h1 {
       font-size: 18px;
@@ -91,7 +96,14 @@ const GlobalStyle = createGlobalStyle`
   }
 
   li {
-    line-height: 1.4;
+        line-height: 1.3;
+    font-size: 16px;
+    
+    font-weight: 200;
+    @media (min-width:767px) {
+      font-size: 20px;
+      margin-bottom: 5px;
+    };
   }
 
 blockquote{
@@ -135,12 +147,46 @@ blockquote:before{
   a:link,
   a:visited,
   a:active {
+    transition: .2s;
     text-decoration: none;
     color: black;
     cursor: pointer;
     &:hover {
       color: ${props => props.theme.green};
     }
+  }
+
+
+  .link-yellow{
+     a,
+    a:link,
+    a:visited,
+    a:active {
+      transition: .2s;
+      text-decoration: none;
+      color: ${props => props.theme.yellow};
+      cursor: pointer;
+      &:hover {
+        color: black;
+      }
+    }
+
+  }
+
+  .link-green{
+      a,
+    a:link,
+    a:visited,
+    a:active {
+      transition: .2s;
+      text-decoration: none;
+      color: ${props => props.theme.green};
+      cursor: pointer;
+      &:hover {
+        color: black;
+      }
+    }
+
   }
 
   .bold{

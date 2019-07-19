@@ -1,0 +1,482 @@
+import React from 'react'
+import NavSimple from '../PageHeadFooter/Nav/NavSimple'
+import styled from 'styled-components'
+import sponsorData from './sponsorData'
+const HeightForNav = styled.div`
+    height: 100px;
+`
+
+const LogoContainerLg = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    div {
+        /* border: 1px solid grey; */
+        box-shadow: 10px 11px 20px -10px rgba(222, 222, 222, 1);
+
+        width: 45%;
+        height: 300px;
+        padding: 20px;
+        margin: 20px;
+        cursor: pointer;
+        border-top: 1px solid white;
+        border-left: 1px solid white;
+        transition: 0.3s;
+
+        img {
+            object-fit: contain;
+            height: 100%;
+            transition: 0.4s;
+        }
+
+        @keyframes shake {
+            10%,
+            90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+
+            20%,
+            80% {
+                transform: translate3d(2px, 0, 0);
+            }
+
+            30%,
+            50%,
+            70% {
+                transform: translate3d(-4px, 0, 0);
+            }
+
+            40%,
+            60% {
+                transform: translate3d(4px, 0, 0);
+            }
+        }
+
+        &:hover {
+            box-shadow: 18px 23px 39px -2px rgba(194, 194, 194, 1);
+            border-top: 1px solid #fafafa;
+            border-left: 1px solid #fafafa;
+            /* padding: 18px; */
+            img {
+                transform: scale(1.02);
+                /* animation: shake 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+                transform: translate3d(0, 0, 0); */
+                /* backface-visibility: hidden;
+                perspective: 1000px; */
+            }
+        }
+    }
+`
+
+const LogoContainerMd = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    div {
+        box-shadow: 10px 11px 20px -10px rgba(222, 222, 222, 1);
+
+        width: 22%;
+        height: 150px;
+        padding: 15px;
+        margin: 15px;
+
+        cursor: pointer;
+        border-top: 1px solid white;
+        border-left: 1px solid white;
+        transition: 0.3s;
+
+        img {
+            object-fit: contain;
+            height: 100%;
+            transiton: 0.4s;
+        }
+        &:hover {
+            box-shadow: 18px 23px 35px -10px rgba(194, 194, 194, 1);
+
+            border-top: 1px solid #fafafa;
+            border-left: 1px solid #fafafa;
+
+            /* padding: 14px; */
+            img {
+                /* transform: scale(1.02) skewX(-1deg) skewY(-1deg); */
+                transform: scale(1.02);
+            }
+        }
+    }
+`
+
+const LogoContainerSm = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    div {
+        box-shadow: 10px 11px 20px -10px rgba(222, 222, 222, 1);
+        width: 16%;
+        height: 120px;
+        padding: 15px;
+        margin: 20px 10px;
+
+        cursor: pointer;
+        border-top: 1px solid white;
+        border-left: 1px solid white;
+        transition: 0.3s;
+
+        img {
+            object-fit: contain;
+            height: 100%;
+            transiton: 0.2s;
+        }
+        &:hover {
+            box-shadow: 18px 23px 35px -10px rgba(194, 194, 194, 1);
+
+            border-top: 1px solid #fafafa;
+            border-left: 1px solid #fafafa;
+
+            img {
+                transform: scale(1.02);
+            }
+        }
+    }
+`
+
+const Modal = styled.div`
+    transition: 1s;
+    /* filter: opacity(0.2); */
+
+    @keyframes shake {
+        10%,
+        90% {
+            transform: translate3d(-1px, 0, 0) rotate(10deg);
+        }
+
+        20%,
+        80% {
+            transform: translate3d(2px, 0, 0) rotate(-10deg);
+        }
+
+        30%,
+        50%,
+        70% {
+            transform: translate3d(-4px, 0, 0) rotate(10deg);
+        }
+
+        40%,
+        60% {
+            transform: translate3d(4px, 0, 0) rotate(-10deg);
+        }
+    }
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .card {
+        width: 90%;
+        max-width: 700px;
+        background: white;
+        /* display: flex; */
+        padding: 20px;
+    }
+
+    .logo {
+        width: 300px;
+        height: 200px;
+        margin: 0 auto;
+
+        img {
+            object-fit: contain;
+            height: 100%;
+        }
+    }
+    .content {
+        width: 90%;
+        margin: 20px auto 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        h2 {
+            margin-bottom: 0;
+
+            text-transform: capitalize;
+        }
+        .social-wrapper {
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .social-icon {
+            width: 40px;
+            margin: 0 10px;
+            &:hover {
+                animation: shake 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+                transform-origin: center;
+            }
+        }
+
+        .website {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: 20px;
+            p {
+                margin: 0;
+                line-height: 0;
+            }
+        }
+    }
+`
+
+class PageSponsors extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            showModal: false,
+            type: 'sponsor',
+            ranking: '3',
+            index: '33',
+            name: 'SunChant',
+            logo: '33',
+            description:
+                'Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.',
+            website: 'https://web.com',
+            insta: 'https://web.com',
+            fb: 'https://web.com',
+            twitter: 'https://web.com',
+            shareBtn: '',
+        }
+    }
+
+    showModal = affiliate => {
+        // console.log('boom 💣', affiliate)
+        // const name = affiliate.name
+
+        const {
+            type,
+            ranking,
+            index,
+            name,
+            logo,
+            description,
+            website,
+            insta,
+            fb,
+            twitter,
+            shareBtn,
+        } = affiliate
+        this.setState({
+            showModal: true,
+            type,
+            ranking,
+            index,
+            name,
+            logo,
+            description,
+            website,
+            insta,
+            fb,
+            twitter,
+            shareBtn,
+        })
+    }
+    closeModal = () => {
+        this.setState({
+            showModal: false,
+        })
+    }
+
+    render() {
+        const platinum = sponsorData.filter(x => x.ranking === '1')
+        const pro = sponsorData.filter(x => x.ranking === '2')
+        const basic = sponsorData.filter(x => x.ranking === '3')
+
+        return (
+            <div style={{ positon: 'relative' }}>
+                <HeightForNav />
+                <NavSimple />
+                {this.state.showModal && (
+                    <Modal
+                        onClick={() => {
+                            this.closeModal()
+                        }}
+                        // style={this.state.showModal && '{filter: opacity(1);}'}
+                        // className={this.state.showModal && 'fade-in'}
+                    >
+                        <div className="card">
+                            <div className="logo">
+                                <img
+                                    src={`./static/brands/${this.state.logo}.png`}
+                                />
+                            </div>
+
+                            <div className="content">
+                                <h2>{this.state.name}</h2>
+                                <p>{this.state.description}</p>
+
+                                <div className="social-wrapper">
+                                    {this.state.insta && (
+                                        <div className="social-icon">
+                                            <a
+                                                href={this.state.insta}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src="./static/social/instagram.png"
+                                                    alt=""
+                                                    srcSet=""
+                                                />
+                                            </a>
+                                        </div>
+                                    )}
+
+                                    {this.state.fb && (
+                                        <div className="social-icon">
+                                            <a
+                                                href={this.state.fb}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src="./static/social/facebook.png"
+                                                    alt=""
+                                                    srcSet=""
+                                                />
+                                            </a>
+                                        </div>
+                                    )}
+
+                                    {this.state.twitter && (
+                                        <div className="social-icon">
+                                            <a
+                                                href={this.state.twitter}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src="./static/social/twitter.png"
+                                                    alt=""
+                                                    srcSet=""
+                                                />
+                                            </a>
+                                        </div>
+                                    )}
+
+                                    {this.state.website && (
+                                        <div className="website">
+                                            <a
+                                                href={this.state.website}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <p>{this.state.website}</p>
+                                            </a>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </Modal>
+                )}
+                <div className="text-content-title-wrapper">
+                    <div className="text-content">
+                        <h2 data-aos="my-anim">Sponsors</h2>
+                        <p>
+                            Probaly a bit of text here, Vivamus suscipit tortor
+                            eget felis porttitor volutpat. Donec rutrum congue
+                            leo eget malesuada. Proin eget tortor risus.
+                            Curabitur aliquet quam id dui posuere blandit.
+                        </p>
+                        <h3 className="link-green">
+                            Want to become a sponsor?{' '}
+                            <a
+                                href="https://forms.gle/cvuvpHGz4jcSyUCy8"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                click here
+                            </a>
+                        </h3>
+
+                        <h2 data-aos="my-anim">Sustainable Partners</h2>
+                    </div>
+                    <LogoContainerLg>
+                        {platinum.map((affiliate, i) => {
+                            return (
+                                <div
+                                    key={i}
+                                    onClick={() => {
+                                        this.showModal(affiliate)
+                                    }}
+                                >
+                                    <img
+                                        src={`./static/brands/${affiliate.logo}.png`}
+                                    />
+                                </div>
+                            )
+                        })}
+                    </LogoContainerLg>
+
+                    <div className="text-content">
+                        <h2 data-aos="my-anim">Event Sponsors</h2>
+                    </div>
+
+                    <LogoContainerMd>
+                        {pro.map((affiliate, i) => (
+                            <div
+                                key={i}
+                                onClick={() => {
+                                    this.showModal(affiliate)
+                                }}
+                            >
+                                <img
+                                    src={`./static/brands/${affiliate.logo}.png`}
+                                    alt=""
+                                    srcSet=""
+                                />
+                            </div>
+                        ))}
+                    </LogoContainerMd>
+
+                    <div className="text-content">
+                        <h2 data-aos="my-anim">Innovation Showcase</h2>
+                    </div>
+
+                    <LogoContainerSm>
+                        {basic.map((affiliate, i) => (
+                            <div
+                                key={i}
+                                onClick={() => {
+                                    this.showModal(affiliate)
+                                }}
+                            >
+                                <img
+                                    src={`./static/brands/${affiliate.logo}.png`}
+                                    alt=""
+                                    srcSet=""
+                                />
+                            </div>
+                        ))}
+                    </LogoContainerSm>
+                </div>
+            </div>
+        )
+    }
+}
+
+export default PageSponsors

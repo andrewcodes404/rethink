@@ -4,8 +4,8 @@ import React from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-import NavSimple from '../components/Nav/NavSimple'
-import Footer from '../components/Footer'
+// import NavSimple from '../components/Nav/NavSimple'
+// import Footer from '../components/Footer'
 import styled from 'styled-components'
 
 const StyledPrivacy = styled.div`
