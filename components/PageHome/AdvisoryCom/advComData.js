@@ -1,4 +1,4 @@
-const adComData = [
+const advComData = [
     {
         index: 1,
         headshot: '/static/photos/headshots/man1.jpg',
@@ -63,4 +63,4 @@ const adComData = [
     },
 ]
 
-export default adComData
+export default advComData

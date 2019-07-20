@@ -1,6 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import adcomData from './adComData'
+// import PropTypes from 'prop-types'
+import advComData from './advComData'
 
 import styled from 'styled-components'
 import AliceCarousel from 'react-alice-carousel'
@@ -156,7 +156,7 @@ class AdvisoryCom extends React.Component {
                         slideToIndex={this.state.currentIndex}
                         onSlideChanged={this.onSlideChanged}
                     >
-                        {adcomData.map((el, i) => {
+                        {advComData.map((el, i) => {
                             return (
                                 <CarouselItem key={i}>
                                     <div className="headshot">
