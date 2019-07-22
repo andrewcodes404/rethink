@@ -74,7 +74,7 @@ class Hero extends React.Component {
                             data-aos-duration="1500"
                         >
                             <img
-                                src="./static/graphics/logo_strap.svg"
+                                src="./static/graphics/logo_and_strap_white.svg"
                                 alt=""
                             />
                         </div>
