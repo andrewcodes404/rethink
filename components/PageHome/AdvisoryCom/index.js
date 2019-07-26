@@ -1,6 +1,8 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
 import advComData from './advComData'
+import { Query } from 'react-apollo'
+import { GET_ADV_COMS } from '../../../lib/graphqlTags'
 
 import styled from 'styled-components'
 import AliceCarousel from 'react-alice-carousel'
@@ -69,6 +71,7 @@ const CarouselItem = styled.div`
 
     .headshot {
         width: 200px;
+        max-width: 200px;
         height: 200px;
         margin: 0 auto 20px;
         overflow: hidden;
@@ -141,58 +144,70 @@ class AdvisoryCom extends React.Component {
                     </h3>
                 </div>
 
-                <CarouselWrapper>
-                    <AliceCarousel
-                        // onDragStart={handleOnDragStart}
-                        responsive={this.responsive}
-                        mouseDragEnabled
-                        autoPlayInterval={2500}
-                        // autoPlayDirection="rtl"
-                        autoPlay={true}
-                        fadeOutAnimation={true}
-                        // mouseDragEnabled={true}
-                        dotsDisabled={true}
-                        buttonsDisabled={true}
-                        slideToIndex={this.state.currentIndex}
-                        onSlideChanged={this.onSlideChanged}
-                    >
-                        {advComData.map((el, i) => {
-                            return (
-                                <CarouselItem key={i}>
-                                    <div className="headshot">
-                                        <img
-                                            src={el.headshot}
-                                            alt=""
-                                            srcSet=""
-                                        />
+                <Query query={GET_ADV_COMS}>
+                    {({ data, error, loading }) => {
+                        if (loading) return <p>Loading...</p>
+                        if (error) return <p>Error: {error.message}</p>
+                        if (!data) return <p>No Data</p>
+
+                        return (
+                            <div>
+                                <CarouselWrapper>
+                                    <AliceCarousel
+                                        // onDragStart={handleOnDragStart}
+                                        responsive={this.responsive}
+                                        mouseDragEnabled
+                                        autoPlayInterval={2500}
+                                        // autoPlayDirection="rtl"
+                                        autoPlay={true}
+                                        fadeOutAnimation={true}
+                                        // mouseDragEnabled={true}
+                                        dotsDisabled={true}
+                                        buttonsDisabled={true}
+                                        slideToIndex={this.state.currentIndex}
+                                        onSlideChanged={this.onSlideChanged}
+                                    >
+                                        {data.advComs.map((el, i) => {
+                                            return (
+                                                <CarouselItem key={i}>
+                                                    <div className="headshot">
+                                                        <img
+                                                            src={el.headshot}
+                                                            alt=""
+                                                            srcSet=""
+                                                        />
+                                                    </div>
+
+                                                    <div className="text">
+                                                        <h4>{el.name}</h4>
+                                                        <h4>{el.jobTitle}</h4>
+
+                                                        <p>{el.company}</p>
+                                                    </div>
+                                                </CarouselItem>
+                                            )
+                                        })}
+                                    </AliceCarousel>
+
+                                    <div className="button-wrapper">
+                                        <div
+                                            className="next-btn"
+                                            onClick={() => this.slidePrev()}
+                                        >
+                                            &lt;
+                                        </div>
+                                        <div
+                                            className="next-btn"
+                                            onClick={() => this.slideNext()}
+                                        >
+                                            &gt;
+                                        </div>
                                     </div>
-
-                                    <div className="text">
-                                        <h4>{el.name}</h4>
-                                        <h4>{el.jobTitle}</h4>
-
-                                        <p>{el.company}</p>
-                                    </div>
-                                </CarouselItem>
-                            )
-                        })}
-                    </AliceCarousel>
-
-                    <div className="button-wrapper">
-                        <div
-                            className="next-btn"
-                            onClick={() => this.slidePrev()}
-                        >
-                            &lt;
-                        </div>
-                        <div
-                            className="next-btn"
-                            onClick={() => this.slideNext()}
-                        >
-                            &gt;
-                        </div>
-                    </div>
-                </CarouselWrapper>
+                                </CarouselWrapper>
+                            </div>
+                        )
+                    }}
+                </Query>
             </div>
         )
     }

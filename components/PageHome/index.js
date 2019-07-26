@@ -1,3 +1,5 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import Nav from '../PageHeadFooter/Nav'
 import Hero from './Hero'
 // import IconBar from "./iconBar/IconBar";
@@ -15,8 +17,6 @@ import Founder from './Founder'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-import React from 'react'
-
 class PageHome extends React.Component {
     componentDidMount() {
         AOS.init({
@@ -27,7 +27,7 @@ class PageHome extends React.Component {
     render() {
         return (
             <div>
-                <Nav />
+                <Nav loggedIn={this.props.loggedIn} />
                 <Hero />
                 <Overview />
                 <TheConference />
@@ -41,5 +41,7 @@ class PageHome extends React.Component {
         )
     }
 }
-
+PageHome.propTypes = {
+    loggedIn: PropTypes.bool,
+}
 export default PageHome

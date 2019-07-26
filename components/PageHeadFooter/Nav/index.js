@@ -1,7 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { StyledNav } from './navStyle'
 // import * as Scroll from "react-scroll";
 import { Link, Events, animateScroll as scroll, scroller } from 'react-scroll'
+import Router from 'next/router'
 
 class Nav extends React.Component {
     state = {
@@ -119,6 +121,16 @@ class Nav extends React.Component {
 
                 <nav className={this.state.dropActive ? 'show-nav' : ''}>
                     <div>
+                        {this.props.loggedIn && (
+                            <span
+                                style={{ color: 'white', cursor: 'pointer' }}
+                                onClick={() => {
+                                    Router.push('/admin')
+                                }}
+                            >
+                                admin |
+                            </span>
+                        )}
                         <Link
                             activeClass="active-link"
                             to="overview"
@@ -193,5 +205,7 @@ class Nav extends React.Component {
         )
     }
 }
-
+Nav.propTypes = {
+    loggedIn: PropTypes.bool,
+}
 export default Nav

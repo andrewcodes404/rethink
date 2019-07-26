@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import NavSimple from '../PageHeadFooter/Nav/NavSimple'
 import styled from 'styled-components'
 import sponsorData from './sponsorData'
+import { Query } from 'react-apollo'
+import { GET_SPONSORS_WHERE_RANKING } from '../../lib/graphqlTags'
+
 const HeightForNav = styled.div`
     height: 100px;
 `
@@ -72,7 +75,7 @@ const LogoContainerLg = styled.div`
 const LogoContainerMd = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-bottom: 80px;
     div {
         box-shadow: 10px 11px 20px -10px rgba(222, 222, 222, 1);
@@ -90,7 +93,7 @@ const LogoContainerMd = styled.div`
         img {
             object-fit: contain;
             height: 100%;
-            transiton: 0.4s;
+            transition: 0.4s;
         }
         &:hover {
             box-shadow: 18px 23px 35px -10px rgba(194, 194, 194, 1);
@@ -110,8 +113,9 @@ const LogoContainerMd = styled.div`
 const LogoContainerSm = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 80px;
+    justify-content: flex-start;
+
+    margin: 0 auto 80px;
     div {
         box-shadow: 10px 11px 20px -10px rgba(222, 222, 222, 1);
         width: 16%;
@@ -127,7 +131,7 @@ const LogoContainerSm = styled.div`
         img {
             object-fit: contain;
             height: 100%;
-            transiton: 0.2s;
+            transition: 0.2s;
         }
         &:hover {
             box-shadow: 18px 23px 35px -10px rgba(194, 194, 194, 1);
@@ -255,16 +259,16 @@ class PageSponsors extends React.Component {
             description:
                 'Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.',
             website: 'https://web.com',
-            insta: 'https://web.com',
-            fb: 'https://web.com',
+            instagram: 'https://web.com',
+            facebook: 'https://web.com',
             twitter: 'https://web.com',
             shareBtn: '',
         }
     }
 
-    showModal = affiliate => {
-        // console.log('boom 💣', affiliate)
-        // const name = affiliate.name
+    showModal = sponsor => {
+        console.log('boom 💣', sponsor)
+        // const name = sponsor.name
 
         const {
             type,
@@ -274,11 +278,11 @@ class PageSponsors extends React.Component {
             logo,
             description,
             website,
-            insta,
-            fb,
+            instagram,
+            facebook,
             twitter,
             shareBtn,
-        } = affiliate
+        } = sponsor
         this.setState({
             showModal: true,
             type,
@@ -288,8 +292,8 @@ class PageSponsors extends React.Component {
             logo,
             description,
             website,
-            insta,
-            fb,
+            instagram,
+            facebook,
             twitter,
             shareBtn,
         })
@@ -319,9 +323,7 @@ class PageSponsors extends React.Component {
                     >
                         <div className="card">
                             <div className="logo">
-                                <img
-                                    src={`./static/brands/${this.state.logo}.png`}
-                                />
+                                <img src={this.state.logo} />
                             </div>
 
                             <div className="content">
@@ -329,10 +331,10 @@ class PageSponsors extends React.Component {
                                 <p>{this.state.description}</p>
 
                                 <div className="social-wrapper">
-                                    {this.state.insta && (
+                                    {this.state.instagram && (
                                         <div className="social-icon">
                                             <a
-                                                href={this.state.insta}
+                                                href={`https://www.instagram.com/${this.state.instagram}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
@@ -345,10 +347,10 @@ class PageSponsors extends React.Component {
                                         </div>
                                     )}
 
-                                    {this.state.fb && (
+                                    {this.state.facebook && (
                                         <div className="social-icon">
                                             <a
-                                                href={this.state.fb}
+                                                href={this.state.facebook}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
@@ -364,7 +366,7 @@ class PageSponsors extends React.Component {
                                     {this.state.twitter && (
                                         <div className="social-icon">
                                             <a
-                                                href={this.state.twitter}
+                                                href={`https://www.twitter.com/${this.state.twitter}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
@@ -415,64 +417,104 @@ class PageSponsors extends React.Component {
 
                         <h2 data-aos="my-anim">Sustainable Partners</h2>
                     </div>
-                    <LogoContainerLg>
-                        {platinum.map((affiliate, i) => {
+
+                    <Query
+                        query={GET_SPONSORS_WHERE_RANKING}
+                        variables={{
+                            ranking: 'susPartner',
+                        }}
+                    >
+                        {({ data, error, loading }) => {
+                            if (loading) return <p>Loading...</p>
+                            if (error) return <p>Error: {error.message}</p>
+                            if (!data) return <p>No Data</p>
+                            const { sponsors } = data
                             return (
-                                <div
-                                    key={i}
-                                    onClick={() => {
-                                        this.showModal(affiliate)
-                                    }}
-                                >
-                                    <img
-                                        src={`./static/brands/${affiliate.logo}.png`}
-                                    />
-                                </div>
+                                <LogoContainerLg>
+                                    {sponsors.map((sponsor, i) => {
+                                        return (
+                                            <div
+                                                key={i}
+                                                onClick={() => {
+                                                    this.showModal(sponsor)
+                                                }}
+                                            >
+                                                <img src={sponsor.logo} />
+                                            </div>
+                                        )
+                                    })}
+                                </LogoContainerLg>
                             )
-                        })}
-                    </LogoContainerLg>
+                        }}
+                    </Query>
 
                     <div className="text-content">
                         <h2 data-aos="my-anim">Event Sponsors</h2>
                     </div>
 
-                    <LogoContainerMd>
-                        {pro.map((affiliate, i) => (
-                            <div
-                                key={i}
-                                onClick={() => {
-                                    this.showModal(affiliate)
-                                }}
-                            >
-                                <img
-                                    src={`./static/brands/${affiliate.logo}.png`}
-                                    alt=""
-                                    srcSet=""
-                                />
-                            </div>
-                        ))}
-                    </LogoContainerMd>
+                    <Query
+                        query={GET_SPONSORS_WHERE_RANKING}
+                        variables={{
+                            ranking: 'eventSponsor',
+                        }}
+                    >
+                        {({ data, error, loading }) => {
+                            if (loading) return <p>Loading...</p>
+                            if (error) return <p>Error: {error.message}</p>
+                            if (!data) return <p>No Data</p>
+                            const { sponsors } = data
+                            return (
+                                <LogoContainerMd>
+                                    {sponsors.map((sponsor, i) => {
+                                        return (
+                                            <div
+                                                key={i}
+                                                onClick={() => {
+                                                    this.showModal(sponsor)
+                                                }}
+                                            >
+                                                <img src={sponsor.logo} />
+                                            </div>
+                                        )
+                                    })}
+                                </LogoContainerMd>
+                            )
+                        }}
+                    </Query>
 
                     <div className="text-content">
                         <h2 data-aos="my-anim">Innovation Showcase</h2>
                     </div>
 
-                    <LogoContainerSm>
-                        {basic.map((affiliate, i) => (
-                            <div
-                                key={i}
-                                onClick={() => {
-                                    this.showModal(affiliate)
-                                }}
-                            >
-                                <img
-                                    src={`./static/brands/${affiliate.logo}.png`}
-                                    alt=""
-                                    srcSet=""
-                                />
-                            </div>
-                        ))}
-                    </LogoContainerSm>
+                    <Query
+                        query={GET_SPONSORS_WHERE_RANKING}
+                        variables={{
+                            ranking: 'innovShow',
+                        }}
+                    >
+                        {({ data, error, loading }) => {
+                            if (loading) return <p>Loading...</p>
+                            if (error) return <p>Error: {error.message}</p>
+                            if (!data) return <p>No Data</p>
+                            const { sponsors } = data
+                            return (
+                                <LogoContainerSm>
+                                    {sponsors.map((sponsor, i) => {
+                                        return (
+                                            <div
+                                                key={i}
+                                                onClick={() => {
+                                                    this.showModal(sponsor)
+                                                }}
+                                            >
+                                                <img src={sponsor.logo} />
+                                            </div>
+                                        )
+                                    })}
+                                </LogoContainerSm>
+                            )
+                        }}
+                    </Query>
                 </div>
             </div>
         )

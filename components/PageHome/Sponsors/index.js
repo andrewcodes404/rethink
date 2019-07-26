@@ -67,7 +67,7 @@ const Sponsors = () => (
                 <br />
                 <h3>
                     To see all sponsors{' '}
-                    <Link href="/sponsors">
+                    <Link href="/the_sponsors">
                         <span
                             className="link-green"
                             style={{ textDecoration: 'underline' }}

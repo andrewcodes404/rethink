@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
   * {
-      -moz-box-sizing: border-box;
+     -moz-box-sizing: border-box;
       box-sizing: border-box;
   }
 
@@ -43,7 +43,6 @@ const GlobalStyle = createGlobalStyle`
   h2 {
     font-size: 28px;
     margin: 0px;
-
     position: relative;
     font-weight: bold;
 
@@ -170,7 +169,6 @@ blockquote:before{
         color: black;
       }
     }
-
   }
 
   .link-green{
@@ -189,6 +187,30 @@ blockquote:before{
 
   }
 
+
+  .green-btn {
+        background: green;
+        padding: 10px;
+  
+        cursor: pointer;
+
+        &:hover {
+            color: white;
+        }
+    }
+
+    .red-btn {
+      display: inline-block;
+        background: firebrick;
+        padding: 10px;
+        
+        cursor: pointer;
+
+        &:hover {
+            color: white;
+        }
+    }
+
   .bold{
     font-weight: 600;
   }
@@ -205,7 +227,15 @@ blockquote:before{
       padding: 60px 0 20px;
       width: ${props => props.theme.contentWidthTab};
     }
+  }
 
+  .content-wrapper {
+    width: ${props => props.theme.contentWidthMob};
+    max-width: ${props => props.theme.maxWidth};
+      margin: 0 auto;
+     @media (min-width: 767px) {
+      width: ${props => props.theme.contentWidthTab};
+    }
   }
 
   .text-content {
