@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 import NavAdmin from '../components/PageHeadFooter/Nav/NavAdmin'
 import PageAdminSponsors from '../components/PageAdminSponsors/Index'
+import Spinner from '../components/lib/Spinner'
 class AdminSponsors extends React.Component {
     componentDidMount() {
         if (!this.props.loggedIn) {
@@ -14,9 +15,7 @@ class AdminSponsors extends React.Component {
         return (
             <div>
                 {!this.props.loggedIn ? (
-                    <div>
-                        <p>re-routing from AdminSponsors.js</p>
-                    </div>
+                    <Spinner />
                 ) : (
                     <div>
                         <NavAdmin

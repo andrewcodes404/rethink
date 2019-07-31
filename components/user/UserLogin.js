@@ -4,20 +4,21 @@ import gql from 'graphql-tag'
 import Router from 'next/router'
 import Error from '../lib/ErrorMessage'
 import { CURRENT_USER_QUERY } from '../PageWrapper'
+
+// material ui
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
+
 import styled from 'styled-components'
 
 const Form = styled.form`
-    border: 1px solid grey;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
 
-    fieldset {
-        display: flex;
-        flex-direction: column;
-    }
-    label {
-        margin: 20px 0;
-    }
-    input {
-        margin-left: 20px;
+    .submit-btn {
+        margin-top: 30px;
+        width: 100px;
     }
 `
 
@@ -37,8 +38,17 @@ class UserLogin extends Component {
         password: '',
         email: '',
     }
-    saveToState = e => {
-        this.setState({ [e.target.name]: e.target.value })
+    // saveToState = e => {
+    //     this.setState({ [e.target.name]: e.target.value })
+    // }
+
+    handleChange = e => {
+        const { id, type, value } = e.target
+        const val = type === 'number' ? parseFloat(value) : value
+
+        this.setState({ [id]: val }, () => {
+            // console.log('this.state.id = ', this.state)
+        })
     }
     render() {
         return (
@@ -49,7 +59,6 @@ class UserLogin extends Component {
             >
                 {(login, { error, loading }) => (
                     <div className="text-content-title-wrapper">
-                        <h2 data-aos="my-anim">Log in...</h2>
                         <div className="text-content">
                             <Form
                                 method="post"
@@ -64,7 +73,44 @@ class UserLogin extends Component {
                                     Router.push('/error', '/admin')
                                 }}
                             >
-                                <fieldset
+                                <h3>Log in...</h3>
+                                <TextField
+                                    type="text"
+                                    id="email"
+                                    label="email"
+                                    className="textField"
+                                    margin="normal"
+                                    variant="outlined"
+                                    value={this.state.email}
+                                    onChange={this.handleChange}
+                                    required
+                                />
+
+                                <TextField
+                                    type="password"
+                                    id="password"
+                                    label="password"
+                                    className="textField"
+                                    margin="normal"
+                                    variant="outlined"
+                                    value={this.state.password}
+                                    onChange={this.handleChange}
+                                    required
+                                />
+
+                                <Button
+                                    margin="normal"
+                                    type="submit"
+                                    variant="contained"
+                                    color="default"
+                                    size="small"
+                                    className="submit-btn"
+                                >
+                                    Login
+                                    {/* <FileCopy className="icon" /> */}
+                                </Button>
+
+                                {/* <fieldset
                                     disabled={loading}
                                     aria-busy={loading}
                                 >
@@ -89,7 +135,7 @@ class UserLogin extends Component {
                                     </label>
 
                                     <button type="submit">Sign In!</button>
-                                </fieldset>
+                                </fieldset> */}
                             </Form>
                         </div>
                     </div>

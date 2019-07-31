@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Mutation } from 'react-apollo'
 import { CREATE_PARTNER, GET_PARTNERS } from '../../lib/graphqlTags'
-import { partnerRankingData } from '../../lib/data'
+
 // material ui
 import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
@@ -278,9 +278,7 @@ class CreatePartnerForm extends React.Component {
 
     handleRadioChange = e => {
         const { id } = e.target
-        this.setState({ ranking: id }, () => {
-            console.log('this.state.id = ', this.state.ranking)
-        })
+        this.setState({ ranking: id })
     }
 
     handleChckboxChange = e => {

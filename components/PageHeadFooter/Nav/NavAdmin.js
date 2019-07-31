@@ -4,7 +4,7 @@ import gql from 'graphql-tag'
 import { CURRENT_USER_QUERY } from '../../PageWrapper'
 import Router from 'next/router'
 import Link from 'next/link'
-
+import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
 
 const SIGN_OUT_MUTATION = gql`
@@ -52,14 +52,20 @@ class NavSimple extends React.Component {
                             refetchQueries={[{ query: CURRENT_USER_QUERY }]}
                         >
                             {logout => (
-                                <button
+                                <Button
+                                    margin="normal"
+                                    type="submit"
+                                    variant="contained"
+                                    color="default"
+                                    size="small"
+                                    className="submit-btn"
                                     onClick={async () => {
                                         const res = await logout()
                                         Router.push('/')
                                     }}
                                 >
                                     Sign Out
-                                </button>
+                                </Button>
                             )}
                         </Mutation>
                     </div>

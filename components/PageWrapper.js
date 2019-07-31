@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
+
+import Spinner from './lib/Spinner'
 // comps
 import Meta from './PageHeadFooter/Meta'
 import Footer from './PageHeadFooter/Footer'
@@ -36,24 +38,25 @@ class PageWrapper extends React.Component {
                 {({ data: { user }, error, loading }) => {
                     if (loading)
                         return (
-                            <div
-                                style={{
-                                    position: 'fixed',
-                                    top: '0',
-                                    bottom: '0',
-                                    left: '0',
-                                    right: '0',
-                                    background: 'pink',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                }}
-                            >
-                                <h1 style={{ color: 'white' }}>
-                                    Loading...from pageWrapper.js
-                                </h1>
-                            </div>
+                            <Spinner />
+                            // <div
+                            //     style={{
+                            //         position: 'fixed',
+                            //         top: '0',
+                            //         bottom: '0',
+                            //         left: '0',
+                            //         right: '0',
+                            //         background: 'pink',
+                            //         display: 'flex',
+                            //         flexDirection: 'column',
+                            //         justifyContent: 'center',
+                            //         alignItems: 'center',
+                            //     }}
+                            // >
+                            //     <h1 style={{ color: 'white' }}>
+                            //         Loading...from pageWrapper.js
+                            //     </h1>
+                            // </div>
                         )
                     if (error) return <p>Error: {error.message}</p>
 
