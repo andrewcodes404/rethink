@@ -176,7 +176,7 @@ const Modal = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 2;
+    z-index: 200;
     .modal-card {
         background: white;
         padding: 40px;
@@ -233,30 +233,15 @@ class CreatePartnerForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            // name: 'from material ui',
-            // ranking: '99',
-            // index: '',
-            // // logo: '',
-            // logo: '',
-            // description: '',
-            // website: '',
-            // instagram: '',
-            // facebook: '',
-            // twitter: '',
-            // frontpage: false,
-            // loading: false,
-            // partnerAdded: false,
-
-            name: 'XXXXX',
+            name: '',
             ranking: '',
-            index: 1,
+            index: 99,
             logo: '',
-            description:
-                'Nulla quis lorem ut libero malesuada feugiat. Cras ultricies ligula sed magna dictum porta. ',
-            website: 'https://test',
-            instagram: 'test',
-            facebook: 'https://test',
-            twitter: '@test',
+            description: '',
+            website: '',
+            instagram: '',
+            facebook: '',
+            twitter: '',
             frontpage: false,
             loading: false,
             partnerAdded: false,
@@ -278,7 +263,7 @@ class CreatePartnerForm extends React.Component {
             frontpage: false,
             loading: false,
             partnerAdded: true,
-            showForm: false,
+            showForm: true,
         })
     }
 
@@ -306,6 +291,7 @@ class CreatePartnerForm extends React.Component {
     clearModal = () => {
         this.setState({
             partnerAdded: false,
+            showForm: false,
         })
     }
 
@@ -400,7 +386,6 @@ class CreatePartnerForm extends React.Component {
                                             e.preventDefault()
                                             await createPartner()
                                             this.resetState()
-                                            alert('yeah boi ⚽')
                                         }}
                                     >
                                         <div className="form-item-1">

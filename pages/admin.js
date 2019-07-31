@@ -33,6 +33,7 @@ class Admin extends React.Component {
 }
 
 Admin.propTypes = {
+    user: PropTypes.obj,
     loggedIn: PropTypes.bool,
 }
 

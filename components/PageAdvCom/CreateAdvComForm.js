@@ -207,13 +207,11 @@ class CreateAdvComForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: 'XXXXX',
-            jobTitle: 'CEO',
-            company: 'Nike',
-            index: 1,
-            headshot:
-                'https://res.cloudinary.com/dcqi9fn2y/image/upload/v1564569273/rethink/advCom/pierre-chatel-innocenti-o250-zxlElQ-unsplash_cbxoxp.jpg',
-
+            name: '',
+            jobTitle: '',
+            company: '',
+            index: 99,
+            headshot: '',
             loading: false,
             AdvComAdded: false,
             showForm: props.showForm,

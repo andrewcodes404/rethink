@@ -45,7 +45,8 @@ const RankingBtns = styled.div`
 `
 
 const Partners = styled.div`
-    margin: 20px 0 50px;
+    width: 920px;
+    margin: 20px auto 50px;
     display: flex;
     flex-wrap: wrap;
     @media (min-width: 1080px) {
