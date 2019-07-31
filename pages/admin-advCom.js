@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import NavAdmin from '../components/PageHeadFooter/Nav/NavAdmin'
 import PageAdvCom from '../components/PageAdvCom'
 import Router from 'next/router'
@@ -28,6 +29,11 @@ class AdvCom extends React.Component {
             </div>
         )
     }
+}
+
+AdvCom.propTypes = {
+    user: PropTypes.obj,
+    loggedIn: PropTypes.bool,
 }
 
 export default AdvCom

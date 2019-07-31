@@ -1,16 +1,7 @@
 import React from 'react'
-
 import Link from 'next/link'
-// import AOS from 'aos'
-// import 'aos/dist/aos.css'
 
 class PageAdmin extends React.Component {
-    // componentDidMount() {
-    //     AOS.init({
-    //         duration: 600,
-    //     })
-    // }
-
     render() {
         return (
             <div>

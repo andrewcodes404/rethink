@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Router from 'next/router'
 import NavAdmin from '../components/PageHeadFooter/Nav/NavAdmin'
 import PageAdminSponsors from '../components/PageAdminSponsors/Index'
@@ -28,6 +29,11 @@ class AdminSponsors extends React.Component {
             </div>
         )
     }
+}
+
+AdminSponsors.propTypes = {
+    user: PropTypes.obj,
+    loggedIn: PropTypes.bool,
 }
 
 export default AdminSponsors

@@ -1,7 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Router from 'next/router'
 import NavAdmin from '../components/PageHeadFooter/Nav/NavAdmin'
 import PageAdminPartners from '../components/PageAdminPartners'
+
 class AdminPartners extends React.Component {
     componentDidMount() {
         if (!this.props.loggedIn) {
@@ -28,6 +30,11 @@ class AdminPartners extends React.Component {
             </div>
         )
     }
+}
+
+AdminPartners.propTypes = {
+    user: PropTypes.obj,
+    loggedIn: PropTypes.bool,
 }
 
 export default AdminPartners
