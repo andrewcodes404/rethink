@@ -6,7 +6,7 @@ import NavAdmin from '../components/PageHeadFooter/Nav/NavAdmin'
 import Router from 'next/router'
 
 import styled from 'styled-components'
-
+import Spinner from '../components/lib/Spinner'
 class Login extends React.Component {
     componentDidMount() {
         if (this.props.loggedIn) {
@@ -18,7 +18,7 @@ class Login extends React.Component {
         return (
             <div>
                 {this.props.loggedIn ? (
-                    <p>re-routing</p>
+                    <Spinner />
                 ) : (
                     <div>
                         <NavAdmin />
