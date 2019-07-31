@@ -41,17 +41,7 @@ class Partners extends React.Component {
                 </div>
                 <br />
                 <br />
-                <h3>
-                    To see all partners{' '}
-                    <Link href="/partners">
-                        <span
-                            className="link-green"
-                            style={{ textDecoration: 'underline' }}
-                        >
-                            <a href="">click here</a>
-                        </span>
-                    </Link>
-                </h3>
+
                 <PartnersCarousel />
             </div>
         )

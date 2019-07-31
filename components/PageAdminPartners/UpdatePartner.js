@@ -1,19 +1,15 @@
 import React from 'react'
 import { Query } from 'react-apollo'
-import { GET_SPONSORS } from '../../lib/graphqlTags'
-import UpdateSponsorForm from './UpdateSponsorForm'
-import DeleteSponsor from './DeleteSponsor'
+import { GET_PARTNERS_WHERE_RANKING, GET_PARTNERS } from '../../lib/graphqlTags'
+import UpdatePartnerForm from './UpdatePartnerForm'
+import DeletePartner from './DeletePartner'
 
-import { sponsorRankingData } from '../../lib/data'
+import { rankingData } from '../../lib/data'
 
 // material ui
 import Button from '@material-ui/core/Button'
 import ArrowDownward from '@material-ui/icons/ArrowDownward'
 import styled from 'styled-components'
-
-if (sponsorRankingData.length < 4) {
-    sponsorRankingData.unshift({ text: 'All', tag: '' })
-}
 
 const Title = styled.div`
     display: flex;
@@ -35,7 +31,7 @@ const Title = styled.div`
 const RankingBtns = styled.div`
     display: flex;
     flex-wrap: wrap;
-    width: 600px;
+    width: 500px;
     margin: 0 auto 40px;
 
     /* justify-content: space-between; */
@@ -48,9 +44,8 @@ const RankingBtns = styled.div`
     }
 `
 
-const Sponsors = styled.div`
-    width: 910px;
-    margin: 20px auto 50px;
+const Partners = styled.div`
+    margin: 20px 0 50px;
     display: flex;
     flex-wrap: wrap;
     @media (min-width: 1080px) {
@@ -60,7 +55,7 @@ const Sponsors = styled.div`
 
     min-height: 180px;
 `
-const Sponsor = styled.div`
+const Partner = styled.div`
     width: 150px;
     height: 170px;
     display: flex;
@@ -127,7 +122,7 @@ class comp_name extends React.Component {
         super(props)
         this.state = {
             // showUpdateModal: false,
-            showDeleteSponsor: false,
+            showDeletePartner: false,
             showRanking: '',
             triggerChange: true,
             showUpdateForm: false,
@@ -153,49 +148,50 @@ class comp_name extends React.Component {
         })
     }
 
-    showDeleteSponsor = ({ name, id, ranking }) => {
+    showDeletePartner = ({ name, id, ranking }) => {
         this.setState({
             triggerChange: !this.state.triggerChange,
-            showDeleteSponsor: true,
+            showDeletePartner: true,
             name,
             id,
             ranking,
         })
     }
 
-    handleUpdateForm = sponsor => {
+    showUpdateForm = partner => {
         if (this.state.triggerUpdateForm === 'vic') {
             this.setState({
                 triggerUpdateForm: 'bob',
                 showUpdateForm: true,
-                id: sponsor.id,
-                name: sponsor.name,
-                ranking: sponsor.ranking,
-                index: sponsor.index,
-                logo: sponsor.logo,
-                description: sponsor.description,
-                website: sponsor.website,
-                instagram: sponsor.instagram,
-                facebook: sponsor.facebook,
-                twitter: sponsor.twitter,
-                frontpage: sponsor.frontpage,
+
+                id: partner.id,
+                name: partner.name,
+                ranking: partner.ranking,
+                index: partner.index,
+                logo: partner.logo,
+                description: partner.description,
+                website: partner.website,
+                instagram: partner.instagram,
+                facebook: partner.facebook,
+                twitter: partner.twitter,
+                frontpage: partner.frontpage,
             })
         } else
             this.setState({
                 triggerUpdateForm: 'vic',
                 showUpdateForm: true,
 
-                id: sponsor.id,
-                name: sponsor.name,
-                ranking: sponsor.ranking,
-                index: sponsor.index,
-                logo: sponsor.logo,
-                description: sponsor.description,
-                website: sponsor.website,
-                instagram: sponsor.instagram,
-                facebook: sponsor.facebook,
-                twitter: sponsor.twitter,
-                frontpage: sponsor.frontpage,
+                id: partner.id,
+                name: partner.name,
+                ranking: partner.ranking,
+                index: partner.index,
+                logo: partner.logo,
+                description: partner.description,
+                website: partner.website,
+                instagram: partner.instagram,
+                facebook: partner.facebook,
+                twitter: partner.twitter,
+                frontpage: partner.frontpage,
             })
     }
 
@@ -204,12 +200,12 @@ class comp_name extends React.Component {
             <div>
                 <Title>
                     <h1 style={{ color: 'black' }}>
-                        Edit/Update Current Sponsors
+                        Edit/Update Current Partners
                     </h1>
                     <ArrowDownward className="arrow" />
                 </Title>
                 <RankingBtns>
-                    {sponsorRankingData.map((el, i) => (
+                    {rankingData.map((el, i) => (
                         <Button
                             variant="outlined"
                             size="small"
@@ -225,37 +221,37 @@ class comp_name extends React.Component {
                     ))}
                 </RankingBtns>
 
-                <Query query={GET_SPONSORS}>
+                <DeletePartner
+                    key={this.state.triggerChange}
+                    name={this.state.name}
+                    id={this.state.id}
+                    ranking={this.state.showRanking}
+                    showDeletePartner={this.state.showDeletePartner}
+                />
+
+                <Query query={GET_PARTNERS}>
                     {({ data, error, loading }) => {
                         if (loading) return <p>Loading...</p>
                         if (error) return <p>Error: {error.message}</p>
                         if (!data) return <p>No Data</p>
 
-                        let sponsors = data.sponsors
+                        let partners = data.partners
                         if (this.state.showRanking) {
-                            sponsors = data.sponsors.filter(
+                            partners = data.partners.filter(
                                 x => x.ranking === this.state.showRanking
                             )
                         }
 
                         return (
                             <>
-                                <DeleteSponsor
-                                    key={this.state.triggerChange}
-                                    name={this.state.name}
-                                    id={this.state.id}
-                                    ranking={this.state.showRanking}
-                                    showDeleteSponsor={
-                                        this.state.showDeleteSponsor
-                                    }
-                                />
-                                <UpdateSponsorForm
+                                {' '}
+                                <UpdatePartnerForm
                                     key={this.state.triggerUpdateForm}
                                     // name={this.state.name}
                                     // id={this.state.id}
                                     showUpdateForm={this.state.showUpdateForm}
-                                    sponsor={this.state.sponsor}
-                                    // showDeleteSponsor={this.state.showDeleteSponsor}
+                                    partner={this.state.partner}
+                                    // showDeletePartner={this.state.showDeletePartner}
 
                                     id={this.state.id}
                                     name={this.state.name}
@@ -269,13 +265,13 @@ class comp_name extends React.Component {
                                     twitter={this.state.twitter}
                                     frontpage={this.state.frontpage}
                                 />
-                                <Sponsors>
-                                    {sponsors.map((sponsor, i) => (
-                                        <Sponsor key={i}>
+                                <Partners>
+                                    {partners.map((partner, i) => (
+                                        <Partner key={i}>
                                             <div className="logo">
                                                 <img
-                                                    src={sponsor.logo}
-                                                    alt={sponsor.name}
+                                                    src={partner.logo}
+                                                    alt={partner.name}
                                                 />
                                             </div>
 
@@ -285,8 +281,8 @@ class comp_name extends React.Component {
                                                     size="small"
                                                     className="btn-event"
                                                     onClick={() => {
-                                                        this.handleUpdateForm(
-                                                            sponsor
+                                                        this.showUpdateForm(
+                                                            partner
                                                         )
                                                     }}
                                                     style={{ color: 'green' }}
@@ -300,8 +296,8 @@ class comp_name extends React.Component {
                                                     size="small"
                                                     className="btn-event"
                                                     onClick={() => {
-                                                        this.showDeleteSponsor(
-                                                            sponsor
+                                                        this.showDeletePartner(
+                                                            partner
                                                         )
                                                     }}
                                                     style={{ color: 'tomato' }}
@@ -309,9 +305,9 @@ class comp_name extends React.Component {
                                                     delete
                                                 </Button>
                                             </div>
-                                        </Sponsor>
+                                        </Partner>
                                     ))}
-                                </Sponsors>
+                                </Partners>
                             </>
                         )
                     }}

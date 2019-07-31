@@ -2,3 +2,4 @@ node_modules
 notepad.txt
 .vscode
 .next
+.DS_Store

@@ -8,6 +8,8 @@ import { Normalize } from 'styled-normalize'
 import theme from '../style/theme'
 import GlobalStyle from '../style/globalStyle'
 import PageWrapper from '../components/PageWrapper'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {
@@ -18,6 +20,12 @@ class MyApp extends App {
         // this exposes the query to the user
         pageProps.query = ctx.query
         return { pageProps }
+    }
+
+    componentDidMount() {
+        AOS.init({
+            duration: 600,
+        })
     }
 
     render() {

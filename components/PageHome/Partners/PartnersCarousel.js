@@ -4,7 +4,7 @@ import { GET_PARTNERS_WHERE_FRONTPAGE } from '../../../lib/graphqlTags'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
 import styled from 'styled-components'
-
+import Link from 'next/link'
 const CarouselWrapper = styled.div`
     position: relative;
     margin: 0 auto;
@@ -115,8 +115,20 @@ class SponsorsCarousel extends React.Component {
                     if (error) return <p>Error: {error.message}</p>
                     if (!data) return <p>No Data</p>
                     const { partners } = data
+                    console.log('partners 🔩 = ', partners)
                     return (
                         <div>
+                            <h3>
+                                To see all partners{' '}
+                                <Link href="/partners">
+                                    <span
+                                        className="link-green"
+                                        style={{ textDecoration: 'underline' }}
+                                    >
+                                        <a href="">click here</a>
+                                    </span>
+                                </Link>
+                            </h3>
                             <CarouselWrapper>
                                 <AliceCarousel
                                     responsive={this.responsive}
@@ -130,6 +142,10 @@ class SponsorsCarousel extends React.Component {
                                     onSlideChanged={this.onSlideChanged}
                                 >
                                     {partners.map((partner, i) => {
+                                        console.log(
+                                            'partner.logo 🦜 = ',
+                                            partner.logo
+                                        )
                                         return (
                                             <CarouselItem key={i}>
                                                 <div className="logo">

@@ -1,101 +1,70 @@
 import React from 'react'
-import { Query, Mutation } from 'react-apollo'
-import {
-    GET_ADV_COMS,
-    UPDATE_ADV_COM,
-    DELETE_ADV_COM,
-} from '../../lib/graphqlTags'
+import { Query } from 'react-apollo'
+import { GET_ADV_COMS } from '../../lib/graphqlTags'
+import UpdateAdvComForm from './UpdateAdvComForm'
+import DeleteAdvCom from './DeleteAdvCom'
 
+import { sponsorRankingData } from '../../lib/data'
+
+// material ui
+import Button from '@material-ui/core/Button'
+import ArrowDownward from '@material-ui/icons/ArrowDownward'
 import styled from 'styled-components'
-const Modal = styled.div`
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.7);
 
+if (sponsorRankingData.length < 4) {
+    sponsorRankingData.unshift({ text: 'All', tag: '' })
+}
+
+const Title = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 60px 0 0;
 
-    .modal-card {
-        background: white;
-        padding: 40px;
-        text-align: center;
-        .content {
-            p {
-                margin-bottom: 0px;
-            }
-        }
+    h1 {
+        margin-bottom: 10px;
     }
 
-    .headshot {
-        width: 300px;
-        height: 300px;
-        margin: 0 auto 20px;
-        border: 1px solid #000;
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-
-    .modal-btn {
-        background: green;
-        padding: 10px;
-        margin: 10px;
-        cursor: pointer;
-
-        &:hover {
-            color: white;
-        }
+    .arrow {
+        font-size: 50px;
+        margin-bottom: 10px;
     }
 `
 
-const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-`
+const AdvComs = styled.div`
+    width: 890px;
+    margin: 20px auto 50px;
 
-const Members = styled.div`
-    margin: 20px 0 50px;
     display: flex;
+
     flex-wrap: wrap;
-    justify-content: center;
-
     @media (min-width: 1080px) {
-        align-items: flex-start;
+        /* align-items: center; */
         justify-content: flex-start;
     }
-    /* border: 1px solid #000; */
+
+    min-height: 180px;
 `
 const Member = styled.div`
-    /* width: 100%; */
-    width: 260px;
-    min-height: 420px;
+    width: 200px;
+    height: 280px;
     display: flex;
     flex-direction: column;
+
     justify-content: space-between;
-
-    @media (min-width: 1080px) {
-        width: 25%;
-    }
-
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    margin-right: 20px;
     cursor: pointer;
     transition: 0.3s;
-    &:hover {
-        background: lightgrey;
-    }
-    .headshot {
-        width: 80%;
-        max-width: 200px;
-        height: 200px;
-        margin: 10px auto 10px;
 
+    .headshot {
+        height: 200px;
+        /* display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; */
         img {
             width: 100%;
             height: 100%;
@@ -103,278 +72,210 @@ const Member = styled.div`
         }
     }
 
-    .text {
-        width: 80%;
-        margin: 0 auto 20px;
+    .member-name {
         p {
-            margin: 0;
-            line-height: 1.3;
-            margin-bottom: 5px;
-        }
-
-        small {
-            font-weight: 300;
+            text-align: center;
+            margin-bottom: 10px;
+            line-height: 1;
             font-size: 16px;
-            display: block;
-            margin-bottom: 5px;
         }
     }
+
     .buttons {
-        margin-top: 20px;
+        /* display: none; */
         display: flex;
+        opacity: 0;
+        width: 90%;
+        margin: 0 auto;
+        transition: 0.6s;
         justify-content: space-between;
+
+        .btn-event {
+            width: 45%;
+            font-size: 14px;
+            padding: 2px;
+            text-transform: lowercase;
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        20% {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    &:hover {
+        .buttons {
+            animation: fadeIn 0.8s forwards;
+            display: flex;
+        }
     }
 `
 
-class UpdateAdvCom extends React.Component {
+class comp_name extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            showUpdateModal: false,
-            showDeleteModal: false,
+            // showUpdateModal: false,
+            showDeleteAdvCom: false,
+            showRanking: '',
+            triggerChange: true,
+            showUpdateForm: false,
+            triggerUpdateForm: 'vic',
+
+            id: '',
+            name: '',
+            ranking: '',
+            index: '',
+            logo: '',
+            description: '',
+            website: '',
+            instagram: '',
+            facebook: '',
+            twitter: '',
+            frontpage: '',
         }
     }
 
-    showUpdateModal = member => {
-        const { id, headshot, name, jobTitle, company, index } = member
+    chooseRanking = rankingPref => {
         this.setState({
-            showUpdateModal: true,
-            id,
-            headshot,
+            showRanking: rankingPref,
+        })
+    }
+
+    handleDeleteAdvCom = ({ name, id, ranking }) => {
+        this.setState({
+            triggerChange: !this.state.triggerChange,
+            showDeleteAdvCom: true,
             name,
-            jobTitle,
-            company,
-            index,
-        })
-    }
-    showDeleteModal = member => {
-        const { id, headshot, name, jobTitle, company, index } = member
-        this.setState({
-            showDeleteModal: true,
             id,
-            headshot,
-            name,
-            jobTitle,
-            company,
-            index,
+            ranking,
         })
     }
 
-    closeUpdateModal = () => {
-        this.setState({
-            showUpdateModal: false,
-        })
-    }
+    handleUpdateForm = member => {
+        if (this.state.triggerUpdateForm === 'vic') {
+            this.setState({
+                triggerUpdateForm: 'bob',
+                showUpdateForm: true,
+                AdvComAdded: false,
 
-    closeDeleteModal = () => {
-        this.setState({
-            showDeleteModal: false,
-        })
-    }
+                id: member.id,
+                name: member.name,
+                jobTitle: member.jobTitle,
+                company: member.company,
+                headshot: member.headshot,
+                index: member.index,
+            })
+        } else
+            this.setState({
+                triggerUpdateForm: 'vic',
+                showUpdateForm: true,
+                AdvComAdded: false,
 
-    handleChange = e => {
-        const { name, type, value } = e.target
-        const val = type === 'number' ? parseFloat(value) : value
-        this.setState({ [name]: val })
+                id: member.id,
+                name: member.name,
+                jobTitle: member.jobTitle,
+                company: member.company,
+                headshot: member.headshot,
+                index: member.index,
+            })
     }
 
     render() {
-        console.log('this.state.name = ', this.state.name)
-        console.log('this.state.id = ', this.state.id)
         return (
             <div>
-                <h3>Edit Advisory Committee Members</h3>
+                <Title>
+                    <h1 style={{ color: 'black' }}>
+                        Edit/Update Current Memeber
+                    </h1>
+                    <ArrowDownward className="arrow" />
+                </Title>
 
-                {this.state.showUpdateModal && (
-                    <Modal>
-                        <div className="modal-card">
-                            <div className="headshot">
-                                <img src={this.state.headshot} />
-                            </div>
-
-                            <Mutation
-                                mutation={UPDATE_ADV_COM}
-                                refetchQueries={[{ query: GET_ADV_COMS }]}
-                                variables={this.state}
-                            >
-                                {updateAdvCom => (
-                                    <Form
-                                        onSubmit={async e => {
-                                            e.preventDefault()
-                                            await updateAdvCom()
-                                            this.closeUpdateModal()
-                                        }}
-                                    >
-                                        <label htmlFor="name">
-                                            name
-                                            <input
-                                                type="text"
-                                                id="name"
-                                                name="name"
-                                                required
-                                                value={this.state.name}
-                                                onChange={this.handleChange}
-                                            />
-                                        </label>
-                                        <label htmlFor="jobTitle">
-                                            Job Title
-                                            <input
-                                                type="text"
-                                                id="jobTitle"
-                                                name="jobTitle"
-                                                placeholder="jobTitle"
-                                                required
-                                                value={this.state.jobTitle}
-                                                onChange={this.handleChange}
-                                            />
-                                        </label>
-
-                                        <label htmlFor="company">
-                                            Company
-                                            <input
-                                                type="text"
-                                                id="company"
-                                                name="company"
-                                                placeholder="company"
-                                                required
-                                                value={this.state.company}
-                                                onChange={this.handleChange}
-                                            />
-                                        </label>
-
-                                        <label htmlFor="company">
-                                            Index
-                                            <input
-                                                type="number"
-                                                id="index"
-                                                name="index"
-                                                required
-                                                value={this.state.index}
-                                                onChange={this.handleChange}
-                                            />
-                                        </label>
-                                        <br />
-                                        <br />
-
-                                        <br />
-                                        <br />
-
-                                        <div>
-                                            <button
-                                                type="submit"
-                                                className="green-btn"
-                                            >
-                                                Submit
-                                            </button>
-
-                                            <span
-                                                className="red-btn"
-                                                onClick={() => {
-                                                    this.closeUpdateModal()
-                                                }}
-                                            >
-                                                Close
-                                            </span>
-                                        </div>
-                                    </Form>
-                                )}
-                            </Mutation>
-                        </div>
-                    </Modal>
-                )}
-
-                {this.state.showDeleteModal && (
-                    <Modal>
-                        <div className="modal-card ">
-                            <p>Are you sure you want to delete?</p>
-
-                            <span
-                                className="modal-btn"
-                                onClick={() => {
-                                    this.closeDeleteModal()
-                                }}
-                            >
-                                No way jose
-                            </span>
-                            <Mutation
-                                mutation={DELETE_ADV_COM}
-                                // passing the id to the mutation
-                                variables={{ id: this.state.id }}
-                                refetchQueries={[{ query: GET_ADV_COMS }]}
-                            >
-                                {(deleteAdvCom, { error }) => (
-                                    <span
-                                        className="red-btn"
-                                        onClick={() => {
-                                            deleteAdvCom()
-                                            this.closeDeleteModal()
-                                        }}
-                                    >
-                                        YES! Delete {this.state.name} ☠️
-                                    </span>
-                                )}
-                            </Mutation>
-                        </div>
-                    </Modal>
-                )}
                 <Query query={GET_ADV_COMS}>
                     {({ data, error, loading }) => {
                         if (loading) return <p>Loading...</p>
                         if (error) return <p>Error: {error.message}</p>
                         if (!data) return <p>No Data</p>
 
+                        const { advComs } = data
+
                         return (
-                            <Members>
-                                {data.advComs.map((member, i) => (
-                                    <Member key={i}>
-                                        <div className="headshot">
-                                            <img
-                                                src={member.headshot}
-                                                alt={member.name}
-                                            />
-                                        </div>
-                                        <div className="text">
-                                            <p style={{ fontWeight: 'bold' }}>
-                                                {member.name}
-                                            </p>
-                                            <small>
-                                                Job Title : {member.jobTitle}
-                                            </small>
-                                            <small>
-                                                Company: {member.company}
-                                            </small>
-                                            <p style={{ fontWeight: 'bold' }}>
-                                                Index #{member.index}
-                                            </p>
+                            <>
+                                <DeleteAdvCom
+                                    key={this.state.triggerChange}
+                                    name={this.state.name}
+                                    id={this.state.id}
+                                    ranking={this.state.showRanking}
+                                    showDeleteAdvCom={
+                                        this.state.showDeleteAdvCom
+                                    }
+                                />
+                                <UpdateAdvComForm
+                                    key={this.state.triggerUpdateForm}
+                                    showUpdateForm={this.state.showUpdateForm}
+                                    id={this.state.id}
+                                    name={this.state.name}
+                                    jobTitle={this.state.jobTitle}
+                                    company={this.state.company}
+                                    headshot={this.state.headshot}
+                                    index={this.state.index}
+                                />
+                                <AdvComs>
+                                    {advComs.map((member, i) => (
+                                        <Member key={i}>
+                                            <div className="headshot">
+                                                <img
+                                                    src={member.headshot}
+                                                    alt={member.name}
+                                                />
+                                            </div>
+
+                                            <div className="member-name">
+                                                <p>{member.name}</p>
+                                            </div>
 
                                             <div className="buttons">
-                                                <span
-                                                    className="green-btn"
+                                                <Button
+                                                    variant="outlined"
+                                                    size="small"
+                                                    className="btn-event"
                                                     onClick={() => {
-                                                        this.showUpdateModal(
+                                                        this.handleUpdateForm(
                                                             member
                                                         )
                                                     }}
+                                                    style={{ color: 'green' }}
                                                 >
                                                     update
-                                                </span>
+                                                </Button>
                                                 <br />
 
-                                                <span
-                                                    className="red-btn"
+                                                <Button
+                                                    variant="outlined"
+                                                    size="small"
+                                                    className="btn-event"
                                                     onClick={() => {
-                                                        this.showDeleteModal(
+                                                        this.handleDeleteAdvCom(
                                                             member
                                                         )
                                                     }}
+                                                    style={{ color: 'tomato' }}
                                                 >
                                                     delete
-                                                </span>
+                                                </Button>
                                             </div>
-                                        </div>
-                                    </Member>
-                                ))}
-                            </Members>
+                                        </Member>
+                                    ))}
+                                </AdvComs>
+                            </>
                         )
                     }}
                 </Query>
@@ -383,5 +284,4 @@ class UpdateAdvCom extends React.Component {
     }
 }
 
-export default UpdateAdvCom
-export { GET_ADV_COMS }
+export default comp_name

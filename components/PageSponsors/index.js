@@ -305,9 +305,9 @@ class PageSponsors extends React.Component {
     }
 
     render() {
-        const platinum = sponsorData.filter(x => x.ranking === '1')
-        const pro = sponsorData.filter(x => x.ranking === '2')
-        const basic = sponsorData.filter(x => x.ranking === '3')
+        // const platinum = sponsorData.filter(x => x.ranking === '1')
+        // const pro = sponsorData.filter(x => x.ranking === '2')
+        // const basic = sponsorData.filter(x => x.ranking === '3')
 
         return (
             <div style={{ positon: 'relative' }}>

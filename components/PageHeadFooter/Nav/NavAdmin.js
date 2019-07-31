@@ -22,8 +22,11 @@ const Nav = styled.div`
     align-items: center;
     max-width: 1000px;
     width: 95%;
-    margin: 0 auto;
+    margin: 0 auto 30px;
     z-index: 1000;
+    h3 {
+        cursor: pointer;
+    }
 `
 
 class NavSimple extends React.Component {
@@ -37,10 +40,8 @@ class NavSimple extends React.Component {
                 {/* <Link href="/admin">
                     <a>ADMIN HOME</a>
                 </Link> */}
-
-                <h3 onClick={() => Router.push('/_error', '/admin')}>
-                    ADMIN HOME
-                </h3>
+                <h3 onClick={() => Router.push('/')}>RETHINK</h3>
+                <h3 onClick={() => Router.push('/admin')}>ADMIN HOME</h3>
 
                 <div>{<p>hello 👋 {this.props.userName}</p>}</div>
 
