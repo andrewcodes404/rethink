@@ -111,6 +111,27 @@ export const StyledNav = styled.div`
             }
         }
 
+        .admin-link {
+            transition: 0.5s;
+            padding: 5px 0;
+
+            span {
+                color: ${props => props.theme.yellow};
+                font-size: 30px;
+            }
+
+            /* display: none; */
+            text-align: center;
+
+            &:hover {
+                background-color: ${props => props.theme.green};
+            }
+
+            @media (min-width: 767px) {
+                font-size: 40px;
+            }
+        }
+
         @media (min-width: 767px) {
             display: flex;
             position: unset;
@@ -129,12 +150,22 @@ export const StyledNav = styled.div`
                     content: '  |  ';
                 }
             }
-        }
-    }
 
-    .icon-rotate {
-        /* transform-origin: center;
-  transform: rotate(.15turn);
-  fill : gold; */
+            .admin-link {
+                display: inline;
+
+                span {
+                    color: ${props => props.theme.yellow};
+                    &:hover {
+                        background-color: unset;
+                        color: ${props => props.theme.green};
+                    }
+
+                    &:after {
+                        content: '  |  ';
+                    }
+                }
+            }
+        }
     }
 `

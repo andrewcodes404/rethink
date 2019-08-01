@@ -17,6 +17,7 @@ const Styled = styled.div`
     margin: 60px 0;
     h1 {
         margin-bottom: 10px;
+        text-align: center;
     }
 
     .arrow {

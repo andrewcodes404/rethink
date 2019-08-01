@@ -15,42 +15,56 @@ import PhotoLibrary from '@material-ui/icons/PhotoLibrary'
 import Close from '@material-ui/icons/Close'
 
 const FormModal = styled.div`
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 2;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+
+    padding-top: 30px;
+    @media (min-width: 767px) {
+        padding-top: 100px;
+    }
 `
 
 const Form = styled.form`
     background: white;
     padding: 0px;
-    display: flex;
-
-    width: 550px;
     margin: 0 auto;
-    padding: 25px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+
+    width: 90%;
+    margin: 0 auto;
+
+    @media (min-width: 767px) {
+        flex-direction: row;
+        width: 550px;
+        padding: 25px;
+    }
 
     .flex-item1,
     .flex-item2 {
         display: flex;
         flex-direction: column;
-
-        2border: 1px solid #000;
     }
 
-    .flex-item1 {
-        width: 50%;
-    }
+    .flex-item1,
     .flex-item2 {
-        width: 50%;
+        @media (min-width: 767px) {
+            width: 50%;
+        }
+    }
+
+    .flex-item2 {
         justify-content: space-between;
         align-items: flex-end;
     }
@@ -64,13 +78,16 @@ const Form = styled.form`
     }
 
     .img-upload-wrapper {
-        margin: 0;
+        margin: 10px auto 30px;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
         justify-content: space-around;
-
         padding-top: 15px;
+
+        @media (min-width: 767px) {
+            margin: 0;
+        }
 
         .upload-btn {
             background: green;
@@ -347,7 +364,7 @@ class CreateAdvComForm extends React.Component {
                                                 type="text"
                                                 id="name"
                                                 label="name"
-                                                className="textField"
+                                                className="text-field"
                                                 margin="normal"
                                                 variant="outlined"
                                                 value={this.state.name}
@@ -359,7 +376,7 @@ class CreateAdvComForm extends React.Component {
                                                 type="text"
                                                 id="jobTitle"
                                                 label="jobTitle"
-                                                className="textField"
+                                                className="text-field"
                                                 margin="normal"
                                                 variant="outlined"
                                                 value={this.state.jobTitle}
@@ -371,7 +388,7 @@ class CreateAdvComForm extends React.Component {
                                                 type="text"
                                                 id="company"
                                                 label="company"
-                                                className="textField"
+                                                className="text-field"
                                                 margin="normal"
                                                 variant="outlined"
                                                 value={this.state.company}

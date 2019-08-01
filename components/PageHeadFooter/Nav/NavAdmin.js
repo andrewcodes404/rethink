@@ -16,16 +16,62 @@ const SIGN_OUT_MUTATION = gql`
 `
 
 const Nav = styled.div`
-    border-bottom: 3px dashed green;
+    background: black;
+`
+
+const Menu = styled.div`
+    .push-out {
+        flex: 1;
+    }
+
+    height: 70px;
+    width: 95%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1000px;
-    width: 95%;
+
+    @media (min-width: 768px) {
+        justify-content: space-between;
+    }
+    align-items: center;
     margin: 0 auto 30px;
-    z-index: 1000;
-    h3 {
+
+    .logo {
+        width: 120px;
         cursor: pointer;
+        margin-right: 5px;
+        @media (min-width: 768px) {
+            width: 145px;
+            margin-right: 20px;
+        }
+    }
+
+    .home,
+    .logout {
+        color: white;
+        border: 1px solid white;
+        padding: 4px 5px;
+        cursor: pointer;
+        transition: 0.4s;
+        &:hover {
+            color: white;
+            background: green;
+            border: unset;
+        }
+
+        span {
+            margin-bottom: 0;
+            line-height: 1;
+            font-size: 13px;
+        }
+
+        @media (min-width: 768px) {
+            padding: 7px;
+            span {
+                font-size: 18px;
+            }
+        }
     }
 `
 
@@ -37,39 +83,35 @@ class NavSimple extends React.Component {
         console.log('this.props = ', this.props)
         return (
             <Nav>
-                {/* <Link href="/admin">
-                    <a>ADMIN HOME</a>
-                </Link> */}
-                <h3 onClick={() => Router.push('/')}>RETHINK</h3>
-                <h3 onClick={() => Router.push('/admin')}>ADMIN HOME</h3>
-
-                <div>{<p>hello 👋 {this.props.userName}</p>}</div>
-
-                {this.props.loggedIn && (
-                    <div>
-                        <Mutation
-                            mutation={SIGN_OUT_MUTATION}
-                            refetchQueries={[{ query: CURRENT_USER_QUERY }]}
-                        >
-                            {logout => (
-                                <Button
-                                    margin="normal"
-                                    type="submit"
-                                    variant="contained"
-                                    color="default"
-                                    size="small"
-                                    className="submit-btn"
-                                    onClick={async () => {
-                                        const res = await logout()
-                                        Router.push('/')
-                                    }}
-                                >
-                                    Sign Out
-                                </Button>
-                            )}
-                        </Mutation>
+                <Menu>
+                    <div className="logo" onClick={() => Router.push('/')}>
+                        <img
+                            src="/static/graphics/logo-green.svg"
+                            alt="rethink logo"
+                        />
                     </div>
-                )}
+
+                    <div className="home" onClick={() => Router.push('/admin')}>
+                        <span>ADMIN PANEL</span>
+                    </div>
+                    <div className="push-out"></div>
+                    <Mutation
+                        mutation={SIGN_OUT_MUTATION}
+                        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+                    >
+                        {logout => (
+                            <div
+                                className="logout"
+                                onClick={async () => {
+                                    const res = await logout()
+                                    Router.push('/')
+                                }}
+                            >
+                                <span>LOGOUT</span>
+                            </div>
+                        )}
+                    </Mutation>
+                </Menu>
             </Nav>
         )
     }

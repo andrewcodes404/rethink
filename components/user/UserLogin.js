@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import Router from 'next/router'
-import Error from '../lib/ErrorMessage'
+// import Error from '../lib/ErrorMessage'
 import { CURRENT_USER_QUERY } from '../PageWrapper'
 
 // material ui
@@ -12,13 +12,33 @@ import TextField from '@material-ui/core/TextField'
 import styled from 'styled-components'
 
 const Form = styled.form`
-    width: 400px;
+    width: 80%;
+    margin: 0 auto;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
 
     .submit-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 200px;
+        padding: 7px;
         margin-top: 30px;
-        width: 100px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        transition: 0.4s;
+        span {
+            font-size: 24px;
+        }
+
+        &:hover {
+            background: green;
+            color: white;
+            /* border: unset; */
+        }
     }
 `
 
@@ -38,17 +58,11 @@ class UserLogin extends Component {
         password: '',
         email: '',
     }
-    // saveToState = e => {
-    //     this.setState({ [e.target.name]: e.target.value })
-    // }
 
     handleChange = e => {
         const { id, type, value } = e.target
         const val = type === 'number' ? parseFloat(value) : value
-
-        this.setState({ [id]: val }, () => {
-            // console.log('this.state.id = ', this.state)
-        })
+        this.setState({ [id]: val })
     }
     render() {
         return (
@@ -73,7 +87,6 @@ class UserLogin extends Component {
                                     Router.push('/error', '/admin')
                                 }}
                             >
-                                <h3>Log in...</h3>
                                 <TextField
                                     type="text"
                                     id="email"
@@ -101,41 +114,13 @@ class UserLogin extends Component {
                                 <Button
                                     margin="normal"
                                     type="submit"
-                                    variant="contained"
+                                    variant="outlined"
                                     color="default"
                                     size="small"
                                     className="submit-btn"
                                 >
                                     Login
-                                    {/* <FileCopy className="icon" /> */}
                                 </Button>
-
-                                {/* <fieldset
-                                    disabled={loading}
-                                    aria-busy={loading}
-                                >
-                                    <Error error={error} />
-                                    <label htmlFor="email">
-                                        Email
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            value={this.state.email}
-                                            onChange={this.saveToState}
-                                        />
-                                    </label>
-                                    <label htmlFor="password">
-                                        Password
-                                        <input
-                                            type="password"
-                                            name="password"
-                                            value={this.state.password}
-                                            onChange={this.saveToState}
-                                        />
-                                    </label>
-
-                                    <button type="submit">Sign In!</button>
-                                </fieldset> */}
                             </Form>
                         </div>
                     </div>

@@ -122,14 +122,15 @@ class Nav extends React.Component {
                 <nav className={this.state.dropActive ? 'show-nav' : ''}>
                     <div>
                         {this.props.loggedIn && (
-                            <span
+                            <div
+                                className="admin-link"
                                 style={{ color: 'white', cursor: 'pointer' }}
                                 onClick={() => {
                                     Router.push('/admin')
                                 }}
                             >
-                                admin |
-                            </span>
+                                <span>admin</span>
+                            </div>
                         )}
                         <Link
                             activeClass="active-link"

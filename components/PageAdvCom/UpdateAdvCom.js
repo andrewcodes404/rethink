@@ -32,43 +32,74 @@ const Title = styled.div`
     }
 `
 
-const AdvComs = styled.div`
-    width: 890px;
+const Members = styled.div`
+    width: 95%;
     margin: 20px auto 50px;
-
     display: flex;
-
     flex-wrap: wrap;
-    @media (min-width: 1080px) {
-        /* align-items: center; */
+    justify-content: space-between;
+
+    @media (min-width: 500px) {
+        max-width: 422px;
         justify-content: flex-start;
+    }
+
+    @media (min-width: 768px) {
+        max-width: 670px;
+    }
+
+    @media (min-width: 1080px) {
+        max-width: 882px;
     }
 
     min-height: 180px;
 `
 const Member = styled.div`
-    width: 200px;
-    height: 280px;
+    width: 48%;
+    max-width: 200px;
+    height: 175px;
     display: flex;
     flex-direction: column;
-
     justify-content: space-between;
-    margin-bottom: 30px;
-    margin-right: 20px;
+    margin: 0 0 35px;
+
     cursor: pointer;
     transition: 0.3s;
 
+    @media (min-width: 500px) {
+        width: 200px;
+        height: 280px;
+        margin: 0 5px 30px;
+    }
+    @media (min-width: 767px) {
+        margin: 0 10px 30px;
+    }
+
     .headshot {
-        height: 200px;
-        /* display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden; */
+        position: relative;
+        height: 130px;
+        width: 100%;
+        margin: 0 auto;
+
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        @media (min-width: 500px) {
+            height: 200px;
+            width: 200px;
+        }
+
+        .index {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 4px 2px 2px;
+            border-bottom-right-radius: 5px;
+            color: white;
         }
     }
 
@@ -85,16 +116,24 @@ const Member = styled.div`
         /* display: none; */
         display: flex;
         opacity: 0;
-        width: 90%;
+        width: 100%;
         margin: 0 auto;
         transition: 0.6s;
         justify-content: space-between;
 
-        .btn-event {
+        .btn {
             width: 45%;
             font-size: 14px;
-            padding: 2px;
+            padding: 0px;
             text-transform: lowercase;
+        }
+
+        @media (min-width: 767px) {
+            width: 90%;
+
+            .btn {
+                padding: 2px;
+            }
         }
     }
 
@@ -228,10 +267,13 @@ class comp_name extends React.Component {
                                     headshot={this.state.headshot}
                                     index={this.state.index}
                                 />
-                                <AdvComs>
+                                <Members>
                                     {advComs.map((member, i) => (
                                         <Member key={i}>
                                             <div className="headshot">
+                                                <span className="index">
+                                                    #{member.index}
+                                                </span>
                                                 <img
                                                     src={member.headshot}
                                                     alt={member.name}
@@ -246,7 +288,7 @@ class comp_name extends React.Component {
                                                 <Button
                                                     variant="outlined"
                                                     size="small"
-                                                    className="btn-event"
+                                                    className="btn"
                                                     onClick={() => {
                                                         this.handleUpdateForm(
                                                             member
@@ -261,7 +303,7 @@ class comp_name extends React.Component {
                                                 <Button
                                                     variant="outlined"
                                                     size="small"
-                                                    className="btn-event"
+                                                    className="btn"
                                                     onClick={() => {
                                                         this.handleDeleteAdvCom(
                                                             member
@@ -274,7 +316,7 @@ class comp_name extends React.Component {
                                             </div>
                                         </Member>
                                     ))}
-                                </AdvComs>
+                                </Members>
                             </>
                         )
                     }}
