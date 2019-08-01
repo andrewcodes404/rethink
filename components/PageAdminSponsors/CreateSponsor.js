@@ -58,10 +58,7 @@ class CreateSponsor extends React.Component {
 
                 <CreateSponsorForm
                     key={this.state.triggerChange}
-                    // name={this.state.name}
-                    // id={this.state.id}
                     showForm={this.state.showForm}
-                    // showDeleteModal={this.state.showDeleteModal}
                 />
             </Styled>
         )

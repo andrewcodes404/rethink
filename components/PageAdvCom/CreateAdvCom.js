@@ -66,10 +66,7 @@ class CreateAdvCom extends React.Component {
 
                 <CreateAdvComForm
                     key={this.state.triggerChange}
-                    // name={this.state.name}
-                    // id={this.state.id}
                     showForm={this.state.showForm}
-                    // showDeleteModal={this.state.showDeleteModal}
                 />
             </Styled>
         )

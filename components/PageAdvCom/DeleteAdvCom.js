@@ -19,6 +19,9 @@ const Modal = styled.div`
     align-items: center;
 
     .modal-card {
+        width: 90%;
+        margin: 0 auto;
+        max-width: 500px;
         background: white;
         padding: 40px;
         text-align: center;
@@ -29,27 +32,29 @@ const Modal = styled.div`
         }
     }
 
-    .logo {
-        width: 300px;
-        height: 300px;
-        margin: 0 auto 20px;
-        border: 1px solid #000;
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: scale-down;
-        }
-    }
-
-    .modal-btn {
-        background: green;
+    .modal-btn-green,
+    .modal-btn-red {
         padding: 10px;
         margin: 10px;
         cursor: pointer;
+        width: 160px;
+        margin: 8px auto;
+        display: flex;
+        flex-direction: column;
 
         &:hover {
             color: white;
         }
+    }
+
+    .modal-btn-green {
+        background: green;
+        color: white;
+    }
+
+    .modal-btn-red {
+        background: firebrick;
+        color: white;
     }
 `
 
@@ -79,12 +84,12 @@ class DeleteAdvCom extends React.Component {
                                 Are you sure you want to delete{' '}
                                 <span style={{ fontWeight: 'bold' }}>
                                     {name}
-                                </span>{' '}
+                                </span>
                                 ?
                             </p>
 
                             <span
-                                className="modal-btn"
+                                className="modal-btn-green"
                                 onClick={() => {
                                     this.closeDeleteAdvCom()
                                 }}
@@ -103,7 +108,7 @@ class DeleteAdvCom extends React.Component {
                             >
                                 {(deleteAdvCom, { error }) => (
                                     <span
-                                        className="red-btn"
+                                        className="modal-btn-red"
                                         onClick={() => {
                                             deleteAdvCom()
                                             this.closeDeleteAdvCom()

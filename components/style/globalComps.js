@@ -1,5 +1,159 @@
 import styled from 'styled-components'
 
+export const Logos = styled.div`
+    width: 90%;
+    margin: 20px auto 50px;
+    display: flex;
+    flex-wrap: wrap;
+
+    max-width: 420px;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        max-width: 620px;
+    }
+
+    @media (min-width: 1080px) {
+        align-items: center;
+        justify-content: flex-start;
+        max-width: 760px;
+    }
+
+    min-height: 180px;
+`
+export const Logo = styled.div`
+    width: 130px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    @media (min-width: 768px) {
+        width: 150px;
+        height: 170px;
+    }
+
+    .logo {
+        height: 130px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .buttons {
+        display: none;
+        /* display: flex; */
+        width: 90%;
+        margin: 0 auto;
+        transition: 0.6s;
+        justify-content: space-between;
+
+        .btn-event {
+            width: 45%;
+            font-size: 14px;
+            padding: 2px;
+            text-transform: lowercase;
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        20% {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    &:hover {
+        .buttons {
+            animation: fadeIn 0.8s;
+            display: flex;
+        }
+    }
+`
+
+export const AlertModal = styled.div`
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    .modal-card {
+        background: white;
+        padding: 40px;
+        text-align: center;
+        p {
+            margin-bottom: 50px;
+        }
+    }
+    .modal-btn {
+        background: green;
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+
+        &:hover {
+            color: white;
+        }
+    }
+`
+
+export const Spinner = styled.div`
+    @keyframes spin {
+        10%,
+        90% {
+            transform: rotate(25deg);
+        }
+
+        20%,
+        80% {
+            transform: rotate(-25deg);
+        }
+
+        30%,
+        50%,
+        70% {
+            transform: rotate(70deg);
+        }
+
+        40%,
+        60% {
+            transform: rotate(-70deg);
+        }
+    }
+
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    background: green;
+    animation: spin 5s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite both;
+    transform-origin: center;
+`
+
 export const LinkIntext = styled.div`
     p {
         font-weight: bold;

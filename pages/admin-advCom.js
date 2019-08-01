@@ -31,7 +31,7 @@ class AdvCom extends React.Component {
 }
 
 AdvCom.propTypes = {
-    user: PropTypes.obj,
+    user: PropTypes.object,
     loggedIn: PropTypes.bool,
 }
 

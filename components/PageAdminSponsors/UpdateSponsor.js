@@ -11,6 +11,9 @@ import Button from '@material-ui/core/Button'
 import ArrowDownward from '@material-ui/icons/ArrowDownward'
 import styled from 'styled-components'
 
+// style
+import { Logos, Logo } from '../style/globalComps'
+
 if (sponsorRankingData.length < 4) {
     sponsorRankingData.unshift({ text: 'All', tag: '' })
 }
@@ -35,10 +38,10 @@ const Title = styled.div`
 const RankingBtns = styled.div`
     display: flex;
     flex-wrap: wrap;
-    width: 600px;
+    width: 90%;
     margin: 0 auto 40px;
 
-    /* justify-content: space-between; */
+    justify-content: center;
     .btn {
         margin: 5px;
     }
@@ -46,79 +49,9 @@ const RankingBtns = styled.div`
         background: green;
         color: white;
     }
-`
 
-const Sponsors = styled.div`
-    width: 910px;
-    margin: 20px auto 50px;
-    display: flex;
-    flex-wrap: wrap;
-    @media (min-width: 1080px) {
-        align-items: center;
-        justify-content: flex-start;
-    }
-
-    min-height: 180px;
-`
-const Sponsor = styled.div`
-    width: 150px;
-    height: 170px;
-    display: flex;
-    flex-direction: column;
-
-    justify-content: space-between;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-
-    .logo {
-        height: 130px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-    }
-
-    .buttons {
-        display: none;
-        /* display: flex; */
-        width: 90%;
-        margin: 0 auto;
-        transition: 0.6s;
-        justify-content: space-between;
-
-        .btn-event {
-            width: 45%;
-            font-size: 14px;
-            padding: 2px;
-            text-transform: lowercase;
-        }
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-
-        20% {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
-    &:hover {
-        .buttons {
-            animation: fadeIn 0.8s;
-            display: flex;
-        }
+    @media (min-width: 768px) {
+        width: 600px;
     }
 `
 
@@ -269,13 +202,13 @@ class comp_name extends React.Component {
                                     twitter={this.state.twitter}
                                     frontpage={this.state.frontpage}
                                 />
-                                <Sponsors>
-                                    {sponsors.map((sponsor, i) => (
-                                        <Sponsor key={i}>
+                                <Logos>
+                                    {sponsors.map((el, i) => (
+                                        <Logo key={i}>
                                             <div className="logo">
                                                 <img
-                                                    src={sponsor.logo}
-                                                    alt={sponsor.name}
+                                                    src={el.logo}
+                                                    alt={el.name}
                                                 />
                                             </div>
 
@@ -286,7 +219,7 @@ class comp_name extends React.Component {
                                                     className="btn-event"
                                                     onClick={() => {
                                                         this.handleUpdateForm(
-                                                            sponsor
+                                                            el
                                                         )
                                                     }}
                                                     style={{ color: 'green' }}
@@ -301,7 +234,7 @@ class comp_name extends React.Component {
                                                     className="btn-event"
                                                     onClick={() => {
                                                         this.showDeleteSponsor(
-                                                            sponsor
+                                                            el
                                                         )
                                                     }}
                                                     style={{ color: 'tomato' }}
@@ -309,9 +242,9 @@ class comp_name extends React.Component {
                                                     delete
                                                 </Button>
                                             </div>
-                                        </Sponsor>
+                                        </Logo>
                                     ))}
-                                </Sponsors>
+                                </Logos>
                             </>
                         )
                     }}

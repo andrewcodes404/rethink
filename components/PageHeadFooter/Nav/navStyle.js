@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 export const StyledNav = styled.div`
     background-color: black;
 
@@ -153,12 +154,16 @@ export const StyledNav = styled.div`
 
             .admin-link {
                 display: inline;
-
+                background-color: black;
+                &:hover {
+                    background-color: black;
+                }
                 span {
-                    color: ${props => props.theme.yellow};
+                    font-size: 16px;
+                    color: ${props => props.theme.green};
                     &:hover {
-                        background-color: unset;
-                        color: ${props => props.theme.green};
+                        background-color: black;
+                        color: ${props => props.theme.yellow};
                     }
 
                     &:after {
