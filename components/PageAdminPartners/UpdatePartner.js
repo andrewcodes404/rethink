@@ -202,6 +202,9 @@ class comp_name extends React.Component {
                                     {partners.map((el, i) => (
                                         <Logo key={i}>
                                             <div className="logo">
+                                                <span className="index">
+                                                    #{el.index}
+                                                </span>
                                                 <img
                                                     src={el.logo}
                                                     alt={el.name}
