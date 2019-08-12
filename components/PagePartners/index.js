@@ -2,7 +2,7 @@ import React from 'react'
 import NavSimple from '../PageHeadFooter/Nav/NavSimple'
 import { Query } from 'react-apollo'
 import { GET_PARTNERS } from '../../lib/graphqlTags'
-
+import { ModalCompanyCard } from '../style/globalComps'
 import styled from 'styled-components'
 const HeightForNav = styled.div`
     height: 100px;
@@ -15,11 +15,8 @@ const CardContainerWrapper = styled.div`
 `
 
 const CardContainer = styled.div`
-    /* border: 1px solid #000; */
-
     display: flex;
     flex-wrap: wrap;
-
     .card-with-title {
         width: 45%;
         padding: 10px;
@@ -28,8 +25,6 @@ const CardContainer = styled.div`
 
         h2 {
             margin-bottom: 15px;
-
-            /* text-align: center; */
         }
     }
 
@@ -113,113 +108,10 @@ const Card = styled.div`
 
     &:hover {
         box-shadow: 18px 23px 35px -10px rgba(194, 194, 194, 1);
-
         border-top: 1px solid #fafafa;
         border-left: 1px solid #fafafa;
-
-        /* padding: 14px; */
         img {
-            /* transform: scale(1.02) skewX(-1deg) skewY(-1deg); */
             transform: scale(1.02);
-        }
-    }
-`
-const Modal = styled.div`
-    transition: 1s;
-    /* filter: opacity(0.2); */
-
-    @keyframes shake {
-        10%,
-        90% {
-            transform: translate3d(-1px, 0, 0) rotate(10deg);
-        }
-
-        20%,
-        80% {
-            transform: translate3d(2px, 0, 0) rotate(-10deg);
-        }
-
-        30%,
-        50%,
-        70% {
-            transform: translate3d(-4px, 0, 0) rotate(10deg);
-        }
-
-        40%,
-        60% {
-            transform: translate3d(4px, 0, 0) rotate(-10deg);
-        }
-    }
-
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    .card {
-        width: 90%;
-        max-width: 700px;
-        background: white;
-        /* display: flex; */
-        padding: 20px;
-    }
-
-    .logo {
-        width: 300px;
-        height: 200px;
-        margin: 0 auto;
-
-        img {
-            object-fit: contain;
-            height: 100%;
-        }
-    }
-    .content {
-        width: 90%;
-        margin: 20px auto 30px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        h2 {
-            margin-bottom: 0;
-
-            text-transform: capitalize;
-        }
-        .social-wrapper {
-            max-width: 400px;
-            margin: 0 auto;
-            display: flex;
-
-            justify-content: flex-start;
-            align-items: center;
-        }
-        .social-icon {
-            width: 40px;
-            margin: 0 10px;
-            &:hover {
-                animation: shake 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-                transform-origin: center;
-            }
-        }
-
-        .website {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-left: 20px;
-            p {
-                margin: 0;
-                line-height: 0;
-            }
         }
     }
 `
@@ -239,7 +131,6 @@ class Index extends React.Component {
             instagram: '',
             facebook: '',
             twitter: '',
-            shareBtn: '',
         }
     }
     showModal = sponsor => {
@@ -271,12 +162,10 @@ class Index extends React.Component {
                 <NavSimple />
 
                 {this.state.showModal && (
-                    <Modal
+                    <ModalCompanyCard
                         onClick={() => {
                             this.closeModal()
                         }}
-                        // style={this.state.showModal && '{filter: opacity(1);}'}
-                        // className={this.state.showModal && 'fade-in'}
                     >
                         <div className="card">
                             <div className="logo">
@@ -336,6 +225,8 @@ class Index extends React.Component {
                                         </div>
                                     )}
 
+                                    <div className="some-height"></div>
+
                                     {this.state.website && (
                                         <div className="website">
                                             <a
@@ -350,7 +241,7 @@ class Index extends React.Component {
                                 </div>
                             </div>
                         </div>
-                    </Modal>
+                    </ModalCompanyCard>
                 )}
 
                 <div className="text-content-title-wrapper">

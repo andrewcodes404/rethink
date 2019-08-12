@@ -1,5 +1,115 @@
 import styled from 'styled-components'
 
+export const ModalCompanyCard = styled.div`
+    transition: 1s;
+
+    @keyframes shake {
+        10%,
+        90% {
+            transform: translate3d(-1px, 0, 0) rotate(10deg);
+        }
+
+        20%,
+        80% {
+            transform: translate3d(2px, 0, 0) rotate(-10deg);
+        }
+
+        30%,
+        50%,
+        70% {
+            transform: translate3d(-4px, 0, 0) rotate(10deg);
+        }
+
+        40%,
+        60% {
+            transform: translate3d(4px, 0, 0) rotate(-10deg);
+        }
+    }
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .card {
+        width: 90%;
+        max-width: 700px;
+        background: white;
+        padding: 20px;
+    }
+
+    .logo {
+        width: 300px;
+        height: 200px;
+        margin: 0 auto;
+
+        img {
+            object-fit: contain;
+            height: 100%;
+        }
+    }
+    .content {
+        width: 90%;
+        margin: 20px auto 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        h2 {
+            margin-bottom: 0;
+            text-transform: capitalize;
+        }
+        .social-wrapper {
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-icon {
+            width: 40px;
+            margin: 0 10px;
+            &:hover {
+                animation: shake 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+                transform-origin: center;
+            }
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .some-height {
+            width: 15px;
+            height: 70px;
+            /* border: 1px solid #000; */
+        }
+
+        .website {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* margin-left: 20px; */
+            /* margin-top: 20px; */
+
+            p {
+                margin: 0;
+                line-height: ;
+            }
+        }
+    }
+`
+
 export const Logos = styled.div`
     width: 90%;
     margin: 20px auto 50px;

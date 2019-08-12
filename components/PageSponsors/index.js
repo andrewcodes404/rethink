@@ -3,7 +3,7 @@ import NavSimple from '../PageHeadFooter/Nav/NavSimple'
 import styled from 'styled-components'
 import { Query } from 'react-apollo'
 import { GET_SPONSORS_WHERE_RANKING } from '../../lib/graphqlTags'
-
+import { ModalCompanyCard } from '../style/globalComps'
 const HeightForNav = styled.div`
     height: 100px;
 `
@@ -308,7 +308,7 @@ class PageSponsors extends React.Component {
                 <HeightForNav />
                 <NavSimple />
                 {this.state.showModal && (
-                    <Modal
+                    <ModalCompanyCard
                         onClick={() => {
                             this.closeModal()
                         }}
@@ -372,7 +372,7 @@ class PageSponsors extends React.Component {
                                             </a>
                                         </div>
                                     )}
-
+                                    <div className="some-height"></div>
                                     {this.state.website && (
                                         <div className="website">
                                             <a
@@ -387,7 +387,7 @@ class PageSponsors extends React.Component {
                                 </div>
                             </div>
                         </div>
-                    </Modal>
+                    </ModalCompanyCard>
                 )}
                 <div className="text-content-title-wrapper">
                     <div className="text-content">
