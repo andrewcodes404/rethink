@@ -13,7 +13,7 @@ const Footer = () => (
         <div className="social-wrapper">
             <div className="privacy">
                 <Link href="/privacy">
-                    <a> privacy policy </a>
+                    <a> privacy policy</a>
                 </Link>
             </div>
 
