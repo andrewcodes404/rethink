@@ -5,7 +5,6 @@ import UserLogin from '../components/user/UserLogin'
 import NavAdmin from '../components/PageHeadFooter/Nav/NavAdmin'
 import Router from 'next/router'
 
-import styled from 'styled-components'
 import Spinner from '../components/lib/Spinner'
 class Login extends React.Component {
     componentDidMount() {

@@ -385,38 +385,50 @@ class Index extends React.Component {
                             let innovation = {}
                             let esg = {}
                             let largeCards = []
-
                             let charity = {}
                             let eventConf = {}
                             let mediaPartners = {}
                             let community = {}
+
                             const { partners } = data
+
+                            // add ranking display text to single largeCard partners
+
+                            const addRankingTitle = (
+                                objName,
+                                rankingValue,
+                                rankingDisplayText
+                            ) => {
+                                objName = partners.find(
+                                    x => x.ranking === rankingValue
+                                )
+                                if (objName) {
+                                    objName.rankingTitle = rankingDisplayText
+                                    largeCards.push(objName)
+                                }
+                            }
+
                             if (partners) {
-                                strategic = partners.find(
-                                    x => x.ranking === 'strategic'
-                                )
-                                strategic.rankingTitle = 'Strategic'
-
-                                hostVenue = partners.find(
-                                    x => x.ranking === 'hostVenue'
-                                )
-                                hostVenue.rankingTitle = 'Host Venue'
-
-                                innovation = partners.find(
-                                    x => x.ranking === 'innovation'
-                                )
-                                innovation.rankingTitle = 'Innovation'
-
-                                esg = partners.find(x => x.ranking === 'esg')
-                                esg.rankingTitle = 'ESG'
-
-                                largeCards.push(
+                                addRankingTitle(
                                     strategic,
+                                    'strategic',
+                                    'Strategic'
+                                )
+                                addRankingTitle(
                                     hostVenue,
-                                    innovation,
-                                    esg
+                                    'hostVenue',
+                                    'Host Venue'
                                 )
 
+                                addRankingTitle(
+                                    innovation,
+                                    'innovation',
+                                    'Innovation'
+                                )
+
+                                addRankingTitle(esg, 'esg', 'ESG')
+
+                                // Filter partners by ranking type
                                 charity = partners.filter(
                                     x => x.ranking === 'charity'
                                 )
