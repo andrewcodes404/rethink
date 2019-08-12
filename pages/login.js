@@ -10,7 +10,7 @@ import Spinner from '../components/lib/Spinner'
 class Login extends React.Component {
     componentDidMount() {
         if (this.props.loggedIn) {
-            Router.push('/error', '/admin')
+            Router.push('/admin')
         }
     }
 

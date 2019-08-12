@@ -379,49 +379,60 @@ class Index extends React.Component {
                             if (loading) return <p>Loading...</p>
                             if (error) return <p>Error: {error.message}</p>
                             if (!data) return <p>No Data</p>
-                            const { partners } = data
 
-                            let strategic = partners.find(
-                                x => x.ranking === 'strategic'
-                            )
-                            strategic.rankingTitle = 'Strategic'
-
-                            let hostVenue = partners.find(
-                                x => x.ranking === 'hostVenue'
-                            )
-                            hostVenue.rankingTitle = 'Host Venue'
-
-                            let innovation = partners.find(
-                                x => x.ranking === 'innovation'
-                            )
-                            innovation.rankingTitle = 'Innovation'
-
-                            let esg = partners.find(x => x.ranking === 'esg')
-                            esg.rankingTitle = 'ESG'
-
+                            let strategic = {}
+                            let hostVenue = {}
+                            let innovation = {}
+                            let esg = {}
                             let largeCards = []
-                            largeCards.push(
-                                strategic,
-                                hostVenue,
-                                innovation,
-                                esg
-                            )
 
-                            const charity = data.partners.filter(
-                                x => x.ranking === 'charity'
-                            )
+                            let charity = {}
+                            let eventConf = {}
+                            let mediaPartners = {}
+                            let community = {}
+                            const { partners } = data
+                            if (partners) {
+                                strategic = partners.find(
+                                    x => x.ranking === 'strategic'
+                                )
+                                strategic.rankingTitle = 'Strategic'
 
-                            const eventConf = data.partners.filter(
-                                x => x.ranking === 'eventConf'
-                            )
+                                hostVenue = partners.find(
+                                    x => x.ranking === 'hostVenue'
+                                )
+                                hostVenue.rankingTitle = 'Host Venue'
 
-                            const mediaPartners = data.partners.filter(
-                                x => x.ranking === 'mediaPartners'
-                            )
+                                innovation = partners.find(
+                                    x => x.ranking === 'innovation'
+                                )
+                                innovation.rankingTitle = 'Innovation'
 
-                            const community = data.partners.filter(
-                                x => x.ranking === 'community'
-                            )
+                                esg = partners.find(x => x.ranking === 'esg')
+                                esg.rankingTitle = 'ESG'
+
+                                largeCards.push(
+                                    strategic,
+                                    hostVenue,
+                                    innovation,
+                                    esg
+                                )
+
+                                charity = partners.filter(
+                                    x => x.ranking === 'charity'
+                                )
+
+                                eventConf = partners.filter(
+                                    x => x.ranking === 'eventConf'
+                                )
+
+                                mediaPartners = partners.filter(
+                                    x => x.ranking === 'mediaPartners'
+                                )
+
+                                community = partners.filter(
+                                    x => x.ranking === 'community'
+                                )
+                            }
 
                             return (
                                 <CardContainerWrapper>
