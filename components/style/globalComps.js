@@ -104,7 +104,7 @@ export const ModalCompanyCard = styled.div`
 
             p {
                 margin: 0;
-                line-height: ;
+                line-height: 1;
             }
         }
     }
