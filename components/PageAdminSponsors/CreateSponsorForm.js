@@ -78,7 +78,7 @@ class CreateSponsorForm extends React.Component {
         this.setState({ ranking: id })
     }
 
-    handleChckboxChange = e => {
+    handleCheckboxChange = e => {
         const { checked } = e.target
         this.setState({ frontpage: checked })
     }
@@ -167,7 +167,7 @@ class CreateSponsorForm extends React.Component {
                             variables={this.state}
                             refetchQueries={[{ query: GET_SPONSORS }]}
                         >
-                            {(createSponsor, { loading, error }) => (
+                            {createSponsor => (
                                 <Form
                                     onSubmit={async e => {
                                         e.preventDefault()
@@ -382,9 +382,12 @@ class CreateSponsorForm extends React.Component {
                                                     name="frontpage"
                                                     id="frontpage"
                                                     color="default"
-                                                    value="checkedG"
+                                                    checked={
+                                                        this.state.frontpage
+                                                    }
                                                     onChange={
-                                                        this.handleChckboxChange
+                                                        this
+                                                            .handleCheckboxChange
                                                     }
                                                 />
                                             </label>

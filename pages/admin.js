@@ -31,7 +31,7 @@ class Admin extends React.Component {
 }
 
 Admin.propTypes = {
-    user: PropTypes.obj,
+    user: PropTypes.object,
     loggedIn: PropTypes.bool,
 }
 

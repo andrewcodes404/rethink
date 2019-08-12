@@ -1,6 +1,6 @@
 import React from 'react'
 import PartnersCarousel from './PartnersCarousel'
-import Link from 'next/link'
+
 class Partners extends React.Component {
     render() {
         return (

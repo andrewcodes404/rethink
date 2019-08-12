@@ -115,6 +115,7 @@ class SponsorsCarousel extends React.Component {
                     if (error) return <p>Error: {error.message}</p>
                     if (!data) return <p>No Data</p>
                     const { sponsors } = data
+
                     return (
                         <div>
                             <CarouselWrapper>

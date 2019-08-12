@@ -115,7 +115,7 @@ class SponsorsCarousel extends React.Component {
                     if (error) return <p>Error: {error.message}</p>
                     if (!data) return <p>No Data</p>
                     const { partners } = data
-                    console.log('partners 🔩 = ', partners)
+
                     return (
                         <div>
                             <h3>
@@ -142,10 +142,6 @@ class SponsorsCarousel extends React.Component {
                                     onSlideChanged={this.onSlideChanged}
                                 >
                                     {partners.map((partner, i) => {
-                                        console.log(
-                                            'partner.logo 🦜 = ',
-                                            partner.logo
-                                        )
                                         return (
                                             <CarouselItem key={i}>
                                                 <div className="logo">

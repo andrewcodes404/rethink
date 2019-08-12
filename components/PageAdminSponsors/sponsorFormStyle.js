@@ -2,30 +2,16 @@ import styled from 'styled-components'
 
 export const FormModal = styled.div`
     position: absolute;
-    /* @media (min-width: 767px) {
-        position: fixed;
-    } */
-    /* top: {window.scrollY}; */
-    /* top: { window.scrollTop} */
+
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 2;
     background: rgba(0, 0, 0, 0.7);
-
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
 `
 
-export const Form = styled.form.attrs(props => ({
-    whereAmI: '600px auto',
-    boo: window.scrollY,
-    // // or we can define dynamic ones
-    // size: props.size || "1em",
-}))`
+export const Form = styled.form`
     background: white;
     padding: 10px 0 30px;
     display: flex;
@@ -42,7 +28,6 @@ export const Form = styled.form.attrs(props => ({
     @media (min-width: 768px) {
         flex-direction: row;
         padding: 20px;
-        /* margin: 80px auto; */
         max-width: 850px;
         justify-content: space-between;
     }

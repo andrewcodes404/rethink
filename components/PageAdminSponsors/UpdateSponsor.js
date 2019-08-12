@@ -69,14 +69,14 @@ class comp_name extends React.Component {
             id: '',
             name: '',
             ranking: '',
-            index: '',
+            index: 999,
             logo: '',
             description: '',
             website: '',
             instagram: '',
             facebook: '',
             twitter: '',
-            frontpage: '',
+            frontpage: false,
         }
     }
 

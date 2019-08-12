@@ -25,7 +25,7 @@ import Close from '@material-ui/icons/Close'
 import { Spinner, AlertModal } from '../style/globalComps'
 import { FormModal, Form } from './sponsorFormStyle'
 
-class UpdatePartnerForm extends React.Component {
+class UpdateSponsorForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -39,7 +39,7 @@ class UpdatePartnerForm extends React.Component {
             instagram: props.instagram,
             facebook: props.facebook,
             twitter: props.twitter,
-            frontpage: false,
+            frontpage: props.frontpage,
             loading: false,
             sponsorUpdated: false,
             showUpdateForm: props.showUpdateForm,
@@ -84,7 +84,7 @@ class UpdatePartnerForm extends React.Component {
         this.setState({ ranking: id })
     }
 
-    handleChckboxChange = e => {
+    handleCheckboxChange = e => {
         const { checked } = e.target
         this.setState({ frontpage: checked })
     }
@@ -166,7 +166,7 @@ class UpdatePartnerForm extends React.Component {
                             variables={this.state}
                             refetchQueries={[{ query: GET_PARTNERS }]}
                         >
-                            {(updatePartner, { loading, error }) => (
+                            {updatePartner => (
                                 <Form
                                     onSubmit={async e => {
                                         e.preventDefault()
@@ -383,9 +383,12 @@ class UpdatePartnerForm extends React.Component {
                                                     name="frontpage"
                                                     id="frontpage"
                                                     color="default"
-                                                    value="checkedG"
+                                                    checked={
+                                                        this.state.frontpage
+                                                    }
                                                     onChange={
-                                                        this.handleChckboxChange
+                                                        this
+                                                            .handleCheckboxChange
                                                     }
                                                 />
                                             </label>
@@ -429,8 +432,19 @@ class UpdatePartnerForm extends React.Component {
     }
 }
 
-UpdatePartnerForm.propTypes = {
+UpdateSponsorForm.propTypes = {
     showUpdateForm: PropTypes.bool,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    ranking: PropTypes.string,
+    index: PropTypes.number,
+    logo: PropTypes.string,
+    description: PropTypes.string,
+    website: PropTypes.string,
+    instagram: PropTypes.string,
+    facebook: PropTypes.string,
+    twitter: PropTypes.string,
+    frontpage: PropTypes.bool,
 }
 
-export default UpdatePartnerForm
+export default UpdateSponsorForm

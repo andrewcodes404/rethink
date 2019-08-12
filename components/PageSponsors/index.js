@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import NavSimple from '../PageHeadFooter/Nav/NavSimple'
 import styled from 'styled-components'
-import sponsorData from './sponsorData'
 import { Query } from 'react-apollo'
 import { GET_SPONSORS_WHERE_RANKING } from '../../lib/graphqlTags'
 
@@ -251,25 +250,20 @@ class PageSponsors extends React.Component {
         super(props)
         this.state = {
             showModal: false,
-            type: 'sponsor',
-            ranking: '3',
-            index: '33',
-            name: 'SunChant',
-            logo: '33',
-            description:
-                'Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.',
-            website: 'https://web.com',
-            instagram: 'https://web.com',
-            facebook: 'https://web.com',
-            twitter: 'https://web.com',
-            shareBtn: '',
+            type: '',
+            ranking: '',
+            index: 999,
+            name: '',
+            logo: '',
+            description: '',
+            website: '',
+            instagram: '',
+            facebook: '',
+            twitter: '',
         }
     }
 
     showModal = sponsor => {
-        console.log('boom 💣', sponsor)
-        // const name = sponsor.name
-
         const {
             type,
             ranking,

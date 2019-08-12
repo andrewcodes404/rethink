@@ -1,6 +1,6 @@
 import React from 'react'
 import { Query } from 'react-apollo'
-import { GET_PARTNERS_WHERE_RANKING, GET_PARTNERS } from '../../lib/graphqlTags'
+import { GET_PARTNERS } from '../../lib/graphqlTags'
 import UpdatePartnerForm from './UpdatePartnerForm'
 import DeletePartner from './DeletePartner'
 
@@ -63,14 +63,14 @@ class comp_name extends React.Component {
             id: '',
             name: '',
             ranking: '',
-            index: '',
+            index: 999,
             logo: '',
             description: '',
             website: '',
             instagram: '',
             facebook: '',
             twitter: '',
-            frontpage: '',
+            frontpage: false,
         }
     }
 
@@ -91,12 +91,10 @@ class comp_name extends React.Component {
     }
 
     handleUpdateForm = partner => {
-        console.log('screen 📺 = ', screen)
         if (this.state.triggerUpdateForm === 'vic') {
             this.setState({
                 triggerUpdateForm: 'bob',
                 showUpdateForm: true,
-
                 id: partner.id,
                 name: partner.name,
                 ranking: partner.ranking,

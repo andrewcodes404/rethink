@@ -1,6 +1,6 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
-import advComData from './advComData'
+
 import { Query } from 'react-apollo'
 import { GET_ADV_COMS } from '../../../lib/graphqlTags'
 
@@ -134,14 +134,22 @@ class AdvisoryCom extends React.Component {
         // const handleOnDragStart = e => e.preventDefault()
         return (
             <div className="text-content-title-wrapper" id="partners">
-                <h2 data-aos="my-anim">Advisory Committee</h2>
+                <h2 data-aos="my-anim">ReThinkTank</h2>
 
                 <div className="text-content">
                     <h3>
-                        You probably want dome text here? Vivamus magna justo,
-                        lacinia eget consectetur sed, convallis at tellus. Sed
-                        porttitor lectus nibh.
+                        ReThink is supported by a group of cross-sector
+                        sustainability leaders who form the advisory panel and
+                        provide key insight into how ReThink can best address
+                        the needs of the Hong Kong ecosystem.
                     </h3>
+
+                    <p>
+                        ReThink is supported by a group of cross-sector
+                        sustainability leaders who form the advisory panel and
+                        provide key insight into how ReThink can best address
+                        the needs of the Hong Kong ecosystem.
+                    </p>
                 </div>
 
                 <Query query={GET_ADV_COMS}>

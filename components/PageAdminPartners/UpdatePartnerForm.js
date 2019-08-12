@@ -5,7 +5,7 @@ import { UPDATE_PARTNER, GET_PARTNERS } from '../../lib/graphqlTags'
 
 // material ui
 import Button from '@material-ui/core/Button'
-import styled from 'styled-components'
+
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import Radio from '@material-ui/core/Radio'
@@ -24,212 +24,6 @@ import Close from '@material-ui/icons/Close'
 import { Spinner, AlertModal } from '../style/globalComps'
 import { Form, FormModal } from '../PageAdminSponsors/sponsorFormStyle'
 
-// const FormModal = styled.div`
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     right: 0;
-//     z-index: 2;
-//     background: rgba(0, 0, 0, 0.7);
-
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-// `
-
-// const Form = styled.form`
-//     background: white;
-//     padding: 0px;
-//     display: flex;
-
-//     width: 1000px;
-//     margin: 50px auto 100px;
-
-//     .form-item-1,
-//     .form-item-2 {
-//         display: flex;
-//         flex-direction: column;
-//         width: 50%;
-//         margin: 20px;
-//     }
-
-//     .icon {
-//         margin-left: 10px;
-//     }
-
-//     fieldset {
-//         border-radius: 0;
-//     }
-
-//     .radio-wrapper {
-//         display: flex;
-//         flex-wrap: wrap;
-//         justify-content: space-around;
-//         margin: 0 0 20px;
-//         label {
-//             width: 200px;
-//             text-align: center;
-//             display: flex;
-//             justify-content: space-between;
-//             align-items: center;
-//         }
-//     }
-
-//     .img-upload-wrapper {
-//         margin: 0;
-//         display: flex;
-//         align-items: center;
-//         justify-content: space-around;
-
-//         padding: 0;
-
-//         .upload-btn {
-//             background: green;
-//             color: white;
-//             &:hover {
-//                 color: black;
-//                 background: gold;
-//             }
-//         }
-//     }
-
-//     .fake-logo {
-//         width: 180px;
-//         height: 180px;
-//         background: lightgrey;
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: center;
-//         align-items: center;
-//         .fake-icon {
-//             font-size: 60px;
-//             color: green;
-//         }
-//     }
-
-//     .thumb {
-//         width: 200px;
-//         max-height: 200px;
-//         box-shadow: 10px 11px 20px -10px rgba(222, 222, 222, 1);
-//         background: green;
-//         img {
-//             width: 100%;
-//             height: 100%;
-//             object-fit: scale-down;
-//         }
-//     }
-
-//     .ranking-wrapper {
-//         /* border-top: 1px solid lightgrey; */
-//         margin-top: 30px;
-//         padding: 10px 0 10px;
-//         h5 {
-//             text-decoration: underline;
-//             padding-left: 15px;
-//         }
-//     }
-
-//     .btm-wrapper {
-//         display: flex;
-//         justify-content: space-around;
-//         align-items: center;
-//         /* border-top: 1px solid lightgrey; */
-//         padding: 0px 0 20px;
-//     }
-
-//     .input-number {
-//         width: 200px;
-//         input {
-//             width: 50px;
-//         }
-//     }
-//     .input-checkbox {
-//         /* font-size: 16px; */
-//         width: 200px;
-//     }
-//     .submit-wrapper {
-//         padding: 10px 0;
-
-//         display: flex;
-//         justify-content: space-between;
-//         width: 65%;
-//         margin: 0 auto;
-//         .submit-btn {
-//             background: green;
-//             color: white;
-//             &:hover {
-//                 color: black;
-//                 background: gold;
-//             }
-//         }
-//     }
-// `
-// const Modal = styled.div`
-//     position: fixed;
-//     top: 0;
-//     bottom: 0;
-//     left: 0;
-//     right: 0;
-//     background: rgba(0, 0, 0, 0.7);
-
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//     z-index: 2;
-//     .modal-card {
-//         background: white;
-//         padding: 40px;
-//         text-align: center;
-//         p {
-//             margin-bottom: 50px;
-//         }
-//     }
-//     .modal-btn {
-//         background: green;
-//         padding: 10px;
-//         margin: 10px;
-//         cursor: pointer;
-
-//         &:hover {
-//             color: white;
-//         }
-//     }
-// `
-
-// const Spinner = styled.div`
-//     @keyframes spin {
-//         10%,
-//         90% {
-//             transform: rotate(25deg);
-//         }
-
-//         20%,
-//         80% {
-//             transform: rotate(-25deg);
-//         }
-
-//         30%,
-//         50%,
-//         70% {
-//             transform: rotate(70deg);
-//         }
-
-//         40%,
-//         60% {
-//             transform: rotate(-70deg);
-//         }
-//     }
-
-//     width: 100px;
-//     height: 100px;
-//     padding: 10px;
-//     background: green;
-//     animation: spin 5s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite both;
-//     transform-origin: center;
-// `
-
 class UpdatePartnerForm extends React.Component {
     constructor(props) {
         super(props)
@@ -244,7 +38,7 @@ class UpdatePartnerForm extends React.Component {
             instagram: props.instagram,
             facebook: props.facebook,
             twitter: props.twitter,
-            frontpage: false,
+            frontpage: props.frontpage,
             loading: false,
             partnerUpdated: false,
             showUpdateForm: props.showUpdateForm,
@@ -272,7 +66,7 @@ class UpdatePartnerForm extends React.Component {
     clearModal = () => {
         this.resetState()
         this.setState({
-            partnerAdded: false,
+            partnerUpdated: false,
             showUpdateForm: false,
         })
     }
@@ -289,7 +83,7 @@ class UpdatePartnerForm extends React.Component {
         this.setState({ ranking: id })
     }
 
-    handleChckboxChange = e => {
+    handleCheckboxChange = e => {
         const { checked } = e.target
         this.setState({ frontpage: checked })
     }
@@ -336,12 +130,6 @@ class UpdatePartnerForm extends React.Component {
     render() {
         return (
             <>
-                {this.state.partnerUpdated && (
-                    <div className="partnerUpdated-modal">
-                        <h2>Partner Updated</h2>
-                    </div>
-                )}
-
                 {this.state.showUpdateForm && (
                     <FormModal>
                         {this.state.loading && (
@@ -364,7 +152,7 @@ class UpdatePartnerForm extends React.Component {
                                 }}
                             >
                                 <div className="modal-card">
-                                    <p>Partner Added</p>
+                                    <p>Partner Updated</p>
                                     <span
                                         className="modal-btn"
                                         onClick={() => {
@@ -381,7 +169,7 @@ class UpdatePartnerForm extends React.Component {
                             variables={this.state}
                             refetchQueries={[{ query: GET_PARTNERS }]}
                         >
-                            {(updatePartner, { loading, error }) => (
+                            {updatePartner => (
                                 <Form
                                     onSubmit={async e => {
                                         e.preventDefault()
@@ -598,9 +386,12 @@ class UpdatePartnerForm extends React.Component {
                                                     name="frontpage"
                                                     id="frontpage"
                                                     color="default"
-                                                    value="checkedG"
+                                                    checked={
+                                                        this.state.frontpage
+                                                    }
                                                     onChange={
-                                                        this.handleChckboxChange
+                                                        this
+                                                            .handleCheckboxChange
                                                     }
                                                 />
                                             </label>
@@ -615,7 +406,7 @@ class UpdatePartnerForm extends React.Component {
                                                 size="large"
                                                 // className="submit-btn"
                                                 onClick={() => {
-                                                    this.resetState()
+                                                    this.clearModal()
                                                 }}
                                             >
                                                 close <Close className="icon" />
@@ -646,6 +437,17 @@ class UpdatePartnerForm extends React.Component {
 
 UpdatePartnerForm.propTypes = {
     showUpdateForm: PropTypes.bool,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    ranking: PropTypes.string,
+    index: PropTypes.number,
+    logo: PropTypes.string,
+    description: PropTypes.string,
+    website: PropTypes.string,
+    instagram: PropTypes.string,
+    facebook: PropTypes.string,
+    twitter: PropTypes.string,
+    frontpage: PropTypes.bool,
 }
 
 export default UpdatePartnerForm

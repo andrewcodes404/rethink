@@ -229,23 +229,20 @@ class Index extends React.Component {
         super(props)
         this.state = {
             showModal: false,
-            type: 'sponsor',
-            ranking: '3',
-            index: '33',
-            name: 'SunChant',
-            logo: '33',
-            description:
-                'Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.',
-            website: 'https://web.com',
-            instagram: 'https://web.com',
-            facebook: 'https://web.com',
-            twitter: 'https://web.com',
+            type: '',
+            ranking: '',
+            index: '',
+            name: '',
+            logo: '',
+            description: '',
+            website: '',
+            instagram: '',
+            facebook: '',
+            twitter: '',
             shareBtn: '',
         }
     }
     showModal = sponsor => {
-        console.log('BOOM')
-
         this.setState({
             showModal: true,
             type: sponsor.type,
@@ -387,20 +384,20 @@ class Index extends React.Component {
                             let strategic = partners.find(
                                 x => x.ranking === 'strategic'
                             )
-                            strategic.rankingText = 'Strategic'
+                            strategic.rankingTitle = 'Strategic'
 
                             let hostVenue = partners.find(
                                 x => x.ranking === 'hostVenue'
                             )
-                            hostVenue.rankingText = 'Host Venue'
+                            hostVenue.rankingTitle = 'Host Venue'
 
                             let innovation = partners.find(
                                 x => x.ranking === 'innovation'
                             )
-                            innovation.rankingText = 'Innovation'
+                            innovation.rankingTitle = 'Innovation'
 
                             let esg = partners.find(x => x.ranking === 'esg')
-                            esg.rankingText = 'ESG'
+                            esg.rankingTitle = 'ESG'
 
                             let largeCards = []
                             largeCards.push(
@@ -430,17 +427,14 @@ class Index extends React.Component {
                                 <CardContainerWrapper>
                                     <CardContainer>
                                         {largeCards.map((partner, i) => {
-                                            console.log(
-                                                'largeCards = ',
-                                                largeCards
-                                            )
                                             return (
                                                 <div
                                                     className="card-with-title"
                                                     key={i}
                                                 >
                                                     <h2 data-aos="my-anim">
-                                                        {partner.rankingText}
+                                                        {partner.rankingTitle &&
+                                                            partner.rankingTitle}
                                                     </h2>
                                                     <Card
                                                         onClick={() => {
