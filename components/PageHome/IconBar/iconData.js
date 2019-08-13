@@ -1,27 +1,27 @@
 const iconData = [
     {
-        text: '+2000 attendees',
+        text: '+1000 attendees',
         img: 'visitor',
     },
 
     {
-        text: '30 Conference Sessions',
+        text: '20 Conference Sessions',
         img: 'speaker',
     },
 
     {
-        text: '4 Industry Panels',
+        text: '6 Industry Panels',
         img: 'panels',
     },
 
     {
-        text: '8 Workshops',
+        text: '4 Workshops',
         img: 'workshops',
     },
     {
-        text: '12 Regional Case Studies',
+        text: '10 Regional Case Studies',
         img: 'case-studies',
     },
-];
+]
 
-export default iconData;
+export default iconData

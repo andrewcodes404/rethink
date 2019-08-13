@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import NavSimple from '../PageHeadFooter/Nav/NavSimple'
 import styled from 'styled-components'
@@ -293,13 +294,14 @@ class PageSponsors extends React.Component {
                     <div className="text-content">
                         <h2 data-aos="my-anim">Sponsors</h2>
                         <p>
-                            Probaly a bit of text here, Vivamus suscipit tortor
-                            eget felis porttitor volutpat. Donec rutrum congue
-                            leo eget malesuada. Proin eget tortor risus.
-                            Curabitur aliquet quam id dui posuere blandit.
+                            ReThink's sponsors are steering Hong Kong's
+                            sustainability conversation - demonstrating their
+                            commitment to driving change through thought
+                            leadership, best practice, collaboration and
+                            innovation.
                         </p>
                         <h3 className="link-green">
-                            Want to become a sponsor?{' '}
+                            Want to be a ReThink sponsor?{' '}
                             <a
                                 href="https://forms.gle/cvuvpHGz4jcSyUCy8"
                                 target="_blank"
@@ -309,7 +311,7 @@ class PageSponsors extends React.Component {
                             </a>
                         </h3>
 
-                        <h2 data-aos="my-anim">Sustainable Partners</h2>
+                        <h2 data-aos="my-anim">Sustainability Partners</h2>
                     </div>
 
                     <Query
