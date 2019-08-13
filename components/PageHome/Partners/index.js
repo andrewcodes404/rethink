@@ -1,5 +1,5 @@
 import React from 'react'
-import PartnersCarousel from './PartnersCarousel'
+// import PartnersCarousel from './PartnersCarousel'
 
 class Partners extends React.Component {
     render() {
@@ -42,7 +42,7 @@ class Partners extends React.Component {
                 <br />
                 <br />
 
-                <PartnersCarousel />
+                {/* <PartnersCarousel /> */}
             </div>
         )
     }

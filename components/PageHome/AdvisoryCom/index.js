@@ -5,8 +5,8 @@ import { Query } from 'react-apollo'
 import { GET_ADV_COMS } from '../../../lib/graphqlTags'
 
 import styled from 'styled-components'
-import AliceCarousel from 'react-alice-carousel'
-import 'react-alice-carousel/lib/alice-carousel.css'
+// import AliceCarousel from 'react-alice-carousel'
+// import 'react-alice-carousel/lib/alice-carousel.css'
 
 const CarouselWrapper = styled.div`
     position: relative;
@@ -153,7 +153,7 @@ class AdvisoryCom extends React.Component {
                     </p>
                 </div>
 
-                <Query query={GET_ADV_COMS}>
+                {/* <Query query={GET_ADV_COMS}>
                     {({ data, error, loading }) => {
                         if (loading) return <p>Loading...</p>
                         if (error) return <p>Error: {error.message}</p>
@@ -216,7 +216,7 @@ class AdvisoryCom extends React.Component {
                             </div>
                         )
                     }}
-                </Query>
+                </Query> */}
             </div>
         )
     }

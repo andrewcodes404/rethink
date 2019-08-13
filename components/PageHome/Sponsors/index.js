@@ -1,7 +1,7 @@
 import React from 'react'
-import SponsorsCarousel from './SponsorsCarousel'
+// import SponsorsCarousel from './SponsorsCarousel'
 import ProfileBar from '../ProfileBar/ProfileBar'
-import Link from 'next/link'
+// import Link from 'next/link'
 
 const profileDataSponsor = [
     {
@@ -65,7 +65,7 @@ const Sponsors = () => (
                 />
                 <br />
                 <br />
-                <h3>
+                {/* <h3>
                     To see all sponsors{' '}
                     <Link href="/the_sponsors">
                         <span
@@ -75,9 +75,9 @@ const Sponsors = () => (
                             <a href="">click here</a>
                         </span>
                     </Link>
-                </h3>
+                </h3> */}
 
-                <SponsorsCarousel />
+                {/* <SponsorsCarousel /> */}
             </div>
         </div>
     </div>
