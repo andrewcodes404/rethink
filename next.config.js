@@ -1,4 +1,6 @@
-const withCSS = require('@zeit/next-css')
-module.exports = withCSS({
+/* eslint-disable */
+const withCss = require('@zeit/next-css')
+
+module.exports = withCss({
     target: `serverless`,
 })

@@ -1,11 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-
-import NavSimple from '../components/Nav/NavSimple'
-import Footer from '../components/Footer'
+import NavSimple from '../components/PageHeadFooter/Nav/NavSimple'
 import styled from 'styled-components'
 
 const StyledPrivacy = styled.div`
@@ -14,11 +10,6 @@ const StyledPrivacy = styled.div`
 `
 
 class Privacy extends React.Component {
-    componentDidMount() {
-        AOS.init({
-            duration: 600,
-        })
-    }
     render() {
         return (
             <div>
@@ -161,7 +152,6 @@ class Privacy extends React.Component {
                         </div>{' '}
                     </div>
                 </StyledPrivacy>
-                <Footer />
             </div>
         )
     }

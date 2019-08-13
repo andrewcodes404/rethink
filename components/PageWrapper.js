@@ -1,13 +1,98 @@
 import React from 'react'
-import Meta from './Meta'
 import PropTypes from 'prop-types'
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+
+import Spinner from './lib/Spinner'
+// comps
+import Meta from './PageHeadFooter/Meta'
+import Footer from './PageHeadFooter/Footer'
+import styled from 'styled-components'
+
+const PgWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    .push-down {
+        flex: 1;
+    }
+`
+
+const CURRENT_USER_QUERY = gql`
+    query {
+        user {
+            id
+            email
+            name
+            permissions
+        }
+    }
+`
+
 class PageWrapper extends React.Component {
     render() {
+        const loggedIn = false
         return (
-            <div>
-                <Meta />
-                <div className="content-wrapper">{this.props.children}</div>
-            </div>
+            <Query query={CURRENT_USER_QUERY}>
+                {({ data: { user }, error, loading }) => {
+                    if (loading)
+                        return (
+                            <Spinner />
+                            // <div
+                            //     style={{
+                            //         position: 'fixed',
+                            //         top: '0',
+                            //         bottom: '0',
+                            //         left: '0',
+                            //         right: '0',
+                            //         background: 'pink',
+                            //         display: 'flex',
+                            //         flexDirection: 'column',
+                            //         justifyContent: 'center',
+                            //         alignItems: 'center',
+                            //     }}
+                            // >
+                            //     <h1 style={{ color: 'white' }}>
+                            //         Loading...from pageWrapper.js
+                            //     </h1>
+                            // </div>
+                        )
+                    if (error) return <p>Error: {error.message}</p>
+
+                    //don't use data.user as a bool ☠️
+                    var loggedIn = false
+                    user ? (loggedIn = true) : (loggedIn = false)
+                    console.log('loggedIn = ', loggedIn)
+
+                    return (
+                        <PgWrapper>
+                            <Meta />
+                            {/* <Navigation loggedIn={loggedIn} /> */}
+
+                            {/* <div className="page-wrapper">
+                                    {this.props.children}
+                                </div> */}
+                            <div className="page-wrapper">
+                                {React.Children.map(
+                                    this.props.children,
+                                    child =>
+                                        React.cloneElement(child, {
+                                            loggedIn,
+                                            user,
+                                        })
+                                )}
+                            </div>
+
+                            <div
+                                className="push-down"
+                                style={{ borderBottom: '4px solid green' }}
+                            ></div>
+                            <Footer />
+                        </PgWrapper>
+                    )
+                }}
+            </Query>
         )
     }
 }
@@ -17,3 +102,4 @@ PageWrapper.propTypes = {
 }
 
 export default PageWrapper
+export { CURRENT_USER_QUERY }

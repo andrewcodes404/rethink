@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
   * {
-      -moz-box-sizing: border-box;
+     -moz-box-sizing: border-box;
       box-sizing: border-box;
   }
 
@@ -17,10 +17,15 @@ const GlobalStyle = createGlobalStyle`
       /* font-family: commuters-sans, sans-serif; */
       /* font-family: 'Open Sans', sans-serif; */
       font-family: 'Montserrat', sans-serif;
-
       /* overflow: hidden; */
       /* overflow-x: hidden; */
       position: relative;
+
+  }
+
+
+  .push-down {
+    flex: 1;
   }
   h1 {
       font-size: 18px;
@@ -38,7 +43,6 @@ const GlobalStyle = createGlobalStyle`
   h2 {
     font-size: 28px;
     margin: 0px;
-
     position: relative;
     font-weight: bold;
 
@@ -91,7 +95,14 @@ const GlobalStyle = createGlobalStyle`
   }
 
   li {
-    line-height: 1.4;
+        line-height: 1.3;
+    font-size: 16px;
+    
+    font-weight: 200;
+    @media (min-width:767px) {
+      font-size: 20px;
+      margin-bottom: 5px;
+    };
   }
 
 blockquote{
@@ -135,6 +146,7 @@ blockquote:before{
   a:link,
   a:visited,
   a:active {
+    transition: .2s;
     text-decoration: none;
     color: black;
     cursor: pointer;
@@ -142,6 +154,62 @@ blockquote:before{
       color: ${props => props.theme.green};
     }
   }
+
+
+  .link-yellow{
+     a,
+    a:link,
+    a:visited,
+    a:active {
+      transition: .2s;
+      text-decoration: none;
+      color: ${props => props.theme.yellow};
+      cursor: pointer;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+
+  .link-green{
+      a,
+    a:link,
+    a:visited,
+    a:active {
+      transition: .2s;
+      text-decoration: none;
+      color: ${props => props.theme.green};
+      cursor: pointer;
+      &:hover {
+        color: black;
+      }
+    }
+
+  }
+
+
+  .green-btn {
+        background: green;
+        padding: 10px;
+  
+        cursor: pointer;
+
+        &:hover {
+            color: white;
+        }
+    }
+
+    .red-btn {
+      display: inline-block;
+        background: firebrick;
+        padding: 10px;
+        
+        cursor: pointer;
+
+        &:hover {
+            color: white;
+        }
+    }
 
   .bold{
     font-weight: 600;
@@ -159,7 +227,15 @@ blockquote:before{
       padding: 60px 0 20px;
       width: ${props => props.theme.contentWidthTab};
     }
+  }
 
+  .content-wrapper {
+    width: ${props => props.theme.contentWidthMob};
+    max-width: ${props => props.theme.maxWidth};
+      margin: 0 auto;
+     @media (min-width: 767px) {
+      width: ${props => props.theme.contentWidthTab};
+    }
   }
 
   .text-content {
