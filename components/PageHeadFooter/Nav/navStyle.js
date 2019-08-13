@@ -112,27 +112,6 @@ export const StyledNav = styled.div`
             }
         }
 
-        .admin-link {
-            transition: 0.5s;
-            padding: 5px 0;
-
-            span {
-                color: ${props => props.theme.yellow};
-                font-size: 30px;
-            }
-
-            /* display: none; */
-            text-align: center;
-
-            &:hover {
-                background-color: ${props => props.theme.green};
-            }
-
-            @media (min-width: 767px) {
-                font-size: 40px;
-            }
-        }
-
         @media (min-width: 767px) {
             display: flex;
             position: unset;
@@ -160,10 +139,13 @@ export const StyledNav = styled.div`
                 }
                 span {
                     font-size: 16px;
-                    color: ${props => props.theme.green};
+                    margin-bottom: 0;
+                    line-height: 1;
+
+                    color: ${props => props.theme.yellow};
                     &:hover {
                         background-color: black;
-                        color: ${props => props.theme.yellow};
+                        color: ${props => props.theme.green};
                     }
 
                     &:after {

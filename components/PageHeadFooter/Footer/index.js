@@ -59,9 +59,9 @@ const Footer = () => (
                 rel="noopener noreferrer"
             >
                 <div className="social-icon insta">
-                    {/* <img src="./static/icons/insta.svg" alt="twitter" /> */}
+                    <img src="./static/icons/insta.svg" alt="twitter" />
 
-                    <svg
+                    {/* <svg
                         height="50px"
                         version="1.1"
                         viewBox="0 0 50 50"
@@ -87,7 +87,7 @@ const Footer = () => (
                                 />
                             </g>
                         </g>
-                    </svg>
+                    </svg> */}
                 </div>
             </a>
 

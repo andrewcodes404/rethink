@@ -1,10 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
+import PropTypes from 'prop-types'
 import NavSimple from '../PageHeadFooter/Nav/NavSimple'
 import styled from 'styled-components'
 import { Query } from 'react-apollo'
 import { GET_SPONSORS_WHERE_RANKING } from '../../lib/graphqlTags'
 import { ModalCompanyCard } from '../style/globalComps'
+
 const HeightForNav = styled.div`
     height: 100px;
 `
@@ -207,7 +209,7 @@ class PageSponsors extends React.Component {
         return (
             <div style={{ positon: 'relative' }}>
                 <HeightForNav />
-                <NavSimple />
+                <NavSimple loggedIn={this.props.loggedIn} />
                 {this.state.showModal && (
                     <ModalCompanyCard
                         onClick={() => {
@@ -415,6 +417,10 @@ class PageSponsors extends React.Component {
             </div>
         )
     }
+}
+
+PageSponsors.propTypes = {
+    loggedIn: PropTypes.bool,
 }
 
 export default PageSponsors

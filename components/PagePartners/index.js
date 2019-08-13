@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import NavSimple from '../PageHeadFooter/Nav/NavSimple'
 import { Query } from 'react-apollo'
 import { GET_PARTNERS } from '../../lib/graphqlTags'
@@ -159,7 +160,7 @@ class Index extends React.Component {
         return (
             <div>
                 <HeightForNav />
-                <NavSimple />
+                <NavSimple loggedIn={this.props.loggedIn} />
 
                 {this.state.showModal && (
                     <ModalCompanyCard
@@ -485,6 +486,10 @@ class Index extends React.Component {
             </div>
         )
     }
+}
+
+Index.propTypes = {
+    loggedIn: PropTypes.bool,
 }
 
 export default Index
