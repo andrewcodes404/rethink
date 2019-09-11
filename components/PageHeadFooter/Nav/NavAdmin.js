@@ -102,6 +102,7 @@ class NavSimple extends React.Component {
                             <div
                                 className="logout"
                                 onClick={async () => {
+                                    // eslint-disable-next-line no-unused-vars
                                     const res = await logout()
                                     Router.push('/')
                                 }}
