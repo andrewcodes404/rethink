@@ -19,10 +19,10 @@ export default class MyDocument extends Document {
     setGoogleTags() {
         return {
             __html: `
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments)}
-    gtag('js', new Date());
-    gtag('config', 'UA-96559774-20');
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date());
+                gtag('config', 'UA-96559774-20');
     `,
         }
     }

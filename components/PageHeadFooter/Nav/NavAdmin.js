@@ -3,8 +3,7 @@ import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import { CURRENT_USER_QUERY } from '../../PageWrapper'
 import Router from 'next/router'
-import Link from 'next/link'
-import Button from '@material-ui/core/Button'
+
 import styled from 'styled-components'
 
 const SIGN_OUT_MUTATION = gql`
@@ -80,7 +79,7 @@ class NavSimple extends React.Component {
         alert('it clikced')
     }
     render() {
-        console.log('this.props = ', this.props)
+        // console.log('this.props = ', this.props)
         return (
             <Nav>
                 <Menu>

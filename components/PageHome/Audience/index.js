@@ -62,8 +62,14 @@ const Audience = () => (
                 Ogranisation.{' '}
             </small>
             <small>
-                Full details will be available soon – register your interest
-                here to receive updates.
+                Full details will be available soon –
+                <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSfQICR3oArSu_5nvnT-juIC-jNrl2b8etUvPuplzuPomIR3CQ/viewform. "
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    register your interest here to receive updates.
+                </a>
             </small>
         </div>
     </div>

@@ -17,6 +17,7 @@ const profileDataVisitor = [
             'Government Buildings',
             'Hotels',
             'High Street Retail',
+            'Investors',
             'Leisure & Entertainment Venues',
             'Property Management',
             'Schools & Universities',
@@ -63,11 +64,12 @@ const Visitors = () => (
                 <LinkIntext>
                     <p className="" data-aos="">
                         <a
-                            href="https://forms.gle/cvuvpHGz4jcSyUCy8"
+                            href="https://docs.google.com/forms/d/e/1FAIpQLSeF4V1J-jKBahE1DWwmTLXwSEmQ_dAAg4Zf1ogeoGCP1ZXbSA/viewform"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            Click here to register your interest in attending
+                            Delegate places are limited each day click here to
+                            register your interest in attending
                         </a>
                     </p>
                 </LinkIntext>

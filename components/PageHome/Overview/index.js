@@ -25,16 +25,17 @@ class Overview extends React.Component {
                     </h3>
 
                     <p>
-                        ReThink Hong Kong is a two-day conference and showcase
-                        that will explore and encourage meaningful partnerships,
-                        inspire organisational change and present solutions for
-                        a sustainable environment and circular economy.
+                        ReThink Hong Kong is a free to attend two-day conference
+                        and showcase that will explore and encourage meaningful
+                        partnerships, inspire organisational change and present
+                        solutions for a sustainable environment and circular
+                        economy.
                     </p>
 
                     <LinkIntext>
                         <p className="" data-aos="">
                             <a
-                                href="https://forms.gle/cvuvpHGz4jcSyUCy8"
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSeF4V1J-jKBahE1DWwmTLXwSEmQ_dAAg4Zf1ogeoGCP1ZXbSA/viewform"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
@@ -46,21 +47,20 @@ class Overview extends React.Component {
                     <p>
                         Going beyond the Rs of Reduce, Reuse and Recycle;
                         sustainability professionals and business owners can
-                        access the very latest insight from global visionaries
-                        and take away purposeful learnings from real-life
-                        enterprise case studies that will stimulate
-                        collaboration and drive new strategies through the
-                        avoidance of business risk and greater stakeholder
-                        engagement.
+                        access the very latest insight from experts and take
+                        away purposeful learnings from real-life enterprise case
+                        studies that will stimulate collaboration and drive new
+                        strategies through the avoidance of business risk and
+                        greater stakeholder engagement.
                     </p>
 
                     <p>
-                        ReThink provides a collaborative platform for
-                        businesses, government and not-for-profit organisations
-                        to harness the power of collective change, inspiring
-                        sustainability stakeholders and bringing the value chain
-                        together to create partnerships, foster a circular
-                        economy and secure a more sustainable world.
+                        ReThink provides a collaborative platform for businesses
+                        and not-for-profit organisations to harness the power of
+                        collective change, inspiring sustainability stakeholders
+                        and bringing the value chain together to create
+                        partnerships, foster a circular economy and secure a
+                        more sustainable world.
                     </p>
                     <br />
                     <blockquote>

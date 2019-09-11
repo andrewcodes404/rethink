@@ -25,7 +25,7 @@ const Founder = () => (
                         <div className="contact-btn">
                             <RegisterButton>
                                 <a
-                                    href="mailto:hello@rethink-event.com?subject=I%20would%20like%20to%20be%20a%20sponsor%20at%20ReThink"
+                                    href="mailto:chris.b@rethink-event.com "
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -36,7 +36,7 @@ const Founder = () => (
                         <div className="contact-btn">
                             <RegisterButton>
                                 <a
-                                    href="https://www.linkedin.com/in/enviroeventshk/ "
+                                    href="https://www.linkedin.com/in/enviroeventshk/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -57,19 +57,27 @@ const Founder = () => (
                 </div>
 
                 <p>
-                    With sixteen years’ experience of organising content-led
-                    business events in the UK and Asia, Founder, Chris Brown,
-                    excels in industry collaboration, uniting stakeholders and
-                    encouraging communities to share insight, showcase
-                    innovation and network at live events.
+                    Chris is the Founder and Director of ReThink. Chris has a
+                    background in sales, marketing, transformation and event
+                    organising spanning +16 years in the UK and Hong Kong.
                 </p>
 
                 <p>
-                    Chris has a high-level, strategic, understanding of how to
-                    connect buyers and sellers, supported by a drive to bring
-                    ecosystems together. He thrives on providing exceptional
-                    events that have personality and deliver real benefits for
-                    all those involved.
+                    He made hundreds of research calls to sustainability
+                    professionals and spoke face to face with over 50 businesses
+                    in Hong Kong before designing and launching ReThink. Chris
+                    came to the conclusion that business stakeholders have many
+                    different definitions of and levels of engagement with
+                    “sustainability” and some a strong emotional personal bias
+                    towards other organisations.
+                </p>
+
+                <p>
+                    Chris launched ReThink seeing the need for a neutral,
+                    unifying, platform where corporations, communities, and
+                    non-profits could all contribute to the conversation and
+                    collaborate on the movement towards a circular economy and a
+                    more sustainable environment for Hong Kong.
                 </p>
             </div>
         </div>

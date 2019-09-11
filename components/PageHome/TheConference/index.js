@@ -21,7 +21,9 @@ const TheConference = () => (
                 <p>
                     Discussion and debate from cross-industry operators will
                     highlight and examine the current and future sustainability
-                    initiatives of the Hong Kong Government.
+                    initiatives of the Hong Kong Government and present
+                    actionable systems change that will expedite the necessary
+                    investments.
                 </p>
 
                 <p>
