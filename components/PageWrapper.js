@@ -36,28 +36,7 @@ class PageWrapper extends React.Component {
         return (
             <Query query={CURRENT_USER_QUERY}>
                 {({ data: { user }, error, loading }) => {
-                    if (loading)
-                        return (
-                            <Spinner />
-                            // <div
-                            //     style={{
-                            //         position: 'fixed',
-                            //         top: '0',
-                            //         bottom: '0',
-                            //         left: '0',
-                            //         right: '0',
-                            //         background: 'pink',
-                            //         display: 'flex',
-                            //         flexDirection: 'column',
-                            //         justifyContent: 'center',
-                            //         alignItems: 'center',
-                            //     }}
-                            // >
-                            //     <h1 style={{ color: 'white' }}>
-                            //         Loading...from pageWrapper.js
-                            //     </h1>
-                            // </div>
-                        )
+                    if (loading) return <Spinner />
                     if (error) return <p>Error: {error.message}</p>
 
                     //don't use data.user as a bool ☠️

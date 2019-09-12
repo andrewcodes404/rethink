@@ -110,7 +110,7 @@ class AdvisoryCom extends React.Component {
     responsive = {
         0: { items: 1 },
         500: { items: 2 },
-        767: { items: 3 },
+        768: { items: 3 },
         1024: { items: 4 },
     }
 

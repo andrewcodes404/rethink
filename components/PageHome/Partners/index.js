@@ -24,8 +24,7 @@ class Partners extends React.Component {
 
                     <p>
                         Get in touch to discuss the ways in which your
-                        organisation can be part of ReThink or apply to be the
-                        exclusive beneficiary partner for 2020.
+                        organisation can be part of ReThink.
                     </p>
 
                     <blockquote>
