@@ -85,7 +85,7 @@ class Hero extends React.Component {
                             data-aos-duration="2000"
                         >
                             <a
-                                href="https://forms.gle/cvuvpHGz4jcSyUCy8"
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSeF4V1J-jKBahE1DWwmTLXwSEmQ_dAAg4Zf1ogeoGCP1ZXbSA/viewform"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
@@ -100,7 +100,7 @@ class Hero extends React.Component {
                         >
                             {' '}
                             <a
-                                href="https://forms.gle/cvuvpHGz4jcSyUCy8"
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSeF4V1J-jKBahE1DWwmTLXwSEmQ_dAAg4Zf1ogeoGCP1ZXbSA/viewform"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
