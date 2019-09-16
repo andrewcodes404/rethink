@@ -24,6 +24,15 @@ export const StyledFooter = styled.div`
         padding: 10px 0;
     }
 
+    .copyright {
+        display: flex;
+        justify-content: center;
+
+        small {
+            color: green;
+        }
+    }
+
     .privacy {
         display: flex;
         flex-direction: column;
