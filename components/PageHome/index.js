@@ -10,11 +10,13 @@ import Sponsors from './Sponsors'
 import Partners from './Partners'
 import AdvisoryCom from './AdvisoryCom'
 import Founder from './Founder'
+import FirstVisit from '../FirstVisit'
 
 class PageHome extends React.Component {
     render() {
         return (
             <div>
+                <FirstVisit />
                 <Nav loggedIn={this.props.loggedIn} />
                 <Hero />
                 <Overview />
