@@ -1,7 +1,7 @@
 const iconData = [
     {
         text: '+1000 attendees',
-        img: 'visitor',
+        img: 'delegate',
     },
 
     {

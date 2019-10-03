@@ -63,12 +63,15 @@ export const StyledHero = styled.div`
         .hero-logo {
             width: 80%;
             max-width: 650px;
-            margin: 0 auto 30px;
+            margin: 0 auto 10px;
         }
 
         h1 {
             /* margin-bottom: 30px; */
-            max-width: 680px;
+            padding-top: 20px;
+            border-top: 3px solid white;
+
+            max-width: 640px;
             margin: 0 auto 30px;
         }
     }
