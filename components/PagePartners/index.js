@@ -5,6 +5,7 @@ import { Query } from 'react-apollo'
 import { GET_PARTNERS } from '../../lib/graphqlTags'
 import { ModalCompanyCard } from '../style/globalComps'
 import styled from 'styled-components'
+
 const HeightForNav = styled.div`
     height: 100px;
 `
@@ -246,8 +247,8 @@ class Index extends React.Component {
                 )}
 
                 <div className="text-content-title-wrapper">
+                    <h2 data-aos="my-anim">Partners</h2>
                     <div className="text-content">
-                        <h2 data-aos="my-anim">Partners</h2>
                         <h3>
                             Probably a bit of text here, Vivamus suscipit tortor
                             eget felis porttitor volutpat. Donec rutrum congue

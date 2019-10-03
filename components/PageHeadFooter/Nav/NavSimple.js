@@ -5,6 +5,22 @@ import Link from 'next/link'
 
 import Router from 'next/router'
 class NavSimple extends React.Component {
+    state = {
+        dropActive: false,
+    }
+
+    handleDropBtnClick = () => {
+        if (!this.state.dropActive) {
+            this.setState({
+                dropActive: true,
+            })
+        } else {
+            this.setState({
+                dropActive: false,
+            })
+        }
+    }
+
     render() {
         return (
             <StyledNav>
@@ -21,7 +37,44 @@ class NavSimple extends React.Component {
                     </div>
                 </div>
 
-                <nav className="show-nav">
+                <div className="menu-btn-wrapper">
+                    <div className="menu-btn" onClick={this.handleDropBtnClick}>
+                        <svg viewBox="0 0 150 106.78">
+                            <g id="Layer_2" data-name="Layer 2">
+                                <g id="Layer_1-2" data-name="Layer 1">
+                                    <rect
+                                        className="cls-1"
+                                        width="150"
+                                        height="100"
+                                    />
+                                    <rect
+                                        className="cls-2"
+                                        width="150"
+                                        height="20"
+                                    />
+                                    <rect
+                                        className={`cls-2 ${
+                                            this.state.dropActive
+                                                ? 'icon-rotate'
+                                                : ''
+                                        }`}
+                                        y="85"
+                                        width="150"
+                                        height="20"
+                                    />
+                                    <rect
+                                        className="cls-2"
+                                        y="42.5"
+                                        width="150"
+                                        height="20"
+                                    />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <nav className={this.state.dropActive ? 'show-nav' : ''}>
                     <div>
                         {this.props.loggedIn && (
                             <div
