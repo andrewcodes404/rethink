@@ -63,7 +63,6 @@ const ttData = [
         hostName: 'Erin Meezan',
         hostTitle: 'Director and global head of climate business ',
         hostOrg: 'Capitals Coalition',
-        // speakers: [{ speakerName: '', speakerOrg: '' }],
         sponsors: [
             { sponsorName: 'Interface', sponsorLogo: 'static/brands/5.png' },
         ],
@@ -96,13 +95,8 @@ const ttData = [
     {
         timeStart: '12:15',
         timeEnd: '12:30',
-        themeIcon: 'static/icons/topics.svg',
-        title: 'Refuel, mingle and discover innovation',
-        hostName: '',
-        hostTitle: '',
-        hostOrg: '',
-        speakers: [{ speakerName: '', speakerOrg: '' }],
-        sponsors: [{ sponsorName: '', sponsorLogo: '' }],
+        themeIcon: 'static/icons/hamburger.svg',
+        title: 'Break/Party Time 🥥 🌴 🍸 💃',
         break: true,
     },
     {
@@ -113,7 +107,6 @@ const ttData = [
         hostName: 'Schnitzel Von Crumb',
         hostTitle: '',
         hostOrg: '',
-        // speakers: [{ speakerName: '', speakerOrg: '' }],
         sponsors: [
             { sponsorName: 'WWF', sponsorLogo: 'static/brands/18.png' },
             {
@@ -162,7 +155,7 @@ class Timetable extends React.Component {
                                     <div className="session">
                                         <div className="themeIcon">
                                             <img
-                                                src="static/icons/hamburger.svg"
+                                                src={el.themeIcon}
                                                 alt=""
                                                 srcSet=""
                                             />
@@ -170,7 +163,8 @@ class Timetable extends React.Component {
 
                                         <h3>
                                             {el.timeStart} - {el.timeEnd}
-                                            {'  : '}Break Time 🥥 🌴 🍸 💃
+                                            {'  : '}
+                                            {el.title}
                                         </h3>
                                     </div>
                                 )
