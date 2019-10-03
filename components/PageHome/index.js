@@ -4,7 +4,7 @@ import Nav from '../PageHeadFooter/Nav'
 import Hero from './Hero'
 import Overview from './Overview'
 import TheConference from './TheConference'
-import Visitors from './Visitors'
+import Delegates from './Delegates'
 import Audience from './Audience'
 import Sponsors from './Sponsors'
 import Partners from './Partners'
@@ -21,7 +21,7 @@ class PageHome extends React.Component {
                 <Hero />
                 <Overview />
                 <TheConference />
-                <Visitors />
+                <Delegates />
                 <Audience />
                 <Sponsors />
                 <Partners />
