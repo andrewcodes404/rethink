@@ -7,7 +7,7 @@ const HeightForNav = styled.div`
     height: 100px;
 `
 
-const TimeableStyled = styled.div`
+const TimetableStyled = styled.div`
     span {
         /* border: 1px solid green; */
         font-size: 18px;
@@ -155,7 +155,7 @@ class Timetable extends React.Component {
                         </h3>
                     </div>
 
-                    <TimeableStyled>
+                    <TimetableStyled>
                         {ttData.map((el, index) => {
                             if (el.break) {
                                 return (
@@ -169,8 +169,8 @@ class Timetable extends React.Component {
                                         </div>
 
                                         <h3>
-                                            {el.timeStart}-{el.timeEnd}
-                                            {'  : '}BRAKE TIME 🥥
+                                            {el.timeStart} - {el.timeEnd}
+                                            {'  : '}Break Time 🥥 🌴 🍸 💃
                                         </h3>
                                     </div>
                                 )
@@ -254,7 +254,7 @@ class Timetable extends React.Component {
                                 </div>
                             )
                         })}
-                    </TimeableStyled>
+                    </TimetableStyled>
                 </div>
             </div>
         )
