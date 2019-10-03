@@ -127,7 +127,7 @@ class Nav extends React.Component {
                             offset={-70}
                             onClick={this.handleNavItemClick}
                         >
-                            visitors
+                            delegates
                         </Link>
                         <Link
                             activeClass="active-link"

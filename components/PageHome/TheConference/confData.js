@@ -2,10 +2,10 @@ const confData = [
     {
         title: 'Conference Themes',
         list: [
-            'Partnerships & Communities',
-            'Compliance & Regulation',
-            'Technology & Innovation',
-            'Financing & The Future',
+            'Sourcing & Manufacturing',
+            'Waste & Resource Management',
+            'People & Culture',
+            'Distribution & Changing Markets',
         ],
         icon: 'topics',
         color: 'green',
@@ -13,10 +13,10 @@ const confData = [
     {
         title: 'Workshops',
         list: [
-            'Driving staff engagement',
-            'Engaging The Board to identify risk',
-            'Sustainability as a business strategy',
-            'NGO collaboration',
+            'Diversity & Inclusion',
+            'Supply Chain Transparency',
+            'The Science of Climate Change',
+            'NGO Collaboration',
         ],
         icon: 'workshops',
         color: 'yellow',

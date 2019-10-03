@@ -17,8 +17,8 @@ const Audience = () => (
                 </li>
 
                 <li>
-                    Partnerships with local, regional and global NGOs/charitable
-                    organisations
+                    Partnerships with industry associations and professional
+                    groups
                 </li>
                 <li>
                     Partnerships with media channels and carefully selected
@@ -47,30 +47,31 @@ const Audience = () => (
                     Workshop sessions to provide deeper insight into
                     pan-industry challenges
                 </li>
-                <li>
-                    Free to attend ReThink Conference &amp; Innovation Showcase*
-                </li>
+                <li>ReThink Conference &amp; Innovation Showcase*</li>
                 <li>
                     NGO &amp; Partnerships Lounge to facilitate collaboration
                 </li>
             </ul>
 
             <small>
-                * The ReThink Conference &amp; Innovation Showcase is free to
-                attend for pre-registered delegates. All delegates are required
-                to make a mandatory donation to the 2020 ReThink Beneficiary
-                Ogranisation.{' '}
+                * Upon registration all delegates are required to make a nominal
+                donation to the 2020 ReThink Beneficiary Fund - with all
+                proceeds going to ReThink’s Charity Partners.
             </small>
-            <small>
+            <br />
+            <br />
+            <p>
                 Full details will be available soon –
                 <a
                     href="https://docs.google.com/forms/d/e/1FAIpQLSfQICR3oArSu_5nvnT-juIC-jNrl2b8etUvPuplzuPomIR3CQ/viewform. "
                     target="_blank"
                     rel="noopener noreferrer"
+                    style={{ textDecoration: 'underline', color: 'green' }}
                 >
+                    {' '}
                     register your interest here to receive updates.
                 </a>
-            </small>
+            </p>
         </div>
     </div>
 )

@@ -13,24 +13,25 @@ const TheConference = () => (
                     At the heart of ReThink is the Conference &amp; Workshop
                     programme, curated to offer case-study and visionary insight
                     from eco-trailblazers, leading brands and big businesses
-                    with big suitability goals as well as highlight NGO
-                    initiatives and tech-startup solutions that are the key to
+                    with ambitious sustainability goals as well as highlighting
+                    NGO initiatives and the latest solutions that are the key to
                     innovation.
                 </h3>
 
                 <p>
                     Discussion and debate from cross-industry operators will
-                    highlight and examine the current and future sustainability
-                    initiatives of the Hong Kong Government and present
-                    actionable systems change that will expedite the necessary
-                    investments.
+                    examine the future infrastructure and investment
+                    requirements for Hong Kong and present actionable strategies
+                    that will enable Hong Kong’s society, environment and
+                    economy to play it’s part in global decarbonisation,
+                    emissions reductions and future sustainability.
                 </p>
 
                 <p>
                     Keynote presentations will shine a light on success stories
                     from across the region - paving the way for greater
-                    understanding of the challenges and opportunities for public
-                    services and private enterprises.{' '}
+                    understanding of the challenges, risks and opportunities
+                    presented by sustainable change and development.
                 </p>
 
                 <div className="conf-activities">

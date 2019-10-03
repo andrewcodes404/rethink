@@ -10,9 +10,9 @@ class Partners extends React.Component {
                 <div className="text-content">
                     <h3>
                         ReThink welcomes collaboration with NGOs, charitable
-                        organisations, professional trade associations, action
-                        groups and media to form a cross-industry line-up of
-                        partners.
+                        organisations, professional trade associations, business
+                        chambers, action groups and media channels to form a
+                        cross-industry line-up of partners.
                     </h3>
                     <p>
                         Event &amp; Community partners will be provided with a

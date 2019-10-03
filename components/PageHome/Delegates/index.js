@@ -4,32 +4,33 @@ import { ImageBanner, LinkIntext } from '../../style/globalComps'
 
 import ProfileBar from '../ProfileBar/ProfileBar'
 
-const profileDataVisitor = [
+const profileDataDelegate = [
     {
-        title: 'Visitors',
-        bkgImg: 'visitor',
-        icon: 'visitor',
+        title: 'Delegates',
+        bkgImg: 'delegate',
+        icon: 'delegate',
         list: [
             'Brand Owners',
-            'Cafes, Bars & Restaurants',
+            'Construction & Infrastructure',
             'Festival & Event Organisers',
             'Financial Institutions',
             'Government Buildings',
-            'Hotels',
+            'Hotels & Hospitality',
             'High Street Retail',
-            'Investors',
             'Leisure & Entertainment Venues',
-            'Property Management',
+            'Logistics & Supply Chain',
+            'NGOs/Charities ',
+            'Real Estate/Property Management',
             'Schools & Universities',
             'Supermarkets',
         ],
     },
 ]
 
-const Visitors = () => (
+const Delegates = () => (
     <div id="visitors">
         <div className="text-content-title-wrapper">
-            <h2 data-aos="my-anim">Visitors</h2>
+            <h2 data-aos="my-anim">Delegates</h2>
 
             <div className="text-content">
                 <h3>
@@ -39,8 +40,8 @@ const Visitors = () => (
                 </h3>
 
                 <ProfileBar
-                    profileData={profileDataVisitor}
-                    profileMessage="visitor"
+                    profileData={profileDataDelegate}
+                    profileMessage="delegate"
                 />
 
                 <p>
@@ -57,7 +58,7 @@ const Visitors = () => (
                     Experts will advise on how to effectively promote your
                     “green credentials”, guide on ESG reporting, compliance,
                     certification and standards, as well as bring past
-                    experiences to life in Q&A sessions relevant to your
+                    experiences to life in Q&amp;A sessions relevant to your
                     business.
                 </p>
 
@@ -89,10 +90,10 @@ const Visitors = () => (
             </div>
             {/*
         <div className="image-banner-text">
-          <h2 className="no-highlight">Click here to become a visitor</h2>
+          <h2 className="no-highlight">Click here to become a delegate</h2>
         </div> */}
         </ImageBanner>
     </div>
 )
 
-export default Visitors
+export default Delegates
