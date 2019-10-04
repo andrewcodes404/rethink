@@ -63,7 +63,7 @@ const Audience = () => (
             <p>
                 Full details will be available soon –
                 <a
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSfQICR3oArSu_5nvnT-juIC-jNrl2b8etUvPuplzuPomIR3CQ/viewform. "
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSeF4V1J-jKBahE1DWwmTLXwSEmQ_dAAg4Zf1ogeoGCP1ZXbSA/viewform"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ textDecoration: 'underline', color: 'green' }}

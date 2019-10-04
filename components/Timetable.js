@@ -66,6 +66,8 @@ const ttData = [
         sponsors: [
             { sponsorName: 'Interface', sponsorLogo: 'static/brands/5.png' },
         ],
+
+        supporters: [{ suportersLogo: '' }],
         break: false,
     },
     {
