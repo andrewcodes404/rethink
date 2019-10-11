@@ -62,10 +62,13 @@ const Meta = () => (
         {/* <!-- META -- META -- META -- META --  --> */}
         <meta property="og:image:height" content="630" />
         <meta property="og:image:width" content="1120" />
-        <meta property="og:title" content="ReThink" />
+        <meta
+            property="og:title"
+            content="ReThink HK | Sustainability Forum 2020"
+        />
         <meta
             property="og:description"
-            content="ReThink is a two-day event dedicated to sustainability. Championing eco-friendly business operations, showcasing innovation and responsible procurement."
+            content="ReThink Hong Kong is a two-day business conference and showcase dedicated to achieving a sustainable environment and circular economy. 23-24 June 2020."
         />
         <meta
             property="og:image"
@@ -75,10 +78,13 @@ const Meta = () => (
 
         <meta name="twitter:card" content="summary_large_image" />
         {/* <!-- <meta name="twitter:site" content="@twitter@username" /> --> */}
-        <meta name="twitter:title" content="Stellar" />
+        <meta
+            name="twitter:title"
+            content="ReThink HK | Sustainability Forum 2020"
+        />
         <meta
             name="twitter:description"
-            content="ReThink is a two-day event dedicated to sustainability. Championing eco-friendly business operations, showcasing innovation and responsible procurement."
+            content="ReThink Hong Kong is a two-day business conference and showcase dedicated to achieving a sustainable environment and circular economy. 23-24 June 2020."
         />
         <meta
             name="twitter:image"

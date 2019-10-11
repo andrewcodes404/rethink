@@ -12,8 +12,7 @@ const Footer = () => (
 
         <div className="copyright">
             <small>
-                Copyright © 2019 EnviroEvents Hong Kong Limited · All rights
-                reserved.
+                Copyright © 2019 rethink-event.com · All rights reserved
             </small>
         </div>
 
