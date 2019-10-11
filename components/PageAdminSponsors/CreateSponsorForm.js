@@ -5,7 +5,6 @@ import { CREATE_SPONSOR, GET_SPONSORS } from '../../lib/graphqlTags'
 
 // material ui
 import Button from '@material-ui/core/Button'
-
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import Radio from '@material-ui/core/Radio'

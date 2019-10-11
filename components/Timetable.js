@@ -46,10 +46,12 @@ const TimetableStyled = styled.div`
         margin-bottom: 20px;
     }
 
-    .sponsors {
+    .sponsors,
+    .supporters {
         display: flex;
     }
-    .sponsor {
+    .sponsor,
+    .supporter {
         width: 60px;
         margin: 20px 20px 0 0;
     }
@@ -63,11 +65,9 @@ const ttData = [
         hostName: 'Erin Meezan',
         hostTitle: 'Director and global head of climate business ',
         hostOrg: 'Capitals Coalition',
-        sponsors: [
-            { sponsorName: 'Interface', sponsorLogo: 'static/brands/5.png' },
-        ],
+        sponsors: [{ sponsorLogo: 'static/brands/5.png' }],
 
-        supporters: [{ suportersLogo: '' }],
+        supporters: [{ suportersLogo: 'static/brands/10.png' }],
         break: false,
     },
     {
@@ -79,10 +79,9 @@ const ttData = [
         hostTitle: 'Vice president corporate sustainability ',
         hostOrg: 'VATTENFALL AB',
         speakers: [
-            { speakerName: 'Alzbeta Klein', speakerOrg: 'IFC' },
-            { speakerName: 'Laura Gutowski', speakerOrg: 'Pret A Manger' },
+            { speakerOrg: 'IFC' },
+            { speakerOrg: 'Pret A Manger' },
             {
-                speakerName: 'Sashidhar Vempala',
                 speakerOrg: 'Pernod Ricard India',
             },
         ],
@@ -110,11 +109,14 @@ const ttData = [
         hostTitle: '',
         hostOrg: '',
         sponsors: [
-            { sponsorName: 'WWF', sponsorLogo: 'static/brands/18.png' },
+            { sponsorLogo: 'static/brands/18.png' },
             {
-                sponsorName: 'The National Trust',
                 sponsorLogo: 'static/brands/17.png',
             },
+        ],
+        supporters: [
+            { suporterLogo: 'static/brands/10.png' },
+            { suporterLogo: 'static/brands/19.png' },
         ],
         break: false,
     },
@@ -149,12 +151,31 @@ class Timetable extends React.Component {
                             suscipit tortor eget felis porttitor volutpat.
                         </h3>
                     </div>
+                    <div className="text-content">
+                        <TimetableStyled>
+                            {ttData.map((el, index) => {
+                                if (el.break) {
+                                    return (
+                                        <div className="session">
+                                            <div className="themeIcon">
+                                                <img
+                                                    src={el.themeIcon}
+                                                    alt=""
+                                                    srcSet=""
+                                                />
+                                            </div>
 
-                    <TimetableStyled>
-                        {ttData.map((el, index) => {
-                            if (el.break) {
+                                            <h3>
+                                                {el.timeStart} - {el.timeEnd}
+                                                {'  : '}
+                                                {el.title}
+                                            </h3>
+                                        </div>
+                                    )
+                                }
+
                                 return (
-                                    <div className="session">
+                                    <div className="session" key={index}>
                                         <div className="themeIcon">
                                             <img
                                                 src={el.themeIcon}
@@ -163,94 +184,109 @@ class Timetable extends React.Component {
                                             />
                                         </div>
 
-                                        <h3>
-                                            {el.timeStart} - {el.timeEnd}
-                                            {'  : '}
-                                            {el.title}
-                                        </h3>
-                                    </div>
-                                )
-                            }
+                                        <div>
+                                            <h3 className="time-title">
+                                                {el.timeStart}-{el.timeEnd} -{' '}
+                                                {el.title}
+                                            </h3>
 
-                            return (
-                                <div className="session" key={index}>
-                                    <div className="themeIcon">
-                                        <img
-                                            src={el.themeIcon}
-                                            alt=""
-                                            srcSet=""
-                                        />
-                                    </div>
+                                            <br />
 
-                                    <div>
-                                        <h3 className="time-title">
-                                            {el.timeStart}-{el.timeEnd} -{' '}
-                                            {el.title}
-                                        </h3>
+                                            <p>
+                                                <span className="bold">
+                                                    Host:{' '}
+                                                </span>
+                                                {el.hostName} - {el.hostTitle} -{' '}
+                                                {el.hostOrg}
+                                            </p>
 
-                                        <br />
+                                            <br />
 
-                                        <p>
-                                            <span className="bold">Host: </span>
-                                            {el.hostName} - {el.hostTitle} -{' '}
-                                            {el.hostOrg}
-                                        </p>
-
-                                        <br />
-
-                                        {el.speakers && (
-                                            <div className="speakers">
-                                                <p className="bold">
-                                                    Speakers:{' '}
-                                                </p>
-                                                <br />
-                                                {el.speakers.map(
-                                                    (el, index) => (
-                                                        <div
-                                                            key={index}
-                                                            className="speaker"
-                                                        >
-                                                            <p>
-                                                                {el.speakerName}{' '}
-                                                                -{' '}
-                                                                {el.speakerOrg}
-                                                            </p>
-                                                        </div>
-                                                    )
-                                                )}
-                                            </div>
-                                        )}
-                                        {el.sponsors && (
-                                            <div>
-                                                <p className="bold">
-                                                    Sponsors:{' '}
-                                                </p>
-
-                                                <div className="sponsors">
-                                                    {el.sponsors.map(
+                                            {el.speakers && (
+                                                <div className="speakers">
+                                                    <p className="bold">
+                                                        Speakers:{' '}
+                                                    </p>
+                                                    <br />
+                                                    {el.speakers.map(
                                                         (el, index) => (
                                                             <div
                                                                 key={index}
-                                                                className="sponsor"
+                                                                className="speaker"
                                                             >
-                                                                <img
-                                                                    src={
-                                                                        el.sponsorLogo
+                                                                <p>
+                                                                    {
+                                                                        el.speakerName
+                                                                    }{' '}
+                                                                    -{' '}
+                                                                    {
+                                                                        el.speakerOrg
                                                                     }
-                                                                    alt=""
-                                                                    srcSet=""
-                                                                />
+                                                                </p>
                                                             </div>
                                                         )
                                                     )}
                                                 </div>
-                                            </div>
-                                        )}
+                                            )}
+                                            {el.sponsors && (
+                                                <div>
+                                                    <p className="bold">
+                                                        Sponsors:{' '}
+                                                    </p>
+
+                                                    <div className="sponsors">
+                                                        {el.sponsors.map(
+                                                            (el, index) => (
+                                                                <div
+                                                                    key={index}
+                                                                    className="sponsor"
+                                                                >
+                                                                    <img
+                                                                        src={
+                                                                            el.sponsorLogo
+                                                                        }
+                                                                        alt=""
+                                                                        srcSet=""
+                                                                    />
+                                                                </div>
+                                                            )
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {el.supporters && (
+                                                <div>
+                                                    <p className="bold">
+                                                        Supporters:{' '}
+                                                    </p>
+
+                                                    <div className="supporters">
+                                                        {el.supporters.map(
+                                                            (el, index) => (
+                                                                <div
+                                                                    key={index}
+                                                                    className="supporter"
+                                                                >
+                                                                    <img
+                                                                        src={
+                                                                            el.suporterLogo
+                                                                        }
+                                                                        alt=""
+                                                                        srcSet=""
+                                                                    />
+                                                                </div>
+                                                            )
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
-                            )
-                        })}
-                    </TimetableStyled>
+                                )
+                            })}
+                        </TimetableStyled>
+                    </div>
                 </div>
             </div>
         )
