@@ -65,3 +65,19 @@ export const StyledFooter = styled.div`
         }
     }
 `
+
+export const SvgWrapper = styled.div`
+    svg {
+        g {
+            g {
+                .cls-1 {
+                    fill: none;
+                    stroke: red;
+                    stroke-linecap: round;
+                    stroke-linejoin: round;
+                    stroke-width: 1.25px;
+                }
+            }
+        }
+    }
+`

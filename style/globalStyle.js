@@ -24,6 +24,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
 
+.height-for-nav{
+  height: 100px;
+}
+
   .push-down {
     flex: 1;
   }

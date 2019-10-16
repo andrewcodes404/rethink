@@ -2,94 +2,45 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import NavSimple from './PageHeadFooter/Nav/NavSimple'
 import styled from 'styled-components'
+import { Query, Mutation, withApollo } from 'react-apollo'
+import {
+    GET_PARTNERS,
+    GET_SPONSORS,
+    CREATE_SESSION,
+    GET_SPONSORS_WHERE_NAME,
+    GET_PARTNERS_WHERE_NAME,
+} from '../lib/graphqlTags'
 
 // material ui
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import Radio from '@material-ui/core/Radio'
-import Checkbox from '@material-ui/core/Checkbox'
 import Select from '@material-ui/core/Select'
-
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
-import Chip from '@material-ui/core/Chip'
-import Input from '@material-ui/core/Input'
 
 // icons
-import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import FileCopy from '@material-ui/icons/FileCopy'
-import Public from '@material-ui/icons/Public'
-import Face from '@material-ui/icons/Face'
-import PhotoCamera from '@material-ui/icons/PhotoCamera'
-import Phonelink from '@material-ui/icons/Phonelink'
-import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked'
 import PhotoLibrary from '@material-ui/icons/PhotoLibrary'
-import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked'
-import Close from '@material-ui/icons/Close'
 
-const exampleData = {
-    timeStart: '11:00',
-    timeEnd: '12:15',
-    themeIcon: 'static/icons/case-studies.svg',
-    title: 'Emergency Response: Re-writing the action plan',
-    hostName: 'Annika Ramsköld',
-    hostTitle: 'Vice president corporate sustainability ',
-    hostOrg: 'VATTENFALL AB',
-    speakers: [
-        { speakerOrg: 'IFC' },
-        { speakerOrg: 'Pret A Manger' },
-        {
-            speakerOrg: 'Pernod Ricard India',
-        },
-    ],
-    sponsors: [
-        {
-            sponsorName: 'Marks & Spencer',
-            sponsorLogo: 'static/brands/10.png',
-        },
-    ],
-    break: false,
-}
-
-const dataHosts = [
+const dataHostsAndSpeakers = [
     { name: 'terry' },
     { name: 'tim' },
     { name: 'martin' },
     { name: 'judy' },
     { name: 'chloe' },
-]
-
-const dataSpeakers = [
     { name: 'bob' },
     { name: 'sam' },
     { name: 'jenny' },
     { name: 'mark' },
     { name: 'susan' },
-]
-
-const dataSponsors = [
-    { name: 'bob' },
-    { name: 'sam' },
-    { name: 'jenny' },
-    { name: 'mark' },
-    { name: 'susan' },
-]
-
-const dataPartners = [
-    { name: 'terry' },
-    { name: 'tim' },
-    { name: 'martin' },
-    { name: 'judy' },
-    { name: 'chloe' },
 ]
 
 const HeightForNav = styled.div`
     height: 100px;
 `
 
-const Form = styled.div`
+const Form = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -141,6 +92,16 @@ const Form = styled.div`
 
     .select-wrapper {
         margin-bottom: 50px;
+        /* border: 1px solid #000; */
+    }
+
+    .select {
+        width: 450px;
+        /* border: 1px solid red; */
+    }
+
+    .text-area {
+        width: 700px;
     }
 
     .theme-logo {
@@ -175,36 +136,25 @@ const Form = styled.div`
     }
 
     .speakers {
-        display: flex;
-        justify-content: flex-start;
+        /* display: flex; */
+        /* justify-content: flex-start; */
     }
 
-    .speakers--chips {
+    .speakers--list {
         display: flex;
-        flex-direction: column;
-
-        /* align-items: center; */
-        /* flex-wrap: wrap; */
-
-        margin-left: 50px;
     }
-    .speakers--chip {
-        margin-bottom: 15px;
+    .speaker {
+        margin-right: 30px;
     }
-    .img-upload-wrapper {
-        /* border: 1px solid #000; */
-        width: 50%;
-        margin: 0px auto;
-        margin: 0;
+
+    .logos {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 15px 0;
-        flex-direction: column-reverse;
-        @media (min-width: 768px) {
-            flex-direction: row;
-            padding: 0;
-        }
+        margin-bottom: 30px;
+    }
+
+    .logo {
+        margin-right: 20px;
+        width: 70px;
     }
 
     .upload-btn {
@@ -233,34 +183,35 @@ class TimetableForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            sessionTitle: 'baby-foot conference',
-            sessionTheme: '',
-            sessionStart: '10:00',
-            sessionEnd: '11:00',
-
-            host: '',
-            hostName: '',
-            hostTitle: '',
-            hostOrg: '',
-            speakers: ['pat', 'pete', 'pando'],
-
-            sponsors: [],
-            partners: [],
-            supporters: [],
+            title: 'Spondoolics',
+            theme: 'wasteMan',
+            start: '10:00',
+            end: '11:00',
+            host: 'Greg',
+            speakers: [],
             overview: '',
-            index: 99,
-            logo: '',
-            description: '',
-            website: '',
-            instagram: '',
-            facebook: '',
-            twitter: '',
-            frontpage: false,
-            loading: false,
-            sponsorAdded: false,
-            showForm: props.showForm,
-            break: true,
+            learnings: '',
+            supportersNames: ['aaaa', 'bbbb', 'cccc'],
+            supporters: [],
+            supportersLogos: [],
+            sponsorsNames: ['Visa', 'Costa', 'Puma'],
+            sponsors: [],
         }
+    }
+
+    resetState() {
+        this.setState({
+            title: '',
+            theme: '',
+            start: '10:00',
+            end: '11:00',
+            host: '',
+            speakers: [],
+            overview: '',
+            learnings: '',
+            supporters: [],
+            sponsors: [],
+        })
     }
 
     handleChange = e => {
@@ -275,8 +226,58 @@ class TimetableForm extends React.Component {
 
     handleSelectChange = e => {
         const { name, value } = e.target
+
         this.setState({ [name]: value }, () => {
             console.log('this.state.id = ', this.state)
+        })
+    }
+
+    handleSupportersSelectChange = e => {
+        const { value } = e.target
+        const newest = value.slice(-1)[0]
+        //setstate for names for the materila select to use
+        this.setState({ supportersNames: value })
+
+        //use names to query for ids
+        const getTheResult = async () => {
+            const result = await this.props.client.query({
+                query: GET_PARTNERS_WHERE_NAME,
+                variables: { name: newest },
+            })
+
+            console.log('result = ', result)
+            return result
+        }
+        //wait for promises then set them in state for the mutation
+        getTheResult().then(value => {
+            console.log('value = ', value)
+            const id = value.data.partners[0].id
+            const logo = value.data.partners[0].logo
+            this.setState({
+                supporters: [...this.state.supporters, id],
+                supportersLogos: [...this.state.supportersLogos, logo],
+            })
+        })
+    }
+
+    handleSponsorSelectChange = e => {
+        const { value } = e.target
+        const newest = value.slice(-1)[0]
+        //setstate for names for the materila select to use
+        this.setState({ sponsorsNames: value })
+
+        //use names to query for ids
+        const getTheResult = async () => {
+            const result = await this.props.client.query({
+                query: GET_SPONSORS_WHERE_NAME,
+                variables: { name: newest },
+            })
+            return result
+        }
+        //wait for promises then set them in state for the mutation
+        getTheResult().then(value => {
+            const id = value.data.sponsors[0].id
+            this.setState({ sponsors: [...this.state.sponsors, id] })
         })
     }
 
@@ -300,34 +301,6 @@ class TimetableForm extends React.Component {
         console.log('this.state = ', this.state)
     }
 
-    uploadFile = async e => {
-        const files = e.target.files
-        const data = new FormData()
-        data.append('file', files[0])
-        data.append('upload_preset', 'rethink_sponsor')
-
-        this.setState({
-            loading: true,
-        })
-
-        //hit up the cloudinary API
-        const res = await fetch(
-            'https://api.cloudinary.com/v1_1/dcqi9fn2y/image/upload',
-            {
-                //this is a config arg so we want POST our data we just created
-                method: 'POST',
-                body: data,
-            }
-        )
-        //parse the returning file to json
-        const file = await res.json()
-        // Add to state
-        this.setState({
-            logo: file.secure_url,
-            loading: false,
-        })
-    }
-
     render() {
         return (
             <div>
@@ -340,398 +313,527 @@ class TimetableForm extends React.Component {
                         <p onClick={this.showState}>show me this.state</p>
 
                         <div className="text-content">
-                            <Form
-                                onSubmit={async e => {
-                                    e.preventDefault()
-                                    // this 👇 is the mutation
-                                    // await createSponsor()
-                                    this.resetState()
-                                }}
+                            <Mutation
+                                mutation={CREATE_SESSION}
+                                variables={this.state}
+                                refetchQueries={[{ query: GET_PARTNERS }]}
                             >
-                                <h3>Create Session</h3>
+                                {createPartner => (
+                                    <Form
+                                        id="timetable-form"
+                                        onSubmit={async e => {
+                                            console.log('it submitted')
 
-                                <div className="section-title">
-                                    <TextField
-                                        type="text"
-                                        id="sessionTitle"
-                                        label="Session Title"
-                                        className="text-field"
-                                        variant="outlined"
-                                        value={this.state.sessionTitle}
-                                        onChange={this.handleChange}
-                                        required
-                                        fullWidth={true}
-                                    />
-                                </div>
+                                            e.preventDefault()
+                                            await createPartner()
+                                            this.resetState()
+                                        }}
+                                    >
+                                        <h3>Create Session</h3>
 
-                                <div className="section-theme">
-                                    <div className="section-theme--item1">
-                                        <FormControl
-                                            className="section-theme--select"
-                                            fullWidth={true}
-                                        >
-                                            <InputLabel htmlFor="session-theme">
-                                                Session Theme
-                                            </InputLabel>
-
-                                            <Select
-                                                value={this.state.sessionTheme}
-                                                onChange={
-                                                    this.handleSelectChange
-                                                }
-                                                inputProps={{
-                                                    name: 'sessionTheme',
-                                                    id: 'session-theme',
-                                                }}
-                                            >
-                                                <MenuItem value={'sourceMan'}>
-                                                    Sourcing &amp; Manufacturing
-                                                </MenuItem>
-                                                <MenuItem value={'wasteMan'}>
-                                                    Waste &amp; Resource
-                                                    Management
-                                                </MenuItem>
-                                                <MenuItem value={'peopleCult'}>
-                                                    People &amp; Culture
-                                                </MenuItem>
-                                                <MenuItem value={'disMarks'}>
-                                                    Distribution &amp; Changing
-                                                    Markets
-                                                </MenuItem>
-                                                <MenuItem value={'break'}>
-                                                    Break
-                                                </MenuItem>
-                                            </Select>
-                                        </FormControl>
-
-                                        <div className="section-theme--time-pickers">
+                                        <div className="section-title">
                                             <TextField
-                                                id="sessionStart"
-                                                label="Starts"
-                                                type="time"
-                                                // defaultValue="10:30"
-                                                value={this.state.sessionStart}
-                                                className="section-theme--time-picker"
-                                                InputLabelProps={{
-                                                    shrink: true,
-                                                }}
-                                                inputProps={{
-                                                    step: 300, // 5 min
-                                                }}
+                                                type="text"
+                                                id="title"
+                                                label="Session Title"
+                                                className="text-field"
+                                                variant="outlined"
+                                                value={this.state.title}
                                                 onChange={this.handleChange}
-                                            />
-
-                                            <TextField
-                                                id="sessionEnd"
-                                                label="Ends"
-                                                type="time"
-                                                // defaultValue="11:00"
-                                                value={this.state.sessionEnd}
-                                                className="section-theme--time-picker"
-                                                InputLabelProps={{
-                                                    shrink: true,
-                                                }}
-                                                inputProps={{
-                                                    step: 300, // 5 min
-                                                }}
-                                                onChange={this.handleChange}
+                                                required
+                                                fullWidth={true}
                                             />
                                         </div>
-                                    </div>
 
-                                    <div className="section-theme--item2">
-                                        {' '}
-                                        {!this.state.sessionTheme && (
-                                            <div className="theme-logo  theme-logo--false">
-                                                <PhotoLibrary className="theme-logo--false-icon" />
-                                            </div>
-                                        )}
-                                        {this.state.sessionTheme && (
-                                            <div className="theme-logo theme-logo--true">
-                                                <img
-                                                    className="theme-logo--true theme-logo"
-                                                    width="200"
-                                                    src={`static/icons/${this.state.sessionTheme}.svg`}
-                                                    alt="Upload Preview"
-                                                />
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
+                                        {/* THEME --- THEME --- THEME ---  */}
+                                        {/* THEME --- THEME --- THEME ---  */}
 
-                                <div className="section-theme">
-                                    <div>
-                                        <div className="session-row"></div>
-                                    </div>
-                                </div>
-
-                                {/* <label className="input-checkbox, break-checkbox">
-                                    Is this a break?
-                                    <Checkbox
-                                        title="break"
-                                        id="break"
-                                        color="default"
-                                        checked={this.state.break}
-                                        onChange={this.handleCheckboxChange}
-                                    />
-                                </label> */}
-
-                                {!this.state.sessionTheme ||
-                                    (this.state.sessionTheme !== 'break' && (
-                                        <div>
-                                            <div className="select-wrapper">
-                                                <h3>Host</h3>
-
-                                                <FormControl className="select">
-                                                    <InputLabel htmlFor="host">
-                                                        Host
+                                        <div className="section-theme">
+                                            <div className="section-theme--item1">
+                                                <FormControl
+                                                    className="section-theme--select"
+                                                    fullWidth={true}
+                                                >
+                                                    <InputLabel htmlFor="session-theme">
+                                                        Session Theme
                                                     </InputLabel>
+
                                                     <Select
-                                                        value={this.state.host}
+                                                        value={this.state.theme}
                                                         onChange={
                                                             this
                                                                 .handleSelectChange
                                                         }
                                                         inputProps={{
-                                                            name: 'host',
-                                                            id: 'host',
+                                                            name: 'theme',
+                                                            id: 'session-theme',
                                                         }}
                                                     >
-                                                        {dataHosts.map(
-                                                            (el, index) => (
-                                                                <MenuItem
-                                                                    value={
-                                                                        el.name
-                                                                    }
-                                                                    key={index}
-                                                                >
-                                                                    {el.name}
-                                                                </MenuItem>
-                                                            )
-                                                        )}
+                                                        <MenuItem
+                                                            value={'sourceMan'}
+                                                        >
+                                                            Sourcing &amp;
+                                                            Manufacturing
+                                                        </MenuItem>
+                                                        <MenuItem
+                                                            value={'wasteMan'}
+                                                        >
+                                                            Waste &amp; Resource
+                                                            Management
+                                                        </MenuItem>
+                                                        <MenuItem
+                                                            value={'peopleCult'}
+                                                        >
+                                                            People &amp; Culture
+                                                        </MenuItem>
+                                                        <MenuItem
+                                                            value={'disMarks'}
+                                                        >
+                                                            Distribution &amp;
+                                                            Changing Markets
+                                                        </MenuItem>
+                                                        <MenuItem
+                                                            value={'break'}
+                                                        >
+                                                            Break
+                                                        </MenuItem>
                                                     </Select>
                                                 </FormControl>
-                                            </div>
 
-                                            <div className="speakers">
-                                                <div className="select-wrapper">
-                                                    <h3>Speakers</h3>
-                                                    <FormControl className="select">
-                                                        <InputLabel htmlFor="speakers">
-                                                            Speakers
-                                                        </InputLabel>
-                                                        <Select
-                                                            multiple
-                                                            value={
-                                                                this.state
-                                                                    .speakers
-                                                            }
-                                                            onChange={
-                                                                this
-                                                                    .handleSelectChange
-                                                            }
-                                                            inputProps={{
-                                                                name:
-                                                                    'speakers',
-                                                                id: 'speakers',
-                                                            }}
-                                                        >
-                                                            {dataSpeakers.map(
-                                                                (el, index) => (
-                                                                    <MenuItem
-                                                                        value={
-                                                                            el.name
-                                                                        }
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                    >
-                                                                        {
-                                                                            el.name
-                                                                        }
-                                                                    </MenuItem>
-                                                                )
-                                                            )}
-                                                        </Select>
-                                                    </FormControl>
-                                                </div>
+                                                <div className="section-theme--time-pickers">
+                                                    <TextField
+                                                        id="start"
+                                                        label="Starts"
+                                                        type="time"
+                                                        // defaultValue="10:30"
+                                                        value={this.state.start}
+                                                        className="section-theme--time-picker"
+                                                        InputLabelProps={{
+                                                            shrink: true,
+                                                        }}
+                                                        inputProps={{
+                                                            step: 300, // 5 min
+                                                        }}
+                                                        onChange={
+                                                            this.handleChange
+                                                        }
+                                                    />
 
-                                                <div className="speakers--chips">
-                                                    {this.state.speakers.map(
-                                                        (el, index) => (
-                                                            <Chip
-                                                                label={el}
-                                                                key={index}
-                                                                className="speakers--chip"
-                                                            />
-                                                        )
-                                                    )}
+                                                    <TextField
+                                                        id="end"
+                                                        label="Ends"
+                                                        type="time"
+                                                        // defaultValue="11:00"
+                                                        value={this.state.end}
+                                                        className="section-theme--time-picker"
+                                                        InputLabelProps={{
+                                                            shrink: true,
+                                                        }}
+                                                        inputProps={{
+                                                            step: 300, // 5 min
+                                                        }}
+                                                        onChange={
+                                                            this.handleChange
+                                                        }
+                                                    />
                                                 </div>
                                             </div>
 
-                                            <div className="sponsors">
-                                                <div className="select-wrapper">
-                                                    <h3>Sponsors</h3>
-                                                    <FormControl className="select">
-                                                        <InputLabel htmlFor="sponsors">
-                                                            sponsors
-                                                        </InputLabel>
-                                                        <Select
-                                                            multiple
-                                                            value={
-                                                                this.state
-                                                                    .sponsors
-                                                            }
-                                                            onChange={
-                                                                this
-                                                                    .handleSelectChange
-                                                            }
-                                                            inputProps={{
-                                                                name:
-                                                                    'sponsors',
-                                                                id: 'sponsors',
-                                                            }}
-                                                        >
-                                                            {dataSponsors.map(
-                                                                (el, index) => (
-                                                                    <MenuItem
-                                                                        value={
-                                                                            el.name
-                                                                        }
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                    >
-                                                                        {
-                                                                            el.name
-                                                                        }
-                                                                    </MenuItem>
-                                                                )
-                                                            )}
-                                                        </Select>
-                                                    </FormControl>
-                                                </div>
-
-                                                <div className="sponsors--chips">
-                                                    {this.state.sponsors.map(
-                                                        (el, index) => (
-                                                            <Chip
-                                                                label={el}
-                                                                key={index}
-                                                                className="sponsors--chip"
-                                                            />
-                                                        )
-                                                    )}
-                                                </div>
+                                            <div className="section-theme--item2">
+                                                {' '}
+                                                {!this.state.theme && (
+                                                    <div className="theme-logo  theme-logo--false">
+                                                        <PhotoLibrary className="theme-logo--false-icon" />
+                                                    </div>
+                                                )}
+                                                {this.state.theme && (
+                                                    <div className="theme-logo theme-logo--true">
+                                                        <img
+                                                            className="theme-logo--true theme-logo"
+                                                            width="200"
+                                                            src={`static/icons/${this.state.theme}.svg`}
+                                                            alt="Upload Preview"
+                                                        />
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
-                                    ))}
 
-                                {/* these are taken from the partners */}
-                                <div className="partners">
-                                    <div className="select-wrapper">
-                                        <h3>Supporters(partners)</h3>
-                                        <FormControl className="select">
-                                            <InputLabel htmlFor="partners">
-                                                partners
-                                            </InputLabel>
-                                            <Select
-                                                multiple
-                                                value={this.state.partners}
-                                                onChange={
-                                                    this.handleSelectChange
-                                                }
-                                                inputProps={{
-                                                    name: 'partners',
-                                                    id: 'partners',
+                                        {/* 👇 👇  IF THEME ISNT EMPTY OR 'BREAK' 👇 👇 */}
+                                        {/* 👇 👇  IF THEME ISNT EMPTY OR 'BREAK' 👇 👇 */}
+
+                                        {!this.state.theme ||
+                                            (this.state.theme !== 'break' && (
+                                                <div>
+                                                    <div className="select-wrapper">
+                                                        <h3>Host</h3>
+
+                                                        <FormControl className="select">
+                                                            {/* <InputLabel htmlFor="host">
+                                                        Host
+                                                    </InputLabel> */}
+                                                            <Select
+                                                                value={
+                                                                    this.state
+                                                                        .host
+                                                                }
+                                                                displayEmpty
+                                                                onChange={
+                                                                    this
+                                                                        .handleSelectChange
+                                                                }
+                                                                inputProps={{
+                                                                    name:
+                                                                        'host',
+                                                                    id: 'host',
+                                                                }}
+                                                            >
+                                                                {dataHostsAndSpeakers.map(
+                                                                    (
+                                                                        el,
+                                                                        index
+                                                                    ) => (
+                                                                        <MenuItem
+                                                                            value={
+                                                                                el.name
+                                                                            }
+                                                                            key={
+                                                                                index
+                                                                            }
+                                                                        >
+                                                                            {
+                                                                                el.name
+                                                                            }
+                                                                        </MenuItem>
+                                                                    )
+                                                                )}
+                                                            </Select>
+                                                        </FormControl>
+                                                    </div>
+
+                                                    <div className="speakers">
+                                                        <div className="select-wrapper">
+                                                            <h3>Speakers</h3>
+
+                                                            <FormControl className="select">
+                                                                {/* <InputLabel htmlFor="speakers">
+                                                            Speakers
+                                                        </InputLabel> */}
+                                                                <Select
+                                                                    multiple
+                                                                    value={
+                                                                        this
+                                                                            .state
+                                                                            .speakers
+                                                                    }
+                                                                    onChange={
+                                                                        this
+                                                                            .handleSelectChange
+                                                                    }
+                                                                    inputProps={{
+                                                                        name:
+                                                                            'speakers',
+                                                                        id:
+                                                                            'speakers',
+                                                                    }}
+                                                                >
+                                                                    {dataHostsAndSpeakers.map(
+                                                                        (
+                                                                            el,
+                                                                            index
+                                                                        ) => (
+                                                                            <MenuItem
+                                                                                value={
+                                                                                    el.name
+                                                                                }
+                                                                                key={
+                                                                                    index
+                                                                                }
+                                                                            >
+                                                                                {
+                                                                                    el.name
+                                                                                }
+                                                                            </MenuItem>
+                                                                        )
+                                                                    )}
+                                                                </Select>
+                                                            </FormControl>
+                                                        </div>
+
+                                                        <div className="speakers--list">
+                                                            {this.state.speakers.map(
+                                                                (el, index) => (
+                                                                    <div
+                                                                        className="speaker"
+                                                                        key={
+                                                                            index
+                                                                        }
+                                                                    >
+                                                                        <p>
+                                                                            {el}
+                                                                        </p>
+                                                                    </div>
+                                                                )
+                                                            )}
+                                                        </div>
+                                                    </div>
+
+                                                    <h3>Overview</h3>
+                                                    <TextField
+                                                        fullWidth={false}
+                                                        multiline={true}
+                                                        rows={6}
+                                                        variant="outlined"
+                                                        // label="overview"
+                                                        id="overview"
+                                                        value={
+                                                            this.state.overview
+                                                        }
+                                                        onChange={
+                                                            this.handleChange
+                                                        }
+                                                        className="text-area"
+                                                    />
+                                                    <h3>
+                                                        Learnings bullet points
+                                                    </h3>
+
+                                                    <TextField
+                                                        fullWidth={false}
+                                                        multiline={true}
+                                                        rows={6}
+                                                        variant="outlined"
+                                                        // label="overview"
+                                                        margin="normal"
+                                                        id="learnings"
+                                                        value={
+                                                            this.state.learnings
+                                                        }
+                                                        onChange={
+                                                            this.handleChange
+                                                        }
+                                                        className="text-area"
+                                                    />
+
+                                                    {/* these are taken from the list of partners */}
+
+                                                    <Query query={GET_PARTNERS}>
+                                                        {({
+                                                            data,
+                                                            loading,
+                                                        }) => {
+                                                            //  stop partners begin mapped before data arrives
+                                                            if (loading)
+                                                                return null
+                                                            const {
+                                                                partners,
+                                                            } = data
+                                                            return (
+                                                                <div className="partners">
+                                                                    <div className="select-wrapper">
+                                                                        <h3>
+                                                                            Supporters
+                                                                        </h3>
+                                                                        <FormControl className="select">
+                                                                            <InputLabel htmlFor="supporters">
+                                                                                Add
+                                                                                Supporters
+                                                                            </InputLabel>
+                                                                            <Select
+                                                                                multiple
+                                                                                value={
+                                                                                    this
+                                                                                        .state
+                                                                                        .supportersNames
+                                                                                }
+                                                                                onChange={
+                                                                                    this
+                                                                                        .handleSupportersSelectChange
+                                                                                }
+                                                                                inputProps={{
+                                                                                    name:
+                                                                                        'supporters',
+                                                                                    id:
+                                                                                        'supporters',
+                                                                                }}
+                                                                            >
+                                                                                {partners.map(
+                                                                                    (
+                                                                                        el,
+                                                                                        index
+                                                                                    ) => (
+                                                                                        <MenuItem
+                                                                                            value={
+                                                                                                el.name
+                                                                                            }
+                                                                                            key={
+                                                                                                index
+                                                                                            }
+                                                                                        >
+                                                                                            {
+                                                                                                el.name
+                                                                                            }
+                                                                                        </MenuItem>
+                                                                                    )
+                                                                                )}
+                                                                            </Select>
+                                                                        </FormControl>
+                                                                    </div>
+
+                                                                    <div className="partners--logos logos">
+                                                                        {this.state.supportersLogos.map(
+                                                                            (
+                                                                                el,
+                                                                                index
+                                                                            ) => (
+                                                                                <div
+                                                                                    className="partners--logo logo"
+                                                                                    key={
+                                                                                        index
+                                                                                    }
+                                                                                >
+                                                                                    <img
+                                                                                        src={
+                                                                                            el
+                                                                                        }
+                                                                                    />
+                                                                                </div>
+                                                                            )
+                                                                        )}
+                                                                    </div>
+                                                                </div>
+                                                            )
+                                                        }}
+                                                    </Query>
+
+                                                    {/* these are taken from the list of sponsors */}
+
+                                                    <Query query={GET_SPONSORS}>
+                                                        {({
+                                                            data,
+                                                            error,
+                                                            loading,
+                                                        }) => {
+                                                            //  stop sponsors begin mapped before data arrives
+                                                            if (loading)
+                                                                return null
+                                                            const {
+                                                                sponsors,
+                                                            } = data
+                                                            return (
+                                                                <div className="sponsors">
+                                                                    <div className="select-wrapper">
+                                                                        <h3>
+                                                                            Sponsors
+                                                                        </h3>
+                                                                        <FormControl className="select">
+                                                                            <InputLabel htmlFor="sponsors">
+                                                                                Add
+                                                                                Sponsor
+                                                                            </InputLabel>
+                                                                            <Select
+                                                                                multiple
+                                                                                value={
+                                                                                    this
+                                                                                        .state
+                                                                                        .sponsorsNames
+                                                                                }
+                                                                                onChange={
+                                                                                    this
+                                                                                        .handleSponsorSelectChange
+                                                                                }
+                                                                                inputProps={{
+                                                                                    name:
+                                                                                        'sponsors',
+                                                                                    id:
+                                                                                        'sponsors',
+                                                                                }}
+                                                                            >
+                                                                                {sponsors.map(
+                                                                                    (
+                                                                                        el,
+                                                                                        index
+                                                                                    ) => (
+                                                                                        <MenuItem
+                                                                                            value={
+                                                                                                el.name
+                                                                                            }
+                                                                                            key={
+                                                                                                index
+                                                                                            }
+                                                                                        >
+                                                                                            {
+                                                                                                el.name
+                                                                                            }
+                                                                                        </MenuItem>
+                                                                                    )
+                                                                                )}
+                                                                            </Select>
+                                                                        </FormControl>
+                                                                    </div>
+
+                                                                    <div className="sponsors--logos logos">
+                                                                        {this.state.sponsorsNames.map(
+                                                                            (
+                                                                                el,
+                                                                                index
+                                                                            ) => (
+                                                                                <div
+                                                                                    className="sponsors--logo logo"
+                                                                                    key={
+                                                                                        index
+                                                                                    }
+                                                                                >
+                                                                                    <p>
+                                                                                        {
+                                                                                            el
+                                                                                        }
+                                                                                    </p>
+                                                                                </div>
+                                                                            )
+                                                                        )}
+                                                                    </div>
+                                                                </div>
+                                                            )
+                                                        }}
+                                                    </Query>
+                                                </div>
+                                            ))}
+
+                                        {/* 👆 👆  IF THEME ISNT EMPTY OR 'BREAK'👆 👆   */}
+                                        {/* 👆 👆  IF THEME ISNT EMPTY OR 'BREAK'👆 👆   */}
+
+                                        <div className="submit-wrapper">
+                                            {/* <Button
+                                                margin="normal"
+                                                type="submit"
+                                                variant="contained"
+                                                color="default"
+                                                size="large"
+                                                // className="submit-btn"
+                                                onClick={() => {
+                                                    this.clearModal()
                                                 }}
                                             >
-                                                {dataPartners.map(
-                                                    (el, index) => (
-                                                        <MenuItem
-                                                            value={el.name}
-                                                            key={index}
-                                                        >
-                                                            {el.name}
-                                                        </MenuItem>
-                                                    )
-                                                )}
-                                            </Select>
-                                        </FormControl>
-                                    </div>
+                                                close <Close className="icon" />
+                                            </Button> */}
 
-                                    <div className="sponsors--chips">
-                                        {this.state.partners.map(
-                                            (el, index) => (
-                                                <Chip
-                                                    label={el}
-                                                    key={index}
-                                                    className="sponsors--chip"
-                                                />
-                                            )
-                                        )}
-                                    </div>
-                                </div>
-
-                                <h3>Overview</h3>
-                                <TextField
-                                    fullWidth={false}
-                                    multiline={true}
-                                    rows={6}
-                                    variant="outlined"
-                                    label="overview"
-                                    margin="normal"
-                                    id="overview"
-                                    value={this.state.overview}
-                                    onChange={this.handleChange}
-                                    required
-                                    className="text-area"
-                                />
-                                <h3>Learnings bullet points</h3>
-                                <p>
-                                    *** need to be able to add additonal bullet
-                                    points
-                                </p>
-
-                                <TextField
-                                    type="text"
-                                    id="website"
-                                    label="bullet point"
-                                    className="text-field"
-                                    margin="normal"
-                                    variant="outlined"
-                                    value={this.state.website}
-                                    onChange={this.handleChange}
-                                />
-
-                                <div className="submit-wrapper">
-                                    <Button
-                                        margin="normal"
-                                        type="submit"
-                                        variant="contained"
-                                        color="default"
-                                        size="large"
-                                        // className="submit-btn"
-                                        onClick={() => {
-                                            this.clearModal()
-                                        }}
-                                    >
-                                        close <Close className="icon" />
-                                    </Button>
-
-                                    <Button
-                                        margin="normal"
-                                        type="submit"
-                                        variant="contained"
-                                        color="default"
-                                        size="large"
-                                        className="submit-btn"
-                                    >
-                                        Submit
-                                        <FileCopy className="icon" />
-                                    </Button>
-                                </div>
-                            </Form>
+                                            <Button
+                                                margin="normal"
+                                                type="submit"
+                                                variant="contained"
+                                                color="default"
+                                                size="large"
+                                                className="submit-btn"
+                                                form="timetable-form"
+                                            >
+                                                Submit
+                                                <FileCopy className="icon" />
+                                            </Button>
+                                        </div>
+                                    </Form>
+                                )}
+                            </Mutation>
                         </div>
                     </div>
                 </div>
@@ -740,4 +842,4 @@ class TimetableForm extends React.Component {
     }
 }
 
-export default TimetableForm
+export default withApollo(TimetableForm)
