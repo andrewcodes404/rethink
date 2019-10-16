@@ -52,8 +52,8 @@ export const ttData = [
         timeEnd: '1600',
         theme: 'peopleCult',
         title: 'The road to, and beyond, nut-zero',
-         host: { name: 'Schnitzel Von Crumb', title: 'The Big Boss', org: 'Splicknel Artifacts' },
-     
+        host: { name: 'Schnitzel Von Crumb', title: 'The Big Boss', org: 'Splicknel Artifacts' },
+
         speakers: [
             { name: 'Erin Meezan', title: 'Director and global head of climate business', org: 'Capitals Coalition' },
             { name: 'James Smith', title: 'Praesent sapien massa, convallis', org: 'Sed porttitor' },
