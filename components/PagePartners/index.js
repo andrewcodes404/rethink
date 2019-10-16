@@ -1,496 +1,80 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import NavSimple from '../PageHeadFooter/Nav/NavSimple'
-import { Query } from 'react-apollo'
-import { GET_PARTNERS } from '../../lib/graphqlTags'
-import { ModalCompanyCard } from '../style/globalComps'
-import styled from 'styled-components'
+import { StyledNav } from './navStyle'
+import Link from 'next/link'
 
-const HeightForNav = styled.div`
-    height: 100px;
-`
-
-const CardContainerWrapper = styled.div`
-    .container-title {
-        margin: 60px 0;
+import Router from 'next/router'
+class NavSimple extends React.Component {
+    state = {
+        dropActive: false,
     }
-`
 
-const CardContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    .card-with-title {
-        width: 45%;
-        padding: 10px;
-        padding: 15px;
-        margin: 15px;
-
-        h2 {
-            margin-bottom: 15px;
+    handleDropBtnClick = () => {
+        if (!this.state.dropActive) {
+            this.setState({
+                dropActive: true,
+            })
+        } else {
+            this.setState({
+                dropActive: false,
+            })
         }
-    }
-
-    .large {
-        width: 45%;
-        padding: 10px;
-        padding: 15px;
-        margin: 15px;
-    }
-    .medium {
-        width: 23%;
-        padding: 15px;
-        margin: 6px;
-    }
-    .small {
-        width: 19%;
-        padding: 0 10px;
-        margin: 5px;
-    }
-`
-
-const Card = styled.div`
-    .ranking-title {
-        text-transform: capitalize;
-        text-align: center;
-    }
-
-    box-shadow: 8px 9px 18px -8px rgba(222, 222, 222, 1);
-    cursor: pointer;
-    border-top: 1px solid white;
-    border-left: 1px solid white;
-    transition: 0.3s;
-
-    .img-wrapper-lrg {
-        width: 80%;
-        height: 300px;
-        margin: 0 auto;
-        text-align: center;
-        img {
-            width: 90%;
-            height: 90%;
-            object-fit: scale-down;
-        }
-    }
-
-    .img-wrapper-lrg2 {
-        width: 100%;
-        height: 230px;
-        margin: 0 auto;
-        text-align: center;
-        img {
-            width: 90%;
-            height: 90%;
-            object-fit: scale-down;
-        }
-    }
-
-    .img-wrapper-med {
-        width: 100%;
-        height: 180px;
-        margin: 0 auto;
-        text-align: center;
-        img {
-            width: 90%;
-            height: 90%;
-            object-fit: scale-down;
-        }
-    }
-
-    .img-wrapper-sml {
-        width: 100%;
-        height: 180px;
-        margin: 0 auto;
-
-        img {
-            width: 90%;
-            height: 90%;
-            object-fit: scale-down;
-        }
-    }
-
-    &:hover {
-        box-shadow: 18px 23px 35px -10px rgba(194, 194, 194, 1);
-        border-top: 1px solid #fafafa;
-        border-left: 1px solid #fafafa;
-        img {
-            transform: scale(1.02);
-        }
-    }
-`
-
-class Index extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            showModal: false,
-            type: '',
-            ranking: '',
-            index: '',
-            name: '',
-            logo: '',
-            description: '',
-            website: '',
-            instagram: '',
-            facebook: '',
-            twitter: '',
-        }
-    }
-    showModal = sponsor => {
-        this.setState({
-            showModal: true,
-            type: sponsor.type,
-            ranking: sponsor.ranking,
-            index: sponsor.index,
-            name: sponsor.name,
-            logo: sponsor.logo,
-            description: sponsor.description,
-            website: sponsor.website,
-            instagram: sponsor.instagram,
-            facebook: sponsor.facebook,
-            twitter: sponsor.twitter,
-            shareBtn: sponsor.shareBtn,
-        })
-    }
-    closeModal = () => {
-        this.setState({
-            showModal: false,
-        })
     }
 
     render() {
         return (
-            <div>
-                <HeightForNav />
-                <NavSimple loggedIn={this.props.loggedIn} />
-
-                {this.state.showModal && (
-                    <ModalCompanyCard
-                        onClick={() => {
-                            this.closeModal()
-                        }}
-                    >
-                        <div className="card">
-                            <div className="logo">
-                                <img src={this.state.logo} />
-                            </div>
-
-                            <div className="content">
-                                <h2>{this.state.name}</h2>
-                                <p>{this.state.description}</p>
-
-                                <div className="social-wrapper">
-                                    {this.state.instagram && (
-                                        <div className="social-icon">
-                                            <a
-                                                href={`https://www.instagram.com/${this.state.instagram}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img
-                                                    src="./static/social/instagram.png"
-                                                    alt=""
-                                                    srcSet=""
-                                                />
-                                            </a>
-                                        </div>
-                                    )}
-
-                                    {this.state.facebook && (
-                                        <div className="social-icon">
-                                            <a
-                                                href={this.state.facebook}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img
-                                                    src="./static/social/facebook.png"
-                                                    alt=""
-                                                    srcSet=""
-                                                />
-                                            </a>
-                                        </div>
-                                    )}
-
-                                    {this.state.twitter && (
-                                        <div className="social-icon">
-                                            <a
-                                                href={`https://www.twitter.com/${this.state.twitter}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img
-                                                    src="./static/social/twitter.png"
-                                                    alt=""
-                                                    srcSet=""
-                                                />
-                                            </a>
-                                        </div>
-                                    )}
-
-                                    <div className="some-height"></div>
-
-                                    {this.state.website && (
-                                        <div className="website">
-                                            <a
-                                                href={this.state.website}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <p>{this.state.website}</p>
-                                            </a>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    </ModalCompanyCard>
-                )}
-
-                <div className="text-content-title-wrapper">
-                    <h2 data-aos="my-anim">Partners</h2>
-                    <div className="text-content">
-                        <h3>
-                            Probably a bit of text here, Vivamus suscipit tortor
-                            eget felis porttitor volutpat. Donec rutrum congue
-                            leo eget malesuada. Proin eget tortor risus.
-                            Curabitur aliquet quam id dui posuere blandit.
-                        </h3>
-                        <h3 className="link-green">
-                            Want to become a partner?{' '}
-                            <a
-                                href="https://forms.gle/cvuvpHGz4jcSyUCy8"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                click here
+            <StyledNav>
+                <div className="header-logo-wrapper">
+                    <div className="header-logo" style={{ cursor: 'pointer' }}>
+                        <Link href="/">
+                            <a>
+                                <img src="/static/graphics/logo-green.svg" alt="rethink logo" />
                             </a>
-                        </h3>
+                        </Link>
                     </div>
-
-                    <Query query={GET_PARTNERS}>
-                        {({ data, error, loading }) => {
-                            if (loading) return <p>Loading...</p>
-                            if (error) return <p>Error: {error.message}</p>
-                            if (!data) return <p>No Data</p>
-
-                            let strategic = {}
-                            let hostVenue = {}
-                            let innovation = {}
-                            let esg = {}
-                            let largeCards = []
-                            let charity = {}
-                            let eventConf = {}
-                            let mediaPartners = {}
-                            let community = {}
-
-                            const { partners } = data
-
-                            // add ranking display text to single largeCard partners
-
-                            const addRankingTitle = (
-                                objName,
-                                rankingValue,
-                                rankingDisplayText
-                            ) => {
-                                objName = partners.find(
-                                    x => x.ranking === rankingValue
-                                )
-                                if (objName) {
-                                    objName.rankingTitle = rankingDisplayText
-                                    largeCards.push(objName)
-                                }
-                            }
-
-                            if (partners) {
-                                addRankingTitle(
-                                    strategic,
-                                    'strategic',
-                                    'Strategic'
-                                )
-                                addRankingTitle(
-                                    hostVenue,
-                                    'hostVenue',
-                                    'Host Venue'
-                                )
-
-                                addRankingTitle(
-                                    innovation,
-                                    'innovation',
-                                    'Innovation'
-                                )
-
-                                addRankingTitle(esg, 'esg', 'ESG')
-
-                                // Filter partners by ranking type
-                                charity = partners.filter(
-                                    x => x.ranking === 'charity'
-                                )
-
-                                eventConf = partners.filter(
-                                    x => x.ranking === 'eventConf'
-                                )
-
-                                mediaPartners = partners.filter(
-                                    x => x.ranking === 'mediaPartners'
-                                )
-
-                                community = partners.filter(
-                                    x => x.ranking === 'community'
-                                )
-                            }
-
-                            return (
-                                <CardContainerWrapper>
-                                    <CardContainer>
-                                        {largeCards.map((partner, i) => {
-                                            return (
-                                                <div
-                                                    className="card-with-title"
-                                                    key={i}
-                                                >
-                                                    <h2 data-aos="my-anim">
-                                                        {partner.rankingTitle &&
-                                                            partner.rankingTitle}
-                                                    </h2>
-                                                    <Card
-                                                        onClick={() => {
-                                                            this.showModal(
-                                                                partner
-                                                            )
-                                                        }}
-                                                    >
-                                                        <div className="img-wrapper-lrg">
-                                                            <img
-                                                                src={
-                                                                    partner.logo
-                                                                }
-                                                            />
-                                                        </div>
-                                                    </Card>
-                                                </div>
-                                            )
-                                        })}
-                                    </CardContainer>
-
-                                    <h2
-                                        data-aos="my-anim"
-                                        className="container-title"
-                                    >
-                                        Charity Partners
-                                    </h2>
-
-                                    <CardContainer>
-                                        {charity.map((partner, i) => {
-                                            return (
-                                                <Card
-                                                    key={i}
-                                                    onClick={() => {
-                                                        this.showModal(partner)
-                                                    }}
-                                                    className="large"
-                                                >
-                                                    <div className="img-wrapper-lrg2">
-                                                        <img
-                                                            src={partner.logo}
-                                                        />
-                                                    </div>
-                                                </Card>
-                                            )
-                                        })}
-                                    </CardContainer>
-
-                                    <h2
-                                        data-aos="my-anim"
-                                        className="container-title"
-                                    >
-                                        Event &amp; Conference Partners
-                                    </h2>
-
-                                    <CardContainer>
-                                        {eventConf.map((partner, i) => {
-                                            return (
-                                                <Card
-                                                    key={i}
-                                                    onClick={() => {
-                                                        this.showModal(partner)
-                                                    }}
-                                                    className="medium"
-                                                >
-                                                    <div className="img-wrapper-med">
-                                                        <img
-                                                            src={partner.logo}
-                                                        />
-                                                    </div>
-                                                </Card>
-                                            )
-                                        })}
-                                    </CardContainer>
-
-                                    <h2
-                                        data-aos="my-anim"
-                                        className="container-title"
-                                    >
-                                        Media Partners
-                                    </h2>
-
-                                    <CardContainer>
-                                        {mediaPartners.map((partner, i) => {
-                                            return (
-                                                <Card
-                                                    key={i}
-                                                    onClick={() => {
-                                                        this.showModal(partner)
-                                                    }}
-                                                    className="medium"
-                                                >
-                                                    <div className="img-wrapper-med">
-                                                        <img
-                                                            src={partner.logo}
-                                                        />
-                                                    </div>
-                                                </Card>
-                                            )
-                                        })}
-                                    </CardContainer>
-
-                                    <h2
-                                        data-aos="my-anim"
-                                        className="container-title"
-                                    >
-                                        Community Partners
-                                    </h2>
-
-                                    <CardContainer>
-                                        {community.map((partner, i) => {
-                                            return (
-                                                <Card
-                                                    key={i}
-                                                    onClick={() => {
-                                                        this.showModal(partner)
-                                                    }}
-                                                    className="small"
-                                                >
-                                                    <div className="img-wrapper-sml">
-                                                        <img
-                                                            src={partner.logo}
-                                                        />
-                                                    </div>
-                                                </Card>
-                                            )
-                                        })}
-                                    </CardContainer>
-                                </CardContainerWrapper>
-                            )
-                        }}
-                    </Query>
                 </div>
-            </div>
+
+                <div className="menu-btn-wrapper">
+                    <div className="menu-btn" onClick={this.handleDropBtnClick}>
+                        <svg viewBox="0 0 150 106.78">
+                            <g id="Layer_2" data-name="Layer 2">
+                                <g id="Layer_1-2" data-name="Layer 1">
+                                    <rect className="cls-1" width="150" height="100" />
+                                    <rect className="cls-2" width="150" height="20" />
+                                    <rect className={`cls-2 ${this.state.dropActive ? 'icon-rotate' : ''}`} y="85" width="150" height="20" />
+                                    <rect className="cls-2" y="42.5" width="150" height="20" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <nav className={this.state.dropActive ? 'show-nav' : ''}>
+                    <div>
+                        {this.props.loggedIn && (
+                            <div
+                                className="admin-link"
+                                style={{ color: 'white', cursor: 'pointer' }}
+                                onClick={() => {
+                                    Router.push('/admin')
+                                }}
+                            >
+                                <span>admin</span>
+                            </div>
+                        )}
+
+                        <Link href={`/`}>home</Link>
+                        <Link href={`/partners`}>partners</Link>
+                        {/* <Link href={`/the_sponsors`}>sponsors</Link> */}
+                    </div>
+                </nav>
+            </StyledNav>
         )
     }
 }
 
-Index.propTypes = {
+NavSimple.propTypes = {
     loggedIn: PropTypes.bool,
 }
 
-export default Index
+export default NavSimple
