@@ -11,16 +11,12 @@ export const ttData = [
         timeEnd: '11:00',
         theme: 'sourceMan',
         title: 'Keynote',
-        hostName: 'Erin Meezan',
-        hostTitle: 'Director and global head of climate business ',
-        hostOrg: 'Capitals Coalition',
+        host: { name: 'Erin Meezan', title: 'Director and global head of climate business', org: 'Capitals Coalition' },
 
         speakers: [
-            { speakerOrg: 'IFC' },
-            { speakerOrg: 'Pret A Manger' },
-            {
-                speakerOrg: 'Pernod Ricard India',
-            },
+            { name: 'Erin Meezan', title: 'Director and global head of climate business', org: 'Capitals Coalition' },
+            { name: 'James Smith', title: 'Praesent sapien massa, convallis', org: 'Sed porttitor' },
+            { name: 'Greg Bloothe', title: ' egestas non nisi. Pellentesque in ipsum', org: 'dui posuere blandit' },
         ],
 
         overview:
@@ -35,24 +31,11 @@ export const ttData = [
         timeEnd: '12:15',
         theme: 'disMarks',
         title: 'Emergency Response: Re-writing the action plan',
-        hostName: 'Annika Ramsköld',
-        hostTitle: 'Vice president corporate sustainability',
-        hostOrg: 'VATTENFALL AB',
-        speakers: [],
+        host: { name: 'Annika Ramsköld', title: 'Vice president corporate sustainability', org: 'VATTENFALL AB' },
         overview:
             'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt.',
-        sponsors: [
-            'static/brands/3.png',
-            'static/brands/4.png',
-            'static/brands/5.png',
-            'static/brands/6.png',
-            'static/brands/7.png',
-        ],
-        supporters: [
-            'static/brands/11.png',
-            'static/brands/12.png',
-            'static/brands/13.png',
-        ],
+        sponsors: ['static/brands/3.png', 'static/brands/4.png', 'static/brands/5.png', 'static/brands/6.png', 'static/brands/7.png'],
+        supporters: ['static/brands/11.png', 'static/brands/12.png', 'static/brands/13.png'],
     },
 
     {
@@ -69,9 +52,13 @@ export const ttData = [
         timeEnd: '1600',
         theme: 'peopleCult',
         title: 'The road to, and beyond, nut-zero',
-        hostName: 'Schnitzel Von Crumb',
-        hostTitle: 'The Big Boss',
-        hostOrg: 'Splicknel Artifacts',
+         host: { name: 'Schnitzel Von Crumb', title: 'The Big Boss', org: 'Splicknel Artifacts' },
+     
+        speakers: [
+            { name: 'Erin Meezan', title: 'Director and global head of climate business', org: 'Capitals Coalition' },
+            { name: 'James Smith', title: 'Praesent sapien massa, convallis', org: 'Sed porttitor' },
+            { name: 'Greg Bloothe', title: ' egestas non nisi. Pellentesque in ipsum', org: 'dui posuere blandit' },
+        ],
         overview:
             'Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Curabitur aliquet quam id dui posuere blandit. Donec sollicitudin molestie malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.',
         sponsors: ['static/brands/18.png', 'static/brands/17.png'],

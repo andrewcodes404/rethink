@@ -37,18 +37,54 @@ export const ModalCompanyCard = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* overflow: scroll; */
 
     .card {
         width: 90%;
         max-width: 700px;
         background: white;
         padding: 20px;
+        position: relative;
+        overflow: scroll;
+        margin: 40px 0;
+
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent; /* make scrollbar transparent */
+        }
+    }
+
+    .close-modal-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        line-height: 0;
+        border: 1px solid #000;
+        /* padding: 5px; */
+        border-radius: 10px;
+        font-size: 15px;
+        /* color: white;
+        background: black; */
+        transition: 0.4s;
+
+        &:hover {
+            transform: rotate(90deg);
+            background: ${props => props.theme.green};
+            color: white;
+            border: unset;
+        }
     }
 
     .logo {
-        width: 300px;
-        height: 200px;
+        width: 50%;
         margin: 0 auto;
+
+        @media (min-width: 746px) {
+            width: 300px;
+            height: 200px;
+            margin: 0 auto;
+        }
 
         img {
             object-fit: contain;
@@ -338,8 +374,7 @@ export const ImageBanner = styled.div`
       /* object-position: center; */
       object-position: ${props => (props.position ? props.position : 'center')};
       height: 100%;
-      filter: ${props =>
-          props.darker ? 'brightness(60%)' : 'brightness(100%)'};
+      filter: ${props => (props.darker ? 'brightness(60%)' : 'brightness(100%)')};
     }
   }
 
@@ -352,8 +387,7 @@ export const ImageBanner = styled.div`
 /*
     .image-banner-bkg-img {
       img {
-        filter: ${props =>
-            props.darker ? 'brightness(100%)' : 'brightness(100%)'};
+        filter: ${props => (props.darker ? 'brightness(100%)' : 'brightness(100%)')};
       }
     } */
   }
@@ -371,8 +405,7 @@ export const BackgroundCoverImage = styled.div`
         object-position: bottom;
         height: 100%;
 
-        filter: ${props =>
-            props.darker ? 'brightness(80%)' : 'brightness(100%)'};
+        filter: ${props => (props.darker ? 'brightness(80%)' : 'brightness(100%)')};
     }
 `
 

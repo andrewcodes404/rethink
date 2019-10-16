@@ -70,11 +70,11 @@ class Timetable extends React.Component {
                                         </div>
 
                                         <div className={`session-content ${this.state.showSessions.find(x => x === el.id) === el.id && 'show-session'}`}>
-                                            {el.hostName && (
+                                            {el.host && (
                                                 <div className="host text-section">
                                                     <p className="sub-title">Host</p>
                                                     <p>
-                                                        {el.hostName} - {el.hostTitle} - {el.hostOrg}
+                                                        {el.host.name} - {el.host.title} - {el.host.org}
                                                     </p>
                                                 </div>
                                             )}
@@ -86,7 +86,7 @@ class Timetable extends React.Component {
                                                     {el.speakers.map((el, index) => (
                                                         <div key={index} className="speaker">
                                                             <p>
-                                                                {el.speakerName} - {el.speakerOrg}
+                                                                {el.name} - {el.title} - {el.org}
                                                             </p>
                                                         </div>
                                                     ))}
