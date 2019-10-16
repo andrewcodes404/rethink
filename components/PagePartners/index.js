@@ -250,11 +250,15 @@ class Index extends React.Component {
                     <h2 data-aos="my-anim">Partners</h2>
                     <div className="text-content">
                         <h3>
-                            Probably a bit of text here, Vivamus suscipit tortor
-                            eget felis porttitor volutpat. Donec rutrum congue
-                            leo eget malesuada. Proin eget tortor risus.
-                            Curabitur aliquet quam id dui posuere blandit.
+                            ReThink is supported by leading business chambers,
+                            industry associations and NGOs.
                         </h3>
+                        <p>
+                            They are contributing to the conversation, providing
+                            speakers and panel moderators as well as advocating
+                            and promoting ReThink to their members and the wider
+                            sustainability community.
+                        </p>
                         <h3 className="link-green">
                             Want to become a partner?{' '}
                             <a
@@ -426,7 +430,7 @@ class Index extends React.Component {
                                         })}
                                     </CardContainer>
 
-                                    <h2
+                                    {/* <h2
                                         data-aos="my-anim"
                                         className="container-title"
                                     >
@@ -451,7 +455,7 @@ class Index extends React.Component {
                                                 </Card>
                                             )
                                         })}
-                                    </CardContainer>
+                                    </CardContainer> */}
 
                                     <h2
                                         data-aos="my-anim"
