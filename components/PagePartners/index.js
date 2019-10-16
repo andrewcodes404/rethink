@@ -25,17 +25,35 @@ const CardContainerWrapper = styled.div`
 const CardContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    /* justify-content: center; */
 
     .card-with-title {
-        width: 45%;
-        padding: 10px;
+        width: 90%;
+        max-width: 400px;
+        height: 300px;
         padding: 15px;
         margin: 15px;
+
+        @media (min-width: 746px) {
+            width: 45%;
+            height: 300px;
+        }
 
         h2 {
             margin-bottom: 15px;
         }
+    }
+    .card-with-title--card {
+        width: 100%;
+        margin: 0 auto 15px;
+        padding: 15px;
+        height: 100%;
+        /* @media (min-width: 746px) {
+            width: 45%;
+
+            padding: 15px;
+            margin: 15px;
+        } */
     }
 
     .large {
@@ -81,27 +99,29 @@ const Card = styled.div`
             height: 90%;
             object-fit: scale-down;
         }
+        width: 80%;
+        margin: auto;
+        height: 100%;
 
         @media (min-width: 746px) {
             width: 80%;
-            height: 300px;
+            height: 100%;
             margin: 0 auto;
             text-align: center;
         }
     }
 
     .img-wrapper-lrg2 {
+        img {
+            width: 90%;
+            height: 90%;
+            object-fit: scale-down;
+        }
         @media (min-width: 746px) {
             width: 100%;
             height: 230px;
             margin: 0 auto;
             text-align: center;
-        }
-
-        img {
-            width: 90%;
-            height: 90%;
-            object-fit: scale-down;
         }
     }
 
@@ -394,6 +414,7 @@ class Index extends React.Component {
                                                                 partner
                                                             )
                                                         }}
+                                                        className="card-with-title--card"
                                                     >
                                                         <div className="img-wrapper-lrg">
                                                             <img

@@ -37,7 +37,7 @@ export const ModalCompanyCard = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: scroll;
+    /* overflow: scroll; */
 
     .card {
         width: 90%;
@@ -47,6 +47,11 @@ export const ModalCompanyCard = styled.div`
         position: relative;
         overflow: scroll;
         margin: 40px 0;
+
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent; /* make scrollbar transparent */
+        }
     }
 
     .close-modal-button {
