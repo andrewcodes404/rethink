@@ -6,19 +6,27 @@ import { GET_PARTNERS } from '../../lib/graphqlTags'
 import { ModalCompanyCard } from '../style/globalComps'
 import styled from 'styled-components'
 
+import Close from '@material-ui/icons/Close'
 const HeightForNav = styled.div`
     height: 100px;
 `
 
 const CardContainerWrapper = styled.div`
     .container-title {
-        margin: 60px 0;
+        margin: 40px auto;
+
+        @media (min-width: 746px) {
+            margin: 60px 0;
+        }
     }
+    margin-bottom: 50px;
 `
 
 const CardContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+
     .card-with-title {
         width: 45%;
         padding: 10px;
@@ -32,28 +40,35 @@ const CardContainer = styled.div`
 
     .large {
         width: 45%;
-        padding: 10px;
+        margin: 0 auto 15px;
         padding: 15px;
-        margin: 15px;
+        @media (min-width: 746px) {
+            width: 45%;
+
+            padding: 15px;
+            margin: 15px;
+        }
     }
     .medium {
-        width: 23%;
+        width: 45%;
+        margin: 0 auto 15px;
         padding: 15px;
-        margin: 6px;
+        @media (min-width: 746px) {
+            width: 23%;
+            margin: 6px;
+        }
     }
     .small {
-        width: 19%;
+        width: 30%;
         padding: 0 10px;
         margin: 5px;
+        @media (min-width: 746px) {
+            width: 19%;
+        }
     }
 `
 
 const Card = styled.div`
-    .ranking-title {
-        text-transform: capitalize;
-        text-align: center;
-    }
-
     box-shadow: 8px 9px 18px -8px rgba(222, 222, 222, 1);
     cursor: pointer;
     border-top: 1px solid white;
@@ -61,22 +76,28 @@ const Card = styled.div`
     transition: 0.3s;
 
     .img-wrapper-lrg {
-        width: 80%;
-        height: 300px;
-        margin: 0 auto;
-        text-align: center;
         img {
             width: 90%;
             height: 90%;
             object-fit: scale-down;
         }
+
+        @media (min-width: 746px) {
+            width: 80%;
+            height: 300px;
+            margin: 0 auto;
+            text-align: center;
+        }
     }
 
     .img-wrapper-lrg2 {
-        width: 100%;
-        height: 230px;
-        margin: 0 auto;
-        text-align: center;
+        @media (min-width: 746px) {
+            width: 100%;
+            height: 230px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
         img {
             width: 90%;
             height: 90%;
@@ -85,21 +106,25 @@ const Card = styled.div`
     }
 
     .img-wrapper-med {
-        width: 100%;
-        height: 180px;
-        margin: 0 auto;
-        text-align: center;
         img {
             width: 90%;
             height: 90%;
             object-fit: scale-down;
         }
+        @media (min-width: 746px) {
+            width: 100%;
+            height: 180px;
+            margin: 0 auto;
+            text-align: center;
+        }
     }
 
     .img-wrapper-sml {
-        width: 100%;
-        height: 180px;
-        margin: 0 auto;
+        @media (min-width: 746px) {
+            width: 100%;
+            height: 180px;
+            margin: 0 auto;
+        }
 
         img {
             width: 90%;
@@ -170,6 +195,13 @@ class Index extends React.Component {
                         }}
                     >
                         <div className="card">
+                            <div
+                                className="close-modal-button"
+                                onClick={this.closeModal}
+                            >
+                                <Close />
+                            </div>
+
                             <div className="logo">
                                 <img src={this.state.logo} />
                             </div>
