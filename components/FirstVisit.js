@@ -241,7 +241,7 @@ const CustomForm = ({ status, message, onValidated }) => {
                         required
                     />
                     <br />
-                    <button onClick={submit}>Submitt</button>
+                    <button onClick={submit}>Submit</button>
                 </div>
             )}
         </form>
