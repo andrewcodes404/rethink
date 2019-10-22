@@ -15,7 +15,7 @@ const Modal = styled.div`
     flex-direction: column;
     align-items: center;
     padding-top: 100px;
-
+    overflow: scroll;
     opacity: 0;
 
     @keyframes fadeMeIn {
@@ -58,11 +58,15 @@ const StyledForm = styled.div`
 
     .poster {
         position: relative;
-        height: 260px;
+        height: 200px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        @media (min-width: 767px) {
+            height: 260px;
+        }
     }
 
     .close-btn {
@@ -94,7 +98,10 @@ const StyledForm = styled.div`
     }
 
     .poster--text {
-        width: 60%;
+        width: 80%;
+        @media (min-width: 767px) {
+            width: 60%;
+        }
     }
 
     .poster--bkg-img {
@@ -113,18 +120,30 @@ const StyledForm = styled.div`
 
     .card {
         background: white;
-        padding: 10px 20px 50px;
+        padding: 10px 5% 20px;
+
+        @media (min-width: 767px) {
+            padding: 10px 20px 50px;
+        }
+        margin-bottom: 50px;
         h3 {
-            text-align: center;
+            text-align: left;
             margin-bottom: 0;
+            @media (min-width: 767px) {
+                text-align: center;
+            }
         }
     }
 
     .formInputs {
         display: flex;
         flex-direction: column;
-        width: 80%;
+        /* width: 95%; */
         margin: 0 auto;
+
+        @media (min-width: 767px) {
+            width: 80%;
+        }
 
         input {
             /* margin: 0px 0 20px; */
@@ -161,16 +180,20 @@ const StyledForm = styled.div`
     }
 `
 
-const url =
-    'https://rethink-event.us20.list-manage.com/subscribe/post?u=689c9c9b54458f75cbd8a723f&amp;id=a9f50f027e'
+const url = 'https://rethink-event.us20.list-manage.com/subscribe/post?u=689c9c9b54458f75cbd8a723f&amp;id=a9f50f027e'
 
 const CustomForm = ({ status, message, onValidated }) => {
     let email
+    let lname
+    let fname
+
     const submit = () =>
         email &&
         email.value.indexOf('@') > -1 &&
         onValidated({
             EMAIL: email.value,
+            FNAME: fname.value,
+            LNAME: lname.value,
         })
 
     const stopReRender = event => {
@@ -178,31 +201,22 @@ const CustomForm = ({ status, message, onValidated }) => {
     }
     return (
         <form onSubmit={stopReRender}>
-            {status === 'sending' && (
-                <div style={{ color: 'blue' }}>sending...</div>
-            )}
-            {status === 'error' && (
-                <div
-                    style={{ color: 'red' }}
-                    dangerouslySetInnerHTML={{ __html: message }}
-                />
-            )}
+            {status === 'sending' && <div style={{ color: 'blue' }}>sending...</div>}
+            {status === 'error' && <div style={{ color: 'red' }} dangerouslySetInnerHTML={{ __html: message }} />}
 
-            {status === 'success' && (
-                <h3 className="success-message"> Thankyou for subscribing</h3>
-            )}
+            {status === 'success' && <h3 className="success-message"> Thankyou for subscribing</h3>}
 
             {status !== 'success' && (
                 <div className="formInputs">
                     <br />
-                    <input
-                        ref={node => (email = node)}
-                        type="email"
-                        placeholder="Your email"
-                        required
-                    />
+                    <input ref={node => (fname = node)} type="text" name="FNAME" placeholder="First Name" />
                     <br />
-                    <button onClick={submit}>Newsletter sign-up</button>
+
+                    <input ref={node => (lname = node)} type="text" name="LNAME" placeholder="Last Name" />
+                    <br />
+                    <input ref={node => (email = node)} type="email" placeholder="Email" required />
+                    <br />
+                    <button onClick={submit}>Submitt</button>
                 </div>
             )}
         </form>
@@ -220,13 +234,13 @@ class FirstVisit extends React.Component {
 
     componentDidMount() {
         let visited = localStorage['alreadyVisitedRethink']
+        // let visited = false
         if (visited) {
+            //do not view Popup
             this.setState({
                 viewPopup: false,
                 fadeModalIn: false,
             })
-
-            //do not view Popup
         } else {
             //this is the first time
             localStorage['alreadyVisitedRethink'] = true
@@ -236,7 +250,7 @@ class FirstVisit extends React.Component {
                     viewPopup: true,
                     fadeModalIn: true,
                 })
-            }, 20000)
+            }, 100)
         }
     }
 
@@ -250,54 +264,35 @@ class FirstVisit extends React.Component {
                 {/* {!this.state.viewPopup && <p>viewPopup is false</p>} */}
 
                 {this.state.viewPopup && (
-                    <Modal
-                        fadeModalIn={this.state.fadeModalIn}
-                        fadeModalOut={this.state.fadeModalOut}
-                    >
+                    <Modal fadeModalIn={this.state.fadeModalIn} fadeModalOut={this.state.fadeModalOut}>
                         <StyledForm>
                             <div className="poster">
-                                <div
-                                    className="close-btn"
-                                    onClick={this.handleCloseModal}
-                                >
+                                <div className="close-btn" onClick={this.handleCloseModal}>
                                     <span>X</span>
                                 </div>
 
                                 <div className="poster--text">
-                                    <img
-                                        src="./static/graphics/logo_and_strap_white.svg"
-                                        alt=""
-                                    />
+                                    <img src="./static/graphics/logo_and_strap_white.svg" alt="" />
                                 </div>
                                 <div className="poster--bkg-img">
-                                    <img
-                                        src="static/photos/building.jpg"
-                                        alt=""
-                                        srcSet=""
-                                    />
+                                    <img src="static/photos/building.jpg" alt="" srcSet="" />
                                 </div>
                             </div>
                             <div className="card">
                                 <h3>
-                                    Newsletter sign-up for priority delegate
-                                    passes, special offers and event updates
+                                    Secure priority access to delegate passes, sustainability success stories and
+                                    partner news
                                 </h3>
 
                                 <MailchimpSubscribe
                                     url={url}
-                                    render={({
-                                        subscribe,
-                                        status,
-                                        message,
-                                    }) => {
+                                    render={({ subscribe, status, message }) => {
                                         // if (status === 'success') {}
                                         return (
                                             <CustomForm
                                                 status={status}
                                                 message={message}
-                                                onValidated={formData =>
-                                                    subscribe(formData)
-                                                }
+                                                onValidated={formData => subscribe(formData)}
                                             />
                                         )
                                     }}
