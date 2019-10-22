@@ -15,7 +15,7 @@ const Modal = styled.div`
     flex-direction: column;
     align-items: center;
     padding-top: 100px;
-
+    overflow: scroll;
     opacity: 0;
 
     @keyframes fadeMeIn {
@@ -58,11 +58,15 @@ const StyledForm = styled.div`
 
     .poster {
         position: relative;
-        height: 260px;
+        height: 200px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        @media (min-width: 767px) {
+            height: 260px;
+        }
     }
 
     .close-btn {
@@ -94,7 +98,10 @@ const StyledForm = styled.div`
     }
 
     .poster--text {
-        width: 60%;
+        width: 80%;
+        @media (min-width: 767px) {
+            width: 60%;
+        }
     }
 
     .poster--bkg-img {
@@ -113,18 +120,30 @@ const StyledForm = styled.div`
 
     .card {
         background: white;
-        padding: 10px 20px 50px;
+        padding: 10px 5% 20px;
+
+        @media (min-width: 767px) {
+            padding: 10px 20px 50px;
+        }
+        margin-bottom: 50px;
         h3 {
-            text-align: center;
+            text-align: left;
             margin-bottom: 0;
+            @media (min-width: 767px) {
+                text-align: center;
+            }
         }
     }
 
     .formInputs {
         display: flex;
         flex-direction: column;
-        width: 80%;
+        /* width: 95%; */
         margin: 0 auto;
+
+        @media (min-width: 767px) {
+            width: 80%;
+        }
 
         input {
             /* margin: 0px 0 20px; */
@@ -222,7 +241,7 @@ const CustomForm = ({ status, message, onValidated }) => {
                         required
                     />
                     <br />
-                    <button onClick={submit}>Newsletter sign-up</button>
+                    <button onClick={submit}>Submitt</button>
                 </div>
             )}
         </form>
@@ -239,8 +258,8 @@ class FirstVisit extends React.Component {
     }
 
     componentDidMount() {
-        let visited = localStorage['alreadyVisitedRethink']
-    
+        // let visited = localStorage['alreadyVisitedRethink']
+        let visited = false
         if (visited) {
             //do not view Popup
             this.setState({
@@ -249,14 +268,14 @@ class FirstVisit extends React.Component {
             })
         } else {
             //this is the first time
-            localStorage['alreadyVisitedRethink'] = true
+            // localStorage['alreadyVisitedRethink'] = true
 
             setTimeout(() => {
                 this.setState({
                     viewPopup: true,
                     fadeModalIn: true,
                 })
-            }, 10000)
+            }, 100)
         }
     }
 
