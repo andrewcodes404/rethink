@@ -216,7 +216,7 @@ const CustomForm = ({ status, message, onValidated }) => {
                     <br />
                     <input ref={node => (email = node)} type="email" placeholder="Email" required />
                     <br />
-                    <button onClick={submit}>Submitt</button>
+                    <button onClick={submit}>Submit</button>
                 </div>
             )}
         </form>
