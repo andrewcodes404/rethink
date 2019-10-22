@@ -258,8 +258,8 @@ class FirstVisit extends React.Component {
     }
 
     componentDidMount() {
-        // let visited = localStorage['alreadyVisitedRethink']
-        let visited = false
+        let visited = localStorage['alreadyVisitedRethink']
+        // let visited = false
         if (visited) {
             //do not view Popup
             this.setState({
@@ -268,7 +268,7 @@ class FirstVisit extends React.Component {
             })
         } else {
             //this is the first time
-            // localStorage['alreadyVisitedRethink'] = true
+            localStorage['alreadyVisitedRethink'] = true
 
             setTimeout(() => {
                 this.setState({
