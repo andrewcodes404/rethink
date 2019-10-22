@@ -1,185 +1,36 @@
 import React from 'react'
 import { Query } from 'react-apollo'
-import { GET_ADV_COMS } from '../../lib/graphqlTags'
-import UpdateAdvComForm from './UpdateAdvComForm'
-import DeleteAdvCom from './DeleteAdvCom'
-
-import { sponsorRankingData } from '../../lib/data'
+import { GET_HOSTSPEAKERS } from '../../lib/graphqlTags'
+import UpdateHostSpeakerForm from './UpdateHostSpeakerForm'
+import DeleteHostSpeaker from './DeleteHostSpeaker'
 
 // material ui
 import Button from '@material-ui/core/Button'
 import ArrowDownward from '@material-ui/icons/ArrowDownward'
-import styled from 'styled-components'
 
-if (sponsorRankingData.length < 4) {
-    sponsorRankingData.unshift({ text: 'All', tag: '' })
-}
-
-const Title = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 60px 0 0;
-
-    h1 {
-        margin-bottom: 10px;
-    }
-
-    .arrow {
-        font-size: 50px;
-        margin-bottom: 10px;
-    }
-`
-
-const Members = styled.div`
-    width: 95%;
-    margin: 20px auto 50px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    @media (min-width: 500px) {
-        max-width: 422px;
-        justify-content: flex-start;
-    }
-
-    @media (min-width: 768px) {
-        max-width: 670px;
-    }
-
-    @media (min-width: 1080px) {
-        max-width: 882px;
-    }
-
-    min-height: 180px;
-`
-const Member = styled.div`
-    width: 48%;
-    max-width: 200px;
-    height: 175px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 0 0 35px;
-
-    cursor: pointer;
-    transition: 0.3s;
-
-    @media (min-width: 500px) {
-        width: 200px;
-        height: 280px;
-        margin: 0 5px 30px;
-    }
-    @media (min-width: 767px) {
-        margin: 0 10px 30px;
-    }
-
-    .headshot {
-        position: relative;
-        height: 130px;
-        width: 100%;
-        margin: 0 auto;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        @media (min-width: 500px) {
-            height: 200px;
-            width: 200px;
-        }
-
-        .index {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 2px 4px 2px 2px;
-            border-bottom-right-radius: 5px;
-            color: white;
-        }
-    }
-
-    .member-name {
-        p {
-            text-align: center;
-            margin-bottom: 10px;
-            line-height: 1;
-            font-size: 16px;
-        }
-    }
-
-    .buttons {
-        /* display: none; */
-        display: flex;
-        opacity: 0;
-        width: 100%;
-        margin: 0 auto;
-        transition: 0.6s;
-        justify-content: space-between;
-
-        .btn {
-            width: 45%;
-            font-size: 14px;
-            padding: 0px;
-            text-transform: lowercase;
-        }
-
-        @media (min-width: 767px) {
-            width: 90%;
-
-            .btn {
-                padding: 2px;
-            }
-        }
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-
-        20% {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
-    &:hover {
-        .buttons {
-            animation: fadeIn 0.8s forwards;
-            display: flex;
-        }
-    }
-`
+import { Title, Members, Member } from './hostSpeakStyle'
 
 class comp_name extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             // showUpdateModal: false,
-            showDeleteAdvCom: false,
+            showDeleteModal: false,
             showRanking: '',
             triggerChange: true,
             showUpdateForm: false,
             triggerUpdateForm: 'vic',
 
-            id: '',
+            headshot: '',
             name: '',
-            ranking: '',
-            index: '',
-            logo: '',
-            description: '',
-            website: '',
-            instagram: '',
+            title: '',
+            company: '',
+            bio: '',
+            linkedIn: '',
+            insta: '',
             facebook: '',
             twitter: '',
-            frontpage: '',
+            website: '',
         }
     }
 
@@ -189,10 +40,10 @@ class comp_name extends React.Component {
         })
     }
 
-    handleDeleteAdvCom = ({ name, id, ranking }) => {
+    handleDeleteHostSpeaker = ({ name, id, ranking }) => {
         this.setState({
             triggerChange: !this.state.triggerChange,
-            showDeleteAdvCom: true,
+            showDeleteModal: true,
             name,
             id,
             ranking,
@@ -208,10 +59,15 @@ class comp_name extends React.Component {
 
                 id: member.id,
                 name: member.name,
-                jobTitle: member.jobTitle,
+                title: member.title,
                 company: member.company,
                 headshot: member.headshot,
-                index: member.index,
+                bio: member.bio,
+                linkedIn: member.linkedIn,
+                insta: member.insta,
+                facebook: member.facebook,
+                twitter: member.twitter,
+                website: member.website,
             })
         } else
             this.setState({
@@ -221,10 +77,15 @@ class comp_name extends React.Component {
 
                 id: member.id,
                 name: member.name,
-                jobTitle: member.jobTitle,
+                title: member.title,
                 company: member.company,
                 headshot: member.headshot,
-                index: member.index,
+                bio: member.bio,
+                linkedIn: member.linkedIn,
+                insta: member.insta,
+                facebook: member.facebook,
+                twitter: member.twitter,
+                website: member.website,
             })
     }
 
@@ -232,42 +93,47 @@ class comp_name extends React.Component {
         return (
             <div>
                 <Title>
-                    <h1 style={{ color: 'black' }}>Edit/Update Current Memeber</h1>
+                    <h1 style={{ color: 'black' }}>Edit/Update Current Host-Speakers</h1>
                     <ArrowDownward className="arrow" />
                 </Title>
 
-                <Query query={GET_ADV_COMS}>
+                <Query query={GET_HOSTSPEAKERS}>
                     {({ data, error, loading }) => {
                         if (loading) return <p>Loading...</p>
                         if (error) return <p>Error: {error.message}</p>
                         if (!data) return <p>No Data</p>
 
-                        const { advComs } = data
+                        const { hostSpeakers } = data
 
                         return (
                             <>
-                                <DeleteAdvCom
+                                <DeleteHostSpeaker
                                     key={this.state.triggerChange}
                                     name={this.state.name}
                                     id={this.state.id}
-                                    ranking={this.state.showRanking}
-                                    showDeleteAdvCom={this.state.showDeleteAdvCom}
+                                    showDeleteModal={this.state.showDeleteModal}
                                 />
-                                <UpdateAdvComForm
+
+                                <UpdateHostSpeakerForm
                                     key={this.state.triggerUpdateForm}
                                     showUpdateForm={this.state.showUpdateForm}
                                     id={this.state.id}
                                     name={this.state.name}
-                                    jobTitle={this.state.jobTitle}
+                                    title={this.state.title}
                                     company={this.state.company}
                                     headshot={this.state.headshot}
-                                    index={this.state.index}
+                                    bio={this.state.bio}
+                                    linkedIn={this.state.linkedIn}
+                                    insta={this.state.insta}
+                                    facebook={this.state.facebook}
+                                    twitter={this.state.twitter}
+                                    website={this.state.website}
                                 />
+
                                 <Members>
-                                    {advComs.map((member, i) => (
+                                    {hostSpeakers.map((member, i) => (
                                         <Member key={i}>
                                             <div className="headshot">
-                                                <span className="index">#{member.index}</span>
                                                 <img src={member.headshot} alt={member.name} />
                                             </div>
 
@@ -294,7 +160,7 @@ class comp_name extends React.Component {
                                                     size="small"
                                                     className="btn"
                                                     onClick={() => {
-                                                        this.handleDeleteAdvCom(member)
+                                                        this.handleDeleteHostSpeaker(member)
                                                     }}
                                                     style={{ color: 'tomato' }}
                                                 >

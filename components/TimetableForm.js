@@ -3,13 +3,7 @@ import PropTypes from 'prop-types'
 import NavSimple from './PageHeadFooter/Nav/NavSimple'
 import styled from 'styled-components'
 import { Query, Mutation, withApollo } from 'react-apollo'
-import {
-    GET_PARTNERS,
-    GET_SPONSORS,
-    CREATE_SESSION,
-    GET_SPONSORS_WHERE_NAME,
-    GET_PARTNERS_WHERE_NAME,
-} from '../lib/graphqlTags'
+import { GET_PARTNERS, GET_SPONSORS, CREATE_SESSION, GET_SPONSORS_WHERE_NAME, GET_PARTNERS_WHERE_NAME } from '../lib/graphqlTags'
 
 // material ui
 import Button from '@material-ui/core/Button'
@@ -313,11 +307,7 @@ class TimetableForm extends React.Component {
                         <p onClick={this.showState}>show me this.state</p>
 
                         <div className="text-content">
-                            <Mutation
-                                mutation={CREATE_SESSION}
-                                variables={this.state}
-                                refetchQueries={[{ query: GET_PARTNERS }]}
-                            >
+                            <Mutation mutation={CREATE_SESSION} variables={this.state} refetchQueries={[{ query: GET_PARTNERS }]}>
                                 {createPartner => (
                                     <Form
                                         id="timetable-form"
@@ -350,53 +340,22 @@ class TimetableForm extends React.Component {
 
                                         <div className="section-theme">
                                             <div className="section-theme--item1">
-                                                <FormControl
-                                                    className="section-theme--select"
-                                                    fullWidth={true}
-                                                >
-                                                    <InputLabel htmlFor="session-theme">
-                                                        Session Theme
-                                                    </InputLabel>
+                                                <FormControl className="section-theme--select" fullWidth={true}>
+                                                    <InputLabel htmlFor="session-theme">Session Theme</InputLabel>
 
                                                     <Select
                                                         value={this.state.theme}
-                                                        onChange={
-                                                            this
-                                                                .handleSelectChange
-                                                        }
+                                                        onChange={this.handleSelectChange}
                                                         inputProps={{
                                                             name: 'theme',
                                                             id: 'session-theme',
                                                         }}
                                                     >
-                                                        <MenuItem
-                                                            value={'sourceMan'}
-                                                        >
-                                                            Sourcing &amp;
-                                                            Manufacturing
-                                                        </MenuItem>
-                                                        <MenuItem
-                                                            value={'wasteMan'}
-                                                        >
-                                                            Waste &amp; Resource
-                                                            Management
-                                                        </MenuItem>
-                                                        <MenuItem
-                                                            value={'peopleCult'}
-                                                        >
-                                                            People &amp; Culture
-                                                        </MenuItem>
-                                                        <MenuItem
-                                                            value={'disMarks'}
-                                                        >
-                                                            Distribution &amp;
-                                                            Changing Markets
-                                                        </MenuItem>
-                                                        <MenuItem
-                                                            value={'break'}
-                                                        >
-                                                            Break
-                                                        </MenuItem>
+                                                        <MenuItem value={'sourceMan'}>Sourcing &amp; Manufacturing</MenuItem>
+                                                        <MenuItem value={'wasteMan'}>Waste &amp; Resource Management</MenuItem>
+                                                        <MenuItem value={'peopleCult'}>People &amp; Culture</MenuItem>
+                                                        <MenuItem value={'disMarks'}>Distribution &amp; Changing Markets</MenuItem>
+                                                        <MenuItem value={'break'}>Break</MenuItem>
                                                     </Select>
                                                 </FormControl>
 
@@ -414,9 +373,7 @@ class TimetableForm extends React.Component {
                                                         inputProps={{
                                                             step: 300, // 5 min
                                                         }}
-                                                        onChange={
-                                                            this.handleChange
-                                                        }
+                                                        onChange={this.handleChange}
                                                     />
 
                                                     <TextField
@@ -432,9 +389,7 @@ class TimetableForm extends React.Component {
                                                         inputProps={{
                                                             step: 300, // 5 min
                                                         }}
-                                                        onChange={
-                                                            this.handleChange
-                                                        }
+                                                        onChange={this.handleChange}
                                                     />
                                                 </div>
                                             </div>
@@ -473,40 +428,19 @@ class TimetableForm extends React.Component {
                                                         Host
                                                     </InputLabel> */}
                                                             <Select
-                                                                value={
-                                                                    this.state
-                                                                        .host
-                                                                }
+                                                                value={this.state.host}
                                                                 displayEmpty
-                                                                onChange={
-                                                                    this
-                                                                        .handleSelectChange
-                                                                }
+                                                                onChange={this.handleSelectChange}
                                                                 inputProps={{
-                                                                    name:
-                                                                        'host',
+                                                                    name: 'host',
                                                                     id: 'host',
                                                                 }}
                                                             >
-                                                                {dataHostsAndSpeakers.map(
-                                                                    (
-                                                                        el,
-                                                                        index
-                                                                    ) => (
-                                                                        <MenuItem
-                                                                            value={
-                                                                                el.name
-                                                                            }
-                                                                            key={
-                                                                                index
-                                                                            }
-                                                                        >
-                                                                            {
-                                                                                el.name
-                                                                            }
-                                                                        </MenuItem>
-                                                                    )
-                                                                )}
+                                                                {dataHostsAndSpeakers.map((el, index) => (
+                                                                    <MenuItem value={el.name} key={index}>
+                                                                        {el.name}
+                                                                    </MenuItem>
+                                                                ))}
                                                             </Select>
                                                         </FormControl>
                                                     </div>
@@ -521,60 +455,28 @@ class TimetableForm extends React.Component {
                                                         </InputLabel> */}
                                                                 <Select
                                                                     multiple
-                                                                    value={
-                                                                        this
-                                                                            .state
-                                                                            .speakers
-                                                                    }
-                                                                    onChange={
-                                                                        this
-                                                                            .handleSelectChange
-                                                                    }
+                                                                    value={this.state.speakers}
+                                                                    onChange={this.handleSelectChange}
                                                                     inputProps={{
-                                                                        name:
-                                                                            'speakers',
-                                                                        id:
-                                                                            'speakers',
+                                                                        name: 'speakers',
+                                                                        id: 'speakers',
                                                                     }}
                                                                 >
-                                                                    {dataHostsAndSpeakers.map(
-                                                                        (
-                                                                            el,
-                                                                            index
-                                                                        ) => (
-                                                                            <MenuItem
-                                                                                value={
-                                                                                    el.name
-                                                                                }
-                                                                                key={
-                                                                                    index
-                                                                                }
-                                                                            >
-                                                                                {
-                                                                                    el.name
-                                                                                }
-                                                                            </MenuItem>
-                                                                        )
-                                                                    )}
+                                                                    {dataHostsAndSpeakers.map((el, index) => (
+                                                                        <MenuItem value={el.name} key={index}>
+                                                                            {el.name}
+                                                                        </MenuItem>
+                                                                    ))}
                                                                 </Select>
                                                             </FormControl>
                                                         </div>
 
                                                         <div className="speakers--list">
-                                                            {this.state.speakers.map(
-                                                                (el, index) => (
-                                                                    <div
-                                                                        className="speaker"
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                    >
-                                                                        <p>
-                                                                            {el}
-                                                                        </p>
-                                                                    </div>
-                                                                )
-                                                            )}
+                                                            {this.state.speakers.map((el, index) => (
+                                                                <div className="speaker" key={index}>
+                                                                    <p>{el}</p>
+                                                                </div>
+                                                            ))}
                                                         </div>
                                                     </div>
 
@@ -586,17 +488,11 @@ class TimetableForm extends React.Component {
                                                         variant="outlined"
                                                         // label="overview"
                                                         id="overview"
-                                                        value={
-                                                            this.state.overview
-                                                        }
-                                                        onChange={
-                                                            this.handleChange
-                                                        }
+                                                        value={this.state.overview}
+                                                        onChange={this.handleChange}
                                                         className="text-area"
                                                     />
-                                                    <h3>
-                                                        Learnings bullet points
-                                                    </h3>
+                                                    <h3>Learnings bullet points</h3>
 
                                                     <TextField
                                                         fullWidth={false}
@@ -606,100 +502,48 @@ class TimetableForm extends React.Component {
                                                         // label="overview"
                                                         margin="normal"
                                                         id="learnings"
-                                                        value={
-                                                            this.state.learnings
-                                                        }
-                                                        onChange={
-                                                            this.handleChange
-                                                        }
+                                                        value={this.state.learnings}
+                                                        onChange={this.handleChange}
                                                         className="text-area"
                                                     />
 
                                                     {/* these are taken from the list of partners */}
 
                                                     <Query query={GET_PARTNERS}>
-                                                        {({
-                                                            data,
-                                                            loading,
-                                                        }) => {
+                                                        {({ data, loading }) => {
                                                             //  stop partners begin mapped before data arrives
-                                                            if (loading)
-                                                                return null
-                                                            const {
-                                                                partners,
-                                                            } = data
+                                                            if (loading) return null
+                                                            const { partners } = data
                                                             return (
                                                                 <div className="partners">
                                                                     <div className="select-wrapper">
-                                                                        <h3>
-                                                                            Supporters
-                                                                        </h3>
+                                                                        <h3>Supporters</h3>
                                                                         <FormControl className="select">
-                                                                            <InputLabel htmlFor="supporters">
-                                                                                Add
-                                                                                Supporters
-                                                                            </InputLabel>
+                                                                            <InputLabel htmlFor="supporters">Add Supporters</InputLabel>
                                                                             <Select
                                                                                 multiple
-                                                                                value={
-                                                                                    this
-                                                                                        .state
-                                                                                        .supportersNames
-                                                                                }
-                                                                                onChange={
-                                                                                    this
-                                                                                        .handleSupportersSelectChange
-                                                                                }
+                                                                                value={this.state.supportersNames}
+                                                                                onChange={this.handleSupportersSelectChange}
                                                                                 inputProps={{
-                                                                                    name:
-                                                                                        'supporters',
-                                                                                    id:
-                                                                                        'supporters',
+                                                                                    name: 'supporters',
+                                                                                    id: 'supporters',
                                                                                 }}
                                                                             >
-                                                                                {partners.map(
-                                                                                    (
-                                                                                        el,
-                                                                                        index
-                                                                                    ) => (
-                                                                                        <MenuItem
-                                                                                            value={
-                                                                                                el.name
-                                                                                            }
-                                                                                            key={
-                                                                                                index
-                                                                                            }
-                                                                                        >
-                                                                                            {
-                                                                                                el.name
-                                                                                            }
-                                                                                        </MenuItem>
-                                                                                    )
-                                                                                )}
+                                                                                {partners.map((el, index) => (
+                                                                                    <MenuItem value={el.name} key={index}>
+                                                                                        {el.name}
+                                                                                    </MenuItem>
+                                                                                ))}
                                                                             </Select>
                                                                         </FormControl>
                                                                     </div>
 
                                                                     <div className="partners--logos logos">
-                                                                        {this.state.supportersLogos.map(
-                                                                            (
-                                                                                el,
-                                                                                index
-                                                                            ) => (
-                                                                                <div
-                                                                                    className="partners--logo logo"
-                                                                                    key={
-                                                                                        index
-                                                                                    }
-                                                                                >
-                                                                                    <img
-                                                                                        src={
-                                                                                            el
-                                                                                        }
-                                                                                    />
-                                                                                </div>
-                                                                            )
-                                                                        )}
+                                                                        {this.state.supportersLogos.map((el, index) => (
+                                                                            <div className="partners--logo logo" key={index}>
+                                                                                <img src={el} />
+                                                                            </div>
+                                                                        ))}
                                                                     </div>
                                                                 </div>
                                                             )
@@ -709,89 +553,40 @@ class TimetableForm extends React.Component {
                                                     {/* these are taken from the list of sponsors */}
 
                                                     <Query query={GET_SPONSORS}>
-                                                        {({
-                                                            data,
-                                                            error,
-                                                            loading,
-                                                        }) => {
+                                                        {({ data, error, loading }) => {
                                                             //  stop sponsors begin mapped before data arrives
-                                                            if (loading)
-                                                                return null
-                                                            const {
-                                                                sponsors,
-                                                            } = data
+                                                            if (loading) return null
+                                                            const { sponsors } = data
                                                             return (
                                                                 <div className="sponsors">
                                                                     <div className="select-wrapper">
-                                                                        <h3>
-                                                                            Sponsors
-                                                                        </h3>
+                                                                        <h3>Sponsors</h3>
                                                                         <FormControl className="select">
-                                                                            <InputLabel htmlFor="sponsors">
-                                                                                Add
-                                                                                Sponsor
-                                                                            </InputLabel>
+                                                                            <InputLabel htmlFor="sponsors">Add Sponsor</InputLabel>
                                                                             <Select
                                                                                 multiple
-                                                                                value={
-                                                                                    this
-                                                                                        .state
-                                                                                        .sponsorsNames
-                                                                                }
-                                                                                onChange={
-                                                                                    this
-                                                                                        .handleSponsorSelectChange
-                                                                                }
+                                                                                value={this.state.sponsorsNames}
+                                                                                onChange={this.handleSponsorSelectChange}
                                                                                 inputProps={{
-                                                                                    name:
-                                                                                        'sponsors',
-                                                                                    id:
-                                                                                        'sponsors',
+                                                                                    name: 'sponsors',
+                                                                                    id: 'sponsors',
                                                                                 }}
                                                                             >
-                                                                                {sponsors.map(
-                                                                                    (
-                                                                                        el,
-                                                                                        index
-                                                                                    ) => (
-                                                                                        <MenuItem
-                                                                                            value={
-                                                                                                el.name
-                                                                                            }
-                                                                                            key={
-                                                                                                index
-                                                                                            }
-                                                                                        >
-                                                                                            {
-                                                                                                el.name
-                                                                                            }
-                                                                                        </MenuItem>
-                                                                                    )
-                                                                                )}
+                                                                                {sponsors.map((el, index) => (
+                                                                                    <MenuItem value={el.name} key={index}>
+                                                                                        {el.name}
+                                                                                    </MenuItem>
+                                                                                ))}
                                                                             </Select>
                                                                         </FormControl>
                                                                     </div>
 
                                                                     <div className="sponsors--logos logos">
-                                                                        {this.state.sponsorsNames.map(
-                                                                            (
-                                                                                el,
-                                                                                index
-                                                                            ) => (
-                                                                                <div
-                                                                                    className="sponsors--logo logo"
-                                                                                    key={
-                                                                                        index
-                                                                                    }
-                                                                                >
-                                                                                    <p>
-                                                                                        {
-                                                                                            el
-                                                                                        }
-                                                                                    </p>
-                                                                                </div>
-                                                                            )
-                                                                        )}
+                                                                        {this.state.sponsorsNames.map((el, index) => (
+                                                                            <div className="sponsors--logo logo" key={index}>
+                                                                                <p>{el}</p>
+                                                                            </div>
+                                                                        ))}
                                                                     </div>
                                                                 </div>
                                                             )
@@ -818,15 +613,7 @@ class TimetableForm extends React.Component {
                                                 close <Close className="icon" />
                                             </Button> */}
 
-                                            <Button
-                                                margin="normal"
-                                                type="submit"
-                                                variant="contained"
-                                                color="default"
-                                                size="large"
-                                                className="submit-btn"
-                                                form="timetable-form"
-                                            >
+                                            <Button margin="normal" type="submit" variant="contained" color="default" size="large" className="submit-btn" form="timetable-form">
                                                 Submit
                                                 <FileCopy className="icon" />
                                             </Button>
