@@ -483,7 +483,7 @@ class Index extends React.Component {
                                         })}
                                     </CardContainer>
 
-                                    {/* <h2
+                                    <h2
                                         data-aos="my-anim"
                                         className="container-title"
                                     >
@@ -508,7 +508,7 @@ class Index extends React.Component {
                                                 </Card>
                                             )
                                         })}
-                                    </CardContainer> */}
+                                    </CardContainer>
 
                                     <h2
                                         data-aos="my-anim"

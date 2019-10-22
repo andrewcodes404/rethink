@@ -166,11 +166,16 @@ const url =
 
 const CustomForm = ({ status, message, onValidated }) => {
     let email
+    let lname
+    let fname
+
     const submit = () =>
         email &&
         email.value.indexOf('@') > -1 &&
         onValidated({
             EMAIL: email.value,
+            FNAME: fname.value,
+            LNAME: lname.value,
         })
 
     const stopReRender = event => {
@@ -196,9 +201,24 @@ const CustomForm = ({ status, message, onValidated }) => {
                 <div className="formInputs">
                     <br />
                     <input
+                        ref={node => (fname = node)}
+                        type="text"
+                        name="FNAME"
+                        placeholder="First Name"
+                    />
+                    <br />
+
+                    <input
+                        ref={node => (lname = node)}
+                        type="text"
+                        name="LNAME"
+                        placeholder="Last Name"
+                    />
+                    <br />
+                    <input
                         ref={node => (email = node)}
                         type="email"
-                        placeholder="Your email"
+                        placeholder="Email"
                         required
                     />
                     <br />
@@ -220,13 +240,13 @@ class FirstVisit extends React.Component {
 
     componentDidMount() {
         let visited = localStorage['alreadyVisitedRethink']
+    
         if (visited) {
+            //do not view Popup
             this.setState({
                 viewPopup: false,
                 fadeModalIn: false,
             })
-
-            //do not view Popup
         } else {
             //this is the first time
             localStorage['alreadyVisitedRethink'] = true
@@ -236,7 +256,7 @@ class FirstVisit extends React.Component {
                     viewPopup: true,
                     fadeModalIn: true,
                 })
-            }, 20000)
+            }, 10000)
         }
     }
 
@@ -279,8 +299,9 @@ class FirstVisit extends React.Component {
                             </div>
                             <div className="card">
                                 <h3>
-                                    Newsletter sign-up for priority delegate
-                                    passes, special offers and event updates
+                                    Secure priority access to delegate passes,
+                                    sustainability success stories and partner
+                                    news
                                 </h3>
 
                                 <MailchimpSubscribe
