@@ -2,7 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Query, withApollo } from 'react-apollo'
-import { GET_SESSIONS, GET_PARTNER } from '../../lib/graphqlTags'
+import {
+    GET_SESSIONS_WHERE_TIME,
+    GET_HOSTSPEAKER_WHERE_ID,
+    GET_SPONSOR_WHERE_ID,
+    GET_PARTNER_WHERE_ID,
+} from '../../lib/graphqlTags'
 
 import NavSimple from '../PageHeadFooter/Nav/NavSimple'
 import { ProgrammeStyled } from './ProgrammeStyle'
@@ -51,7 +56,7 @@ class Index extends React.Component {
                         volutpat.
                     </h3>
 
-                    <Query query={GET_SESSIONS}>
+                    <Query query={GET_SESSIONS_WHERE_TIME}>
                         {({ data, error, loading }) => {
                             if (loading) return <p>Loading...</p>
                             if (error) return <p>Error: {error.message}</p>
@@ -108,12 +113,37 @@ class Index extends React.Component {
                                                         ) === id && 'show-session'}`}
                                                     >
                                                         {host && (
-                                                            <div className="host text-section">
+                                                            <div className="text-section">
                                                                 <p className="sub-title">Host</p>
-                                                                <p>
-                                                                    {host}
-                                                                    {/* {host.name} - {host.title} - {host.org} */}
-                                                                </p>
+
+                                                                <Query
+                                                                    query={GET_HOSTSPEAKER_WHERE_ID}
+                                                                    variables={{ id: host }}
+                                                                >
+                                                                    {({ data, error, loading }) => {
+                                                                        if (loading) return <p>Loading...</p>
+                                                                        if (error) return <p>Error: {error.message}</p>
+                                                                        console.log('data = ', data)
+                                                                        const host = data.hostSpeaker
+
+                                                                        // TODO: send host data to modal pop-up]
+                                                                        return (
+                                                                            <div className="hostSpeaker ">
+                                                                                <span className="bold">
+                                                                                    {host.name}
+                                                                                </span>
+                                                                                <span className="hostSpeaker--hyphen">
+                                                                                    -
+                                                                                </span>
+                                                                                <span>{host.title}</span>
+                                                                                <span className="hostSpeaker--hyphen">
+                                                                                    -
+                                                                                </span>
+                                                                                <span>{host.company}</span>
+                                                                            </div>
+                                                                        )
+                                                                    }}
+                                                                </Query>
                                                             </div>
                                                         )}
 
@@ -121,13 +151,39 @@ class Index extends React.Component {
                                                             <div className="speakers text-section">
                                                                 <p className="sub-title">Speakers</p>
 
-                                                                {/* {speakers.map((el, index) => (
+                                                                {speakers.map((speakerId, index) => (
                                                                     <div key={index} className="speaker">
-                                                                        <p>
-                                                                            {name} - {title} - {org}
-                                                                        </p>
+                                                                        <Query
+                                                                            query={GET_HOSTSPEAKER_WHERE_ID}
+                                                                            variables={{ id: speakerId }}
+                                                                        >
+                                                                            {({ data, error, loading }) => {
+                                                                                if (loading) return <p>Loading...</p>
+                                                                                if (error)
+                                                                                    return <p>Error: {error.message}</p>
+                                                                                console.log('data = ', data)
+                                                                                const speaker = data.hostSpeaker
+
+                                                                                // TODO: send host data to modal pop-up]
+                                                                                return (
+                                                                                    <div className="hostSpeaker ">
+                                                                                        <span className="bold">
+                                                                                            {speaker.name}
+                                                                                        </span>
+                                                                                        <span className="hostSpeaker--hyphen">
+                                                                                            -
+                                                                                        </span>
+                                                                                        <span>{speaker.title}</span>
+                                                                                        <span className="hostSpeaker--hyphen">
+                                                                                            -
+                                                                                        </span>
+                                                                                        <span>{speaker.company}</span>
+                                                                                    </div>
+                                                                                )
+                                                                            }}
+                                                                        </Query>
                                                                     </div>
-                                                                ))} */}
+                                                                ))}
                                                             </div>
                                                         )}
                                                         {overview && (
@@ -153,11 +209,36 @@ class Index extends React.Component {
                                                                         {sponsors.length > 1 && 's'}
                                                                     </p>
                                                                     <div className="logos">
-                                                                        {/* {sponsors.map((el, index) => (
-                                                                            <div className="logo" key={index}>
-                                                                                <img src={el} />
-                                                                            </div>
-                                                                        ))} */}
+                                                                        {sponsors.map((sponsorId, index) => (
+                                                                            <Query
+                                                                                key={index}
+                                                                                query={GET_SPONSOR_WHERE_ID}
+                                                                                variables={{ id: sponsorId }}
+                                                                            >
+                                                                                {({ data, error, loading }) => {
+                                                                                    if (loading)
+                                                                                        return <p>Loading...</p>
+                                                                                    if (error)
+                                                                                        return (
+                                                                                            <p>
+                                                                                                Error: {error.message}
+                                                                                            </p>
+                                                                                        )
+                                                                                    console.log('SPonsor data = ', data)
+                                                                                    const sponsor = data.sponsor
+
+                                                                                    // TODO: send host data to modal pop-up]
+                                                                                    return (
+                                                                                        <div className="logo">
+                                                                                            <img
+                                                                                                src={sponsor.logo}
+                                                                                                alt={sponsor.name}
+                                                                                            />
+                                                                                        </div>
+                                                                                    )
+                                                                                }}
+                                                                            </Query>
+                                                                        ))}
                                                                     </div>
                                                                 </div>
                                                             )}
@@ -169,10 +250,35 @@ class Index extends React.Component {
                                                                         {supporters.length > 1 && 's'}
                                                                     </p>
                                                                     <div className="logos">
-                                                                        {supporters.map((el, index) => (
-                                                                            <div className="logo" key={index}>
-                                                                                <img src={el} />
-                                                                            </div>
+                                                                        {supporters.map((partnerId, index) => (
+                                                                            <Query
+                                                                                key={index}
+                                                                                query={GET_PARTNER_WHERE_ID}
+                                                                                variables={{ id: partnerId }}
+                                                                            >
+                                                                                {({ data, error, loading }) => {
+                                                                                    if (loading)
+                                                                                        return <p>Loading...</p>
+                                                                                    if (error)
+                                                                                        return (
+                                                                                            <p>
+                                                                                                Error: {error.message}
+                                                                                            </p>
+                                                                                        )
+
+                                                                                    const partner = data.partner
+
+                                                                                    // TODO: send host data to modal pop-up]
+                                                                                    return (
+                                                                                        <div className="logo">
+                                                                                            <img
+                                                                                                src={partner.logo}
+                                                                                                alt={partner.name}
+                                                                                            />
+                                                                                        </div>
+                                                                                    )
+                                                                                }}
+                                                                            </Query>
                                                                         ))}
                                                                     </div>
                                                                 </div>

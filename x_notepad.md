@@ -1,7 +1,15 @@
 user chris.b@rethink-event.com  pw zaha
 
-## CREATE SESSION 
+# TO DO
 
-The Speakers select works and looks goog 👏
-Copy this and do the same for Supporters and sponsors
-Maybe updat Host to follow suite
+*on the programme page*
+
+PageProgramme --> index.js
+
+order Sessions by time ✅
+query to get host data ✅
+query to get speakers data
+query to get sponsors data
+query to get supporters data
+
+send data to pop modals

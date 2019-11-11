@@ -39,6 +39,9 @@ export const Form = styled.form`
         /* border: 1px solid #000; */
     }
 
+    .chip {
+        margin-right: 3px;
+    }
     /* .input-label {
         label {
             font-size: 30px;

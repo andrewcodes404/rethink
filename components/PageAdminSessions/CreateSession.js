@@ -33,8 +33,8 @@ class CreateSession extends React.Component {
         this.state = {
             showSuccess: false,
             fadeSuccess: false,
-            title: 'dud',
-            theme: 'wasteMan',
+            title: '',
+            theme: '',
             start: '10:00',
             end: '11:00',
             host: '',
@@ -67,7 +67,6 @@ class CreateSession extends React.Component {
             learnings: '',
             supportersNames: [],
             supporters: [],
-            supportersLogos: [],
             sponsorsNames: [],
             sponsors: [],
         })
@@ -157,14 +156,9 @@ class CreateSession extends React.Component {
         this.state.sponsorsNames.map(el => {
             this.useNametoGetId(GET_SPONSORS_WHERE_NAME, el).then(value => {
                 const id = value.data.sponsors[0].id
-                this.setState(
-                    {
-                        sponsors: [...this.state.sponsors, id],
-                    },
-                    () => {
-                        console.log('this.state.sponsors = ', this.state.sponsors)
-                    }
-                )
+                this.setState({
+                    sponsors: [...this.state.sponsors, id],
+                })
             })
         })
     }
@@ -183,24 +177,17 @@ class CreateSession extends React.Component {
                 )}
 
                 <Mutation mutation={CREATE_SESSION} variables={this.state} refetchQueries={[{ query: GET_PARTNERS }]}>
-                    {createPartner => (
+                    {createSession => (
                         <Form
                             id="timetable-form"
                             onSubmit={async e => {
+                                console.log('submitted')
+
                                 e.preventDefault()
-
-                                // this.getSpeakerIds()
-                                // this.getSupportersIds()
-                                // this.getSponsorsIds()
-                                await createPartner()
-
+                                await createSession()
                                 this.showSuccess()
                             }}
                         >
-                            <h3 onClick={this.getSpeakerIds}>Speakers Fix Ids</h3>
-                            <h3 onClick={this.getSupportersIds}> SupportersFix Ids</h3>
-                            <h3 onClick={this.getSponsorsIds}> SponsorsFix Ids</h3>
-
                             {/* THEME --- THEME --- THEME ---  */}
                             {/* THEME --- THEME --- THEME ---  */}
 
@@ -284,7 +271,7 @@ class CreateSession extends React.Component {
                                 (this.state.theme !== 'break' && (
                                     <div>
                                         <FormControl className="select">
-                                            <InputLabel class="input-label" htmlFor="host">
+                                            <InputLabel className="input-label" htmlFor="host">
                                                 HOST
                                             </InputLabel>
 
@@ -321,7 +308,7 @@ class CreateSession extends React.Component {
 
                                                 return (
                                                     <FormControl className="select">
-                                                        <InputLabel class="input-label" htmlFor="speakers">
+                                                        <InputLabel className="input-label" htmlFor="speakers">
                                                             SPEAKERS
                                                         </InputLabel>
 
@@ -340,7 +327,7 @@ class CreateSession extends React.Component {
                                                                         <Chip
                                                                             key={value.name}
                                                                             label={value.name}
-                                                                            // className={classes.chip}
+                                                                            className="chip"
                                                                         />
                                                                     ))}
                                                                 </div>
@@ -391,28 +378,40 @@ class CreateSession extends React.Component {
                                                 if (loading) return null
                                                 const { partners } = data
                                                 return (
-                                                    <div className="partners">
-                                                        <div className="select-wrapper">
-                                                            <FormControl className="select">
-                                                                <InputLabel htmlFor="supporters">SUPPORTERS</InputLabel>
-                                                                <Select
-                                                                    multiple
-                                                                    value={this.state.supportersNames}
-                                                                    onChange={this.handleSupportersSelectChange}
-                                                                    inputProps={{
-                                                                        name: 'supporters',
-                                                                        id: 'supporters',
-                                                                    }}
-                                                                >
-                                                                    {partners.map((el, index) => (
-                                                                        <MenuItem value={el} key={index}>
-                                                                            <ListItemText primary={el.name} />
-                                                                        </MenuItem>
+                                                    <FormControl className="select">
+                                                        <InputLabel className="input-label" htmlFor="supporters">
+                                                            SUPPORTERS
+                                                        </InputLabel>
+
+                                                        <Select
+                                                            multiple
+                                                            // variant="outlined"
+                                                            value={this.state.supportersNames}
+                                                            onChange={this.handleSupportersSelectChange}
+                                                            inputProps={{
+                                                                name: 'supporters',
+                                                                id: 'supporters',
+                                                            }}
+                                                            renderValue={selected => (
+                                                                <div>
+                                                                    {selected.map(value => (
+                                                                        <Chip
+                                                                            key={value.name}
+                                                                            label={value.name}
+                                                                            className="chip"
+                                                                        />
                                                                     ))}
-                                                                </Select>
-                                                            </FormControl>
-                                                        </div>
-                                                    </div>
+                                                                </div>
+                                                            )}
+                                                        >
+                                                            {partners.map((el, index) => (
+                                                                <MenuItem value={el} key={index}>
+                                                                    <ListItemText primary={el.name} />
+                                                                </MenuItem>
+                                                            ))}
+                                                        </Select>
+                                                        {/* <FormHelperText>Select one or more choices</FormHelperText> */}
+                                                    </FormControl>
                                                 )
                                             }}
                                         </Query>
@@ -425,28 +424,40 @@ class CreateSession extends React.Component {
                                                 if (loading) return null
                                                 const { sponsors } = data
                                                 return (
-                                                    <div className="sponsors">
-                                                        <div className="select-wrapper">
-                                                            <FormControl className="select">
-                                                                <InputLabel htmlFor="sponsors">SPONSORS</InputLabel>
-                                                                <Select
-                                                                    multiple
-                                                                    value={this.state.sponsorsNames}
-                                                                    onChange={this.handleSponsorSelectChange}
-                                                                    inputProps={{
-                                                                        name: 'sponsors',
-                                                                        id: 'sponsors',
-                                                                    }}
-                                                                >
-                                                                    {sponsors.map((el, index) => (
-                                                                        <MenuItem value={el} key={index}>
-                                                                            <ListItemText primary={el.name} />
-                                                                        </MenuItem>
+                                                    <FormControl className="select">
+                                                        <InputLabel className="input-label" htmlFor="sponsors">
+                                                            SPONSORS
+                                                        </InputLabel>
+
+                                                        <Select
+                                                            multiple
+                                                            // variant="outlined"
+                                                            value={this.state.sponsorsNames}
+                                                            onChange={this.handleSponsorSelectChange}
+                                                            inputProps={{
+                                                                name: 'sponsors',
+                                                                id: 'sponsors',
+                                                            }}
+                                                            renderValue={selected => (
+                                                                <div>
+                                                                    {selected.map(value => (
+                                                                        <Chip
+                                                                            key={value.name}
+                                                                            label={value.name}
+                                                                            className="chip"
+                                                                        />
                                                                     ))}
-                                                                </Select>
-                                                            </FormControl>
-                                                        </div>
-                                                    </div>
+                                                                </div>
+                                                            )}
+                                                        >
+                                                            {sponsors.map((el, index) => (
+                                                                <MenuItem value={el} key={index}>
+                                                                    <ListItemText primary={el.name} />
+                                                                </MenuItem>
+                                                            ))}
+                                                        </Select>
+                                                        {/* <FormHelperText>Select one or more choices</FormHelperText> */}
+                                                    </FormControl>
                                                 )
                                             }}
                                         </Query>

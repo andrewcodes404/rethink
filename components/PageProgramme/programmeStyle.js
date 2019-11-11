@@ -94,6 +94,32 @@ export const ProgrammeStyled = styled.div`
         }
     }
 
+    .hostSpeaker {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        span {
+            line-height: 1.6;
+        }
+
+        @media (min-width: 767px) {
+            flex-direction: row;
+            span:not(:last-child) {
+                padding-right: 10px;
+                /* &:after {
+                    content: '   - ';
+                } */
+            }
+        }
+    }
+
+    .hostSpeaker--hyphen {
+        display: none;
+        @media (min-width: 767px) {
+            display: inline;
+        }
+    }
+
     .sponsors-and-supporters {
         @media (min-width: 746px) {
             display: flex;

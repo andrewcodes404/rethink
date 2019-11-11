@@ -31,15 +31,15 @@ class CreateHostSpeakForm extends React.Component {
             showForm: props.showForm,
 
             headshot: '',
-            name: 'string',
-            title: 'string',
-            company: 'string',
-            bio: 'string',
-            linkedIn: 'string',
-            insta: 'string',
-            facebook: 'string',
-            twitter: 'string',
-            website: 'string',
+            name: '',
+            title: '',
+            company: '',
+            bio: '',
+            linkedIn: '',
+            insta: '',
+            facebook: '',
+            twitter: '',
+            website: '',
         }
     }
 
