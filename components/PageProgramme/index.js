@@ -10,7 +10,8 @@ import {
 } from '../../lib/graphqlTags'
 
 import NavSimple from '../PageHeadFooter/Nav/NavSimple'
-import { ProgrammeStyled } from './ProgrammeStyle'
+
+import { ProgrammeStyled } from './programmeStyle'
 
 // import { ttData } from './TimetableData'
 
