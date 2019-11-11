@@ -10,7 +10,7 @@ import {
 } from '../../lib/graphqlTags'
 
 import NavSimple from '../PageHeadFooter/Nav/NavSimple'
-import { ProgrammeStyled } from './ProgrammeStyle'
+import { ProgrammeStyle } from './ProgrammeStyle'
 
 // import { ttData } from './TimetableData'
 
@@ -62,7 +62,7 @@ class Index extends React.Component {
                             if (error) return <p>Error: {error.message}</p>
                             console.log('data = ', data)
                             return (
-                                <ProgrammeStyled>
+                                <ProgrammeStyle>
                                     {data.sessions.map((session, index) => {
                                         const {
                                             id,
@@ -289,7 +289,7 @@ class Index extends React.Component {
                                             </div>
                                         )
                                     })}
-                                </ProgrammeStyled>
+                                </ProgrammeStyle>
                             )
                         }}
                     </Query>

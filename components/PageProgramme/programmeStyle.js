@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ProgrammeStyled = styled.div`
+export const ProgrammeStyle = styled.div`
     .session {
         border-bottom: 1px solid grey;
         h3 {
