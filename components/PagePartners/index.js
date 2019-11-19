@@ -217,7 +217,10 @@ class Index extends React.Component {
                         }}
                     >
                         <div className="card">
+
                             <div className="close-modal-button" onClick={this.closeModal}>
+
+
                                 <Close />
                             </div>
 
@@ -288,11 +291,11 @@ class Index extends React.Component {
                 <div className="text-content-title-wrapper">
                     <h2 data-aos="my-anim">Partners</h2>
                     <div className="text-content">
-                        <h3>ReThink is supported by leading business chambers, industry associations and NGOs.</h3>
+                <h3>ReThink is supported by leading business chambers, industry associations and NGOs.</h3>
                         <p>
                             They are contributing to the conversation, providing speakers and panel moderators as well
                             as advocating and promoting ReThink to their members and the wider sustainability community.
-                        </p>
+      </p>
                         <h3 className="link-green">
                             Want to become a partner?{' '}
                             <a href="https://forms.gle/cvuvpHGz4jcSyUCy8" target="_blank" rel="noopener noreferrer">
