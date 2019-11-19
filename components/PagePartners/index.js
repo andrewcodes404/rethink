@@ -178,22 +178,24 @@ class Index extends React.Component {
             instagram: '',
             facebook: '',
             twitter: '',
+            linkedIn: '',
         }
     }
-    showModal = sponsor => {
+    showModal = partner => {
         this.setState({
             showModal: true,
-            type: sponsor.type,
-            ranking: sponsor.ranking,
-            index: sponsor.index,
-            name: sponsor.name,
-            logo: sponsor.logo,
-            description: sponsor.description,
-            website: sponsor.website,
-            instagram: sponsor.instagram,
-            facebook: sponsor.facebook,
-            twitter: sponsor.twitter,
-            shareBtn: sponsor.shareBtn,
+            type: partner.type,
+            ranking: partner.ranking,
+            index: partner.index,
+            name: partner.name,
+            logo: partner.logo,
+            description: partner.description,
+            website: partner.website,
+            instagram: partner.instagram,
+            facebook: partner.facebook,
+            twitter: partner.twitter,
+            linkedIn: partner.linkedIn,
+            shareBtn: partner.shareBtn,
         })
     }
     closeModal = () => {
@@ -228,6 +230,14 @@ class Index extends React.Component {
                                 <p>{this.state.description}</p>
 
                                 <div className="social-wrapper">
+                                    {this.state.linkedIn && (
+                                        <div className="social-icon">
+                                            <a href={this.state.linkedIn} target="_blank" rel="noopener noreferrer">
+                                                <img src="./static/social/linkedin.png" alt="" srcSet="" />
+                                            </a>
+                                        </div>
+                                    )}
+
                                     {this.state.instagram && (
                                         <div className="social-icon">
                                             <a
@@ -466,3 +476,4 @@ class Index extends React.Component {
 Index.propTypes = {
     loggedIn: PropTypes.bool,
 }
+export default Index

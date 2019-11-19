@@ -76,6 +76,7 @@ class comp_name extends React.Component {
             instagram: '',
             facebook: '',
             twitter: '',
+            linkedIn: '',
             frontpage: false,
         }
     }
@@ -111,6 +112,7 @@ class comp_name extends React.Component {
                 instagram: sponsor.instagram,
                 facebook: sponsor.facebook,
                 twitter: sponsor.twitter,
+                linkedIn: sponsor.linkedIn,
                 frontpage: sponsor.frontpage,
             })
         } else
@@ -128,6 +130,7 @@ class comp_name extends React.Component {
                 instagram: sponsor.instagram,
                 facebook: sponsor.facebook,
                 twitter: sponsor.twitter,
+                linkedIn: sponsor.linkedIn,
                 frontpage: sponsor.frontpage,
             })
     }
@@ -136,9 +139,7 @@ class comp_name extends React.Component {
         return (
             <div>
                 <Title>
-                    <h1 style={{ color: 'black' }}>
-                        Edit/Update Current Sponsors
-                    </h1>
+                    <h1 style={{ color: 'black' }}>Edit/Update Current Sponsors</h1>
                     <ArrowDownward className="arrow" />
                 </Title>
                 <RankingBtns>
@@ -147,8 +148,7 @@ class comp_name extends React.Component {
                             variant="outlined"
                             size="small"
                             key={i}
-                            className={`btn ${this.state.showRanking ===
-                                el.tag && 'green'}`}
+                            className={`btn ${this.state.showRanking === el.tag && 'green'}`}
                             onClick={() => {
                                 this.chooseRanking(el.tag)
                             }}
@@ -166,9 +166,7 @@ class comp_name extends React.Component {
 
                         let sponsors = data.sponsors
                         if (this.state.showRanking) {
-                            sponsors = data.sponsors.filter(
-                                x => x.ranking === this.state.showRanking
-                            )
+                            sponsors = data.sponsors.filter(x => x.ranking === this.state.showRanking)
                         }
 
                         return (
@@ -178,9 +176,7 @@ class comp_name extends React.Component {
                                     name={this.state.name}
                                     id={this.state.id}
                                     ranking={this.state.showRanking}
-                                    showDeleteSponsor={
-                                        this.state.showDeleteSponsor
-                                    }
+                                    showDeleteSponsor={this.state.showDeleteSponsor}
                                 />
                                 <UpdateSponsorForm
                                     key={this.state.triggerUpdateForm}
@@ -200,19 +196,15 @@ class comp_name extends React.Component {
                                     instagram={this.state.instagram}
                                     facebook={this.state.facebook}
                                     twitter={this.state.twitter}
+                                    linkedIn={this.state.linkedIn}
                                     frontpage={this.state.frontpage}
                                 />
                                 <Logos>
                                     {sponsors.map((el, i) => (
                                         <Logo key={i}>
                                             <div className="logo">
-                                                <span className="index">
-                                                    #{el.index}
-                                                </span>
-                                                <img
-                                                    src={el.logo}
-                                                    alt={el.name}
-                                                />
+                                                <span className="index">#{el.index}</span>
+                                                <img src={el.logo} alt={el.name} />
                                             </div>
 
                                             <div className="buttons">
@@ -221,9 +213,7 @@ class comp_name extends React.Component {
                                                     size="small"
                                                     className="btn-event"
                                                     onClick={() => {
-                                                        this.handleUpdateForm(
-                                                            el
-                                                        )
+                                                        this.handleUpdateForm(el)
                                                     }}
                                                     style={{ color: 'green' }}
                                                 >
@@ -236,9 +226,7 @@ class comp_name extends React.Component {
                                                     size="small"
                                                     className="btn-event"
                                                     onClick={() => {
-                                                        this.showDeleteSponsor(
-                                                            el
-                                                        )
+                                                        this.showDeleteSponsor(el)
                                                     }}
                                                     style={{ color: 'tomato' }}
                                                 >

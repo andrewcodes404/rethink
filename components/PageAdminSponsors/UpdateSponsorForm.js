@@ -20,6 +20,7 @@ import Phonelink from '@material-ui/icons/Phonelink'
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked'
 import PhotoLibrary from '@material-ui/icons/PhotoLibrary'
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked'
+import Link from '@material-ui/icons/Link'
 import Close from '@material-ui/icons/Close'
 
 import { Spinner, AlertModal } from '../style/globalComps'
@@ -39,6 +40,7 @@ class UpdateSponsorForm extends React.Component {
             instagram: props.instagram,
             facebook: props.facebook,
             twitter: props.twitter,
+            linkedIn: props.linkedIn,
             frontpage: props.frontpage,
             loading: false,
             sponsorUpdated: false,
@@ -57,6 +59,7 @@ class UpdateSponsorForm extends React.Component {
             instagram: '',
             facebook: '',
             twitter: '',
+            linkedIn: '',
             frontpage: false,
             loading: false,
             sponsorUpdated: true,
@@ -271,6 +274,24 @@ class UpdateSponsorForm extends React.Component {
                                                 ),
                                             }}
                                         />
+
+                                        <TextField
+                                            type="text"
+                                            id="linkedIn"
+                                            label="LinkedIn"
+                                            className="text-field"
+                                            margin="normal"
+                                            variant="outlined"
+                                            value={this.state.linkedIn}
+                                            onChange={this.handleChange}
+                                            InputProps={{
+                                                endAdornment: (
+                                                    <InputAdornment position="start">
+                                                        <Link />
+                                                    </InputAdornment>
+                                                ),
+                                            }}
+                                        />
                                     </div>
 
                                     <div className="form-item-2">
@@ -419,6 +440,7 @@ UpdateSponsorForm.propTypes = {
     instagram: PropTypes.string,
     facebook: PropTypes.string,
     twitter: PropTypes.string,
+    linkedIn: PropTypes.string,
     frontpage: PropTypes.bool,
 }
 

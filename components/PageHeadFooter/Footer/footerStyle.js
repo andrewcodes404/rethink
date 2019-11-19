@@ -49,18 +49,38 @@ export const StyledFooter = styled.div`
     }
 
     .social-icon {
-        width: 70px;
+        width: 50px;
         padding: 10px;
         /* margin: 0 5px; */
         cursor: pointer;
 
-        .social-svg {
-            transition: 0.4s;
-        }
+        transition: 0.4s;
 
         &:hover {
-            .social-svg {
-                fill: yellow;
+            .linkedIn-green_svg__st0,
+            .instagram-green_svg__st0 {
+                stroke: gold;
+            }
+
+            #twitter-green_svg__Layer_1,
+            #facebook-green_svg__Layer_1,
+            #mail-green_svg__Layer_1 {
+                path {
+                    stroke: gold;
+                    border: 1px solid blue;
+                }
+            }
+        }
+    }
+
+    .mail {
+        &:hover {
+            svg {
+                g {
+                    path {
+                        fill: gold;
+                    }
+                }
             }
         }
     }

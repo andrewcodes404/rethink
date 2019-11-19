@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Query, withApollo } from 'react-apollo'
+import { Query } from 'react-apollo'
 import {
     GET_SESSIONS_WHERE_TIME,
     GET_HOSTSPEAKER_WHERE_ID,
@@ -10,6 +10,8 @@ import {
 } from '../../lib/graphqlTags'
 
 import NavSimple from '../PageHeadFooter/Nav/NavSimple'
+
+import ModalHostSpeaker from './ModalHostSpeaker'
 
 import { ProgrammeStyled } from './programmeStyle'
 
@@ -22,6 +24,7 @@ class Index extends React.Component {
         super()
         this.state = {
             showSessions: [],
+            showId: '',
         }
     }
 
@@ -42,10 +45,21 @@ class Index extends React.Component {
         }
     }
 
+    showModalHostSpeaker = host => {
+        this.setState({
+            showId: host.id,
+        })
+    }
+
+    closeModal = () => {
+        this.setState({ showId: '' })
+    }
+
     render() {
         return (
             <div>
                 <div className="height-for-nav" />
+
                 <NavSimple loggedIn={this.props.loggedIn} />
 
                 <div className="text-content-title-wrapper">
@@ -61,7 +75,7 @@ class Index extends React.Component {
                         {({ data, error, loading }) => {
                             if (loading) return <p>Loading...</p>
                             if (error) return <p>Error: {error.message}</p>
-                            console.log('data = ', data)
+                            // console.log('session data = ', data)
                             return (
                                 <ProgrammeStyled>
                                     {data.sessions.map((session, index) => {
@@ -124,23 +138,37 @@ class Index extends React.Component {
                                                                     {({ data, error, loading }) => {
                                                                         if (loading) return <p>Loading...</p>
                                                                         if (error) return <p>Error: {error.message}</p>
-                                                                        console.log('data = ', data)
+
                                                                         const host = data.hostSpeaker
 
                                                                         // TODO: send host data to modal pop-up]
                                                                         return (
-                                                                            <div className="hostSpeaker ">
-                                                                                <span className="bold">
-                                                                                    {host.name}
-                                                                                </span>
-                                                                                <span className="hostSpeaker--hyphen">
-                                                                                    -
-                                                                                </span>
-                                                                                <span>{host.title}</span>
-                                                                                <span className="hostSpeaker--hyphen">
-                                                                                    -
-                                                                                </span>
-                                                                                <span>{host.company}</span>
+                                                                            <div>
+                                                                                <div
+                                                                                    className="hostSpeaker"
+                                                                                    onClick={() => {
+                                                                                        this.showModalHostSpeaker(host)
+                                                                                    }}
+                                                                                >
+                                                                                    <span className="bold">
+                                                                                        {host.name}
+                                                                                    </span>
+                                                                                    <span className="hostSpeaker--hyphen">
+                                                                                        -
+                                                                                    </span>
+                                                                                    <span>{host.title}</span>
+                                                                                    <span className="hostSpeaker--hyphen">
+                                                                                        -
+                                                                                    </span>
+                                                                                    <span>{host.company}</span>
+                                                                                </div>
+
+                                                                                {this.state.showId == host.id && (
+                                                                                    <ModalHostSpeaker
+                                                                                        host={host}
+                                                                                        closeModal={this.closeModal}
+                                                                                    />
+                                                                                )}
                                                                             </div>
                                                                         )
                                                                     }}
@@ -162,7 +190,7 @@ class Index extends React.Component {
                                                                                 if (loading) return <p>Loading...</p>
                                                                                 if (error)
                                                                                     return <p>Error: {error.message}</p>
-                                                                                console.log('data = ', data)
+                                                                                // console.log('data = ', data)
                                                                                 const speaker = data.hostSpeaker
 
                                                                                 // TODO: send host data to modal pop-up]
@@ -225,7 +253,7 @@ class Index extends React.Component {
                                                                                                 Error: {error.message}
                                                                                             </p>
                                                                                         )
-                                                                                    console.log('SPonsor data = ', data)
+                                                                                    // console.log('SPponsor data = ', data)
                                                                                     const sponsor = data.sponsor
 
                                                                                     // TODO: send host data to modal pop-up]

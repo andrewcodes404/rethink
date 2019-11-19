@@ -8,8 +8,10 @@ PageProgramme --> index.js
 
 order Sessions by time ✅
 query to get host data ✅
-query to get speakers data
-query to get sponsors data
-query to get supporters data
+query to get speakers data ✅
+query to get sponsors data ✅
+query to get supporters data ✅
 
-send data to pop modals
+send data to pop modals 
+
+remove border-bottom from last session item

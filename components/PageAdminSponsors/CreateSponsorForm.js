@@ -19,6 +19,7 @@ import Phonelink from '@material-ui/icons/Phonelink'
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked'
 import PhotoLibrary from '@material-ui/icons/PhotoLibrary'
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked'
+import Link from '@material-ui/icons/Link'
 import Close from '@material-ui/icons/Close'
 
 // style
@@ -38,6 +39,7 @@ class CreateSponsorForm extends React.Component {
             instagram: '',
             facebook: '',
             twitter: '',
+            linkedIn: '',
             frontpage: false,
             loading: false,
             sponsorAdded: false,
@@ -56,6 +58,7 @@ class CreateSponsorForm extends React.Component {
             instagram: '',
             facebook: '',
             twitter: '',
+            linkedIn: '',
             frontpage: false,
             loading: false,
             sponsorAdded: true,
@@ -268,6 +271,24 @@ class CreateSponsorForm extends React.Component {
                                                 endAdornment: (
                                                     <InputAdornment position="start">
                                                         <Phonelink />
+                                                    </InputAdornment>
+                                                ),
+                                            }}
+                                        />
+
+                                        <TextField
+                                            type="text"
+                                            id="linkedIn"
+                                            label="LinkedIn"
+                                            className="text-field"
+                                            margin="normal"
+                                            variant="outlined"
+                                            value={this.state.linkedIn}
+                                            onChange={this.handleChange}
+                                            InputProps={{
+                                                endAdornment: (
+                                                    <InputAdornment position="start">
+                                                        <Link />
                                                     </InputAdornment>
                                                 ),
                                             }}
