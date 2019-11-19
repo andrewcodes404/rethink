@@ -232,9 +232,7 @@ class comp_name extends React.Component {
         return (
             <div>
                 <Title>
-                    <h1 style={{ color: 'black' }}>
-                        Edit/Update Current Memeber
-                    </h1>
+                    <h1 style={{ color: 'black' }}>Edit/Update Current Memeber</h1>
                     <ArrowDownward className="arrow" />
                 </Title>
 
@@ -253,9 +251,7 @@ class comp_name extends React.Component {
                                     name={this.state.name}
                                     id={this.state.id}
                                     ranking={this.state.showRanking}
-                                    showDeleteAdvCom={
-                                        this.state.showDeleteAdvCom
-                                    }
+                                    showDeleteAdvCom={this.state.showDeleteAdvCom}
                                 />
                                 <UpdateAdvComForm
                                     key={this.state.triggerUpdateForm}
@@ -271,13 +267,8 @@ class comp_name extends React.Component {
                                     {advComs.map((member, i) => (
                                         <Member key={i}>
                                             <div className="headshot">
-                                                <span className="index">
-                                                    #{member.index}
-                                                </span>
-                                                <img
-                                                    src={member.headshot}
-                                                    alt={member.name}
-                                                />
+                                                <span className="index">#{member.index}</span>
+                                                <img src={member.headshot} alt={member.name} />
                                             </div>
 
                                             <div className="member-name">
@@ -290,9 +281,7 @@ class comp_name extends React.Component {
                                                     size="small"
                                                     className="btn"
                                                     onClick={() => {
-                                                        this.handleUpdateForm(
-                                                            member
-                                                        )
+                                                        this.handleUpdateForm(member)
                                                     }}
                                                     style={{ color: 'green' }}
                                                 >
@@ -305,9 +294,7 @@ class comp_name extends React.Component {
                                                     size="small"
                                                     className="btn"
                                                     onClick={() => {
-                                                        this.handleDeleteAdvCom(
-                                                            member
-                                                        )
+                                                        this.handleDeleteAdvCom(member)
                                                     }}
                                                     style={{ color: 'tomato' }}
                                                 >

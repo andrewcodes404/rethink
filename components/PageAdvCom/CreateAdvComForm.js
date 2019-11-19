@@ -5,7 +5,6 @@ import { CREATE_ADVCOM, GET_ADV_COMS } from '../../lib/graphqlTags'
 
 // material ui
 import Button from '@material-ui/core/Button'
-import styled from 'styled-components'
 import TextField from '@material-ui/core/TextField'
 
 // icons
@@ -85,14 +84,11 @@ class CreateAdvComForm extends React.Component {
         })
 
         //hit up the cloudinary API
-        const res = await fetch(
-            'https://api.cloudinary.com/v1_1/dcqi9fn2y/image/upload',
-            {
-                //this is a config arg so we want POST our data we just created
-                method: 'POST',
-                body: data,
-            }
-        )
+        const res = await fetch('https://api.cloudinary.com/v1_1/dcqi9fn2y/image/upload', {
+            //this is a config arg so we want POST our data we just created
+            method: 'POST',
+            body: data,
+        })
         //parse the returning file to json
         const file = await res.json()
         // Add to state
@@ -107,19 +103,13 @@ class CreateAdvComForm extends React.Component {
             <>
                 {this.state.showForm && (
                     <FormModal>
-                        <div
-                            className="content-wrapper"
-                            style={{ marginTop: '40px' }}
-                        >
+                        <div className="content-wrapper" style={{ marginTop: '40px' }}>
                             {this.state.loading && (
                                 <Modal>
                                     <h1>Uploading Image</h1>
                                     <br />
                                     <Spinner>
-                                        <img
-                                            src="./static/icons/topics-white.svg"
-                                            alt=""
-                                        ></img>
+                                        <img src="./static/icons/topics-white.svg" alt=""></img>
                                     </Spinner>
                                 </Modal>
                             )}
@@ -144,11 +134,7 @@ class CreateAdvComForm extends React.Component {
                                 </Modal>
                             )}
 
-                            <Mutation
-                                mutation={CREATE_ADVCOM}
-                                variables={this.state}
-                                refetchQueries={[{ query: GET_ADV_COMS }]}
-                            >
+                            <Mutation mutation={CREATE_ADVCOM} variables={this.state} refetchQueries={[{ query: GET_ADV_COMS }]}>
                                 {(createAdvCom, { loading, error }) => (
                                     <AdvComForm
                                         onSubmit={async e => {
@@ -232,24 +218,13 @@ class CreateAdvComForm extends React.Component {
                                                     </Button>
                                                 </label>
 
-                                                {this.state.headshot.length <
-                                                    1 && (
+                                                {this.state.headshot.length < 1 && (
                                                     <div className="fake-headshot">
                                                         <PhotoLibrary className="fake-icon" />
                                                     </div>
                                                 )}
 
-                                                {this.state.headshot.length >
-                                                    1 && (
-                                                    <img
-                                                        className="thumb"
-                                                        width="200"
-                                                        src={
-                                                            this.state.headshot
-                                                        }
-                                                        alt="Upload Preview"
-                                                    />
-                                                )}
+                                                {this.state.headshot.length > 1 && <img className="thumb" width="200" src={this.state.headshot} alt="Upload Preview" />}
                                             </div>
 
                                             <div className="submit-wrapper">
@@ -264,18 +239,10 @@ class CreateAdvComForm extends React.Component {
                                                         this.clearModal()
                                                     }}
                                                 >
-                                                    close{' '}
-                                                    <Close className="icon" />
+                                                    close <Close className="icon" />
                                                 </Button>
 
-                                                <Button
-                                                    margin="normal"
-                                                    type="submit"
-                                                    variant="contained"
-                                                    color="default"
-                                                    size="small"
-                                                    className="submit-btn"
-                                                >
+                                                <Button margin="normal" type="submit" variant="contained" color="default" size="small" className="submit-btn">
                                                     Submit
                                                     <FileCopy className="icon" />
                                                 </Button>

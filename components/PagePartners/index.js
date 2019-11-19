@@ -178,22 +178,24 @@ class Index extends React.Component {
             instagram: '',
             facebook: '',
             twitter: '',
+            linkedIn: '',
         }
     }
-    showModal = sponsor => {
+    showModal = partner => {
         this.setState({
             showModal: true,
-            type: sponsor.type,
-            ranking: sponsor.ranking,
-            index: sponsor.index,
-            name: sponsor.name,
-            logo: sponsor.logo,
-            description: sponsor.description,
-            website: sponsor.website,
-            instagram: sponsor.instagram,
-            facebook: sponsor.facebook,
-            twitter: sponsor.twitter,
-            shareBtn: sponsor.shareBtn,
+            type: partner.type,
+            ranking: partner.ranking,
+            index: partner.index,
+            name: partner.name,
+            logo: partner.logo,
+            description: partner.description,
+            website: partner.website,
+            instagram: partner.instagram,
+            facebook: partner.facebook,
+            twitter: partner.twitter,
+            linkedIn: partner.linkedIn,
+            shareBtn: partner.shareBtn,
         })
     }
     closeModal = () => {
@@ -215,10 +217,10 @@ class Index extends React.Component {
                         }}
                     >
                         <div className="card">
-                            <div
-                                className="close-modal-button"
-                                onClick={this.closeModal}
-                            >
+
+                            <div className="close-modal-button" onClick={this.closeModal}>
+
+
                                 <Close />
                             </div>
 
@@ -231,6 +233,14 @@ class Index extends React.Component {
                                 <p>{this.state.description}</p>
 
                                 <div className="social-wrapper">
+                                    {this.state.linkedIn && (
+                                        <div className="social-icon">
+                                            <a href={this.state.linkedIn} target="_blank" rel="noopener noreferrer">
+                                                <img src="./static/social/linkedin.png" alt="" srcSet="" />
+                                            </a>
+                                        </div>
+                                    )}
+
                                     {this.state.instagram && (
                                         <div className="social-icon">
                                             <a
@@ -238,27 +248,15 @@ class Index extends React.Component {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <img
-                                                    src="./static/social/instagram.png"
-                                                    alt=""
-                                                    srcSet=""
-                                                />
+                                                <img src="./static/social/instagram.png" alt="" srcSet="" />
                                             </a>
                                         </div>
                                     )}
 
                                     {this.state.facebook && (
                                         <div className="social-icon">
-                                            <a
-                                                href={this.state.facebook}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img
-                                                    src="./static/social/facebook.png"
-                                                    alt=""
-                                                    srcSet=""
-                                                />
+                                            <a href={this.state.facebook} target="_blank" rel="noopener noreferrer">
+                                                <img src="./static/social/facebook.png" alt="" srcSet="" />
                                             </a>
                                         </div>
                                     )}
@@ -270,11 +268,7 @@ class Index extends React.Component {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <img
-                                                    src="./static/social/twitter.png"
-                                                    alt=""
-                                                    srcSet=""
-                                                />
+                                                <img src="./static/social/twitter.png" alt="" srcSet="" />
                                             </a>
                                         </div>
                                     )}
@@ -283,11 +277,7 @@ class Index extends React.Component {
 
                                     {this.state.website && (
                                         <div className="website">
-                                            <a
-                                                href={this.state.website}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
+                                            <a href={this.state.website} target="_blank" rel="noopener noreferrer">
                                                 <p>{this.state.website}</p>
                                             </a>
                                         </div>
@@ -301,23 +291,14 @@ class Index extends React.Component {
                 <div className="text-content-title-wrapper">
                     <h2 data-aos="my-anim">Partners</h2>
                     <div className="text-content">
-                        <h3>
-                            ReThink is supported by leading business chambers,
-                            industry associations and NGOs.
-                        </h3>
+                <h3>ReThink is supported by leading business chambers, industry associations and NGOs.</h3>
                         <p>
-                            They are contributing to the conversation, providing
-                            speakers and panel moderators as well as advocating
-                            and promoting ReThink to their members and the wider
-                            sustainability community.
-                        </p>
+                            They are contributing to the conversation, providing speakers and panel moderators as well
+                            as advocating and promoting ReThink to their members and the wider sustainability community.
+      </p>
                         <h3 className="link-green">
                             Want to become a partner?{' '}
-                            <a
-                                href="https://forms.gle/cvuvpHGz4jcSyUCy8"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
+                            <a href="https://forms.gle/cvuvpHGz4jcSyUCy8" target="_blank" rel="noopener noreferrer">
                                 click here
                             </a>
                         </h3>
@@ -343,14 +324,8 @@ class Index extends React.Component {
 
                             // add ranking display text to single largeCard partners
 
-                            const addRankingTitle = (
-                                objName,
-                                rankingValue,
-                                rankingDisplayText
-                            ) => {
-                                objName = partners.find(
-                                    x => x.ranking === rankingValue
-                                )
+                            const addRankingTitle = (objName, rankingValue, rankingDisplayText) => {
+                                objName = partners.find(x => x.ranking === rankingValue)
                                 if (objName) {
                                     objName.rankingTitle = rankingDisplayText
                                     largeCards.push(objName)
@@ -358,41 +333,21 @@ class Index extends React.Component {
                             }
 
                             if (partners) {
-                                addRankingTitle(
-                                    strategic,
-                                    'strategic',
-                                    'Strategic'
-                                )
-                                addRankingTitle(
-                                    hostVenue,
-                                    'hostVenue',
-                                    'Host Venue'
-                                )
+                                addRankingTitle(strategic, 'strategic', 'Strategic')
+                                addRankingTitle(hostVenue, 'hostVenue', 'Host Venue')
 
-                                addRankingTitle(
-                                    innovation,
-                                    'innovation',
-                                    'Innovation'
-                                )
+                                addRankingTitle(innovation, 'innovation', 'Innovation')
 
                                 addRankingTitle(esg, 'esg', 'ESG')
 
                                 // Filter partners by ranking type
-                                charity = partners.filter(
-                                    x => x.ranking === 'charity'
-                                )
+                                charity = partners.filter(x => x.ranking === 'charity')
 
-                                eventConf = partners.filter(
-                                    x => x.ranking === 'eventConf'
-                                )
+                                eventConf = partners.filter(x => x.ranking === 'eventConf')
 
-                                mediaPartners = partners.filter(
-                                    x => x.ranking === 'mediaPartners'
-                                )
+                                mediaPartners = partners.filter(x => x.ranking === 'mediaPartners')
 
-                                community = partners.filter(
-                                    x => x.ranking === 'community'
-                                )
+                                community = partners.filter(x => x.ranking === 'community')
                             }
 
                             return (
@@ -400,28 +355,18 @@ class Index extends React.Component {
                                     <CardContainer>
                                         {largeCards.map((partner, i) => {
                                             return (
-                                                <div
-                                                    className="card-with-title"
-                                                    key={i}
-                                                >
+                                                <div className="card-with-title" key={i}>
                                                     <h2 data-aos="my-anim">
-                                                        {partner.rankingTitle &&
-                                                            partner.rankingTitle}
+                                                        {partner.rankingTitle && partner.rankingTitle}
                                                     </h2>
                                                     <Card
                                                         onClick={() => {
-                                                            this.showModal(
-                                                                partner
-                                                            )
+                                                            this.showModal(partner)
                                                         }}
                                                         className="card-with-title--card"
                                                     >
                                                         <div className="img-wrapper-lrg">
-                                                            <img
-                                                                src={
-                                                                    partner.logo
-                                                                }
-                                                            />
+                                                            <img src={partner.logo} />
                                                         </div>
                                                     </Card>
                                                 </div>
@@ -429,10 +374,7 @@ class Index extends React.Component {
                                         })}
                                     </CardContainer>
 
-                                    <h2
-                                        data-aos="my-anim"
-                                        className="container-title"
-                                    >
+                                    <h2 data-aos="my-anim" className="container-title">
                                         Charity Partners
                                     </h2>
 
@@ -447,19 +389,14 @@ class Index extends React.Component {
                                                     className="large"
                                                 >
                                                     <div className="img-wrapper-lrg2">
-                                                        <img
-                                                            src={partner.logo}
-                                                        />
+                                                        <img src={partner.logo} />
                                                     </div>
                                                 </Card>
                                             )
                                         })}
                                     </CardContainer>
 
-                                    <h2
-                                        data-aos="my-anim"
-                                        className="container-title"
-                                    >
+                                    <h2 data-aos="my-anim" className="container-title">
                                         Event &amp; Conference Partners
                                     </h2>
 
@@ -474,16 +411,14 @@ class Index extends React.Component {
                                                     className="medium"
                                                 >
                                                     <div className="img-wrapper-med">
-                                                        <img
-                                                            src={partner.logo}
-                                                        />
+                                                        <img src={partner.logo} />
                                                     </div>
                                                 </Card>
                                             )
                                         })}
                                     </CardContainer>
 
-                                    <h2
+                                    {/* <h2
                                         data-aos="my-anim"
                                         className="container-title"
                                     >
@@ -508,12 +443,9 @@ class Index extends React.Component {
                                                 </Card>
                                             )
                                         })}
-                                    </CardContainer>
+                                    </CardContainer> */}
 
-                                    <h2
-                                        data-aos="my-anim"
-                                        className="container-title"
-                                    >
+                                    <h2 data-aos="my-anim" className="container-title">
                                         Community Partners
                                     </h2>
 
@@ -528,9 +460,7 @@ class Index extends React.Component {
                                                     className="small"
                                                 >
                                                     <div className="img-wrapper-sml">
-                                                        <img
-                                                            src={partner.logo}
-                                                        />
+                                                        <img src={partner.logo} />
                                                     </div>
                                                 </Card>
                                             )
@@ -549,5 +479,4 @@ class Index extends React.Component {
 Index.propTypes = {
     loggedIn: PropTypes.bool,
 }
-
 export default Index

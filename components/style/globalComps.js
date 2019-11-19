@@ -374,8 +374,7 @@ export const ImageBanner = styled.div`
       /* object-position: center; */
       object-position: ${props => (props.position ? props.position : 'center')};
       height: 100%;
-      filter: ${props =>
-          props.darker ? 'brightness(60%)' : 'brightness(100%)'};
+      filter: ${props => (props.darker ? 'brightness(60%)' : 'brightness(100%)')};
     }
   }
 
@@ -388,8 +387,7 @@ export const ImageBanner = styled.div`
 /*
     .image-banner-bkg-img {
       img {
-        filter: ${props =>
-            props.darker ? 'brightness(100%)' : 'brightness(100%)'};
+        filter: ${props => (props.darker ? 'brightness(100%)' : 'brightness(100%)')};
       }
     } */
   }
@@ -407,8 +405,7 @@ export const BackgroundCoverImage = styled.div`
         object-position: bottom;
         height: 100%;
 
-        filter: ${props =>
-            props.darker ? 'brightness(80%)' : 'brightness(100%)'};
+        filter: ${props => (props.darker ? 'brightness(80%)' : 'brightness(100%)')};
     }
 `
 

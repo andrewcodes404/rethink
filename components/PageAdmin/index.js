@@ -14,14 +14,14 @@ const AdminLinks = styled.div`
     }
 `
 
-const AdminLink = styled.div`
+const AdminLink = styled.a`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 1px solid #000;
 
-    width: 200px;
+    width: 250px;
     padding: 7px;
     margin-bottom: 15px;
     cursor: pointer;
@@ -42,6 +42,17 @@ class PageAdmin extends React.Component {
             <div className="text-content-title-wrapper">
                 <AdminLinks>
                     <h3>Admin Panel</h3>
+
+                    <Link href="/admin-hostSpeakers">
+                        <AdminLink>
+                            <span>Hosts-Speakers</span>
+                        </AdminLink>
+                    </Link>
+                    <Link href="/admin-sessions">
+                        <AdminLink>
+                            <span>Sessions</span>
+                        </AdminLink>
+                    </Link>
                     <Link href="/admin-advCom">
                         <AdminLink>
                             <span>Adv-Com</span>

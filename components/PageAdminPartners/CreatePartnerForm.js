@@ -20,6 +20,7 @@ import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked'
 import PhotoLibrary from '@material-ui/icons/PhotoLibrary'
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked'
 import Close from '@material-ui/icons/Close'
+import Link from '@material-ui/icons/Link'
 import { Spinner, AlertModal } from '../style/globalComps'
 import { FormModal, Form } from '../PageAdminSponsors/sponsorFormStyle'
 
@@ -36,6 +37,7 @@ class CreatePartnerForm extends React.Component {
             instagram: '',
             facebook: '',
             twitter: '',
+            linkedIn: '',
             frontpage: false,
             loading: false,
             partnerAdded: false,
@@ -54,6 +56,7 @@ class CreatePartnerForm extends React.Component {
             instagram: '',
             facebook: '',
             twitter: '',
+            linkedIn: '',
             frontpage: false,
             loading: false,
             partnerAdded: true,
@@ -98,14 +101,11 @@ class CreatePartnerForm extends React.Component {
         })
 
         //hit up the cloudinary API
-        const res = await fetch(
-            'https://api.cloudinary.com/v1_1/dcqi9fn2y/image/upload',
-            {
-                //this is a config arg so we want POST our data we just created
-                method: 'POST',
-                body: data,
-            }
-        )
+        const res = await fetch('https://api.cloudinary.com/v1_1/dcqi9fn2y/image/upload', {
+            //this is a config arg so we want POST our data we just created
+            method: 'POST',
+            body: data,
+        })
         //parse the returning file to json
         const file = await res.json()
         // Add to state
@@ -136,10 +136,7 @@ class CreatePartnerForm extends React.Component {
                                 <h1>Uploading Image</h1>
                                 <br />
                                 <Spinner>
-                                    <img
-                                        src="./static/icons/topics-white.svg"
-                                        alt=""
-                                    ></img>
+                                    <img src="./static/icons/topics-white.svg" alt=""></img>
                                 </Spinner>
                             </AlertModal>
                         )}
@@ -278,6 +275,24 @@ class CreatePartnerForm extends React.Component {
                                                 ),
                                             }}
                                         />
+
+                                        <TextField
+                                            type="text"
+                                            id="linkedIn"
+                                            label="LinkedIn"
+                                            className="text-field"
+                                            margin="normal"
+                                            variant="outlined"
+                                            value={this.state.linkedIn}
+                                            onChange={this.handleChange}
+                                            InputProps={{
+                                                endAdornment: (
+                                                    <InputAdornment position="start">
+                                                        <Link />
+                                                    </InputAdornment>
+                                                ),
+                                            }}
+                                        />
                                     </div>
 
                                     <div className="form-item-2">
@@ -325,41 +340,27 @@ class CreatePartnerForm extends React.Component {
                                             <h5>Ranking</h5>
 
                                             <div className="radio-wrapper">
-                                                {this.radioBtnData.map(
-                                                    (el, i) => {
-                                                        return (
-                                                            <label key={i}>
-                                                                {el.text}
-                                                                <Radio
-                                                                    required
-                                                                    color="default"
-                                                                    checked={
-                                                                        this
-                                                                            .state
-                                                                            .ranking ===
-                                                                        el.tag
-                                                                    }
-                                                                    type="radio"
-                                                                    id={el.tag}
-                                                                    name="ranking"
-                                                                    value={
-                                                                        el.tag
-                                                                    }
-                                                                    onChange={
-                                                                        this
-                                                                            .handleRadioChange
-                                                                    }
-                                                                    icon={
-                                                                        <RadioButtonUncheckedIcon fontSize="small" />
-                                                                    }
-                                                                    checkedIcon={
-                                                                        <RadioButtonCheckedIcon fontSize="small" />
-                                                                    }
-                                                                />
-                                                            </label>
-                                                        )
-                                                    }
-                                                )}
+                                                {this.radioBtnData.map((el, i) => {
+                                                    return (
+                                                        <label key={i}>
+                                                            {el.text}
+                                                            <Radio
+                                                                required
+                                                                color="default"
+                                                                checked={this.state.ranking === el.tag}
+                                                                type="radio"
+                                                                id={el.tag}
+                                                                name="ranking"
+                                                                value={el.tag}
+                                                                onChange={this.handleRadioChange}
+                                                                icon={<RadioButtonUncheckedIcon fontSize="small" />}
+                                                                checkedIcon={
+                                                                    <RadioButtonCheckedIcon fontSize="small" />
+                                                                }
+                                                            />
+                                                        </label>
+                                                    )
+                                                })}
                                             </div>
                                         </div>
                                         <div className="btm-wrapper">
@@ -382,13 +383,8 @@ class CreatePartnerForm extends React.Component {
                                                     name="frontpage"
                                                     id="frontpage"
                                                     color="default"
-                                                    checked={
-                                                        this.state.frontpage
-                                                    }
-                                                    onChange={
-                                                        this
-                                                            .handleCheckboxChange
-                                                    }
+                                                    checked={this.state.frontpage}
+                                                    onChange={this.handleCheckboxChange}
                                                 />
                                             </label>
                                         </div>

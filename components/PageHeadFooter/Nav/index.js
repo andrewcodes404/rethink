@@ -141,7 +141,7 @@ class Nav extends React.Component {
                             offset={-70}
                             onClick={this.handleNavItemClick}
                         >
-                            overview
+                            <span> overview</span>
                         </Link>
 
                         <Link
@@ -164,7 +164,7 @@ class Nav extends React.Component {
                             offset={-70}
                             onClick={this.handleNavItemClick}
                         >
-                            delegates
+                            <span>delegates</span>
                         </Link>
                         <Link
                             activeClass="active-link"
@@ -186,7 +186,7 @@ class Nav extends React.Component {
                             offset={-70}
                             onClick={this.handleNavItemClick}
                         >
-                            partners
+                            <span>partners</span>
                         </Link>
 
                         <Link
@@ -198,7 +198,7 @@ class Nav extends React.Component {
                             offset={-70}
                             onClick={this.handleNavItemClick}
                         >
-                            contact
+                            <span>contact</span>
                         </Link>
                     </div>
                 </nav>

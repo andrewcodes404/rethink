@@ -1,6 +1,11 @@
 import React from 'react'
-import { StyledFooter } from './footerStyle'
+import { StyledFooter, SvgWrapper } from './footerStyle'
 import Link from 'next/link'
+import LinkedIn from '../../../static/icons/linkedIn-green.svg'
+import Facebook from '../../../static/icons/facebook-green.svg'
+import Instagram from '../../../static/icons/instagram-green.svg'
+import Twitter from '../../../static/icons/twitter-green.svg'
+import Mail from '../../../static/icons/mail-green.svg'
 
 const Footer = () => (
     <StyledFooter>
@@ -11,10 +16,30 @@ const Footer = () => (
         </div>
 
         <div className="copyright">
-            <small>
-                Copyright © 2019 rethink-event.com · All rights reserved
-            </small>
+
+            <small>Copyright © 2019 EnviroEvents Hong Kong Limited · All rights reserved.</small>
+
         </div>
+
+        <SvgWrapper>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25.62 20.93">
+                <g id="Layer_2" data-name="Layer 2">
+                    <g id="Layer_1-2" data-name="Layer 1">
+                        <path
+                            style={{
+                                fill: 'none',
+                                stroke: 'red',
+                                strokeLinecap: 'round',
+                                strokeLinejoin: 'round',
+                                strokeWidth: '1.25px',
+                            }}
+                            className="cls-1"
+                            d="M8.3,16.12S4.5,19,1.1,18.62s12.5,5.9,19-3.6a16.66,16.66,0,0,0,2.8-8.5,1.85,1.85,0,0,1,.2-.7L25,3.12l-2.4.7L24.9.62l-2.7,1.2a1.5,1.5,0,0,1-1.3-.1,4.65,4.65,0,0,0-5.7-.1,6,6,0,0,0-2.7,3.9,1.2,1.2,0,0,1-1.5,1,16.15,16.15,0,0,1-7.4-3.4,1.19,1.19,0,0,0-2.1.7c0,1,.4,2.5,2.1,4.5l-2.1-1s-.4,3.2,3.8,5.1l-2.1.4"
+                        />
+                    </g>
+                </g>
+            </svg>
+        </SvgWrapper>
 
         <div className="social-wrapper">
             <div className="privacy">
@@ -25,81 +50,33 @@ const Footer = () => (
                 </small>
             </div>
 
-            <a
-                href="https://twitter.com/ReThink_HK"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <div className="social-icon twitter">
-                    {/* <img src="./static/icons/twitter.svg" alt="twitter" /> */}
-                    <svg
-                        height="50px"
-                        version="1.1"
-                        viewBox="0 0 50 50"
-                        width="50px"
-                    >
-                        <title />
-                        <defs />
-                        <g
-                            fill="none"
-                            fillRule="evenodd"
-                            id="Page-1"
-                            stroke="none"
-                            strokeWidth="1"
-                        >
-                            <g
-                                className="social-svg"
-                                fill="#008000"
-                                id="Twitter"
-                            >
-                                <path
-                                    d="M25,50 C38.8071194,50 50,38.8071194 50,25 C50,11.1928806 38.8071194,0 25,0 C11.1928806,0 0,11.1928806 0,25 C0,38.8071194 11.1928806,50 25,50 Z M25,47 C37.1502651,47 47,37.1502651 47,25 C47,12.8497349 37.1502651,3 25,3 C12.8497349,3 3,12.8497349 3,25 C3,37.1502651 12.8497349,47 25,47 Z M24.6822554,20.5542975 L24.729944,21.3761011 L23.9351333,21.2754721 C21.0420225,20.8897275 18.5145246,19.5815504 16.3685358,17.3844837 L15.3193857,16.2943361 L15.0491501,17.0993681 C14.4768864,18.8939188 14.8424993,20.7890985 16.0347153,22.0637326 C16.6705638,22.7681357 16.5274979,22.8687647 15.4306592,22.4494772 C15.0491501,22.3153051 14.7153296,22.2146761 14.6835371,22.2649907 C14.5722637,22.3823912 14.9537728,23.9085978 15.2558008,24.5123719 C15.6691024,25.350947 16.5116017,26.1727505 17.433582,26.6591241 L18.2124965,27.0448686 L17.2905161,27.0616401 C16.4003282,27.0616401 16.3685358,27.0784116 16.4639131,27.4306131 C16.7818374,28.5207608 18.0376382,29.6779944 19.436505,30.1811394 L20.4220701,30.533341 L19.5636746,31.070029 C18.2919776,31.8415181 16.7977335,32.2775772 15.3034895,32.3111202 C14.5881599,32.3278916 14,32.3949776 14,32.4452922 C14,32.6130071 15.939338,33.5522113 17.0679692,33.9211843 C20.4538626,35.0113319 24.4756046,34.5417298 27.4958851,32.6800932 C29.6418739,31.3551445 31.7878628,28.7220188 32.7893242,26.1727505 C33.3297954,24.8142589 33.8702667,22.3320767 33.8702667,21.1413 C33.8702667,20.369811 33.9179553,20.269182 34.8081432,19.3467494 C35.3327183,18.8100613 35.8255009,18.2230588 35.9208782,18.0553437 C36.0798403,17.7366852 36.0639442,17.7366852 35.2532373,18.0218007 C33.9020591,18.5249458 33.7113045,18.4578598 34.3789455,17.7031422 C34.8717281,17.1664541 35.459888,16.1937071 35.459888,15.9085915 C35.459888,15.858277 35.2214448,15.9421346 34.9512092,16.093078 C34.6650773,16.2607931 34.0292288,16.5123656 33.5523424,16.6633091 L32.6939469,16.9484246 L31.9150324,16.394965 C31.4858346,16.093078 30.8817786,15.757648 30.5638543,15.657019 C29.7531474,15.422218 28.5132428,15.455761 27.7820169,15.724105 C25.7949903,16.4788226 24.5391894,18.4243168 24.6822554,20.5542975 C24.6822554,20.5542975 24.5391894,18.4243168 24.6822554,20.5542975 Z M24.6822554,20.5542975"
-                                    id="Oval-1"
-                                />
-                            </g>
-                        </g>
-                    </svg>
-                </div>
-            </a>
-            <a
-                href="https://www.instagram.com/rethink_event/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <div className="social-icon insta">
-                    <img src="./static/icons/insta.svg" alt="twitter" />
-                </div>
-            </a>
+            <div className="social-icon">
+                <a href="https://www.linkedin.com/in/enviroeventshk/" target="_blank" rel="noopener noreferrer">
+                    <LinkedIn />
+                </a>
+            </div>
 
-            <a
-                href="mailto:hello@rethink-event.com?subject=Hello"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
+            <div className="social-icon">
+                <a href="https://www.facebook.com/rethinkhongkong" target="_blank" rel="noopener noreferrer">
+                    <Facebook />
+                </a>
+            </div>
+
+            <div className="social-icon">
+                <a href="https://www.instagram.com/rethink_event/" target="_blank" rel="noopener noreferrer">
+                    <Instagram />
+                </a>
+            </div>
+
+            <div className="social-icon">
+                <a href="https://twitter.com/ReThink_HK" target="_blank" rel="noopener noreferrer">
+                    <Twitter />
+                </a>
+            </div>
+
+            <a href="mailto:hello@rethink-event.com?subject=Hello" target="_blank" rel="noopener noreferrer">
                 <div className="social-icon mail">
-                    <svg
-                        height="50px"
-                        version="1.1"
-                        viewBox="0 0 50 50"
-                        width="50px"
-                    >
-                        <title />
-                        <defs />
-                        <g
-                            fill="none"
-                            fillRule="evenodd"
-                            id="Page-1"
-                            stroke="none"
-                            strokeWidth="1"
-                        >
-                            <g className="social-svg" fill="#008000" id="Mail">
-                                <path
-                                    d="M25,0 C11.1928806,0 0,11.1928806 0,25 C0,38.8071194 11.1928806,50 25,50 C38.8071194,50 50,38.8071194 50,25 C50,11.1928806 38.8071194,0 25,0 Z M25,3 C12.8497349,3 3,12.8497349 3,25 C3,37.1502651 12.8497349,47 25,47 C37.1502651,47 47,37.1502651 47,25 C47,12.8497349 37.1502651,3 25,3 Z M37,31.9646738 L37,17 L28.262875,25.4642914 L37,31.9646738 Z M13,31.9646738 L21.7369375,25.4633812 L13,17 L13,31.9646738 Z M22.9140156,26.604743 L13,33 L37,33 L27.08575,26.604743 L25,28.625083 L22.9140156,26.604743 Z M13.72,17 L25,26.0581312 L36.28,17 L13.72,17 Z M13.72,17"
-                                    id="Oval-1"
-                                />
-                            </g>
-                        </g>
-                    </svg>
+                    <Mail />
                 </div>
             </a>
         </div>

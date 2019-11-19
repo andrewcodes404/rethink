@@ -163,6 +163,7 @@ class PageSponsors extends React.Component {
             instagram: '',
             facebook: '',
             twitter: '',
+            linkedIn: '',
         }
     }
 
@@ -178,6 +179,7 @@ class PageSponsors extends React.Component {
             instagram,
             facebook,
             twitter,
+            linkedIn,
             shareBtn,
         } = sponsor
         this.setState({
@@ -192,6 +194,7 @@ class PageSponsors extends React.Component {
             instagram,
             facebook,
             twitter,
+            linkedIn,
             shareBtn,
         })
     }
@@ -228,6 +231,14 @@ class PageSponsors extends React.Component {
                                 <p>{this.state.description}</p>
 
                                 <div className="social-wrapper">
+                                    {this.state.linkedIn && (
+                                        <div className="social-icon">
+                                            <a href={this.state.linkedIn} target="_blank" rel="noopener noreferrer">
+                                                <img src="./static/social/linkedin.png" alt="" srcSet="" />
+                                            </a>
+                                        </div>
+                                    )}
+
                                     {this.state.instagram && (
                                         <div className="social-icon">
                                             <a
@@ -235,27 +246,15 @@ class PageSponsors extends React.Component {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <img
-                                                    src="./static/social/instagram.png"
-                                                    alt=""
-                                                    srcSet=""
-                                                />
+                                                <img src="./static/social/instagram.png" alt="" srcSet="" />
                                             </a>
                                         </div>
                                     )}
 
                                     {this.state.facebook && (
                                         <div className="social-icon">
-                                            <a
-                                                href={this.state.facebook}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img
-                                                    src="./static/social/facebook.png"
-                                                    alt=""
-                                                    srcSet=""
-                                                />
+                                            <a href={this.state.facebook} target="_blank" rel="noopener noreferrer">
+                                                <img src="./static/social/facebook.png" alt="" srcSet="" />
                                             </a>
                                         </div>
                                     )}
@@ -267,22 +266,14 @@ class PageSponsors extends React.Component {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <img
-                                                    src="./static/social/twitter.png"
-                                                    alt=""
-                                                    srcSet=""
-                                                />
+                                                <img src="./static/social/twitter.png" alt="" srcSet="" />
                                             </a>
                                         </div>
                                     )}
                                     <div className="some-height"></div>
                                     {this.state.website && (
                                         <div className="website">
-                                            <a
-                                                href={this.state.website}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
+                                            <a href={this.state.website} target="_blank" rel="noopener noreferrer">
                                                 <p>{this.state.website}</p>
                                             </a>
                                         </div>
@@ -296,19 +287,13 @@ class PageSponsors extends React.Component {
                     <div className="text-content">
                         <h2 data-aos="my-anim">Sponsors</h2>
                         <p>
-                            ReThink's sponsors are steering Hong Kong's
-                            sustainability conversation - demonstrating their
-                            commitment to driving change through thought
-                            leadership, best practice, collaboration and
-                            innovation.
+                            ReThink's sponsors are steering Hong Kong's sustainability conversation - demonstrating
+                            their commitment to driving change through thought leadership, best practice, collaboration
+                            and innovation.
                         </p>
                         <h3 className="link-green">
                             Want to be a ReThink sponsor?{' '}
-                            <a
-                                href="https://forms.gle/cvuvpHGz4jcSyUCy8"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
+                            <a href="https://forms.gle/cvuvpHGz4jcSyUCy8" target="_blank" rel="noopener noreferrer">
                                 click here
                             </a>
                         </h3>

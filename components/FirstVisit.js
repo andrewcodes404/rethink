@@ -180,8 +180,7 @@ const StyledForm = styled.div`
     }
 `
 
-const url =
-    'https://rethink-event.us20.list-manage.com/subscribe/post?u=689c9c9b54458f75cbd8a723f&amp;id=a9f50f027e'
+const url = 'https://rethink-event.us20.list-manage.com/subscribe/post?u=689c9c9b54458f75cbd8a723f&amp;id=a9f50f027e'
 
 const CustomForm = ({ status, message, onValidated }) => {
     let email
@@ -202,23 +201,17 @@ const CustomForm = ({ status, message, onValidated }) => {
     }
     return (
         <form onSubmit={stopReRender}>
-            {status === 'sending' && (
-                <div style={{ color: 'blue' }}>sending...</div>
-            )}
-            {status === 'error' && (
-                <div
-                    style={{ color: 'red' }}
-                    dangerouslySetInnerHTML={{ __html: message }}
-                />
-            )}
+            {status === 'sending' && <div style={{ color: 'blue' }}>sending...</div>}
+            {status === 'error' && <div style={{ color: 'red' }} dangerouslySetInnerHTML={{ __html: message }} />}
 
-            {status === 'success' && (
-                <h3 className="success-message"> Thankyou for subscribing</h3>
-            )}
+            {status === 'success' && <h3 className="success-message"> Thankyou for subscribing</h3>}
 
             {status !== 'success' && (
                 <div className="formInputs">
                     <br />
+
+     
+
                     <input
                         ref={node => (fname = node)}
                         type="text"
@@ -240,6 +233,7 @@ const CustomForm = ({ status, message, onValidated }) => {
                         placeholder="Email"
                         required
                     />
+
                     <br />
                     <button onClick={submit}>Submit</button>
                 </div>
@@ -289,55 +283,36 @@ class FirstVisit extends React.Component {
                 {/* {!this.state.viewPopup && <p>viewPopup is false</p>} */}
 
                 {this.state.viewPopup && (
-                    <Modal
-                        fadeModalIn={this.state.fadeModalIn}
-                        fadeModalOut={this.state.fadeModalOut}
-                    >
+                    <Modal fadeModalIn={this.state.fadeModalIn} fadeModalOut={this.state.fadeModalOut}>
                         <StyledForm>
                             <div className="poster">
-                                <div
-                                    className="close-btn"
-                                    onClick={this.handleCloseModal}
-                                >
+                                <div className="close-btn" onClick={this.handleCloseModal}>
                                     <span>X</span>
                                 </div>
 
                                 <div className="poster--text">
-                                    <img
-                                        src="./static/graphics/logo_and_strap_white.svg"
-                                        alt=""
-                                    />
+                                    <img src="./static/graphics/logo_and_strap_white.svg" alt="" />
                                 </div>
                                 <div className="poster--bkg-img">
-                                    <img
-                                        src="static/photos/building.jpg"
-                                        alt=""
-                                        srcSet=""
-                                    />
+                                    <img src="static/photos/building.jpg" alt="" srcSet="" />
                                 </div>
                             </div>
                             <div className="card">
                                 <h3>
-                                    Secure priority access to delegate passes,
-                                    sustainability success stories and partner
-                                    news
+                    Secure priority access to delegate passes, sustainability success stories and
+                                    partner news
+
                                 </h3>
 
                                 <MailchimpSubscribe
                                     url={url}
-                                    render={({
-                                        subscribe,
-                                        status,
-                                        message,
-                                    }) => {
+                                    render={({ subscribe, status, message }) => {
                                         // if (status === 'success') {}
                                         return (
                                             <CustomForm
                                                 status={status}
                                                 message={message}
-                                                onValidated={formData =>
-                                                    subscribe(formData)
-                                                }
+                                                onValidated={formData => subscribe(formData)}
                                             />
                                         )
                                     }}
