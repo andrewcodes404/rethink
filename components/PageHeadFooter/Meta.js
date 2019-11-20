@@ -30,7 +30,7 @@ const Meta = () => (
 
         <meta
             property="og:image"
-            content="https://res.cloudinary.com/dcqi9fn2y/image/upload/v1554473156/rethink/rethink_fb_card.jpg"
+            content="http://res.cloudinary.com/dcqi9fn2y/image/upload/v1554473156/rethink/rethink_fb_card.jpg"
         />
         <meta property="og:title" content="ReThink HK | Sustainability Forum 2020" />
         <meta
@@ -49,7 +49,7 @@ const Meta = () => (
         />
         <meta
             name="twitter:image"
-            content="https://res.cloudinary.com/dcqi9fn2y/image/upload/v1554473156/rethink/rethink_fb_card.jpg"
+            content="http://res.cloudinary.com/dcqi9fn2y/image/upload/v1554473156/rethink/rethink_fb_card.jpg"
         />
 
         <title>ReThink</title>
