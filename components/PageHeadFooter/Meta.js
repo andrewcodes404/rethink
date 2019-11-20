@@ -38,7 +38,7 @@ const Meta = () => (
             content="ReThink Hong Kong is a two-day business conference and showcase dedicated to achieving a sustainable environment and circular economy. 23-24 June 2020."
         />
 
-        <meta property="og:url" content="https://rethink-event.com" />
+        <meta property="og:url" content="http://rethink-event.com" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ReThink_HK" />
