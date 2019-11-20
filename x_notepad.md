@@ -12,6 +12,8 @@ query to get speakers data ✅
 query to get sponsors data ✅
 query to get supporters data ✅
 
+show linkedIn on SPonsor Modal
+
 send data to pop modals 
 
 remove border-bottom from last session item
