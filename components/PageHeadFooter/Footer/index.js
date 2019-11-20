@@ -16,7 +16,9 @@ const Footer = () => (
         </div>
 
         <div className="copyright">
+
             <small>Copyright © 2019 EnviroEvents Hong Kong Limited · All rights reserved.</small>
+
         </div>
 
         <SvgWrapper>

@@ -90,7 +90,7 @@ class NavSimple extends React.Component {
 
                         <Link href={`/`}>home</Link>
                         <Link href={`/partners`}>partners</Link>
-                        <Link href={`/the_sponsors`}>sponsors</Link>
+                        {/* <Link href={`/the_sponsors`}>sponsors</Link> */}
                     </div>
                 </nav>
             </StyledNav>
