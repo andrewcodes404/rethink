@@ -32,7 +32,7 @@ const Meta = () => (
             property="og:image"
             content="http://res.cloudinary.com/dcqi9fn2y/image/upload/v1554473156/rethink/rethink_fb_card.jpg"
         />
-        <meta property="og:title" content="ReThink HK | Sustainability Forum 2020" />
+        <meta property="og:title" content="ReThink HK  Sustainability Forum 2020" />
         <meta
             property="og:description"
             content="ReThink Hong Kong is a two-day business conference and showcase dedicated to achieving a sustainable environment and circular economy. 23-24 June 2020."
