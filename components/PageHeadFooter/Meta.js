@@ -27,8 +27,6 @@ const Meta = () => (
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-96559774-20"></script>
 
         {/* <!-- META -- META -- META -- META --  --> */}
-        {/* <meta property="og:image:height" content="630" />
-        <meta property="og:image:width" content="1120" /> */}
 
         <meta
             property="og:image"
