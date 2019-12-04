@@ -216,7 +216,7 @@ class ModalSponsorSupporter extends React.Component {
                     </div>
 
                     <div className="description">
-                        <p>{description}</p>
+                        <div dangerouslySetInnerHTML={{ __html: description }}></div>
                     </div>
                 </ModalCard>
             </ModalStyled>

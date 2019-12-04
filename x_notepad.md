@@ -35,9 +35,9 @@ handleEditorChange = e => {
     }
 
 
-  <br />
-                                        <h3 style={{ textAlign: 'left' }}>Bio</h3>
-                                        <br />
+<br />
+<h3 style={{ textAlign: 'left' }}>Bio</h3>
+<br />
 <Editor
     id="learnings"
     apiKey={process.env.TINY_MCE_API_KEY}
@@ -55,3 +55,11 @@ handleEditorChange = e => {
     }}
     onChange={this.handleEditorChange}
 />
+
+<br/>
+<br/>
+
+
+<div className="bio">
+    <div dangerouslySetInnerHTML={{ __html: bio }}></div>
+</div>
