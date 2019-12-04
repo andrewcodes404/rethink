@@ -33,6 +33,16 @@ export const Form = styled.form`
         width: 100px;
     }
 
+    .radios {
+        display: flex;
+    }
+
+    .radio {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+    }
+
     .select {
         margin-bottom: 40px;
         width: 100%;
@@ -80,7 +90,7 @@ export const Form = styled.form`
 export const ModalSuccess = styled.div`
     .modal-wrapper {
         border: 1px solid pink;
-        position: absolute;
+        position: fixed;
         top: 0;
         bottom: 0;
         left: 0;

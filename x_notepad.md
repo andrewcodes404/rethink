@@ -17,3 +17,5 @@ show linkedIn on SPonsor Modal
 send data to pop modals 
 
 remove border-bottom from last session item
+
+

@@ -42,7 +42,6 @@ class PageWrapper extends React.Component {
                     //don't use data.user as a bool ☠️
                     var loggedIn = false
                     user ? (loggedIn = true) : (loggedIn = false)
-                    console.log('loggedIn = ', loggedIn)
 
                     return (
                         <PgWrapper>
@@ -53,20 +52,15 @@ class PageWrapper extends React.Component {
                                     {this.props.children}
                                 </div> */}
                             <div className="page-wrapper">
-                                {React.Children.map(
-                                    this.props.children,
-                                    child =>
-                                        React.cloneElement(child, {
-                                            loggedIn,
-                                            user,
-                                        })
+                                {React.Children.map(this.props.children, child =>
+                                    React.cloneElement(child, {
+                                        loggedIn,
+                                        user,
+                                    })
                                 )}
                             </div>
 
-                            <div
-                                className="push-down"
-                                style={{ borderBottom: '4px solid green' }}
-                            ></div>
+                            <div className="push-down" style={{ borderBottom: '4px solid green' }}></div>
                             <Footer />
                         </PgWrapper>
                     )

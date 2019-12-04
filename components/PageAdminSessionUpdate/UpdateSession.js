@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import { Query, Mutation, withApollo } from 'react-apollo'
-import { GET_HOSTSPEAKERS, GET_HOSTSPEAKER_WHERE_NAME, GET_PARTNERS, GET_SPONSORS, GET_SPONSORS_WHERE_NAME, GET_PARTNERS_WHERE_NAME, CREATE_SESSION } from '../../lib/graphqlTags'
+import { GET_HOSTSPEAKERS, GET_PARTNERS, GET_SPONSORS, UPDATE_SESSION, GET_SESSIONS_WHERE_ID } from '../../lib/graphqlTags'
+import Link from 'next/link'
 
 // material ui
 import Button from '@material-ui/core/Button'
@@ -18,67 +20,113 @@ import Radio from '@material-ui/core/Radio'
 // icons
 import FileCopy from '@material-ui/icons/FileCopy'
 
-import { Form, ModalSuccess } from './sessionsStyle'
+import { Form, ModalSuccess } from '../PageAdminSessions/sessionsStyle'
 
-class CreateSession extends React.Component {
+class UpdateSession extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             showSuccess: false,
-            fadeSuccess: false,
-            title: '',
-            theme: '',
-            start: '10:00',
-            end: '11:00',
-            day: '',
+
+            id: props.session.id,
+            title: props.session.title,
+            theme: props.session.theme,
+            start: props.session.start,
+            end: props.session.end,
+            day: props.session.day,
             host: '',
-            hostName: '',
-            speakersNames: [],
+            hostId: '',
             speakers: [],
-            overview: '',
-            learnings: '',
-            supportersNames: [],
+            speakersId: [],
+
+            overview: props.session.overview,
+            learnings: props.session.learnings,
+
             supporters: [],
-            supportersLogos: [],
-            sponsorsNames: [],
+            supportersId: [],
             sponsors: [],
+            sponsorsId: [],
         }
     }
 
-    resetState() {
-        this.setState({
-            showSuccess: false,
-            fadeSuccess: false,
-            title: '',
-            theme: '',
-            start: '10:00',
-            end: '11:00',
-            day: '',
-            host: '',
-            hostName: '',
-            speakersNames: [],
-            speakers: [],
-            overview: '',
-            learnings: '',
-            supportersNames: [],
-            supporters: [],
-            sponsorsNames: [],
-            sponsors: [],
-        })
+    componentDidMount = () => {
+        console.log('this.props = ', this.props)
+        this.props.client
+            .query({
+                query: GET_HOSTSPEAKERS,
+            })
+            .then(result => {
+                // HOST --- HOST --- HOST --- HOST ---
+                const hostSpeakers = result.data.hostSpeakers
+
+                const host = hostSpeakers.find(x => x.id === this.props.session.host)
+
+                this.setState({
+                    host: host,
+                    hostId: host.id,
+                })
+
+                // SPEAKERS --- SPEAKERS --- SPEAKERS --- SPEAKERS ---
+
+                if (this.props.session.speakers) {
+                    const speakersFull = this.props.session.speakers.map(el => {
+                        return hostSpeakers.find(x => x.id === el)
+                    })
+
+                    speakersFull.map(el => {
+                        this.state.speakers.push(el)
+                        this.state.speakersId.push(el.id)
+                    })
+                }
+
+                this.forceUpdate()
+            })
+
+        this.props.client
+            .query({
+                query: GET_PARTNERS,
+            })
+            .then(result => {
+                const supporters = result.data.partners
+
+                if (this.props.session.supporters) {
+                    const supportersFull = this.props.session.supporters.map(el => {
+                        return supporters.find(x => x.id === el)
+                    })
+
+                    supportersFull.map(el => {
+                        this.state.supporters.push(el)
+                        this.state.supportersId.push(el.id)
+                    })
+                }
+
+                this.forceUpdate()
+            })
+
+        this.props.client
+            .query({
+                query: GET_SPONSORS,
+            })
+            .then(result => {
+                const sponsors = result.data.sponsors
+
+                if (this.props.session.sponsors) {
+                    const sponsorsFull = this.props.session.sponsors.map(el => {
+                        return sponsors.find(x => x.id === el)
+                    })
+
+                    sponsorsFull.map(el => {
+                        this.state.sponsors.push(el)
+                        this.state.sponsorsId.push(el.id)
+                    })
+                }
+
+                this.forceUpdate()
+            })
     }
 
     showSuccess = () => {
-        this.setState({ ...this.state, showSuccess: true }, () => {
-            setTimeout(() => {
-                this.setState({
-                    // showSuccess: false,
-                    fadeSuccess: true,
-                })
-            }, 2000),
-                setTimeout(() => {
-                    this.resetState()
-                }, 3000)
-        })
+        this.setState({ ...this.state, showSuccess: true })
     }
 
     handleChange = e => {
@@ -93,68 +141,49 @@ class CreateSession extends React.Component {
         this.setState({ [name]: value })
     }
 
-    useNametoGetId = async (query, name) => {
-        const result = await this.props.client.query({
-            query: query,
-            variables: { name: name },
-        })
-        return result
-    }
-
     handleSelectHostChange = e => {
         const { value } = e.target
-        this.setState({ hostName: value })
-        this.useNametoGetId(GET_HOSTSPEAKER_WHERE_NAME, value).then(value => {
-            const id = value.data.hostSpeakers[0].id
-            this.setState(
-                {
-                    host: id,
-                },
-                () => {
-                    console.log('this.state.host = ', this.state.host)
-                }
-            )
-        })
+        this.setState({ host: value, hostId: value.id })
     }
 
     handleSelectSpeakersChange = e => {
         const { value } = e.target
-        this.setState({ speakersNames: value }, () => {
-            const ids = this.state.speakersNames.map(el => el.id)
-            this.setState({
-                speakers: ids,
-            })
+
+        let idArray = []
+        value.map(el => {
+            idArray.push(el.id)
+        })
+
+        this.setState({
+            speakers: value,
+            speakersId: idArray,
         })
     }
 
     handleSupportersSelectChange = e => {
         const { value } = e.target
-        this.setState({ supportersNames: value }, () => {
-            const ids = this.state.supportersNames.map(el => el.id)
-            this.setState({
-                supporters: ids,
-            })
+
+        let idArray = []
+        value.map(el => {
+            idArray.push(el.id)
+        })
+
+        this.setState({
+            supporters: value,
+            supportersId: idArray,
         })
     }
 
     handleSponsorSelectChange = e => {
         const { value } = e.target
-        this.setState({ sponsorsNames: value }, () => {
-            const ids = this.state.sponsorsNames.map(el => el.id)
-            this.setState({
-                sponsors: ids,
-            })
-        })
-    }
 
-    getSponsorsIds = () => {
-        this.state.sponsorsNames.map(el => {
-            this.useNametoGetId(GET_SPONSORS_WHERE_NAME, el).then(value => {
-                const id = value.data.sponsors[0].id
-                this.setState({
-                    sponsors: [...this.state.sponsors, id],
-                })
-            })
+        let idArray = []
+        value.map(el => {
+            idArray.push(el.id)
+        })
+        this.setState({
+            sponsors: value,
+            sponsorsId: idArray,
         })
     }
 
@@ -165,23 +194,42 @@ class CreateSession extends React.Component {
                     <ModalSuccess>
                         <div className={`modal-wrapper ${this.state.fadeSuccess && 'fade-out'} `}>
                             <div className="modal">
-                                <p>Yes dude 🧀 session succesfully created 🎈</p>
+                                <p>Session succesfully updated 🏖️</p>
+                                <Link href="/admin-sessions">
+                                    <a>
+                                        <p style={{ textDecoration: 'underline', textAlign: 'center' }}>Back to Session Admin</p>
+                                    </a>
+                                </Link>
                             </div>
                         </div>
                     </ModalSuccess>
                 )}
 
-                <h2>Create a session</h2>
-
-                <Mutation mutation={CREATE_SESSION} variables={this.state} refetchQueries={[{ query: GET_PARTNERS }]}>
-                    {createSession => (
+                <Mutation
+                    mutation={UPDATE_SESSION}
+                    variables={{
+                        id: this.state.id,
+                        title: this.state.title,
+                        theme: this.state.theme,
+                        start: this.state.start,
+                        end: this.state.end,
+                        day: this.state.day,
+                        host: this.state.hostId,
+                        speakers: this.state.speakersId,
+                        overview: this.state.overview,
+                        learnings: this.state.learnings,
+                        supporters: this.state.supportersId,
+                        sponsors: this.state.sponsorsId,
+                    }}
+                    refetchQueries={[{ query: GET_SESSIONS_WHERE_ID, variables: { id: this.state.id } }]}
+                >
+                    {UpdateSession => (
                         <Form
-                            id="timetable-form"
+                            id="updateSession"
                             onSubmit={async e => {
-                                console.log('submitted')
-
+                                console.log('this.state.speakersId = ', this.state.speakersId)
                                 e.preventDefault()
-                                await createSession()
+                                await UpdateSession()
                                 this.showSuccess()
                             }}
                         >
@@ -269,8 +317,8 @@ class CreateSession extends React.Component {
                                 </div>
                             </div>
 
-                            {/* 👇 👇  IF THEME ISNT EMPTY OR 'BREAK' 👇 👇 */}
-                            {/* 👇 👇  IF THEME ISNT EMPTY OR 'BREAK' 👇 👇 */}
+                            {/* 👇 👇  IF THEME ISNT EMPTY OR  NOT 'BREAK' 👇 👇 */}
+                            {/* 👇 👇  IF THEME ISNT EMPTY OR  NOT 'BREAK' 👇 👇 */}
 
                             {!this.state.theme ||
                                 (this.state.theme !== 'break' && (
@@ -286,17 +334,19 @@ class CreateSession extends React.Component {
                                                     if (loading) return null
                                                     const { hostSpeakers } = data
 
+                                                    // find current host in araay of all hostSpeakers and use as intial value
+                                                    // const host = hostSpeakers.find(x => x.id === this.state.host)
+
                                                     return (
                                                         <Select
-                                                            value={this.state.hostName}
+                                                            value={this.state.host}
                                                             onChange={this.handleSelectHostChange}
-                                                            inputProps={{
-                                                                name: 'host',
-                                                                id: 'host',
+                                                            renderValue={value => {
+                                                                return <p>{value.name}</p>
                                                             }}
                                                         >
                                                             {hostSpeakers.map((el, index) => (
-                                                                <MenuItem value={el.name} key={index}>
+                                                                <MenuItem value={el} key={index}>
                                                                     {el.name}
                                                                 </MenuItem>
                                                             ))}
@@ -305,6 +355,7 @@ class CreateSession extends React.Component {
                                                 }}
                                             </Query>
                                         </FormControl>
+
                                         <Query query={GET_HOSTSPEAKERS}>
                                             {({ data, loading }) => {
                                                 //  stop partners begin mapped before data arrives
@@ -319,20 +370,17 @@ class CreateSession extends React.Component {
 
                                                         <Select
                                                             multiple
-                                                            // variant="outlined"
-                                                            value={this.state.speakersNames}
+                                                            value={this.state.speakers}
                                                             onChange={this.handleSelectSpeakersChange}
-                                                            inputProps={{
-                                                                name: 'speakers',
-                                                                id: 'speakers',
+                                                            renderValue={selected => {
+                                                                return (
+                                                                    <div key={selected}>
+                                                                        {selected.map(value => {
+                                                                            return <Chip key={value.name} label={value.name} className="chip" />
+                                                                        })}
+                                                                    </div>
+                                                                )
                                                             }}
-                                                            renderValue={selected => (
-                                                                <div>
-                                                                    {selected.map(value => (
-                                                                        <Chip key={value.name} label={value.name} className="chip" />
-                                                                    ))}
-                                                                </div>
-                                                            )}
                                                         >
                                                             {hostSpeakers.map((el, index) => (
                                                                 <MenuItem value={el} key={index}>
@@ -340,7 +388,6 @@ class CreateSession extends React.Component {
                                                                 </MenuItem>
                                                             ))}
                                                         </Select>
-                                                        {/* <FormHelperText>Select one or more choices</FormHelperText> */}
                                                     </FormControl>
                                                 )
                                             }}
@@ -386,20 +433,17 @@ class CreateSession extends React.Component {
 
                                                         <Select
                                                             multiple
-                                                            // variant="outlined"
-                                                            value={this.state.supportersNames}
+                                                            value={this.state.supporters}
                                                             onChange={this.handleSupportersSelectChange}
-                                                            inputProps={{
-                                                                name: 'supporters',
-                                                                id: 'supporters',
+                                                            renderValue={selected => {
+                                                                return (
+                                                                    <div key={selected}>
+                                                                        {selected.map(value => {
+                                                                            return <Chip key={value.name} label={value.name} className="chip" />
+                                                                        })}
+                                                                    </div>
+                                                                )
                                                             }}
-                                                            renderValue={selected => (
-                                                                <div>
-                                                                    {selected.map(value => (
-                                                                        <Chip key={value.name} label={value.name} className="chip" />
-                                                                    ))}
-                                                                </div>
-                                                            )}
                                                         >
                                                             {partners.map((el, index) => (
                                                                 <MenuItem value={el} key={index}>
@@ -407,13 +451,10 @@ class CreateSession extends React.Component {
                                                                 </MenuItem>
                                                             ))}
                                                         </Select>
-                                                        {/* <FormHelperText>Select one or more choices</FormHelperText> */}
                                                     </FormControl>
                                                 )
                                             }}
                                         </Query>
-
-                                        {/* these are taken from the list of sponsors */}
 
                                         <Query query={GET_SPONSORS}>
                                             {({ data, loading }) => {
@@ -428,20 +469,17 @@ class CreateSession extends React.Component {
 
                                                         <Select
                                                             multiple
-                                                            // variant="outlined"
-                                                            value={this.state.sponsorsNames}
+                                                            value={this.state.sponsors}
                                                             onChange={this.handleSponsorSelectChange}
-                                                            inputProps={{
-                                                                name: 'sponsors',
-                                                                id: 'sponsors',
+                                                            renderValue={selected => {
+                                                                return (
+                                                                    <div key={selected}>
+                                                                        {selected.map(value => {
+                                                                            return <Chip key={value.name} label={value.name} className="chip" />
+                                                                        })}
+                                                                    </div>
+                                                                )
                                                             }}
-                                                            renderValue={selected => (
-                                                                <div>
-                                                                    {selected.map(value => (
-                                                                        <Chip key={value.name} label={value.name} className="chip" />
-                                                                    ))}
-                                                                </div>
-                                                            )}
                                                         >
                                                             {sponsors.map((el, index) => (
                                                                 <MenuItem value={el} key={index}>
@@ -457,11 +495,11 @@ class CreateSession extends React.Component {
                                     </div>
                                 ))}
 
-                            {/* 👆 👆  IF THEME ISNT EMPTY OR 'BREAK'👆 👆   */}
-                            {/* 👆 👆  IF THEME ISNT EMPTY OR 'BREAK'👆 👆   */}
+                            {/* 👆 👆  IF THEME ISNT EMPTY OR  NOT 'BREAK'👆 👆   */}
+                            {/* 👆 👆  IF THEME ISNT EMPTY OR  NOT 'BREAK'👆 👆   */}
 
                             <div className="submit-wrapper">
-                                <Button margin="normal" type="submit" variant="contained" color="default" size="large" className="submit-btn" form="timetable-form">
+                                <Button margin="normal" type="submit" variant="contained" color="default" size="large" className="submit-btn" form="updateSession">
                                     Submit
                                     <FileCopy className="icon" />
                                 </Button>
@@ -473,8 +511,8 @@ class CreateSession extends React.Component {
         )
     }
 }
-CreateSession.propTypes = {
+UpdateSession.propTypes = {
     client: PropTypes.object,
 }
 
-export default withApollo(CreateSession)
+export default withApollo(UpdateSession)

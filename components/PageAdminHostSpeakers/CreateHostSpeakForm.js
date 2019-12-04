@@ -18,6 +18,8 @@ import PhotoCamera from '@material-ui/icons/PhotoCamera'
 import Phonelink from '@material-ui/icons/Phonelink'
 import PhotoLibrary from '@material-ui/icons/PhotoLibrary'
 import Close from '@material-ui/icons/Close'
+import MUIRichTextEditor from 'mui-rte'
+
 //style
 import { Spinner } from '../style/globalComps'
 import { FormModal, HostSpeakForm, Modal } from './hostSpeakStyle'
@@ -66,8 +68,10 @@ class CreateHostSpeakForm extends React.Component {
         const { id, type, value } = e.target
         const val = type === 'number' ? parseFloat(value) : value
 
+        console.log('val = ', val)
+
         this.setState({ [id]: val }, () => {
-            // console.log('this.state.id = ', this.state)
+            console.log('this.state.id = ', this.state)
         })
     }
 
@@ -115,6 +119,10 @@ class CreateHostSpeakForm extends React.Component {
         })
     }
 
+    handleBioChange = data => {
+        console.log('data = ', data)
+    }
+
     render() {
         return (
             <>
@@ -151,11 +159,7 @@ class CreateHostSpeakForm extends React.Component {
                                 </Modal>
                             )}
 
-                            <Mutation
-                                mutation={CREATE_HOSTSPEAKER}
-                                variables={this.state}
-                                refetchQueries={[{ query: GET_HOSTSPEAKERS }]}
-                            >
+                            <Mutation mutation={CREATE_HOSTSPEAKER} variables={this.state} refetchQueries={[{ query: GET_HOSTSPEAKERS }]}>
                                 {(createHostSpeaker, { loading, error }) => (
                                     <HostSpeakForm
                                         onSubmit={async e => {
@@ -167,21 +171,9 @@ class CreateHostSpeakForm extends React.Component {
                                     >
                                         <h3>Host-Speaker Form</h3>
                                         <div className="img-upload-wrapper">
-                                            <input
-                                                accept=".png,.jpg,.jpeg"
-                                                style={{ display: 'none' }}
-                                                id="file"
-                                                multiple
-                                                type="file"
-                                                onChange={this.uploadFile}
-                                            />
+                                            <input accept=".png,.jpg,.jpeg" style={{ display: 'none' }} id="file" multiple type="file" onChange={this.uploadFile} />
                                             <label htmlFor="file">
-                                                <Button
-                                                    variant="contained"
-                                                    component="span"
-                                                    size="small"
-                                                    className="upload-btn"
-                                                >
+                                                <Button variant="contained" component="span" size="small" className="upload-btn">
                                                     Upload headshot
                                                     <CloudUploadIcon className="icon" />
                                                 </Button>
@@ -193,14 +185,7 @@ class CreateHostSpeakForm extends React.Component {
                                                 </div>
                                             )}
 
-                                            {this.state.headshot.length > 1 && (
-                                                <img
-                                                    className="thumb"
-                                                    width="200"
-                                                    src={this.state.headshot}
-                                                    alt="Upload Preview"
-                                                />
-                                            )}
+                                            {this.state.headshot.length > 1 && <img className="thumb" width="200" src={this.state.headshot} alt="Upload Preview" />}
                                         </div>
                                         <TextField
                                             type="text"
@@ -249,6 +234,8 @@ class CreateHostSpeakForm extends React.Component {
                                             onChange={this.handleChange}
                                             className="text-area"
                                         />
+
+                                        {/* <MUIRichTextEditor label="Type something here..." onSave={this.handleBioChange} /> */}
 
                                         <TextField
                                             type="text"
@@ -360,14 +347,7 @@ class CreateHostSpeakForm extends React.Component {
                                                 close <Close className="icon" />
                                             </Button>
 
-                                            <Button
-                                                margin="normal"
-                                                type="submit"
-                                                variant="contained"
-                                                color="default"
-                                                size="small"
-                                                className="submit-btn"
-                                            >
+                                            <Button margin="normal" type="submit" variant="contained" color="default" size="small" className="submit-btn">
                                                 Submit
                                                 <FileCopy className="icon" />
                                             </Button>

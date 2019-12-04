@@ -18,7 +18,7 @@ const ModalStyled = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 250px;
+    /* padding-top: 250px; */
 `
 
 const ModalCard = styled.div`
@@ -40,7 +40,7 @@ const ModalCard = styled.div`
         width: 100%;
     }
 
-    .headshot {
+    .logo {
         width: 200px;
         height: 250px;
         img {
@@ -121,7 +121,7 @@ const ModalCard = styled.div`
     }
 `
 
-class ModalHostSpeaker extends React.Component {
+class ModalSponsorSupporter extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -134,7 +134,7 @@ class ModalHostSpeaker extends React.Component {
     }
 
     render() {
-        const { bio, company, facebook, headshot, insta, linkedIn, name, title, twitter, website } = this.state.host
+        const { description, company, facebook, logo, instagram, linkedIn, name, title, twitter, website } = this.state.host
 
         return (
             <ModalStyled onClick={this.closeModal}>
@@ -144,8 +144,8 @@ class ModalHostSpeaker extends React.Component {
                     </div>
 
                     <div className="top-content">
-                        <div className="headshot">
-                            <img src={headshot} alt={name} />
+                        <div className="logo">
+                            <img src={logo} alt={name} />
                         </div>
 
                         <div className="headlines">
@@ -161,9 +161,9 @@ class ModalHostSpeaker extends React.Component {
                             )}
 
                             <div className="social-wrapper">
-                                {insta && (
+                                {instagram && (
                                     <div className="social-icon">
-                                        <a href={`https://www.instagram.com/${insta}`} target="_blank" rel="noopener noreferrer">
+                                        <a href={`https://www.instagram.com/${instagram}`} target="_blank" rel="noopener noreferrer">
                                             <img src="./static/social/instagram.png" alt="" srcSet="" />
                                         </a>
                                     </div>
@@ -196,8 +196,8 @@ class ModalHostSpeaker extends React.Component {
                         </div>
                     </div>
 
-                    <div className="bio">
-                        <p>{bio}</p>
+                    <div className="description">
+                        <p>{description}</p>
                     </div>
                 </ModalCard>
             </ModalStyled>
@@ -205,9 +205,9 @@ class ModalHostSpeaker extends React.Component {
     }
 }
 
-ModalHostSpeaker.propTypes = {
+ModalSponsorSupporter.propTypes = {
     host: PropTypes.object,
     closeModal: PropTypes.func,
 }
 
-export default ModalHostSpeaker
+export default ModalSponsorSupporter
