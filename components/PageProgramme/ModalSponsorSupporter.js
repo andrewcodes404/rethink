@@ -40,11 +40,11 @@ const ModalCard = styled.div`
         width: 100%;
     }
 
-    .logo {
-        width: 200px;
+    .logo-modal {
+        width: 230px;
         height: 250px;
         img {
-            object-fit: cover;
+            object-fit: scale-down;
             height: 100%;
         }
     }
@@ -134,7 +134,18 @@ class ModalSponsorSupporter extends React.Component {
     }
 
     render() {
-        const { description, company, facebook, logo, instagram, linkedIn, name, title, twitter, website } = this.state.host
+        const {
+            description,
+            company,
+            facebook,
+            logo,
+            instagram,
+            linkedIn,
+            name,
+            title,
+            twitter,
+            website,
+        } = this.state.host
 
         return (
             <ModalStyled onClick={this.closeModal}>
@@ -144,7 +155,7 @@ class ModalSponsorSupporter extends React.Component {
                     </div>
 
                     <div className="top-content">
-                        <div className="logo">
+                        <div className="logo-modal">
                             <img src={logo} alt={name} />
                         </div>
 
@@ -163,7 +174,11 @@ class ModalSponsorSupporter extends React.Component {
                             <div className="social-wrapper">
                                 {instagram && (
                                     <div className="social-icon">
-                                        <a href={`https://www.instagram.com/${instagram}`} target="_blank" rel="noopener noreferrer">
+                                        <a
+                                            href={`https://www.instagram.com/${instagram}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
                                             <img src="./static/social/instagram.png" alt="" srcSet="" />
                                         </a>
                                     </div>
@@ -179,7 +194,11 @@ class ModalSponsorSupporter extends React.Component {
 
                                 {twitter && (
                                     <div className="social-icon">
-                                        <a href={`https://www.twitter.com/${twitter}`} target="_blank" rel="noopener noreferrer">
+                                        <a
+                                            href={`https://www.twitter.com/${twitter}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
                                             <img src="./static/social/twitter.png" alt="" srcSet="" />
                                         </a>
                                     </div>

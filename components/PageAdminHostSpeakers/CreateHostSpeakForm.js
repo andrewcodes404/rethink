@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { Mutation } from 'react-apollo'
 import { CREATE_HOSTSPEAKER, GET_HOSTSPEAKERS } from '../../lib/graphqlTags'
 
+import { Editor } from '@tinymce/tinymce-react'
+
 // material ui
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
@@ -73,6 +75,15 @@ class CreateHostSpeakForm extends React.Component {
         this.setState({ [id]: val }, () => {
             console.log('this.state.id = ', this.state)
         })
+    }
+
+    handleEditorChange = e => {
+        console.log('Content was updated:', e.target.getContent())
+
+        const id = e.target.id
+        const value = e.target.getContent()
+
+        this.setState({ [id]: value })
     }
 
     handleRadioChange = e => {
@@ -159,7 +170,11 @@ class CreateHostSpeakForm extends React.Component {
                                 </Modal>
                             )}
 
-                            <Mutation mutation={CREATE_HOSTSPEAKER} variables={this.state} refetchQueries={[{ query: GET_HOSTSPEAKERS }]}>
+                            <Mutation
+                                mutation={CREATE_HOSTSPEAKER}
+                                variables={this.state}
+                                refetchQueries={[{ query: GET_HOSTSPEAKERS }]}
+                            >
                                 {(createHostSpeaker, { loading, error }) => (
                                     <HostSpeakForm
                                         onSubmit={async e => {
@@ -171,9 +186,21 @@ class CreateHostSpeakForm extends React.Component {
                                     >
                                         <h3>Host-Speaker Form</h3>
                                         <div className="img-upload-wrapper">
-                                            <input accept=".png,.jpg,.jpeg" style={{ display: 'none' }} id="file" multiple type="file" onChange={this.uploadFile} />
+                                            <input
+                                                accept=".png,.jpg,.jpeg"
+                                                style={{ display: 'none' }}
+                                                id="file"
+                                                multiple
+                                                type="file"
+                                                onChange={this.uploadFile}
+                                            />
                                             <label htmlFor="file">
-                                                <Button variant="contained" component="span" size="small" className="upload-btn">
+                                                <Button
+                                                    variant="contained"
+                                                    component="span"
+                                                    size="small"
+                                                    className="upload-btn"
+                                                >
                                                     Upload headshot
                                                     <CloudUploadIcon className="icon" />
                                                 </Button>
@@ -185,7 +212,14 @@ class CreateHostSpeakForm extends React.Component {
                                                 </div>
                                             )}
 
-                                            {this.state.headshot.length > 1 && <img className="thumb" width="200" src={this.state.headshot} alt="Upload Preview" />}
+                                            {this.state.headshot.length > 1 && (
+                                                <img
+                                                    className="thumb"
+                                                    width="200"
+                                                    src={this.state.headshot}
+                                                    alt="Upload Preview"
+                                                />
+                                            )}
                                         </div>
                                         <TextField
                                             type="text"
@@ -222,20 +256,28 @@ class CreateHostSpeakForm extends React.Component {
                                             onChange={this.handleChange}
                                             required
                                         />
-
-                                        <TextField
-                                            fullWidth={false}
-                                            multiline={true}
-                                            rows={8}
-                                            variant="outlined"
-                                            label="bio"
+                                        <br />
+                                        <h3 style={{ textAlign: 'left' }}>Bio</h3>
+                                        <br />
+                                        <Editor
                                             id="bio"
-                                            value={this.state.bio}
-                                            onChange={this.handleChange}
-                                            className="text-area"
+                                            apiKey={process.env.TINY_MCE_API_KEY}
+                                            initialValue={this.state.learnings}
+                                            init={{
+                                                height: 400,
+                                                menubar: false,
+                                                plugins: [
+                                                    'advlist autolink lists link image charmap print preview anchor',
+                                                    'searchreplace visualblocks code fullscreen',
+                                                    'insertdatetime media table paste code help wordcount',
+                                                ],
+                                                toolbar:
+                                                    'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help',
+                                            }}
+                                            onChange={this.handleEditorChange}
                                         />
-
-                                        {/* <MUIRichTextEditor label="Type something here..." onSave={this.handleBioChange} /> */}
+                                        <br />
+                                        <br />
 
                                         <TextField
                                             type="text"
@@ -347,7 +389,14 @@ class CreateHostSpeakForm extends React.Component {
                                                 close <Close className="icon" />
                                             </Button>
 
-                                            <Button margin="normal" type="submit" variant="contained" color="default" size="small" className="submit-btn">
+                                            <Button
+                                                margin="normal"
+                                                type="submit"
+                                                variant="contained"
+                                                color="default"
+                                                size="small"
+                                                className="submit-btn"
+                                            >
                                                 Submit
                                                 <FileCopy className="icon" />
                                             </Button>

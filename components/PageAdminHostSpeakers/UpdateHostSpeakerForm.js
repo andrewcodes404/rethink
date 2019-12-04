@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { Mutation } from 'react-apollo'
 import { UPDATE_HOSTSPEAKER, GET_HOSTSPEAKERS } from '../../lib/graphqlTags'
 
+import { Editor } from '@tinymce/tinymce-react'
+
 // material ui
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
@@ -74,6 +76,15 @@ class UpdateHostSpeakerForm extends React.Component {
         this.setState({ [id]: val }, () => {
             // console.log('this.state.id = ', this.state)
         })
+    }
+
+    handleEditorChange = e => {
+        console.log('Content was updated:', e.target.getContent())
+
+        const id = e.target.id
+        const value = e.target.getContent()
+
+        this.setState({ [id]: value })
     }
 
     handleRadioChange = e => {
@@ -241,7 +252,7 @@ class UpdateHostSpeakerForm extends React.Component {
                                             required
                                         />
 
-                                        <TextField
+                                        {/* <TextField
                                             fullWidth={false}
                                             multiline={true}
                                             rows={8}
@@ -251,7 +262,30 @@ class UpdateHostSpeakerForm extends React.Component {
                                             value={this.state.bio}
                                             onChange={this.handleChange}
                                             className="text-area"
+                                        /> */}
+                                        <br />
+                                        <h3 style={{ textAlign: 'left' }}>Bio</h3>
+                                        <br />
+                                        <Editor
+                                            id="bio"
+                                            apiKey={process.env.TINY_MCE_API_KEY}
+                                            initialValue={this.state.bio}
+                                            init={{
+                                                height: 400,
+                                                menubar: false,
+                                                plugins: [
+                                                    'advlist autolink lists link image charmap print preview anchor',
+                                                    'searchreplace visualblocks code fullscreen',
+                                                    'insertdatetime media table paste code help wordcount',
+                                                ],
+                                                toolbar:
+                                                    'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help',
+                                            }}
+                                            onChange={this.handleEditorChange}
                                         />
+
+                                        <br />
+                                        <br />
 
                                         <TextField
                                             type="text"

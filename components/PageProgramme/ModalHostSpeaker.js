@@ -163,7 +163,11 @@ class ModalHostSpeaker extends React.Component {
                             <div className="social-wrapper">
                                 {insta && (
                                     <div className="social-icon">
-                                        <a href={`https://www.instagram.com/${insta}`} target="_blank" rel="noopener noreferrer">
+                                        <a
+                                            href={`https://www.instagram.com/${insta}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
                                             <img src="./static/social/instagram.png" alt="" srcSet="" />
                                         </a>
                                     </div>
@@ -179,7 +183,11 @@ class ModalHostSpeaker extends React.Component {
 
                                 {twitter && (
                                     <div className="social-icon">
-                                        <a href={`https://www.twitter.com/${twitter}`} target="_blank" rel="noopener noreferrer">
+                                        <a
+                                            href={`https://www.twitter.com/${twitter}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
                                             <img src="./static/social/twitter.png" alt="" srcSet="" />
                                         </a>
                                     </div>
@@ -197,7 +205,7 @@ class ModalHostSpeaker extends React.Component {
                     </div>
 
                     <div className="bio">
-                        <p>{bio}</p>
+                        <div dangerouslySetInnerHTML={{ __html: bio }}></div>
                     </div>
                 </ModalCard>
             </ModalStyled>
