@@ -2,8 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Query, Mutation, withApollo } from 'react-apollo'
-import { GET_HOSTSPEAKERS, GET_PARTNERS, GET_SPONSORS, UPDATE_SESSION, GET_SESSIONS_WHERE_ID } from '../../lib/graphqlTags'
+import {
+    GET_HOSTSPEAKERS,
+    GET_PARTNERS,
+    GET_SPONSORS,
+    UPDATE_SESSION,
+    GET_SESSIONS_WHERE_ID,
+} from '../../lib/graphqlTags'
 import Link from 'next/link'
+
+import { Editor } from '@tinymce/tinymce-react'
 
 // material ui
 import Button from '@material-ui/core/Button'
@@ -56,15 +64,17 @@ class UpdateSession extends React.Component {
                 query: GET_HOSTSPEAKERS,
             })
             .then(result => {
-                // HOST --- HOST --- HOST --- HOST ---
                 const hostSpeakers = result.data.hostSpeakers
 
-                const host = hostSpeakers.find(x => x.id === this.props.session.host)
+                // HOST --- HOST --- HOST --- HOST ---
+                if (this.props.session.host) {
+                    const host = hostSpeakers.find(x => x.id === this.props.session.host)
 
-                this.setState({
-                    host: host,
-                    hostId: host.id,
-                })
+                    this.setState({
+                        host: host,
+                        hostId: host.id,
+                    })
+                }
 
                 // SPEAKERS --- SPEAKERS --- SPEAKERS --- SPEAKERS ---
 
@@ -141,6 +151,15 @@ class UpdateSession extends React.Component {
         this.setState({ [name]: value })
     }
 
+    handleEditorChange = e => {
+        console.log('Content was updated:', e.target.getContent())
+
+        const id = e.target.id
+        const value = e.target.getContent()
+
+        this.setState({ [id]: value })
+    }
+
     handleSelectHostChange = e => {
         const { value } = e.target
         this.setState({ host: value, hostId: value.id })
@@ -197,7 +216,9 @@ class UpdateSession extends React.Component {
                                 <p>Session succesfully updated 🏖️</p>
                                 <Link href="/admin-sessions">
                                     <a>
-                                        <p style={{ textDecoration: 'underline', textAlign: 'center' }}>Back to Session Admin</p>
+                                        <p style={{ textDecoration: 'underline', textAlign: 'center' }}>
+                                            Back to Session Admin
+                                        </p>
                                     </a>
                                 </Link>
                             </div>
@@ -308,10 +329,24 @@ class UpdateSession extends React.Component {
 
                                     <div className="radios">
                                         <div className="radio">
-                                            <p>Day 1 </p> <Radio id="day" checked={this.state.day === 'day1'} onChange={this.handleChange} value="day1" name="radio-button-demo" />
+                                            <p>Day 1 </p>{' '}
+                                            <Radio
+                                                id="day"
+                                                checked={this.state.day === 'day1'}
+                                                onChange={this.handleChange}
+                                                value="day1"
+                                                name="radio-button-demo"
+                                            />
                                         </div>
                                         <div className="radio">
-                                            <p>Day 2</p> <Radio id="day" checked={this.state.day === 'day2'} onChange={this.handleChange} value="day2" name="radio-button-demo" />
+                                            <p>Day 2</p>{' '}
+                                            <Radio
+                                                id="day"
+                                                checked={this.state.day === 'day2'}
+                                                onChange={this.handleChange}
+                                                value="day2"
+                                                name="radio-button-demo"
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -376,7 +411,13 @@ class UpdateSession extends React.Component {
                                                                 return (
                                                                     <div key={selected}>
                                                                         {selected.map(value => {
-                                                                            return <Chip key={value.name} label={value.name} className="chip" />
+                                                                            return (
+                                                                                <Chip
+                                                                                    key={value.name}
+                                                                                    label={value.name}
+                                                                                    className="chip"
+                                                                                />
+                                                                            )
                                                                         })}
                                                                     </div>
                                                                 )
@@ -393,29 +434,42 @@ class UpdateSession extends React.Component {
                                             }}
                                         </Query>
 
-                                        <TextField
-                                            fullWidth={false}
-                                            multiline={true}
-                                            rows={6}
-                                            variant="outlined"
-                                            label="OVERVIEW"
+                                        <h3>Overview</h3>
+                                        <Editor
                                             id="overview"
-                                            value={this.state.overview}
-                                            onChange={this.handleChange}
-                                            className="text-area"
+                                            apiKey={process.env.TINY_MCE_API_KEY}
+                                            initialValue={this.state.overview}
+                                            init={{
+                                                height: 200,
+                                                menubar: false,
+                                                plugins: [
+                                                    'advlist autolink lists link image charmap print preview anchor',
+                                                    'searchreplace visualblocks code fullscreen',
+                                                    'insertdatetime media table paste code help wordcount',
+                                                ],
+                                                toolbar:
+                                                    'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help',
+                                            }}
+                                            onChange={this.handleEditorChange}
                                         />
 
-                                        <TextField
-                                            fullWidth={false}
-                                            multiline={true}
-                                            rows={6}
-                                            variant="outlined"
-                                            label="LEARNINGS"
-                                            margin="normal"
+                                        <h3>Learnings</h3>
+                                        <Editor
                                             id="learnings"
-                                            value={this.state.learnings}
-                                            onChange={this.handleChange}
-                                            className="text-area"
+                                            apiKey={process.env.TINY_MCE_API_KEY}
+                                            initialValue={this.state.learnings}
+                                            init={{
+                                                height: 200,
+                                                menubar: false,
+                                                plugins: [
+                                                    'advlist autolink lists link image charmap print preview anchor',
+                                                    'searchreplace visualblocks code fullscreen',
+                                                    'insertdatetime media table paste code help wordcount',
+                                                ],
+                                                toolbar:
+                                                    'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help',
+                                            }}
+                                            onChange={this.handleEditorChange}
                                         />
 
                                         {/* these are taken from the list of partners */}
@@ -439,7 +493,13 @@ class UpdateSession extends React.Component {
                                                                 return (
                                                                     <div key={selected}>
                                                                         {selected.map(value => {
-                                                                            return <Chip key={value.name} label={value.name} className="chip" />
+                                                                            return (
+                                                                                <Chip
+                                                                                    key={value.name}
+                                                                                    label={value.name}
+                                                                                    className="chip"
+                                                                                />
+                                                                            )
                                                                         })}
                                                                     </div>
                                                                 )
@@ -475,7 +535,13 @@ class UpdateSession extends React.Component {
                                                                 return (
                                                                     <div key={selected}>
                                                                         {selected.map(value => {
-                                                                            return <Chip key={value.name} label={value.name} className="chip" />
+                                                                            return (
+                                                                                <Chip
+                                                                                    key={value.name}
+                                                                                    label={value.name}
+                                                                                    className="chip"
+                                                                                />
+                                                                            )
                                                                         })}
                                                                     </div>
                                                                 )
@@ -499,7 +565,15 @@ class UpdateSession extends React.Component {
                             {/* 👆 👆  IF THEME ISNT EMPTY OR  NOT 'BREAK'👆 👆   */}
 
                             <div className="submit-wrapper">
-                                <Button margin="normal" type="submit" variant="contained" color="default" size="large" className="submit-btn" form="updateSession">
+                                <Button
+                                    margin="normal"
+                                    type="submit"
+                                    variant="contained"
+                                    color="default"
+                                    size="large"
+                                    className="submit-btn"
+                                    form="updateSession"
+                                >
                                     Submit
                                     <FileCopy className="icon" />
                                 </Button>

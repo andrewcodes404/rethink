@@ -49,8 +49,9 @@ class Index extends React.Component {
                     <h2 data-aos="my-anim">Programme</h2>
 
                     <h3>
-                        Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vivamus suscipit tortor eget
-                        felis porttitor volutpat.
+                        Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Curabitur arcu
+                        erat, accumsan id imperdiet et, porttitor at sem. Vivamus suscipit tortor eget felis porttitor
+                        volutpat.
                     </h3>
 
                     <h2>Day 1</h2>
@@ -68,7 +69,19 @@ class Index extends React.Component {
                             return (
                                 <ProgrammeStyled>
                                     {data.sessions.map((session, index) => {
-                                        const { id, title, theme, start, end, host, speakers, overview, learnings, supporters, sponsors } = session
+                                        const {
+                                            id,
+                                            title,
+                                            theme,
+                                            start,
+                                            end,
+                                            host,
+                                            speakers,
+                                            overview,
+                                            learnings,
+                                            supporters,
+                                            sponsors,
+                                        } = session
 
                                         return (
                                             <div className="session" key={index}>
@@ -76,7 +89,11 @@ class Index extends React.Component {
                                                     <div className="session-header">
                                                         <div className="session-header--item1">
                                                             <div className="theme-icon">
-                                                                <img src={`static/session-themes/${theme}.png`} alt="" srcSet="" />
+                                                                <img
+                                                                    src={`static/session-themes/${theme}.png`}
+                                                                    alt=""
+                                                                    srcSet=""
+                                                                />
                                                             </div>
                                                             <h3 className="theme-title">
                                                                 {start}-{end} - {title}
@@ -88,13 +105,19 @@ class Index extends React.Component {
                                                                     onClick={() => {
                                                                         this.handleTrianlgeClick(id)
                                                                     }}
-                                                                    className={`disclosure-trangle ${this.state.showSessions.find(x => x === id) === id && 'disclosure-triangle--down'}`}
+                                                                    className={`disclosure-trangle ${this.state.showSessions.find(
+                                                                        x => x === id
+                                                                    ) === id && 'disclosure-triangle--down'}`}
                                                                 />
                                                             )}
                                                         </div>
                                                     </div>
 
-                                                    <div className={`session-content ${this.state.showSessions.find(x => x === id) === id && 'show-session'}`}>
+                                                    <div
+                                                        className={`session-content ${this.state.showSessions.find(
+                                                            x => x === id
+                                                        ) === id && 'show-session'}`}
+                                                    >
                                                         {host && <Host hostId={host} />}
 
                                                         {speakers.length > 0 && <Speakers speakers={speakers} />}
@@ -102,7 +125,9 @@ class Index extends React.Component {
                                                             <div className="overview text-section">
                                                                 <p className="sub-title">Overview</p>
 
-                                                                <p className="text-small">{overview}</p>
+                                                                <div
+                                                                    dangerouslySetInnerHTML={{ __html: overview }}
+                                                                ></div>
                                                             </div>
                                                         )}
 
@@ -110,13 +135,17 @@ class Index extends React.Component {
                                                             <div className="learnings text-section">
                                                                 <p className="sub-title">Learnings</p>
 
-                                                                <p className="text-small">{learnings}</p>
+                                                                <div
+                                                                    dangerouslySetInnerHTML={{ __html: learnings }}
+                                                                ></div>
                                                             </div>
                                                         )}
                                                         <SponsorsAndSupportersWrapper>
                                                             {sponsors.length > 0 && <Sponsors sponsors={sponsors} />}
 
-                                                            {supporters.length > 0 && <Supporters supporters={supporters} />}
+                                                            {supporters.length > 0 && (
+                                                                <Supporters supporters={supporters} />
+                                                            )}
                                                         </SponsorsAndSupportersWrapper>
                                                     </div>
                                                 </div>
@@ -143,7 +172,19 @@ class Index extends React.Component {
                             return (
                                 <ProgrammeStyled>
                                     {data.sessions.map((session, index) => {
-                                        const { id, title, theme, start, end, host, speakers, overview, learnings, supporters, sponsors } = session
+                                        const {
+                                            id,
+                                            title,
+                                            theme,
+                                            start,
+                                            end,
+                                            host,
+                                            speakers,
+                                            overview,
+                                            learnings,
+                                            supporters,
+                                            sponsors,
+                                        } = session
 
                                         return (
                                             <div className="session" key={index}>
@@ -151,7 +192,11 @@ class Index extends React.Component {
                                                     <div className="session-header">
                                                         <div className="session-header--item1">
                                                             <div className="theme-icon">
-                                                                <img src={`static/session-themes/${theme}.png`} alt="" srcSet="" />
+                                                                <img
+                                                                    src={`static/session-themes/${theme}.png`}
+                                                                    alt=""
+                                                                    srcSet=""
+                                                                />
                                                             </div>
                                                             <h3 className="theme-title">
                                                                 {start}-{end} - {title}
@@ -163,13 +208,19 @@ class Index extends React.Component {
                                                                     onClick={() => {
                                                                         this.handleTrianlgeClick(id)
                                                                     }}
-                                                                    className={`disclosure-trangle ${this.state.showSessions.find(x => x === id) === id && 'disclosure-triangle--down'}`}
+                                                                    className={`disclosure-trangle ${this.state.showSessions.find(
+                                                                        x => x === id
+                                                                    ) === id && 'disclosure-triangle--down'}`}
                                                                 />
                                                             )}
                                                         </div>
                                                     </div>
 
-                                                    <div className={`session-content ${this.state.showSessions.find(x => x === id) === id && 'show-session'}`}>
+                                                    <div
+                                                        className={`session-content ${this.state.showSessions.find(
+                                                            x => x === id
+                                                        ) === id && 'show-session'}`}
+                                                    >
                                                         {host && <Host hostId={host} />}
 
                                                         {speakers.length > 0 && <Speakers speakers={speakers} />}
@@ -191,7 +242,9 @@ class Index extends React.Component {
                                                         <SponsorsAndSupportersWrapper>
                                                             {sponsors.length > 0 && <Sponsors sponsors={sponsors} />}
 
-                                                            {supporters.length > 0 && <Supporters supporters={supporters} />}
+                                                            {supporters.length > 0 && (
+                                                                <Supporters supporters={supporters} />
+                                                            )}
                                                         </SponsorsAndSupportersWrapper>
                                                     </div>
                                                 </div>

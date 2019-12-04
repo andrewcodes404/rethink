@@ -1,14 +1,7 @@
 import React from 'react'
-import dynamic from 'next/dynamic'
 import { Query } from 'react-apollo'
 import { GET_SESSIONS_WHERE_DAY_ORDER_TIME } from '../../lib/graphqlTags'
 import Link from 'next/link'
-import UpdateSession from '../PageAdminSessionUpdate/UpdateSession'
-const UpdateSessionWithNoSSR = dynamic(() => import('../PageAdminSessionUpdate/UpdateSession'), {
-    ssr: false,
-})
-// material ui
-import ArrowDropDownCircle from '@material-ui/icons/ArrowDropDownCircle'
 
 import styled from 'styled-components'
 

@@ -1,7 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Query, Mutation, withApollo } from 'react-apollo'
-import { GET_HOSTSPEAKERS, GET_HOSTSPEAKER_WHERE_NAME, GET_PARTNERS, GET_SPONSORS, GET_SPONSORS_WHERE_NAME, GET_PARTNERS_WHERE_NAME, CREATE_SESSION } from '../../lib/graphqlTags'
+import {
+    GET_HOSTSPEAKERS,
+    GET_HOSTSPEAKER_WHERE_NAME,
+    GET_PARTNERS,
+    GET_SPONSORS,
+    GET_SPONSORS_WHERE_NAME,
+    GET_PARTNERS_WHERE_NAME,
+    GET_SESSIONS_WHERE_DAY_ORDER_TIME,
+    CREATE_SESSION,
+} from '../../lib/graphqlTags'
+
+import { Editor } from '@tinymce/tinymce-react'
 
 // material ui
 import Button from '@material-ui/core/Button'
@@ -30,7 +41,7 @@ class CreateSession extends React.Component {
             theme: '',
             start: '10:00',
             end: '11:00',
-            day: '',
+            day: 'day1',
             host: '',
             hostName: '',
             speakersNames: [],
@@ -77,6 +88,7 @@ class CreateSession extends React.Component {
             }, 2000),
                 setTimeout(() => {
                     this.resetState()
+                    // this.forceUpdate()
                 }, 3000)
         })
     }
@@ -85,6 +97,15 @@ class CreateSession extends React.Component {
         const { id, type, value } = e.target
         const val = type === 'number' ? parseFloat(value) : value
         this.setState({ [id]: val })
+    }
+
+    handleEditorChange = e => {
+        console.log('Content was updated:', e.target.getContent())
+
+        const id = e.target.id
+        const value = e.target.getContent()
+
+        this.setState({ [id]: value })
     }
 
     handleSelectChange = e => {
@@ -159,6 +180,7 @@ class CreateSession extends React.Component {
     }
 
     render() {
+        console.log('this.state = ', this.state)
         return (
             <>
                 {this.state.showSuccess && (
@@ -173,13 +195,16 @@ class CreateSession extends React.Component {
 
                 <h2>Create a session</h2>
 
-                <Mutation mutation={CREATE_SESSION} variables={this.state} refetchQueries={[{ query: GET_PARTNERS }]}>
+                <Mutation
+                    mutation={CREATE_SESSION}
+                    variables={this.state}
+                    refetchQueries={[{ query: GET_PARTNERS }, { query: GET_SESSIONS_WHERE_DAY_ORDER_TIME }]}
+                >
                     {createSession => (
                         <Form
                             id="timetable-form"
                             onSubmit={async e => {
                                 console.log('submitted')
-
                                 e.preventDefault()
                                 await createSession()
                                 this.showSuccess()
@@ -210,7 +235,6 @@ class CreateSession extends React.Component {
                                         className="select"
                                         value={this.state.theme}
                                         onChange={this.handleSelectChange}
-                                        required
                                         inputProps={{
                                             name: 'theme',
                                             id: 'session-theme',
@@ -260,10 +284,24 @@ class CreateSession extends React.Component {
 
                                     <div className="radios">
                                         <div className="radio">
-                                            <p>Day 1 </p> <Radio id="day" checked={this.state.day === 'day1'} onChange={this.handleChange} value="day1" name="radio-button-demo" />
+                                            <p>Day 1 </p>{' '}
+                                            <Radio
+                                                id="day"
+                                                checked={this.state.day === 'day1'}
+                                                onChange={this.handleChange}
+                                                value="day1"
+                                                name="radio-button-demo"
+                                            />
                                         </div>
                                         <div className="radio">
-                                            <p>Day 2</p> <Radio id="day" checked={this.state.day === 'day2'} onChange={this.handleChange} value="day2" name="radio-button-demo" />
+                                            <p>Day 2</p>{' '}
+                                            <Radio
+                                                id="day"
+                                                checked={this.state.day === 'day2'}
+                                                onChange={this.handleChange}
+                                                value="day2"
+                                                name="radio-button-demo"
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -329,7 +367,11 @@ class CreateSession extends React.Component {
                                                             renderValue={selected => (
                                                                 <div>
                                                                     {selected.map(value => (
-                                                                        <Chip key={value.name} label={value.name} className="chip" />
+                                                                        <Chip
+                                                                            key={value.name}
+                                                                            label={value.name}
+                                                                            className="chip"
+                                                                        />
                                                                     ))}
                                                                 </div>
                                                             )}
@@ -346,30 +388,45 @@ class CreateSession extends React.Component {
                                             }}
                                         </Query>
 
-                                        <TextField
-                                            fullWidth={false}
-                                            multiline={true}
-                                            rows={6}
-                                            variant="outlined"
-                                            label="OVERVIEW"
+                                        <h3>Overview</h3>
+                                        <Editor
                                             id="overview"
-                                            value={this.state.overview}
-                                            onChange={this.handleChange}
-                                            className="text-area"
+                                            apiKey={process.env.TINY_MCE_API_KEY}
+                                            initialValue=""
+                                            init={{
+                                                height: 200,
+                                                menubar: false,
+                                                plugins: [
+                                                    'advlist autolink lists link image charmap print preview anchor',
+                                                    'searchreplace visualblocks code fullscreen',
+                                                    'insertdatetime media table paste code help wordcount',
+                                                ],
+                                                toolbar:
+                                                    'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help',
+                                            }}
+                                            onChange={this.handleEditorChange}
                                         />
-
-                                        <TextField
-                                            fullWidth={false}
-                                            multiline={true}
-                                            rows={6}
-                                            variant="outlined"
-                                            label="LEARNINGS"
-                                            margin="normal"
+                                        <br />
+                                        <h3>Learnings</h3>
+                                        <Editor
                                             id="learnings"
-                                            value={this.state.learnings}
-                                            onChange={this.handleChange}
-                                            className="text-area"
+                                            apiKey={process.env.TINY_MCE_API_KEY}
+                                            initialValue=""
+                                            init={{
+                                                height: 200,
+                                                menubar: false,
+                                                plugins: [
+                                                    'advlist autolink lists link image charmap print preview anchor',
+                                                    'searchreplace visualblocks code fullscreen',
+                                                    'insertdatetime media table paste code help wordcount',
+                                                ],
+                                                toolbar:
+                                                    'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help',
+                                            }}
+                                            onChange={this.handleEditorChange}
                                         />
+                                        <br />
+                                        <br />
 
                                         {/* these are taken from the list of partners */}
 
@@ -396,7 +453,11 @@ class CreateSession extends React.Component {
                                                             renderValue={selected => (
                                                                 <div>
                                                                     {selected.map(value => (
-                                                                        <Chip key={value.name} label={value.name} className="chip" />
+                                                                        <Chip
+                                                                            key={value.name}
+                                                                            label={value.name}
+                                                                            className="chip"
+                                                                        />
                                                                     ))}
                                                                 </div>
                                                             )}
@@ -438,7 +499,11 @@ class CreateSession extends React.Component {
                                                             renderValue={selected => (
                                                                 <div>
                                                                     {selected.map(value => (
-                                                                        <Chip key={value.name} label={value.name} className="chip" />
+                                                                        <Chip
+                                                                            key={value.name}
+                                                                            label={value.name}
+                                                                            className="chip"
+                                                                        />
                                                                     ))}
                                                                 </div>
                                                             )}
@@ -461,7 +526,15 @@ class CreateSession extends React.Component {
                             {/* 👆 👆  IF THEME ISNT EMPTY OR 'BREAK'👆 👆   */}
 
                             <div className="submit-wrapper">
-                                <Button margin="normal" type="submit" variant="contained" color="default" size="large" className="submit-btn" form="timetable-form">
+                                <Button
+                                    margin="normal"
+                                    type="submit"
+                                    variant="contained"
+                                    color="default"
+                                    size="large"
+                                    className="submit-btn"
+                                    form="timetable-form"
+                                >
                                     Submit
                                     <FileCopy className="icon" />
                                 </Button>
