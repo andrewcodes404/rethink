@@ -227,7 +227,8 @@ class Index extends React.Component {
 
                             <div className="content">
                                 <h2>{this.state.name}</h2>
-                                <p>{this.state.description}</p>
+
+                                <div dangerouslySetInnerHTML={{ __html: this.state.description }}></div>
 
                                 <div className="social-wrapper">
                                     {this.state.linkedIn && (
@@ -240,7 +241,11 @@ class Index extends React.Component {
 
                                     {this.state.instagram && (
                                         <div className="social-icon">
-                                            <a href={`https://www.instagram.com/${this.state.instagram}`} target="_blank" rel="noopener noreferrer">
+                                            <a
+                                                href={`https://www.instagram.com/${this.state.instagram}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
                                                 <img src="./static/social/instagram.png" alt="" srcSet="" />
                                             </a>
                                         </div>
@@ -256,7 +261,11 @@ class Index extends React.Component {
 
                                     {this.state.twitter && (
                                         <div className="social-icon">
-                                            <a href={`https://www.twitter.com/${this.state.twitter}`} target="_blank" rel="noopener noreferrer">
+                                            <a
+                                                href={`https://www.twitter.com/${this.state.twitter}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
                                                 <img src="./static/social/twitter.png" alt="" srcSet="" />
                                             </a>
                                         </div>
@@ -282,8 +291,8 @@ class Index extends React.Component {
                     <div className="text-content">
                         <h3>ReThink is supported by leading business chambers, industry associations and NGOs.</h3>
                         <p>
-                            They are contributing to the conversation, providing speakers and panel moderators as well as advocating and promoting ReThink to their members and the wider sustainability
-                            community.
+                            They are contributing to the conversation, providing speakers and panel moderators as well
+                            as advocating and promoting ReThink to their members and the wider sustainability community.
                         </p>
                         <h3 className="link-green">
                             Want to become a partner?{' '}
@@ -345,7 +354,9 @@ class Index extends React.Component {
                                         {largeCards.map((partner, i) => {
                                             return (
                                                 <div className="card-with-title" key={i}>
-                                                    <h2 data-aos="my-anim">{partner.rankingTitle && partner.rankingTitle}</h2>
+                                                    <h2 data-aos="my-anim">
+                                                        {partner.rankingTitle && partner.rankingTitle}
+                                                    </h2>
                                                     <Card
                                                         onClick={() => {
                                                             this.showModal(partner)

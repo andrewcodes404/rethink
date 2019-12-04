@@ -84,20 +84,14 @@ class NavSimple extends React.Component {
             <Nav>
                 <Menu>
                     <div className="logo" onClick={() => Router.push('/')}>
-                        <img
-                            src="/static/graphics/logo-green.svg"
-                            alt="rethink logo"
-                        />
+                        <img src="/static/graphics/logo-green.svg" alt="rethink logo" />
                     </div>
 
                     <div className="home" onClick={() => Router.push('/admin')}>
                         <span>ADMIN PANEL</span>
                     </div>
                     <div className="push-out"></div>
-                    <Mutation
-                        mutation={SIGN_OUT_MUTATION}
-                        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
-                    >
+                    <Mutation mutation={SIGN_OUT_MUTATION} refetchQueries={[{ query: CURRENT_USER_QUERY }]}>
                         {logout => (
                             <div
                                 className="logout"

@@ -28,10 +28,7 @@ class NavSimple extends React.Component {
                     <div className="header-logo" style={{ cursor: 'pointer' }}>
                         <Link href="/">
                             <a>
-                                <img
-                                    src="/static/graphics/logo-green.svg"
-                                    alt="rethink logo"
-                                />
+                                <img src="/static/graphics/logo-green.svg" alt="rethink logo" />
                             </a>
                         </Link>
                     </div>
@@ -42,32 +39,15 @@ class NavSimple extends React.Component {
                         <svg viewBox="0 0 150 106.78">
                             <g id="Layer_2" data-name="Layer 2">
                                 <g id="Layer_1-2" data-name="Layer 1">
+                                    <rect className="cls-1" width="150" height="100" />
+                                    <rect className="cls-2" width="150" height="20" />
                                     <rect
-                                        className="cls-1"
-                                        width="150"
-                                        height="100"
-                                    />
-                                    <rect
-                                        className="cls-2"
-                                        width="150"
-                                        height="20"
-                                    />
-                                    <rect
-                                        className={`cls-2 ${
-                                            this.state.dropActive
-                                                ? 'icon-rotate'
-                                                : ''
-                                        }`}
+                                        className={`cls-2 ${this.state.dropActive ? 'icon-rotate' : ''}`}
                                         y="85"
                                         width="150"
                                         height="20"
                                     />
-                                    <rect
-                                        className="cls-2"
-                                        y="42.5"
-                                        width="150"
-                                        height="20"
-                                    />
+                                    <rect className="cls-2" y="42.5" width="150" height="20" />
                                 </g>
                             </g>
                         </svg>
@@ -88,8 +68,12 @@ class NavSimple extends React.Component {
                             </div>
                         )}
 
-                        <Link href={`/`}>home</Link>
-                        <Link href={`/partners`}>partners</Link>
+                        <Link href={`/`}>
+                            <a> home</a>
+                        </Link>
+                        <Link href={`/partners`}>
+                            <a>partners</a>
+                        </Link>
                         {/* <Link href={`/the_sponsors`}>sponsors</Link> */}
                     </div>
                 </nav>

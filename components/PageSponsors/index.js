@@ -228,7 +228,8 @@ class PageSponsors extends React.Component {
 
                             <div className="content">
                                 <h2>{this.state.name}</h2>
-                                <p>{this.state.description}</p>
+
+                                <div dangerouslySetInnerHTML={{ __html: this.state.description }}></div>
 
                                 <div className="social-wrapper">
                                     {this.state.linkedIn && (

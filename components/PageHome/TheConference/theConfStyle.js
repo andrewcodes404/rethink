@@ -28,8 +28,7 @@ export const StyledActivtyCard = styled.div`
         margin: 0 auto;
         padding: 7px;
         border-radius: 25px;
-        background-color: ${props =>
-            props.color === 'green' ? props.theme.green : props.theme.yellow};
+        background-color: ${props => (props.color === 'green' ? props.theme.green : props.theme.yellow)};
 
         @media (min-width: 767px) {
             width: 90px;
