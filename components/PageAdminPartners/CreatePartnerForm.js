@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Mutation } from 'react-apollo'
 import { CREATE_PARTNER, GET_PARTNERS } from '../../lib/graphqlTags'
 
+import { Editor } from '@tinymce/tinymce-react'
 // material ui
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
@@ -75,9 +76,14 @@ class CreatePartnerForm extends React.Component {
         const { id, type, value } = e.target
         const val = type === 'number' ? parseFloat(value) : value
 
-        this.setState({ [id]: val }, () => {
-            // console.log('this.state.id = ', this.state)
-        })
+        this.setState({ [id]: val })
+    }
+
+    handleEditorChange = e => {
+        const id = e.target.id
+        const value = e.target.getContent()
+
+        this.setState({ [id]: value })
     }
 
     handleRadioChange = e => {
@@ -187,7 +193,7 @@ class CreatePartnerForm extends React.Component {
                                             required
                                         />
 
-                                        <TextField
+                                        {/* <TextField
                                             multiline={true}
                                             rows={6}
                                             variant="outlined"
@@ -198,7 +204,31 @@ class CreatePartnerForm extends React.Component {
                                             onChange={this.handleChange}
                                             required
                                             className="text-area"
-                                        />
+                                        /> */}
+
+                                        <div style={{ width: '95%', margin: '20px auto 0' }}>
+                                            <h4 style={{ textAlign: 'left', color: 'black' }}>Description</h4>
+                                            <br />
+                                            <Editor
+                                                id="description"
+                                                apiKey={process.env.TINY_MCE_API_KEY}
+                                                initialValue={this.state.description}
+                                                init={{
+                                                    height: 400,
+                                                    menubar: false,
+                                                    plugins: [
+                                                        'advlist autolink lists link image charmap print preview anchor',
+                                                        'searchreplace visualblocks code fullscreen',
+                                                        'insertdatetime media table paste code help wordcount',
+                                                    ],
+                                                    toolbar:
+                                                        'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help',
+                                                }}
+                                                onChange={this.handleEditorChange}
+                                            />
+                                        </div>
+                                        <br />
+                                        <br />
 
                                         <TextField
                                             type="text"

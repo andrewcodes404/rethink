@@ -1,5 +1,9 @@
 {
     "version": 2,
     "name": "rethink",
-    "builds": [{ "src": "next.config.js", "use": "@now/next" }]
+    "builds": [{ "src": "next.config.js", "use": "@now/next" }],
+     "env": {
+        "TINY_MCE_API_KEY":"@rethink_front_tiny_mce"
+        
+    }
   }

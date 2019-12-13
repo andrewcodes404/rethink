@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const ProgrammeStyled = styled.div`
+    margin-bottom: 50px;
     .session {
         border-bottom: 1px solid grey;
         h3 {
@@ -106,9 +107,18 @@ export const ProgrammeStyled = styled.div`
             flex-direction: row;
             span:not(:last-child) {
                 padding-right: 10px;
-                /* &:after {
-                    content: '   - ';
-                } */
+            }
+        }
+        cursor: pointer;
+        span {
+            border-bottom: 1px solid white;
+            transition: 0.2s;
+        }
+
+        &:hover {
+            span {
+                color: green;
+                border-bottom: 1px solid green;
             }
         }
     }
@@ -119,30 +129,23 @@ export const ProgrammeStyled = styled.div`
             display: inline;
         }
     }
+`
 
-    .sponsors-and-supporters {
-        @media (min-width: 746px) {
-            display: flex;
-            /* justify-content: space-between; */
-        }
+export const SponsorsAndSupportersWrapper = styled.div`
+    @media (min-width: 746px) {
+        display: flex;
     }
 
-    .sponsors {
-        @media (min-width: 746px) {
-            margin-right: 60px;
-        }
-    }
+    margin-bottom: 60px;
+`
 
-    .sponsors,
-    .supporters {
-        @media (min-width: 746px) {
-            max-width: 50%;
-        }
+export const SponsorsAndSupporters = styled.div`
+    @media (min-width: 746px) {
+        width: 50%;
     }
 
     .logos {
         display: flex;
-        flex-wrap: wrap;
     }
     .logo {
         width: 90px;
@@ -158,6 +161,16 @@ export const ProgrammeStyled = styled.div`
             object-fit: scale-down;
             width: 100%;
             height: 100%;
+        }
+        cursor: pointer;
+        transition: 0.2s;
+
+        border: 1px solid white;
+        &:hover {
+            border: 4px solid green;
+            box-sizing: border-box;
+            transition: 0.2s;
+            padding: 2px;
         }
     }
 `

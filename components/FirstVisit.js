@@ -210,29 +210,12 @@ const CustomForm = ({ status, message, onValidated }) => {
                 <div className="formInputs">
                     <br />
 
-     
-
-                    <input
-                        ref={node => (fname = node)}
-                        type="text"
-                        name="FNAME"
-                        placeholder="First Name"
-                    />
+                    <input ref={node => (fname = node)} type="text" name="FNAME" placeholder="First Name" />
                     <br />
 
-                    <input
-                        ref={node => (lname = node)}
-                        type="text"
-                        name="LNAME"
-                        placeholder="Last Name"
-                    />
+                    <input ref={node => (lname = node)} type="text" name="LNAME" placeholder="Last Name" />
                     <br />
-                    <input
-                        ref={node => (email = node)}
-                        type="email"
-                        placeholder="Email"
-                        required
-                    />
+                    <input ref={node => (email = node)} type="email" placeholder="Email" required />
 
                     <br />
                     <button onClick={submit}>Submit</button>
@@ -299,9 +282,8 @@ class FirstVisit extends React.Component {
                             </div>
                             <div className="card">
                                 <h3>
-                    Secure priority access to delegate passes, sustainability success stories and
+                                    Secure priority access to delegate passes, sustainability success stories and
                                     partner news
-
                                 </h3>
 
                                 <MailchimpSubscribe
