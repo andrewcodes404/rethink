@@ -34,38 +34,40 @@ class PageWrapper extends React.Component {
     render() {
         const loggedIn = false
         return (
-            <Query query={CURRENT_USER_QUERY}>
-                {({ data: { user }, error, loading }) => {
-                    if (loading) return <Spinner />
-                    if (error) return <p>Error: {error.message}</p>
+            <div>
+                <Meta />
+                <Query query={CURRENT_USER_QUERY}>
+                    {({ data: { user }, error, loading }) => {
+                        if (loading) return <Spinner />
+                        if (error) return <p>Error: {error.message}</p>
 
-                    //don't use data.user as a bool ☠️
-                    var loggedIn = false
-                    user ? (loggedIn = true) : (loggedIn = false)
+                        //don't use data.user as a bool ☠️
+                        var loggedIn = false
+                        user ? (loggedIn = true) : (loggedIn = false)
 
-                    return (
-                        <PgWrapper>
-                            {/* <Meta /> */}
-                            {/* <Navigation loggedIn={loggedIn} /> */}
+                        return (
+                            <PgWrapper>
+                                {/* <Navigation loggedIn={loggedIn} /> */}
 
-                            {/* <div className="page-wrapper">
+                                {/* <div className="page-wrapper">
                                     {this.props.children}
                                 </div> */}
-                            <div className="page-wrapper">
-                                {React.Children.map(this.props.children, child =>
-                                    React.cloneElement(child, {
-                                        loggedIn,
-                                        user,
-                                    })
-                                )}
-                            </div>
+                                <div className="page-wrapper">
+                                    {React.Children.map(this.props.children, child =>
+                                        React.cloneElement(child, {
+                                            loggedIn,
+                                            user,
+                                        })
+                                    )}
+                                </div>
 
-                            <div className="push-down" style={{ borderBottom: '4px solid green' }}></div>
-                            <Footer />
-                        </PgWrapper>
-                    )
-                }}
-            </Query>
+                                <div className="push-down" style={{ borderBottom: '4px solid green' }}></div>
+                                <Footer />
+                            </PgWrapper>
+                        )
+                    }}
+                </Query>
+            </div>
         )
     }
 }
