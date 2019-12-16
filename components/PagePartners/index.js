@@ -36,7 +36,7 @@ const CardContainer = styled.div`
 
         @media (min-width: 746px) {
             width: 45%;
-            height: 300px;
+            height: 400px;
         }
 
         h2 {
@@ -47,7 +47,8 @@ const CardContainer = styled.div`
         width: 100%;
         margin: 0 auto 15px;
         padding: 15px;
-        height: 100%;
+
+        height: 80%;
         /* @media (min-width: 746px) {
             width: 45%;
 
@@ -416,10 +417,7 @@ class Index extends React.Component {
                                         })}
                                     </CardContainer>
 
-                                    {/* <h2
-                                        data-aos="my-anim"
-                                        className="container-title"
-                                    >
+                                    <h2 data-aos="my-anim" className="container-title">
                                         Media Partners
                                     </h2>
 
@@ -434,14 +432,12 @@ class Index extends React.Component {
                                                     className="medium"
                                                 >
                                                     <div className="img-wrapper-med">
-                                                        <img
-                                                            src={partner.logo}
-                                                        />
+                                                        <img src={partner.logo} />
                                                     </div>
                                                 </Card>
                                             )
                                         })}
-                                    </CardContainer> */}
+                                    </CardContainer>
 
                                     <h2 data-aos="my-anim" className="container-title">
                                         Community Partners

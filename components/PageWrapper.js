@@ -45,7 +45,7 @@ class PageWrapper extends React.Component {
 
                     return (
                         <PgWrapper>
-                            <Meta />
+                            {/* <Meta /> */}
                             {/* <Navigation loggedIn={loggedIn} /> */}
 
                             {/* <div className="page-wrapper">
