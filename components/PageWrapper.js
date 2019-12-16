@@ -32,10 +32,10 @@ const CURRENT_USER_QUERY = gql`
 
 class PageWrapper extends React.Component {
     render() {
-        const loggedIn = false
+        // const loggedIn = false
         return (
             <div>
-                <Meta />
+                {/* <Meta /> */}
                 <Query query={CURRENT_USER_QUERY}>
                     {({ data: { user }, error, loading }) => {
                         if (loading) return <Spinner />
@@ -47,11 +47,6 @@ class PageWrapper extends React.Component {
 
                         return (
                             <PgWrapper>
-                                {/* <Navigation loggedIn={loggedIn} /> */}
-
-                                {/* <div className="page-wrapper">
-                                    {this.props.children}
-                                </div> */}
                                 <div className="page-wrapper">
                                     {React.Children.map(this.props.children, child =>
                                         React.cloneElement(child, {
