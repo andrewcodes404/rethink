@@ -312,9 +312,15 @@ export const Spinner = styled.div`
 `
 
 export const LinkIntext = styled.div`
-    p {
+    text-align: center;
+    margin: 60px 0;
+    p,
+    h2,
+    h3 {
         font-weight: bold;
         position: relative;
+        display: inline;
+        margin: 0 auto;
     }
 
     a,
@@ -334,7 +340,7 @@ export const LinkIntext = styled.div`
                 width: 400px;
                 height: 5px;
                 left: 11px;
-                top: 16px;
+                top: 20px;
                 background: ${props => props.theme.yellow};
                 z-index: -1;
             }
@@ -466,4 +472,81 @@ export const SponsorButton = styled.button`
     text-transform: uppercase;
     padding: 5px 10px;
     border: unset;
+`
+
+export const CarouselWrapper = styled.div`
+    position: relative;
+    margin: 20px auto;
+
+    @media (min-width: 767px) {
+        max-width: unset;
+    }
+
+    @media (min-width: 1024px) {
+    }
+    .alice-carousel {
+        max-width: 850px;
+        margin: 0 auto;
+    }
+
+    .button-wrapper {
+        margin: 0 auto;
+        position: absolute;
+        /* border: 1px solid green; */
+        top: 25%;
+        left: -40px;
+        right: -40px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media (min-width: 767px) {
+            top: 40%;
+        }
+
+        .next-btn {
+            line-height: 1;
+            display: inline-block;
+            border: none;
+            margin: 0 10px;
+            color: lightgrey;
+            font-size: 30px;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.4s;
+            &:hover {
+                color: green;
+            }
+
+            @media (min-width: 1024px) {
+                font-size: 60px;
+            }
+        }
+    }
+`
+
+export const CarouselItem = styled.div`
+    width: 300px;
+    margin: -30px auto;
+
+    @media (min-width: 1024px) {
+        width: unset;
+        padding: 7px;
+    }
+
+    .logo {
+        width: 200px;
+        max-width: 200px;
+        height: 200px;
+        padding: 20px;
+        /* margin: 0 auto 20px; */
+        overflow: hidden;
+        @media (min-width: 1024px) {
+            width: unset;
+        }
+        img {
+            object-fit: contain;
+            height: 100%;
+        }
+    }
 `

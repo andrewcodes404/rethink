@@ -287,10 +287,20 @@ class Index extends React.Component {
                 <div className="text-content-title-wrapper">
                     <h2 data-aos="my-anim">Partners</h2>
                     <div className="text-content">
-                        <h3>ReThink is supported by leading business chambers, industry associations and NGOs.</h3>
+                        <h3>
+                            ReThink welcomes collaboration with NGOs, charitable organisations, professional trade
+                            associations, business chambers, action groups and media channels to form a cross-industry
+                            line-up of partners.
+                        </h3>
                         <p>
-                            They are contributing to the conversation, providing speakers and panel moderators as well
-                            as advocating and promoting ReThink to their members and the wider sustainability community.
+                            Event &amp; Community partners will be provided with a platform from which to interact and
+                            connect with delegates; businesses and community stakeholders from across the ecosystem –
+                            encouraging collaboration, streamlining of resources and collective messaging.
+                        </p>
+
+                        <p>
+                            Contact the ReThink team to discuss the ways in which your organisation can be part of the
+                            conversation and drive impact at ReThink.
                         </p>
                         <h3 className="link-green">
                             Want to become a partner?{' '}

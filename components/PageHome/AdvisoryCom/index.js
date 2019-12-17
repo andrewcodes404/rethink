@@ -124,11 +124,9 @@ class AdvisoryCom extends React.Component {
 
     onSlideChanged = e => this.setState({ currentIndex: e.item })
 
-    slideNext = () =>
-        this.setState({ currentIndex: this.state.currentIndex + 1 })
+    slideNext = () => this.setState({ currentIndex: this.state.currentIndex + 1 })
 
-    slidePrev = () =>
-        this.setState({ currentIndex: this.state.currentIndex - 1 })
+    slidePrev = () => this.setState({ currentIndex: this.state.currentIndex - 1 })
 
     render() {
         // const handleOnDragStart = e => e.preventDefault()
@@ -138,18 +136,15 @@ class AdvisoryCom extends React.Component {
 
                 <div className="text-content">
                     <h3>
-                        ReThink is supported by a group of cross-sector
-                        sustainability leaders who form the advisory panel and
-                        provide key insight into how ReThink can best address
-                        the needs of the Hong Kong ecosystem.
+                        ReThink is supported by a group of cross-sector sustainability leaders who form the advisory
+                        panel and provide key insight into how ReThink can best address the needs of the Hong Kong
+                        ecosystem.
                     </h3>
 
                     <p>
-                        Meeting as a group and individually, the ReThink 2020
-                        Committee members have advised on current and future
-                        trends, conference topics, potential speakers and
-                        cutting-edge technology/suppliers for the Innovation
-                        Showcase.
+                        Meeting as a group and individually, the ReThink 2020 Committee members have advised on current
+                        and future trends, conference topics, potential speakers and cutting-edge technology/suppliers
+                        for the Innovation Showcase.
                     </p>
                 </div>
 
@@ -180,11 +175,7 @@ class AdvisoryCom extends React.Component {
                                             return (
                                                 <CarouselItem key={i}>
                                                     <div className="headshot">
-                                                        <img
-                                                            src={el.headshot}
-                                                            alt=""
-                                                            srcSet=""
-                                                        />
+                                                        <img src={el.headshot} alt="" srcSet="" />
                                                     </div>
 
                                                     <div className="text">
@@ -199,16 +190,10 @@ class AdvisoryCom extends React.Component {
                                     </AliceCarousel>
 
                                     <div className="button-wrapper">
-                                        <div
-                                            className="next-btn"
-                                            onClick={() => this.slidePrev()}
-                                        >
+                                        <div className="next-btn" onClick={() => this.slidePrev()}>
                                             &lt;
                                         </div>
-                                        <div
-                                            className="next-btn"
-                                            onClick={() => this.slideNext()}
-                                        >
+                                        <div className="next-btn" onClick={() => this.slideNext()}>
                                             &gt;
                                         </div>
                                     </div>

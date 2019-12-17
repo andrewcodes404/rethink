@@ -1,16 +1,33 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import PropTypes from 'prop-types'
-import NavSimple from '../Nav/NavSimple'
-import Nav from '../Nav'
+
 import styled from 'styled-components'
 import { Query } from 'react-apollo'
 import { GET_SPONSORS_WHERE_RANKING } from '../../lib/graphqlTags'
 import { ModalCompanyCard } from '../style/globalComps'
 
-const HeightForNav = styled.div`
-    height: 100px;
-`
+import ProfileBar from '../ProfileBar'
+
+const profileDataSponsor = [
+    {
+        title: 'Sponsors',
+        bkgImg: 'sponsor',
+        icon: 'speaker',
+        list: [
+            'Consultancy Services',
+            'Efficient Energy & Utilities',
+            'Facilities Management',
+            'Government Agencies',
+            'GreenTech Applications',
+            'IT & Back Office Solutions',
+            'Recycling & Waste Management Technology',
+            'Sourcing & Procurement Solutions',
+            'Supply Chain Management & Logistics',
+            'Sustainable Products; Suppliers & Distributors',
+        ],
+    },
+]
 
 const LogoContainerLg = styled.div`
     display: flex;
@@ -212,9 +229,6 @@ class PageSponsors extends React.Component {
 
         return (
             <div style={{ positon: 'relative' }}>
-                <HeightForNav />
-                {/* <NavSimple loggedIn={this.props.loggedIn} /> */}
-                <Nav />
                 {this.state.showModal && (
                     <ModalCompanyCard
                         onClick={() => {
@@ -290,10 +304,68 @@ class PageSponsors extends React.Component {
                     <div className="text-content">
                         <h2 data-aos="my-anim">Sponsors</h2>
                         <p>
-                            ReThink's sponsors are steering Hong Kong's sustainability conversation - demonstrating
-                            their commitment to driving change through thought leadership, best practice, collaboration
-                            and innovation.
+                            ReThink is an event exclusively for sustainability professionals who will attend with their
+                            colleagues from Finance, People, Operations and Procurement to achieve wider understanding
+                            and deliver significant and purposeful change back into their organisation.
                         </p>
+
+                        <p>
+                            Use the power of this live event platform to interact with customers and stakeholders from
+                            across the ecosystem; demonstrate your commitment to accelerating sustainable development in
+                            Hong Kong, launch new solutions, host workshops, build partnerships and generate significant
+                            brand awareness at the highest level.
+                        </p>
+                        <p>
+                            Directly influence sustainability leaders, C-Suite decision makers and government
+                            departments who will attend to source cutting edge technology, sustainable supply chain
+                            solutions and innovative products that reflect the demands of their customers.
+                        </p>
+
+                        <p>
+                            Showcasing at ReThink will put your innovations, services or solutions in front of
+                            procurement teams, business owners and those responsible for meeting sustainability goals
+                            and driving efficiencies across their organisation or across multi-site facilities.
+                        </p>
+
+                        <h3>The Innovation Showcase is open for suppliers and service providers, including:</h3>
+                        <ProfileBar profileData={profileDataSponsor} profileMessage="sponsor" />
+                        <h2>How We Deliver the Audience</h2>
+
+                        <p>
+                            We attract our audience using a comprehensive multi-channel marketing and recruitment
+                            campaign that includes:
+                        </p>
+
+                        <ul>
+                            <li>A delegate nomination and approval process to guarantee quality attendees*</li>
+                            <li>Partnerships with business chambers, industry associations and professional groups</li>
+                            <li>Collaboration with media channels and carefully selected forums, blogs and websites</li>
+                            <li>Comprehensive PR campaign</li>
+                            <li>Continuous social media engagement</li>
+                        </ul>
+
+                        <p>
+                            The ReThink proposition is genuinely exciting and offers something different to other events
+                            – including:
+                        </p>
+
+                        <ul>
+                            <li>Focussed conference with purposeful learnings that business can put into action</li>
+                            <li>
+                                Creative and varied conference formats to provide two-full-days of engaging debate and
+                                discussions
+                            </li>
+                            <li>Workshop sessions to provide deeper insight into pan-industry challenges</li>
+                            <li>Combined Conference &amp; Innovation Showcase</li>
+                            <li>NGO &amp; Partnerships Lounge to facilitate collaboration</li>
+                        </ul>
+
+                        <p>
+                            * All applications to attend are checked and upon confirmation delegates are required to
+                            make a donation to the 2020 ReThink Beneficiary Fund - with all proceeds going to ReThink’s
+                            Charity Partners.
+                        </p>
+
                         <h3 className="link-green">
                             Want to be a ReThink sponsor?{' '}
                             <a href="https://forms.gle/cvuvpHGz4jcSyUCy8" target="_blank" rel="noopener noreferrer">

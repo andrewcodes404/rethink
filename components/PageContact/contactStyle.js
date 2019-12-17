@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-export const StyledFounder = styled.div`
+export const StyledContact = styled.div`
     position: relative;
-    color: white;
+    /* color: white; */
 
     display: flex;
     flex-direction: column;

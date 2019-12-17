@@ -10,10 +10,7 @@ class ProfileBar extends React.Component {
             <StyledProfileBar>
                 {this.props.profileData.map((el, index) => {
                     return (
-                        <div
-                            className="profile-wrapper profile-visitor"
-                            key={index}
-                        >
+                        <div className="profile-wrapper profile-visitor" key={index}>
                             <div className="profile-bkg-img">
                                 <img
                                     src={`./static/photos/profile-${el.bkgImg}-lrg.jpg`}
@@ -26,35 +23,21 @@ class ProfileBar extends React.Component {
                             </div>
 
                             <div className="profile-card">
-                                <div
-                                    className="profile-info"
-                                    data-aos="fade-in"
-                                >
+                                <div className="profile-info" data-aos="fade-in">
                                     <div className="profile-img">
-                                        <img
-                                            src={`./static/icons/${el.icon}-white.svg`}
-                                            alt=""
-                                        />
+                                        <img src={`./static/icons/${el.icon}-white.svg`} alt="" />
                                     </div>
                                     <div className="profile-text">
                                         {el.list.map((el, index) => (
-                                            <p
-                                                className="list-item white"
-                                                key={index}
-                                            >
+                                            <p className="list-item white" key={index}>
                                                 {el}
                                             </p>
                                         ))}
                                     </div>
                                 </div>
                                 <div className="profile-message">
-                                    <a
-                                        href={link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        &gt; Click here to become a{' '}
-                                        {this.props.profileMessage} &lt;
+                                    <a href={link} target="_blank" rel="noopener noreferrer">
+                                        &gt; Click here to become a {this.props.profileMessage} &lt;
                                     </a>
                                 </div>
                             </div>

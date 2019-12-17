@@ -1,14 +1,16 @@
 import React from 'react'
 import Nav from '../components/Nav'
-class Conference extends React.Component {
+import Conference from '../components/PageConference'
+
+class Index extends React.Component {
     render() {
         return (
             <div>
                 <Nav />
-                <p>Conference</p>
+                <Conference />
             </div>
         )
     }
 }
 
-export default Conference
+export default Index
