@@ -6,7 +6,7 @@ import gql from 'graphql-tag'
 import Spinner from './lib/Spinner'
 // comps
 
-import Footer from './PageHeadFooter/Footer'
+import Footer from './Footer'
 import styled from 'styled-components'
 
 const PgWrapper = styled.div`

@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 import styled from 'styled-components'
 import Error from '../lib/ErrorMessage'
 
-import NavAdmin from '../PageHeadFooter/Nav/NavAdmin'
+import NavAdmin from '../NavAdmin'
 
 const Form = styled.form`
     border: 1px solid grey;
@@ -23,11 +23,7 @@ const Form = styled.form`
 `
 
 const MUTATION_SIGNUP = gql`
-    mutation MUTATION_SIGNUP(
-        $email: String!
-        $name: String!
-        $password: String!
-    ) {
+    mutation MUTATION_SIGNUP($email: String!, $name: String!, $password: String!) {
         UserRegister(email: $email, name: $name, password: $password) {
             id
             email
@@ -66,10 +62,7 @@ class UserRegister extends React.Component {
                                         alert('New User Registered')
                                     }}
                                 >
-                                    <fieldset
-                                        disabled={loading}
-                                        aria-busy={loading}
-                                    >
+                                    <fieldset disabled={loading} aria-busy={loading}>
                                         <Error error={error} />
                                         <label htmlFor="email">
                                             Email

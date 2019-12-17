@@ -1,11 +1,11 @@
 import React from 'react'
 import { StyledFooter, SvgWrapper } from './footerStyle'
 import Link from 'next/link'
-import LinkedIn from '../../../static/icons/linkedIn-green.svg'
-import Facebook from '../../../static/icons/facebook-green.svg'
-import Instagram from '../../../static/icons/instagram-green.svg'
-import Twitter from '../../../static/icons/twitter-green.svg'
-import Mail from '../../../static/icons/mail-green.svg'
+import LinkedIn from '../../static/icons/linkedIn-green.svg'
+import Facebook from '../../static/icons/facebook-green.svg'
+import Instagram from '../../static/icons/instagram-green.svg'
+import Twitter from '../../static/icons/twitter-green.svg'
+import Mail from '../../static/icons/mail-green.svg'
 
 const Footer = () => (
     <StyledFooter>
@@ -16,9 +16,7 @@ const Footer = () => (
         </div>
 
         <div className="copyright">
-
             <small>Copyright © 2019 EnviroEvents Hong Kong Limited · All rights reserved.</small>
-
         </div>
 
         <SvgWrapper>
