@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Nav from '../PageHeadFooter/Nav'
+import Nav from '../Nav'
 import Hero from './Hero'
 import Overview from './Overview'
 import TheConference from './TheConference'
@@ -17,7 +17,7 @@ class PageHome extends React.Component {
         return (
             <div>
                 <FirstVisit />
-                <Nav loggedIn={this.props.loggedIn} />
+                <Nav />
                 <Hero />
                 <Overview />
                 <TheConference />

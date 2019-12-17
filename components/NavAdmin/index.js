@@ -1,7 +1,7 @@
 import React from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
-import { CURRENT_USER_QUERY } from '../../PageWrapper'
+import { CURRENT_USER_QUERY } from '../../lib/graphqlTags'
 import Router from 'next/router'
 
 import styled from 'styled-components'
@@ -74,12 +74,8 @@ const Menu = styled.div`
     }
 `
 
-class NavSimple extends React.Component {
-    redirectHome = () => {
-        alert('it clikced')
-    }
+class NavAdmin extends React.Component {
     render() {
-        // console.log('this.props = ', this.props)
         return (
             <Nav>
                 <Menu>
@@ -111,4 +107,4 @@ class NavSimple extends React.Component {
     }
 }
 
-export default NavSimple
+export default NavAdmin

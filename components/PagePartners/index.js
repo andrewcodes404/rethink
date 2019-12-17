@@ -1,15 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import NavSimple from '../PageHeadFooter/Nav/NavSimple'
+
+import Nav from '../Nav'
 import { Query } from 'react-apollo'
 import { GET_PARTNERS } from '../../lib/graphqlTags'
 import { ModalCompanyCard } from '../style/globalComps'
 import styled from 'styled-components'
 
 import Close from '@material-ui/icons/Close'
-const HeightForNav = styled.div`
-    height: 100px;
-`
 
 const CardContainerWrapper = styled.div`
     .container-title {
@@ -208,8 +206,7 @@ class Index extends React.Component {
     render() {
         return (
             <div>
-                <HeightForNav />
-                <NavSimple loggedIn={this.props.loggedIn} />
+                <Nav />
 
                 {this.state.showModal && (
                     <ModalCompanyCard

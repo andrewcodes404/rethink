@@ -1,7 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import PropTypes from 'prop-types'
-import NavSimple from '../PageHeadFooter/Nav/NavSimple'
+import NavSimple from '../Nav/NavSimple'
+import Nav from '../Nav'
 import styled from 'styled-components'
 import { Query } from 'react-apollo'
 import { GET_SPONSORS_WHERE_RANKING } from '../../lib/graphqlTags'
@@ -212,7 +213,8 @@ class PageSponsors extends React.Component {
         return (
             <div style={{ positon: 'relative' }}>
                 <HeightForNav />
-                <NavSimple loggedIn={this.props.loggedIn} />
+                {/* <NavSimple loggedIn={this.props.loggedIn} /> */}
+                <Nav />
                 {this.state.showModal && (
                     <ModalCompanyCard
                         onClick={() => {

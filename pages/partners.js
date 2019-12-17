@@ -4,7 +4,7 @@ import PagePartners from '../components/PagePartners'
 
 class Index extends React.Component {
     render() {
-        return <PagePartners loggedIn={this.props.loggedIn} />
+        return <PagePartners />
     }
 }
 

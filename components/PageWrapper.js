@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 
 import Spinner from './lib/Spinner'
 // comps
-import Meta from './PageHeadFooter/Meta'
+
 import Footer from './PageHeadFooter/Footer'
 import styled from 'styled-components'
 
@@ -35,33 +35,14 @@ class PageWrapper extends React.Component {
         // const loggedIn = false
         return (
             <div>
-                {/* <Meta /> */}
-                <Query query={CURRENT_USER_QUERY}>
-                    {({ data: { user }, error, loading }) => {
-                        if (loading) return <Spinner />
-                        if (error) return <p>Error: {error.message}</p>
+                <PgWrapper>
+                    <div className="page-wrapper">
+                        {React.Children.map(this.props.children, child => React.cloneElement(child))}
+                    </div>
 
-                        //don't use data.user as a bool ☠️
-                        var loggedIn = false
-                        user ? (loggedIn = true) : (loggedIn = false)
-
-                        return (
-                            <PgWrapper>
-                                <div className="page-wrapper">
-                                    {React.Children.map(this.props.children, child =>
-                                        React.cloneElement(child, {
-                                            loggedIn,
-                                            user,
-                                        })
-                                    )}
-                                </div>
-
-                                <div className="push-down" style={{ borderBottom: '4px solid green' }}></div>
-                                <Footer />
-                            </PgWrapper>
-                        )
-                    }}
-                </Query>
+                    <div className="push-down" style={{ borderBottom: '4px solid green' }}></div>
+                    <Footer />
+                </PgWrapper>
             </div>
         )
     }

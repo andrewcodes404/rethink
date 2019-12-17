@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+export const HeightForNav = styled.div`
+    height: 70px;
+`
+
 export const StyledNav = styled.div`
     background-color: black;
 
@@ -109,6 +113,15 @@ export const StyledNav = styled.div`
             color: ${props => props.theme.green};
             @media (min-width: 767px) {
                 color: ${props => props.theme.yellow};
+            }
+        }
+
+        .active {
+            color: gold;
+
+            &:after {
+                color: white;
+                content: '  |  ';
             }
         }
 
