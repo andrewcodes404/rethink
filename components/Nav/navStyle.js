@@ -121,7 +121,6 @@ export const StyledNav = styled.div`
 
             &:after {
                 color: white;
-                content: '  |  ';
             }
         }
 

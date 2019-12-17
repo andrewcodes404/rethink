@@ -1,32 +1,28 @@
 import React from 'react'
-import NavAdmin from '../components/PageHeadFooter/Nav/NavAdmin'
+import NavAdmin from '../components/NavAdmin'
 import UserRegister from '../components/user/UserRegister'
-
 import Router from 'next/router'
-class Register extends React.Component {
-    componentDidMount() {
-        if (!this.props.loggedIn) {
-            Router.push('/error', '/')
-        }
-    }
+import Spinner from '../components/lib/Spinner'
+import { Query } from 'react-apollo'
+import { CURRENT_USER_QUERY } from '../lib/graphqlTags'
 
+class Register extends React.Component {
     render() {
         return (
-            <div>
-                {!this.props.loggedIn ? (
-                    <div>
-                        <p>re-routing from register.js</p>
-                    </div>
-                ) : (
-                    <div>
-                        <NavAdmin
-                            userName={this.props.user.name}
-                            loggedIn={this.props.loggedIn}
-                        />
-                        <UserRegister />
-                    </div>
-                )}
-            </div>
+            <Query query={CURRENT_USER_QUERY}>
+                {({ data: { user }, error, loading }) => {
+                    if (loading) return <Spinner />
+                    if (error) return <p>Error: {error.message}</p>
+                    if (!user) Router.push('/')
+
+                    return (
+                        <>
+                            <NavAdmin />
+                            <UserRegister />
+                        </>
+                    )
+                }}
+            </Query>
         )
     }
 }
