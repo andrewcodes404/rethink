@@ -78,12 +78,16 @@ class Nav extends React.Component {
                                 <a className={pathname === '/conference' ? 'active' : ''}>the conference</a>
                             </Link>
 
+                            <Link href="/programme">
+                                <a className={pathname === '/programme' ? 'active' : ''}>programme</a>
+                            </Link>
+
                             <Link href="/delegates">
                                 <a className={pathname === '/delegates' ? 'active' : ''}>delegates</a>
                             </Link>
 
                             <Link href="/partners">
-                                <a className={pathname === '/partners' ? 'active' : ''}>partners</a>
+                                <a className={pathname === '/partners' ? 'active' : ''}>partners </a>
                             </Link>
 
                             <Link href="/sponsors">

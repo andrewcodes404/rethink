@@ -4,7 +4,7 @@ export const StyledFooter = styled.div`
     /* height: 100px; */
     display: flex;
     flex-direction: column-reverse;
-    /* justify-content: space-between; */
+
     justify-content: center;
     align-items: center;
     padding: 1rem;
@@ -17,26 +17,24 @@ export const StyledFooter = styled.div`
 
     .footer-logo {
         width: 110px;
+        @media (min-width: 767px) {
+            margin-right: 40px;
+        }
     }
 
     .social-wrapper {
         display: flex;
         padding: 10px 0;
-    }
-
-    .copyright {
-        display: flex;
-        justify-content: center;
-
-        small {
-            color: green;
+        width: 95%;
+        margin: 0 auto;
+        @media (min-width: 767px) {
+            width: unset;
         }
     }
 
     .privacy {
         display: flex;
         flex-direction: column;
-
         justify-content: center;
         margin-right: 20px;
 
@@ -49,11 +47,15 @@ export const StyledFooter = styled.div`
     }
 
     .social-icon {
-        width: 50px;
-        padding: 10px;
-        /* margin: 0 5px; */
-        cursor: pointer;
+        width: 35px;
+        margin-right: 10px;
 
+        @media (min-width: 567px) {
+            width: 50px;
+            padding: 10px;
+        }
+
+        cursor: pointer;
         transition: 0.4s;
 
         &:hover {
@@ -82,6 +84,22 @@ export const StyledFooter = styled.div`
                     }
                 }
             }
+        }
+    }
+
+    .copyright {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        small {
+            color: green;
+        }
+
+        margin-bottom: 30px;
+
+        @media (min-width: 767px) {
+            margin: 0;
         }
     }
 `

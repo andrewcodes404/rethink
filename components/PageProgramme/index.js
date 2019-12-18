@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Query } from 'react-apollo'
 import { GET_SESSIONS_WHERE_TIME, GET_SESSIONS_WHERE_DAY_ORDER_TIME } from '../../lib/graphqlTags'
 
-import NavAdmin from '../NavAdmin'
+import Nav from '../Nav'
 
 import Host from './Host'
 import Sponsors from './Sponsors'
@@ -41,9 +41,7 @@ class Index extends React.Component {
     render() {
         return (
             <div>
-                <div className="height-for-nav" />
-
-                <NavAdmin loggedIn={this.props.loggedIn} />
+                <Nav />
 
                 <div className="text-content-title-wrapper">
                     <h2 data-aos="my-anim">Programme</h2>

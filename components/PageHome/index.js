@@ -53,18 +53,6 @@ class PageHome extends React.Component {
                     </div>
                 </div>
 
-                <div className="text-content-title-wrapper-small">
-                    <h2 data-aos="my-anim">
-                        <Link href="/sponsors">
-                            <a>Hosts &amp; Speakers</a>
-                        </Link>
-                    </h2>
-                    <div className="text-content">
-                        {/* <PartnersCarousel /> */}
-                        <CarouselHostSpeakers />
-                    </div>
-                </div>
-
                 <div className="text-content-title-wrapper">
                     <h2 data-aos="my-anim">
                         <Link href="/conference">
@@ -88,24 +76,37 @@ class PageHome extends React.Component {
                             </h3>
                         </LinkIntext>
                     </div>
+
+                    <div className="text-content-title-wrapper-small">
+                        <h2 data-aos="my-anim">
+                            <Link href="/sponsors">
+                                <a>Hosts &amp; Speakers</a>
+                            </Link>
+                        </h2>
+                        <div className="text-content">
+                            {/* <PartnersCarousel /> */}
+                            <CarouselHostSpeakers />
+                        </div>
+                    </div>
                 </div>
 
-                {/* <Delegates /> */}
-                {/* <Audience /> */}
-                {/* <Sponsors /> */}
-                {/* <Partners /> */}
                 <AdvisoryCom />
-
-                <div className="text-content">
-                    <blockquote>
-                        &quot; This planet is not terra firma. It is a delicate flower and it must be cared for.
-                        It&apos;s lonely. It&apos;s small. It&apos;s isolated, and there is no resupply. And we are
-                        mistreating it. Clearly, the highest loyalty we should have is not to our own country or our own
-                        religion or our hometown or even to ourselves. It should be to the planet at large. This is our
-                        home, and this is all we&apos;ve got.&quot;
-                    </blockquote>
-                    <p>Scott Carpenter, Mercury 7 astronaut. October 1992.</p>
+                <div className="text-content-title-wrapper">
+                    <div className="text-content">
+                        <blockquote>
+                            &quot; This planet is not terra firma. It is a delicate flower and it must be cared for.
+                            It&apos;s lonely. It&apos;s small. It&apos;s isolated, and there is no resupply. And we are
+                            mistreating it. Clearly, the highest loyalty we should have is not to our own country or our
+                            own religion or our hometown or even to ourselves. It should be to the planet at large. This
+                            is our home, and this is all we&apos;ve got.&quot;
+                        </blockquote>
+                        <p>Scott Carpenter, Mercury 7 astronaut. October 1992.</p>
+                    </div>
                 </div>
+                <br />
+                <br />
+                <br />
+                <br />
             </div>
         )
     }
