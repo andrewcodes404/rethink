@@ -10,12 +10,13 @@ module.exports = withCss({
     });
 
     return config;
-  }
-})
-
-exports.default = {
+  },
   env: {
     TINY_MCE_API_KEY: process.env.TINY_MCE_API_KEY,
     GOOGLE_MAPS: process.env.GOOGLE_MAPS,
   },
-}
+})
+
+
+  
+

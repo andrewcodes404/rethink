@@ -5,12 +5,6 @@
 
     "env": {
         "TINY_MCE_API_KEY": "@rethink_front_tiny_mce",
-        "GOOGLE_MAPS": "@rethink_front_google-maps"
-    },
-    "build": {
-        "env": {
-            "TINY_MCE_API_KEY": "@rethink_front_tiny_mce",
-            "GOOGLE_MAPS": "@rethink_front_google-maps"
-        }
+        "GOOGLE_MAPS": "@rethink_front_google_maps"
     }
 }
