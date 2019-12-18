@@ -82,8 +82,8 @@ const Founder = () => (
 
         <div style={{ height: '500px', width: '100%' }}>
             <GoogleMapReact
-                // bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS }}
-                bootstrapURLKeys={{ key: 'AIzaSyAK3CVvCwqduXEurMbBV5IU0seiqqP_Y1Y' }}
+                bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS }}
+                // bootstrapURLKeys={{ key: 'AIzaSyAK3CVvCwqduXEurMbBV5IU0seiqqP_Y1Y' }}
                 defaultCenter={{
                     lat: 22.2943136,
                     lng: 114.1749903,

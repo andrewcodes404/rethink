@@ -1,4 +1,6 @@
 /* eslint-disable */
+require('dotenv').config()
+
 const withCss = require('@zeit/next-css')
 
 module.exports = withCss({
