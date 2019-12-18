@@ -7,8 +7,10 @@ import { LinkIntext } from '../style/globalComps'
 import Nav from '../Nav'
 import Hero from './Hero'
 import Overview from './Overview'
-import SponsorsCarousel from './Sponsors/SponsorsCarousel'
-import PartnersCarousel from './Partners/PartnersCarousel'
+
+import CarouselPartners from '../carousels/CarouselPartners'
+import CarouselSponsors from '../carousels/CarouselSponsors'
+import CarouselHostSpeakers from '../carousels/CarouselHostSpeakers'
 
 import Delegates from './Delegates'
 import Audience from './Audience'
@@ -34,7 +36,8 @@ class PageHome extends React.Component {
                         </Link>
                     </h2>
                     <div className="text-content">
-                        <SponsorsCarousel />
+                        {/* <SponsorsCarousel /> */}
+                        <CarouselSponsors />
                     </div>
                 </div>
 
@@ -45,7 +48,20 @@ class PageHome extends React.Component {
                         </Link>
                     </h2>
                     <div className="text-content">
-                        <PartnersCarousel />
+                        {/* <PartnersCarousel /> */}
+                        <CarouselPartners />
+                    </div>
+                </div>
+
+                <div className="text-content-title-wrapper-small">
+                    <h2 data-aos="my-anim">
+                        <Link href="/sponsors">
+                            <a>Hosts &amp; Speakers</a>
+                        </Link>
+                    </h2>
+                    <div className="text-content">
+                        {/* <PartnersCarousel /> */}
+                        <CarouselHostSpeakers />
                     </div>
                 </div>
 

@@ -9,6 +9,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
+import Checkbox from '@material-ui/core/Checkbox'
 
 // icons
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
@@ -44,6 +45,9 @@ class CreateHostSpeakForm extends React.Component {
             facebook: '',
             twitter: '',
             website: '',
+
+            frontpage: false,
+            index: 99,
         }
     }
 
@@ -63,6 +67,8 @@ class CreateHostSpeakForm extends React.Component {
             facebook: '',
             twitter: '',
             website: '',
+            frontpage: false,
+            index: 99,
         })
     }
 
@@ -86,16 +92,11 @@ class CreateHostSpeakForm extends React.Component {
         this.setState({ [id]: value })
     }
 
-    handleRadioChange = e => {
-        const { id } = e.target
-        this.setState({ ranking: id }, () => {
-            console.log('this.state.id = ', this.state.ranking)
-        })
-    }
-
-    handleChckboxChange = e => {
+    handleCheckboxChange = e => {
         const { checked } = e.target
-        this.setState({ frontpage: checked })
+        this.setState({ frontpage: checked }, () => {
+            console.log('this.state = ', this.state)
+        })
     }
 
     clearModal = () => {
@@ -128,10 +129,6 @@ class CreateHostSpeakForm extends React.Component {
             headshot: file.secure_url,
             loading: false,
         })
-    }
-
-    handleBioChange = data => {
-        console.log('data = ', data)
     }
 
     render() {
@@ -373,6 +370,31 @@ class CreateHostSpeakForm extends React.Component {
                                                 ),
                                             }}
                                         />
+                                        <div className="btm-wrapper">
+                                            <TextField
+                                                type="number"
+                                                id="index"
+                                                label="index position"
+                                                className="input-number"
+                                                margin="normal"
+                                                variant="outlined"
+                                                value={this.state.index}
+                                                onChange={this.handleChange}
+                                                required
+                                                fullWidth={false}
+                                                // helperText="a shifting dream a bittersweet philosophy"
+                                            />
+                                            <label className="input-checkbox">
+                                                Show in front page carousel
+                                                <Checkbox
+                                                    name="frontpage"
+                                                    id="frontpage"
+                                                    color="default"
+                                                    checked={this.state.frontpage}
+                                                    onChange={this.handleCheckboxChange}
+                                                />
+                                            </label>
+                                        </div>
 
                                         <div className="submit-wrapper">
                                             <Button

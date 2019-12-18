@@ -1,5 +1,5 @@
 import React from 'react'
-// import SponsorsCarousel from './SponsorsCarousel'
+
 import ProfileBar from '../../ProfileBar'
 // import Link from 'next/link'
 
@@ -71,8 +71,6 @@ const Sponsors = () => (
                         </span>
                     </Link>
                 </h3> */}
-
-                {/* <SponsorsCarousel /> */}
             </div>
         </div>
     </div>

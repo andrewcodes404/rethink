@@ -1,14 +1,11 @@
 import React from 'react'
 import { Query } from 'react-apollo'
-import { GET_PARTNERS_WHERE_FRONTPAGE } from '../../../lib/graphqlTags'
+import { GET_HOSTSPEAKERS_WHERE_FRONTPAGE } from '../../lib/graphqlTags'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
-import styled from 'styled-components'
-import Link from 'next/link'
+import { CarouselWrapper, CarouselItem } from '../style/globalComps'
 
-import { CarouselWrapper, CarouselItem } from '../../style/globalComps'
-
-class SponsorsCarousel extends React.Component {
+class hostSpeakersCarousel extends React.Component {
     responsive = {
         0: { items: 1 },
         500: { items: 2 },
@@ -32,23 +29,16 @@ class SponsorsCarousel extends React.Component {
 
     render() {
         return (
-            <Query query={GET_PARTNERS_WHERE_FRONTPAGE}>
+            <Query query={GET_HOSTSPEAKERS_WHERE_FRONTPAGE}>
                 {({ data, error, loading }) => {
                     if (loading) return <p>Loading...</p>
                     if (error) return <p>Error: {error.message}</p>
                     if (!data) return <p>No Data</p>
-                    const { partners } = data
+
+                    const { hostSpeakers } = data
 
                     return (
                         <div>
-                            {/* <h3>
-                                To see all partners{' '}
-                                <Link href="/partners">
-                                    <span className="link-green" style={{ textDecoration: 'underline' }}>
-                                        <a href="">click here</a>
-                                    </span>
-                                </Link>
-                            </h3> */}
                             <CarouselWrapper>
                                 <AliceCarousel
                                     responsive={this.responsive}
@@ -61,11 +51,11 @@ class SponsorsCarousel extends React.Component {
                                     slideToIndex={this.state.currentIndex}
                                     onSlideChanged={this.onSlideChanged}
                                 >
-                                    {partners.map((partner, i) => {
+                                    {hostSpeakers.map((hostSpeaker, i) => {
                                         return (
                                             <CarouselItem key={i}>
-                                                <div className="logo">
-                                                    <img src={partner.logo} alt="" srcSet="" />
+                                                <div className="headshot">
+                                                    <img src={hostSpeaker.headshot} alt="" srcSet="" />
                                                 </div>
                                             </CarouselItem>
                                         )
@@ -89,4 +79,4 @@ class SponsorsCarousel extends React.Component {
     }
 }
 
-export default SponsorsCarousel
+export default hostSpeakersCarousel

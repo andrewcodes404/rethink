@@ -329,6 +329,10 @@ class PageSponsors extends React.Component {
 
                         <h3>The Innovation Showcase is open for suppliers and service providers, including:</h3>
                         <ProfileBar profileData={profileDataSponsor} profileMessage="sponsor" />
+
+                        <br />
+                        <br />
+                        <br />
                         <h2>How We Deliver the Audience</h2>
 
                         <p>
@@ -346,7 +350,7 @@ class PageSponsors extends React.Component {
 
                         <p>
                             The ReThink proposition is genuinely exciting and offers something different to other events
-                            – including:
+                            including:
                         </p>
 
                         <ul>

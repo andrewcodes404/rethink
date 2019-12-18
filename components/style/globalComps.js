@@ -545,7 +545,22 @@ export const CarouselItem = styled.div`
             width: unset;
         }
         img {
-            object-fit: contain;
+            object-fit: scale-down;
+            height: 100%;
+        }
+    }
+    .headshot {
+        width: 200px;
+        max-width: 200px;
+        height: 200px;
+        padding: 20px;
+        /* margin: 0 auto 20px; */
+        overflow: hidden;
+        @media (min-width: 1024px) {
+            width: unset;
+        }
+        img {
+            object-fit: scale-down;
             height: 100%;
         }
     }

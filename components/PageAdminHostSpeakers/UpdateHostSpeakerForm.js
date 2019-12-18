@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Mutation } from 'react-apollo'
-import { UPDATE_HOSTSPEAKER, GET_HOSTSPEAKERS } from '../../lib/graphqlTags'
+import { UPDATE_HOSTSPEAKER, GET_HOSTSPEAKERS_ORDERBY_INDEX } from '../../lib/graphqlTags'
 
 import { Editor } from '@tinymce/tinymce-react'
 
@@ -10,6 +10,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
+import Checkbox from '@material-ui/core/Checkbox'
 
 // icons
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
@@ -45,16 +46,15 @@ class UpdateHostSpeakerForm extends React.Component {
             facebook: props.facebook,
             twitter: props.twitter,
             website: props.website,
+            frontpage: props.frontpage || false,
+            index: props.index,
         }
     }
 
     resetState() {
         this.setState({
-            index: 99,
             loading: false,
-            // AdvComAdded: true,
             showUpdateForm: false,
-
             id: '',
             name: '',
             title: '',
@@ -66,6 +66,8 @@ class UpdateHostSpeakerForm extends React.Component {
             facebook: '',
             twitter: '',
             website: '',
+            frontpage: false,
+            index: 99,
         })
     }
 
@@ -79,11 +81,8 @@ class UpdateHostSpeakerForm extends React.Component {
     }
 
     handleEditorChange = e => {
-        console.log('Content was updated:', e.target.getContent())
-
         const id = e.target.id
         const value = e.target.getContent()
-
         this.setState({ [id]: value })
     }
 
@@ -92,9 +91,11 @@ class UpdateHostSpeakerForm extends React.Component {
         this.setState({ ranking: id })
     }
 
-    handleChckboxChange = e => {
+    handleCheckboxChange = e => {
         const { checked } = e.target
-        this.setState({ frontpage: checked })
+        this.setState({ frontpage: checked }, () => {
+            console.log('this.state.id = ', this.state)
+        })
     }
 
     clearModal = () => {
@@ -109,7 +110,6 @@ class UpdateHostSpeakerForm extends React.Component {
         const data = new FormData()
         data.append('file', files[0])
         data.append('upload_preset', 'rethink_AdvCom')
-
         this.setState({
             loading: true,
         })
@@ -168,7 +168,7 @@ class UpdateHostSpeakerForm extends React.Component {
                             <Mutation
                                 mutation={UPDATE_HOSTSPEAKER}
                                 variables={this.state}
-                                refetchQueries={[{ query: GET_HOSTSPEAKERS }]}
+                                refetchQueries={[{ query: GET_HOSTSPEAKERS_ORDERBY_INDEX }]}
                             >
                                 {(updateHostSpeaker, { loading, error }) => (
                                     <HostSpeakForm
@@ -382,6 +382,32 @@ class UpdateHostSpeakerForm extends React.Component {
                                             }}
                                         />
 
+                                        <div className="btm-wrapper">
+                                            <TextField
+                                                type="number"
+                                                id="index"
+                                                label="index position"
+                                                className="input-number"
+                                                margin="normal"
+                                                variant="outlined"
+                                                value={this.state.index}
+                                                onChange={this.handleChange}
+                                                required
+                                                fullWidth={false}
+                                                // helperText="a shifting dream a bittersweet philosophy"
+                                            />
+                                            <label className="input-checkbox">
+                                                Show in front page carousel
+                                                <Checkbox
+                                                    name="frontpage"
+                                                    id="frontpage"
+                                                    color="default"
+                                                    checked={this.state.frontpage}
+                                                    onChange={this.handleCheckboxChange}
+                                                />
+                                            </label>
+                                        </div>
+
                                         <div className="submit-wrapper">
                                             <Button
                                                 margin="normal"
@@ -433,6 +459,8 @@ UpdateHostSpeakerForm.propTypes = {
     facebook: PropTypes.string,
     twitter: PropTypes.string,
     website: PropTypes.string,
+    frontpage: PropTypes.bool,
+    index: PropTypes.number,
 }
 
 export default UpdateHostSpeakerForm

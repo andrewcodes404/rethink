@@ -282,6 +282,14 @@ export const HostSpeakForm = styled.form`
         /* font-size: 16px; */
         width: 200px;
     }
+
+    .btm-wrapper {
+        margin-top: 30px;
+
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+    }
     .submit-wrapper {
         margin-top: 30px;
         display: flex;

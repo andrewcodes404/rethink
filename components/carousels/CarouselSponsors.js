@@ -1,9 +1,9 @@
 import React from 'react'
 import { Query } from 'react-apollo'
-import { GET_SPONSORS_WHERE_FRONTPAGE } from '../../../lib/graphqlTags'
+import { GET_SPONSORS_WHERE_FRONTPAGE } from '../../lib/graphqlTags'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
-import { CarouselWrapper, CarouselItem } from '../../style/globalComps'
+import { CarouselWrapper, CarouselItem } from '../style/globalComps'
 
 class SponsorsCarousel extends React.Component {
     responsive = {

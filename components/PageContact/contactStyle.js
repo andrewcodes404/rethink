@@ -1,14 +1,103 @@
 import styled from 'styled-components'
+
 export const StyledContact = styled.div`
     position: relative;
-    /* color: white; */
-
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     @media (min-width: 967px) {
         min-height: 80vh;
+    }
+
+    .get-in-touch {
+        h2 {
+            margin-bottom: 20px;
+            @media (min-width: 567px) {
+                margin-bottom: 70px;
+            }
+        }
+
+        p {
+            margin: 0 0 15px;
+        }
+
+        a {
+            color: green;
+            font-weight: bold;
+        }
+
+        margin-bottom: 40px;
+
+        .full-details {
+            a {
+                color: black;
+                font-weight: normal;
+
+                border-bottom: 3px solid gold;
+            }
+        }
+    }
+
+    .social-wrapper {
+        display: flex;
+        justify-content: space-between;
+        /* margin: 0 auto 60px; */
+        margin-bottom: 60px;
+        width: 80%;
+        max-width: 230px;
+    }
+
+    .social-icon {
+        width: 30px;
+
+        cursor: pointer;
+
+        transition: 0.4s;
+
+        &:hover {
+            .linkedIn-green_svg__st0,
+            .instagram-green_svg__st0 {
+                stroke: gold;
+            }
+
+            #twitter-green_svg__Layer_1,
+            #facebook-green_svg__Layer_1,
+            #mail-green_svg__Layer_1 {
+                path {
+                    stroke: gold;
+                    fill: gold;
+                    border: 1px solid blue;
+                }
+            }
+        }
+    }
+
+    .info {
+        display: flex;
+        margin-bottom: 60px;
+
+        flex-direction: column;
+        max-width: 650px;
+
+        @media (min-width: 567px) {
+            flex-direction: row;
+        }
+    }
+
+    .location {
+        margin-bottom: 30px;
+    }
+
+    .location,
+    .event-times {
+        width: 400px;
+
+        h3 {
+            margin: 0 0 10px;
+        }
+        p {
+            margin: 0 0 5px;
+        }
     }
 
     .founder-header {

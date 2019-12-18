@@ -1,6 +1,6 @@
 import React from 'react'
 import { Query } from 'react-apollo'
-import { GET_HOSTSPEAKERS } from '../../lib/graphqlTags'
+import { GET_HOSTSPEAKERS_ORDERBY_INDEX } from '../../lib/graphqlTags'
 import UpdateHostSpeakerForm from './UpdateHostSpeakerForm'
 import DeleteHostSpeaker from './DeleteHostSpeaker'
 
@@ -68,6 +68,8 @@ class comp_name extends React.Component {
                 facebook: member.facebook,
                 twitter: member.twitter,
                 website: member.website,
+                frontpage: member.frontpage,
+                index: member.index,
             })
         } else
             this.setState({
@@ -86,6 +88,8 @@ class comp_name extends React.Component {
                 facebook: member.facebook,
                 twitter: member.twitter,
                 website: member.website,
+                frontpage: member.frontpage,
+                index: member.index,
             })
     }
 
@@ -97,7 +101,7 @@ class comp_name extends React.Component {
                     <ArrowDownward className="arrow" />
                 </Title>
 
-                <Query query={GET_HOSTSPEAKERS}>
+                <Query query={GET_HOSTSPEAKERS_ORDERBY_INDEX}>
                     {({ data, error, loading }) => {
                         if (loading) return <p>Loading...</p>
                         if (error) return <p>Error: {error.message}</p>
@@ -128,12 +132,15 @@ class comp_name extends React.Component {
                                     facebook={this.state.facebook}
                                     twitter={this.state.twitter}
                                     website={this.state.website}
+                                    frontpage={this.state.frontpage}
+                                    index={this.state.index}
                                 />
 
                                 <Members>
                                     {hostSpeakers.map((member, i) => (
                                         <Member key={i}>
                                             <div className="headshot">
+                                                <span className="index">#{member.index}</span>
                                                 <img src={member.headshot} alt={member.name} />
                                             </div>
 
