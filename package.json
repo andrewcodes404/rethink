@@ -22,6 +22,7 @@
         "aos": "^2.3.4",
         "apollo-boost": "^0.4.3",
         "babel-plugin-styled-components": "^1.10.6",
+        "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "google-map-react": "^1.1.5",
         "graphql": "^14.4.2",

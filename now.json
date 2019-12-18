@@ -2,8 +2,15 @@
     "version": 2,
     "name": "rethink",
     "builds": [{ "src": "next.config.js", "use": "@now/next" }],
-     "env": {
-        "TINY_MCE_API_KEY":"@rethink_front_tiny_mce"
-        
+
+    "env": {
+        "TINY_MCE_API_KEY": "@rethink_front_tiny_mce",
+        "GOOGLE_MAPS": "@rethink_front_google-maps"
+    },
+    "build": {
+        "env": {
+            "TINY_MCE_API_KEY": "@rethink_front_tiny_mce",
+            "GOOGLE_MAPS": "@rethink_front_google-maps"
+        }
     }
-  }
+}
