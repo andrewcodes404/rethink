@@ -10,7 +10,7 @@ import Sponsors from './Sponsors'
 import Supporters from './Supporters'
 import Speakers from './Speakers'
 
-import { ProgrammeStyled, SponsorsAndSupportersWrapper } from './programmeStyle'
+import { ProgrammeStyled, SponsorsAndSupportersWrapper, DayBtns } from './programmeStyle'
 import ArrowDropDownCircle from '@material-ui/icons/ArrowDropDownCircle'
 
 class Index extends React.Component {
@@ -18,6 +18,7 @@ class Index extends React.Component {
         super()
         this.state = {
             showSessions: [],
+            showDay: 'one',
         }
     }
 
@@ -52,207 +53,237 @@ class Index extends React.Component {
                         and solutions.
                     </h3>
 
-                    <h2>Day 1</h2>
+                    <DayBtns>
+                        <div className={`btn ${this.state.showDay === 'one' && 'active'}`}>
+                            <h2
+                                onClick={() => {
+                                    this.setState({
+                                        showDay: 'one',
+                                    })
+                                }}
+                                className={this.state.showDay === 'one' && 'active'}
+                            >
+                                Day 1
+                            </h2>
+                        </div>
 
-                    <Query
-                        query={GET_SESSIONS_WHERE_DAY_ORDER_TIME}
-                        variables={{
-                            day: 'day1',
-                        }}
-                    >
-                        {({ data, error, loading }) => {
-                            if (loading) return <p>Loading...</p>
-                            if (error) return <p>Error: {error.message}</p>
+                        <div className={`btn ${this.state.showDay === 'two' && 'active'}`}>
+                            <h2
+                                onClick={() => {
+                                    this.setState({
+                                        showDay: 'two',
+                                    })
+                                }}
+                            >
+                                Day 2
+                            </h2>
+                        </div>
+                    </DayBtns>
 
-                            return (
-                                <ProgrammeStyled>
-                                    {data.sessions.map((session, index) => {
-                                        const {
-                                            id,
-                                            title,
-                                            theme,
-                                            start,
-                                            end,
-                                            host,
-                                            speakers,
-                                            overview,
-                                            learnings,
-                                            supporters,
-                                            sponsors,
-                                        } = session
+                    {this.state.showDay === 'one' && (
+                        <Query
+                            query={GET_SESSIONS_WHERE_DAY_ORDER_TIME}
+                            variables={{
+                                day: 'day1',
+                            }}
+                        >
+                            {({ data, error, loading }) => {
+                                if (loading) return <p>Loading...</p>
+                                if (error) return <p>Error: {error.message}</p>
 
-                                        return (
-                                            <div className="session" key={index}>
-                                                <div>
-                                                    <div className="session-header">
-                                                        <div className="session-header--item1">
-                                                            <div className="theme-icon">
-                                                                <img
-                                                                    src={`static/session-themes/${theme}.png`}
-                                                                    alt=""
-                                                                    srcSet=""
-                                                                />
+                                return (
+                                    <ProgrammeStyled>
+                                        {data.sessions.map((session, index) => {
+                                            const {
+                                                id,
+                                                title,
+                                                theme,
+                                                start,
+                                                end,
+                                                host,
+                                                speakers,
+                                                overview,
+                                                learnings,
+                                                supporters,
+                                                sponsors,
+                                            } = session
+
+                                            return (
+                                                <div className="session" key={index}>
+                                                    <div>
+                                                        <div className="session-header">
+                                                            <div className="session-header--item1">
+                                                                <div className="theme-icon">
+                                                                    <img
+                                                                        src={`static/session-themes/${theme}.png`}
+                                                                        alt=""
+                                                                        srcSet=""
+                                                                    />
+                                                                </div>
+                                                                <h3 className="theme-title">
+                                                                    {start}-{end} - {title}
+                                                                </h3>
                                                             </div>
-                                                            <h3 className="theme-title">
-                                                                {start}-{end} - {title}
-                                                            </h3>
+                                                            <div className="session-header--item2">
+                                                                {theme !== 'break' && (
+                                                                    <ArrowDropDownCircle
+                                                                        onClick={() => {
+                                                                            this.handleTrianlgeClick(id)
+                                                                        }}
+                                                                        className={`disclosure-trangle ${this.state.showSessions.find(
+                                                                            x => x === id
+                                                                        ) === id && 'disclosure-triangle--down'}`}
+                                                                    />
+                                                                )}
+                                                            </div>
                                                         </div>
-                                                        <div className="session-header--item2">
-                                                            {theme !== 'break' && (
-                                                                <ArrowDropDownCircle
-                                                                    onClick={() => {
-                                                                        this.handleTrianlgeClick(id)
-                                                                    }}
-                                                                    className={`disclosure-trangle ${this.state.showSessions.find(
-                                                                        x => x === id
-                                                                    ) === id && 'disclosure-triangle--down'}`}
-                                                                />
+
+                                                        <div
+                                                            className={`session-content ${this.state.showSessions.find(
+                                                                x => x === id
+                                                            ) === id && 'show-session'}`}
+                                                        >
+                                                            {host && <Host hostId={host} />}
+
+                                                            {speakers.length > 0 && <Speakers speakers={speakers} />}
+                                                            {overview && (
+                                                                <div className="overview text-section">
+                                                                    <p className="sub-title">Overview</p>
+
+                                                                    <div
+                                                                        dangerouslySetInnerHTML={{ __html: overview }}
+                                                                    ></div>
+                                                                </div>
                                                             )}
+
+                                                            {learnings && (
+                                                                <div className="learnings text-section">
+                                                                    <p className="sub-title">Learnings</p>
+
+                                                                    <div
+                                                                        dangerouslySetInnerHTML={{ __html: learnings }}
+                                                                    ></div>
+                                                                </div>
+                                                            )}
+                                                            <SponsorsAndSupportersWrapper>
+                                                                {sponsors.length > 0 && (
+                                                                    <Sponsors sponsors={sponsors} />
+                                                                )}
+
+                                                                {supporters.length > 0 && (
+                                                                    <Supporters supporters={supporters} />
+                                                                )}
+                                                            </SponsorsAndSupportersWrapper>
                                                         </div>
-                                                    </div>
-
-                                                    <div
-                                                        className={`session-content ${this.state.showSessions.find(
-                                                            x => x === id
-                                                        ) === id && 'show-session'}`}
-                                                    >
-                                                        {host && <Host hostId={host} />}
-
-                                                        {speakers.length > 0 && <Speakers speakers={speakers} />}
-                                                        {overview && (
-                                                            <div className="overview text-section">
-                                                                <p className="sub-title">Overview</p>
-
-                                                                <div
-                                                                    dangerouslySetInnerHTML={{ __html: overview }}
-                                                                ></div>
-                                                            </div>
-                                                        )}
-
-                                                        {learnings && (
-                                                            <div className="learnings text-section">
-                                                                <p className="sub-title">Learnings</p>
-
-                                                                <div
-                                                                    dangerouslySetInnerHTML={{ __html: learnings }}
-                                                                ></div>
-                                                            </div>
-                                                        )}
-                                                        <SponsorsAndSupportersWrapper>
-                                                            {sponsors.length > 0 && <Sponsors sponsors={sponsors} />}
-
-                                                            {supporters.length > 0 && (
-                                                                <Supporters supporters={supporters} />
-                                                            )}
-                                                        </SponsorsAndSupportersWrapper>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        )
-                                    })}
-                                </ProgrammeStyled>
-                            )
-                        }}
-                    </Query>
+                                            )
+                                        })}
+                                    </ProgrammeStyled>
+                                )
+                            }}
+                        </Query>
+                    )}
+                    {this.state.showDay === 'two' && (
+                        <Query
+                            query={GET_SESSIONS_WHERE_DAY_ORDER_TIME}
+                            variables={{
+                                day: 'day2',
+                            }}
+                        >
+                            {({ data, error, loading }) => {
+                                if (loading) return <p>Loading...</p>
+                                if (error) return <p>Error: {error.message}</p>
 
-                    <h2>Day 2</h2>
+                                return (
+                                    <ProgrammeStyled>
+                                        {data.sessions.map((session, index) => {
+                                            const {
+                                                id,
+                                                title,
+                                                theme,
+                                                start,
+                                                end,
+                                                host,
+                                                speakers,
+                                                overview,
+                                                learnings,
+                                                supporters,
+                                                sponsors,
+                                            } = session
 
-                    <Query
-                        query={GET_SESSIONS_WHERE_DAY_ORDER_TIME}
-                        variables={{
-                            day: 'day2',
-                        }}
-                    >
-                        {({ data, error, loading }) => {
-                            if (loading) return <p>Loading...</p>
-                            if (error) return <p>Error: {error.message}</p>
-
-                            return (
-                                <ProgrammeStyled>
-                                    {data.sessions.map((session, index) => {
-                                        const {
-                                            id,
-                                            title,
-                                            theme,
-                                            start,
-                                            end,
-                                            host,
-                                            speakers,
-                                            overview,
-                                            learnings,
-                                            supporters,
-                                            sponsors,
-                                        } = session
-
-                                        return (
-                                            <div className="session" key={index}>
-                                                <div>
-                                                    <div className="session-header">
-                                                        <div className="session-header--item1">
-                                                            <div className="theme-icon">
-                                                                <img
-                                                                    src={`static/session-themes/${theme}.png`}
-                                                                    alt=""
-                                                                    srcSet=""
-                                                                />
+                                            return (
+                                                <div className="session" key={index}>
+                                                    <div>
+                                                        <div className="session-header">
+                                                            <div className="session-header--item1">
+                                                                <div className="theme-icon">
+                                                                    <img
+                                                                        src={`static/session-themes/${theme}.png`}
+                                                                        alt=""
+                                                                        srcSet=""
+                                                                    />
+                                                                </div>
+                                                                <h3 className="theme-title">
+                                                                    {start}-{end} - {title}
+                                                                </h3>
                                                             </div>
-                                                            <h3 className="theme-title">
-                                                                {start}-{end} - {title}
-                                                            </h3>
+                                                            <div className="session-header--item2">
+                                                                {theme !== 'break' && (
+                                                                    <ArrowDropDownCircle
+                                                                        onClick={() => {
+                                                                            this.handleTrianlgeClick(id)
+                                                                        }}
+                                                                        className={`disclosure-trangle ${this.state.showSessions.find(
+                                                                            x => x === id
+                                                                        ) === id && 'disclosure-triangle--down'}`}
+                                                                    />
+                                                                )}
+                                                            </div>
                                                         </div>
-                                                        <div className="session-header--item2">
-                                                            {theme !== 'break' && (
-                                                                <ArrowDropDownCircle
-                                                                    onClick={() => {
-                                                                        this.handleTrianlgeClick(id)
-                                                                    }}
-                                                                    className={`disclosure-trangle ${this.state.showSessions.find(
-                                                                        x => x === id
-                                                                    ) === id && 'disclosure-triangle--down'}`}
-                                                                />
+
+                                                        <div
+                                                            className={`session-content ${this.state.showSessions.find(
+                                                                x => x === id
+                                                            ) === id && 'show-session'}`}
+                                                        >
+                                                            {host && <Host hostId={host} />}
+
+                                                            {speakers.length > 0 && <Speakers speakers={speakers} />}
+                                                            {overview && (
+                                                                <div className="overview text-section">
+                                                                    <p className="sub-title">Overview</p>
+
+                                                                    <p className="text-small">{overview}</p>
+                                                                </div>
                                                             )}
+
+                                                            {learnings && (
+                                                                <div className="learnings text-section">
+                                                                    <p className="sub-title">Learnings</p>
+
+                                                                    <p className="text-small">{learnings}</p>
+                                                                </div>
+                                                            )}
+                                                            <SponsorsAndSupportersWrapper>
+                                                                {sponsors.length > 0 && (
+                                                                    <Sponsors sponsors={sponsors} />
+                                                                )}
+
+                                                                {supporters.length > 0 && (
+                                                                    <Supporters supporters={supporters} />
+                                                                )}
+                                                            </SponsorsAndSupportersWrapper>
                                                         </div>
-                                                    </div>
-
-                                                    <div
-                                                        className={`session-content ${this.state.showSessions.find(
-                                                            x => x === id
-                                                        ) === id && 'show-session'}`}
-                                                    >
-                                                        {host && <Host hostId={host} />}
-
-                                                        {speakers.length > 0 && <Speakers speakers={speakers} />}
-                                                        {overview && (
-                                                            <div className="overview text-section">
-                                                                <p className="sub-title">Overview</p>
-
-                                                                <p className="text-small">{overview}</p>
-                                                            </div>
-                                                        )}
-
-                                                        {learnings && (
-                                                            <div className="learnings text-section">
-                                                                <p className="sub-title">Learnings</p>
-
-                                                                <p className="text-small">{learnings}</p>
-                                                            </div>
-                                                        )}
-                                                        <SponsorsAndSupportersWrapper>
-                                                            {sponsors.length > 0 && <Sponsors sponsors={sponsors} />}
-
-                                                            {supporters.length > 0 && (
-                                                                <Supporters supporters={supporters} />
-                                                            )}
-                                                        </SponsorsAndSupportersWrapper>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        )
-                                    })}
-                                </ProgrammeStyled>
-                            )
-                        }}
-                    </Query>
+                                            )
+                                        })}
+                                    </ProgrammeStyled>
+                                )
+                            }}
+                        </Query>
+                    )}
                 </div>
             </div>
         )

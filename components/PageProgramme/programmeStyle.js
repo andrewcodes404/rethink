@@ -1,5 +1,36 @@
 import styled from 'styled-components'
 
+export const DayBtns = styled.div`
+    display: flex;
+    border-bottom: 5px solid lightgrey;
+
+    .btn {
+        display: flex;
+    }
+
+    h2 {
+        transition: 0.2s;
+        cursor: pointer;
+        &:hover {
+            color: gold;
+        }
+        display: inline;
+        padding: 10px 20px 10px 30px;
+        margin: 0;
+    }
+
+    .active {
+        color: green;
+        background: lightgrey;
+
+        .corner {
+            background: lightgrey;
+            border-top: 50px solid white;
+            border-right: 40px solid lightgrey;
+        }
+    }
+`
+
 export const ProgrammeStyled = styled.div`
     margin-bottom: 50px;
     .session {
