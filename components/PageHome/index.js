@@ -10,7 +10,6 @@ import CarouselPartners from '../carousels/CarouselPartners'
 import CarouselSponsors from '../carousels/CarouselSponsors'
 import CarouselHostSpeakers from '../carousels/CarouselHostSpeakers'
 import CarouselTank from '../carousels/CarouselTank'
-import AdvisoryCom from './AdvisoryCom'
 import FirstVisit from '../FirstVisit'
 
 class PageHome extends React.Component {
