@@ -484,6 +484,7 @@ export const CarouselWrapper = styled.div`
 
     @media (min-width: 1024px) {
     }
+
     .alice-carousel {
         max-width: 850px;
         margin: 0 auto;
@@ -553,15 +554,35 @@ export const CarouselItem = styled.div`
         width: 200px;
         max-width: 200px;
         height: 200px;
-        padding: 20px;
-        /* margin: 0 auto 20px; */
+        margin: 0 auto 20px;
         overflow: hidden;
         @media (min-width: 1024px) {
             width: unset;
         }
+
         img {
-            object-fit: scale-down;
+            object-fit: cover;
             height: 100%;
+        }
+    }
+    .text {
+        color: black;
+        width: 200px;
+        margin: 0 auto;
+        p {
+            margin: 0 0 5px 0;
+            color: black;
+            padding: 0;
+            line-height: 1;
+            font-size: 15px;
+            font-weight: normal;
+        }
+        h4 {
+            /* font-size: 16px;
+            border: 1px solid #000; */
+            margin: 0 0 5px 0;
+            color: black;
+            font-weight: lighter;
         }
     }
 `

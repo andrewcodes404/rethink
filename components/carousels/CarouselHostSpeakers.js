@@ -57,6 +57,11 @@ class hostSpeakersCarousel extends React.Component {
                                                 <div className="headshot">
                                                     <img src={hostSpeaker.headshot} alt="" srcSet="" />
                                                 </div>
+                                                <div className="text">
+                                                    <h4>{hostSpeaker.name}</h4>
+                                                    <h4>{hostSpeaker.title}</h4>
+                                                    <p>{hostSpeaker.company}</p>
+                                                </div>
                                             </CarouselItem>
                                         )
                                     })}

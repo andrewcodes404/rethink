@@ -1,110 +1,10 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
-
 import { Query } from 'react-apollo'
-import { GET_ADV_COMS } from '../../../lib/graphqlTags'
+import { GET_ADV_COMS } from '../../lib/graphqlTags'
+import { CarouselWrapper, CarouselItem } from '../style/globalComps'
 
-import styled from 'styled-components'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
-
-const CarouselWrapper = styled.div`
-    position: relative;
-    margin: 0 auto;
-
-    @media (min-width: 767px) {
-        max-width: unset;
-    }
-
-    @media (min-width: 1024px) {
-    }
-    .alice-carousel {
-        max-width: 850px;
-        margin: 0 auto;
-    }
-
-    .button-wrapper {
-        margin: 0 auto;
-        position: absolute;
-        /* border: 1px solid green; */
-        top: 25%;
-        left: -40px;
-        right: -40px;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        @media (min-width: 767px) {
-            top: 40%;
-        }
-
-        .next-btn {
-            line-height: 1;
-            display: inline-block;
-            border: none;
-            /* padding: 5px 15px; */
-            margin: 0 10px;
-            /* background: blue; */
-            color: lightgrey;
-            font-size: 30px;
-            cursor: pointer;
-            text-align: center;
-            transition: 0.4s;
-            &:hover {
-                color: green;
-            }
-
-            @media (min-width: 1024px) {
-                font-size: 60px;
-            }
-        }
-    }
-`
-
-const CarouselItem = styled.div`
-    width: 300px;
-    margin: 20px auto;
-    @media (min-width: 1024px) {
-        width: unset;
-        padding: 7px;
-    }
-
-    .headshot {
-        width: 200px;
-        max-width: 200px;
-        height: 200px;
-        margin: 0 auto 20px;
-        overflow: hidden;
-        @media (min-width: 1024px) {
-            width: unset;
-        }
-
-        img {
-            object-fit: cover;
-            height: 100%;
-        }
-    }
-    .text {
-        /* display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start; */
-        /* background: pink; */
-        color: black;
-        width: 200px;
-        margin: 0 auto;
-        p {
-            margin: 0 0 5px 0;
-            color: black;
-            padding: 0;
-            line-height: 1;
-        }
-        h4 {
-            margin: 0 0 5px 0;
-            color: black;
-        }
-    }
-`
 
 class AdvisoryCom extends React.Component {
     responsive = {
@@ -116,8 +16,6 @@ class AdvisoryCom extends React.Component {
 
     state = {
         currentIndex: 0,
-        // responsive: {  1024: { items: 3 } },
-        // galleryItems: this.galleryItems(),
     }
 
     slideTo = i => this.setState({ currentIndex: i })

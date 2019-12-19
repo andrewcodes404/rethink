@@ -9,13 +9,12 @@ import Hero from './Hero'
 import CarouselPartners from '../carousels/CarouselPartners'
 import CarouselSponsors from '../carousels/CarouselSponsors'
 import CarouselHostSpeakers from '../carousels/CarouselHostSpeakers'
+import CarouselTank from '../carousels/CarouselTank'
 import AdvisoryCom from './AdvisoryCom'
 import FirstVisit from '../FirstVisit'
 
 class PageHome extends React.Component {
     render() {
-        console.log('process.env.GOOGLE_MAPS = ', process.env.GOOGLE_MAPS)
-
         return (
             <div>
                 <FirstVisit />
@@ -83,7 +82,6 @@ class PageHome extends React.Component {
                         </Link>
                     </h2>
                     <div className="text-content">
-                        {/* <SponsorsCarousel /> */}
                         <CarouselSponsors />
                     </div>
                 </div>
@@ -95,7 +93,6 @@ class PageHome extends React.Component {
                         </Link>
                     </h2>
                     <div className="text-content">
-                        {/* <PartnersCarousel /> */}
                         <CarouselPartners />
                     </div>
                 </div>
@@ -131,13 +128,12 @@ class PageHome extends React.Component {
                             </Link>
                         </h2>
                         <div className="text-content">
-                            {/* <PartnersCarousel /> */}
                             <CarouselHostSpeakers />
                         </div>
                     </div>
                 </div>
 
-                <AdvisoryCom />
+                <CarouselTank />
                 <div className="text-content-title-wrapper">
                     <div className="text-content">
                         <blockquote>
