@@ -33,6 +33,25 @@ import styled from 'styled-components'
 
 const DelegatesStyled = styled.div`
     /* margin: 100px 0; */
+
+    .logos {
+        display: flex;
+        justify-content: space-around;
+        max-width: 650px;
+        margin: 0 auto;
+    }
+
+    .logo {
+        width: 45%;
+        padding: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+        border: 2px solid white;
+        &:hover {
+            /* background: gold; */
+            border: 2px solid gold;
+        }
+    }
 `
 
 class Delegates extends React.Component {
@@ -40,7 +59,7 @@ class Delegates extends React.Component {
         return (
             <>
                 <Nav />
-                <div id="visitors">
+                <DelegatesStyled>
                     <div className="text-content-title-wrapper">
                         <h2 data-aos="my-anim">Delegates</h2>
 
@@ -73,18 +92,37 @@ class Delegates extends React.Component {
                                 experiences to life in Q&amp;A sessions relevant to all businesses.
                             </p>
 
-                            <LinkIntext>
-                                <p className="" data-aos="">
-                                    <a
-                                        href="https://docs.google.com/forms/d/e/1FAIpQLSeF4V1J-jKBahE1DWwmTLXwSEmQ_dAAg4Zf1ogeoGCP1ZXbSA/viewform"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        Delegate places are limited each day click here to register your interest in
-                                        attending
+                            <h3 style={{ textAlign: 'center' }}>
+                                All delegate fees will go to the ReThink beneficiary fund in support of
+                            </h3>
+
+                            <div className="logos">
+                                <div className="logo">
+                                    {' '}
+                                    <a href="https://www.soapcycling.org/" target="_blank" rel="noopener noreferrer">
+                                        <img src="static/graphics/soap-cycling.png" alt="" srcSet="" />
                                     </a>
-                                </p>
-                            </LinkIntext>
+                                </div>
+
+                                <div className="logo">
+                                    {' '}
+                                    <a href="https://feedinghk.org/" target="_blank" rel="noopener noreferrer">
+                                        <img src="static/graphics/feeding-hk.jpg" alt="" srcSet="" />{' '}
+                                    </a>
+                                </div>
+                            </div>
+
+                            <h3 style={{ textAlign: 'center' }}>
+                                <a
+                                    href="https://docs.google.com/forms/d/e/1FAIpQLSeF4V1J-jKBahE1DWwmTLXwSEmQ_dAAg4Zf1ogeoGCP1ZXbSA/viewform"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Delegate places are limited each day{' '}
+                                    <span style={{ textDecoration: 'underline' }}>click here</span> to register your
+                                    interest in attending
+                                </a>
+                            </h3>
                         </div>
                     </div>
 
@@ -99,12 +137,8 @@ class Delegates extends React.Component {
                                 alt="building with trees"
                             />
                         </div>
-                        {/*
-        <div className="image-banner-text">
-          <h2 className="no-highlight">Click here to become a delegate</h2>
-        </div> */}
                     </ImageBanner>
-                </div>
+                </DelegatesStyled>
             </>
         )
     }

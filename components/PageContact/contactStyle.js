@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+export const Founder = styled.div`
+    width: 80%;
+    margin: 0 auto;
+`
+
 export const StyledContact = styled.div`
     position: relative;
     display: flex;
@@ -10,6 +15,8 @@ export const StyledContact = styled.div`
     }
 
     .get-in-touch {
+        width: 80%;
+        margin: 0 auto 30px;
         h2 {
             margin-bottom: 20px;
             @media (min-width: 567px) {
@@ -42,7 +49,7 @@ export const StyledContact = styled.div`
         display: flex;
         justify-content: space-between;
         /* margin: 0 auto 60px; */
-        margin-bottom: 60px;
+        margin: 60px 0;
         width: 80%;
         max-width: 230px;
     }
@@ -99,6 +106,16 @@ export const StyledContact = styled.div`
             margin: 0 0 5px;
         }
     }
+
+    .images {
+    }
+    .image {
+        width: 80%;
+        margin: 0 auto 30px;
+    }
+    /* Founder --- */
+    /* Founder --- */
+    /* Founder --- */
 
     .founder-header {
         display: flex;

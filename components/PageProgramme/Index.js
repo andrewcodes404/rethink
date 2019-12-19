@@ -47,9 +47,9 @@ class Index extends React.Component {
                     <h2 data-aos="my-anim">Programme</h2>
 
                     <h3>
-                        Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Curabitur arcu
-                        erat, accumsan id imperdiet et, porttitor at sem. Vivamus suscipit tortor eget felis porttitor
-                        volutpat.
+                        The two-day ReThink conference programme has been curated to offer insight and inspiration to
+                        sustainability professionals and those that are now having to integrate sustainable strategies
+                        and solutions.
                     </h3>
 
                     <h2>Day 1</h2>
