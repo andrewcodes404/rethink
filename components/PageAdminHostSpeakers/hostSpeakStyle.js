@@ -191,24 +191,11 @@ export const HostSpeakForm = styled.form`
     margin: 0 auto;
     max-width: 550px;
 
-    /* @media (min-width: 767px) {
-        flex-direction: row;
-
-        padding: 25px;
-    } */
-
     .flex-item1,
     .flex-item2 {
         display: flex;
         flex-direction: column;
     }
-    /* 
-    .flex-item1,
-    .flex-item2 {
-        @media (min-width: 767px) {
-            width: 50%;
-        }
-    } */
 
     .flex-item2 {
         justify-content: space-between;
@@ -262,13 +249,11 @@ export const HostSpeakForm = styled.form`
 
     .thumb {
         width: 200px;
-        max-height: 200px;
-        box-shadow: 10px 11px 20px -10px rgba(222, 222, 222, 1);
-        background: green;
+        height: 200px;
+
         img {
-            width: 100%;
             height: 100%;
-            object-fit: scale-down;
+            object-fit: cover;
         }
     }
 

@@ -1,16 +1,14 @@
 import React from 'react'
-
 import { Query } from 'react-apollo'
 import { GET_HOSTSPEAKER_WHERE_ID } from '../../lib/graphqlTags'
-
 import ModalHostSpeaker from './ModalHostSpeaker'
-
 import PropTypes from 'prop-types'
 
 class Speakers extends React.Component {
     constructor() {
         super()
         this.state = {
+            // showSpeakerId: 'ck233w8x6005x0705x3zzss8b',
             showSpeakerId: '',
         }
     }
@@ -28,10 +26,8 @@ class Speakers extends React.Component {
                             {({ data, error, loading }) => {
                                 if (loading) return <p>Loading...</p>
                                 if (error) return <p>Error: {error.message}</p>
-                                // console.log('data = ', data)
                                 const speaker = data.hostSpeaker
 
-                                // TODO: send host data to modal pop-up]
                                 return (
                                     <>
                                         <div

@@ -48,6 +48,7 @@ class UpdateHostSpeakerForm extends React.Component {
             website: props.website,
             frontpage: props.frontpage || false,
             index: props.index,
+            logo: props.logo,
         }
     }
 
@@ -68,6 +69,7 @@ class UpdateHostSpeakerForm extends React.Component {
             website: '',
             frontpage: false,
             index: 99,
+            logo: '',
         })
     }
 
@@ -93,9 +95,7 @@ class UpdateHostSpeakerForm extends React.Component {
 
     handleCheckboxChange = e => {
         const { checked } = e.target
-        this.setState({ frontpage: checked }, () => {
-            console.log('this.state.id = ', this.state)
-        })
+        this.setState({ frontpage: checked })
     }
 
     clearModal = () => {
@@ -105,11 +105,12 @@ class UpdateHostSpeakerForm extends React.Component {
         })
     }
 
-    uploadFile = async e => {
+    uploadHeadshot = async e => {
         const files = e.target.files
         const data = new FormData()
         data.append('file', files[0])
-        data.append('upload_preset', 'rethink_AdvCom')
+        data.append('upload_preset', 'rethink_hostSpeak')
+
         this.setState({
             loading: true,
         })
@@ -125,6 +126,31 @@ class UpdateHostSpeakerForm extends React.Component {
         // Add to state
         this.setState({
             headshot: file.secure_url,
+            loading: false,
+        })
+    }
+
+    uploadLogo = async e => {
+        const files = e.target.files
+        const data = new FormData()
+        data.append('file', files[0])
+        data.append('upload_preset', 'rethink_hostSpeak')
+
+        this.setState({
+            loading: true,
+        })
+
+        //hit up the cloudinary API
+        const res = await fetch('https://api.cloudinary.com/v1_1/dcqi9fn2y/image/upload', {
+            //this is a config arg so we want POST our data we just created
+            method: 'POST',
+            body: data,
+        })
+        //parse the returning file to json
+        const file = await res.json()
+        // Add to state
+        this.setState({
+            logo: file.secure_url,
             loading: false,
         })
     }
@@ -187,7 +213,7 @@ class UpdateHostSpeakerForm extends React.Component {
                                                 id="file"
                                                 multiple
                                                 type="file"
-                                                onChange={this.uploadFile}
+                                                onChange={this.uploadHeadshot}
                                             />
                                             <label htmlFor="file">
                                                 <Button
@@ -208,14 +234,47 @@ class UpdateHostSpeakerForm extends React.Component {
                                             )}
 
                                             {this.state.headshot.length > 1 && (
-                                                <img
-                                                    className="thumb"
-                                                    width="200"
-                                                    src={this.state.headshot}
-                                                    alt="Upload Preview"
-                                                />
+                                                <div className="thumb">
+                                                    <img src={this.state.headshot} alt="Upload Preview" />
+                                                </div>
                                             )}
                                         </div>
+
+                                        <div className="img-upload-wrapper">
+                                            <input
+                                                accept=".png,.jpg,.jpeg"
+                                                style={{ display: 'none' }}
+                                                id="logo"
+                                                multiple
+                                                type="file"
+                                                onChange={this.uploadLogo}
+                                                dest=""
+                                            />
+                                            <label htmlFor="logo">
+                                                <Button
+                                                    variant="contained"
+                                                    component="span"
+                                                    size="small"
+                                                    className="upload-btn"
+                                                >
+                                                    Upload Logo
+                                                    <CloudUploadIcon className="icon" />
+                                                </Button>
+                                            </label>
+
+                                            {this.state.logo.length < 1 && (
+                                                <div className="fake-headshot">
+                                                    <PhotoLibrary className="fake-icon" />
+                                                </div>
+                                            )}
+
+                                            {this.state.logo.length > 1 && (
+                                                <div className="thumb">
+                                                    <img src={this.state.logo} alt="Upload Preview" />
+                                                </div>
+                                            )}
+                                        </div>
+
                                         <TextField
                                             type="text"
                                             id="name"
@@ -461,6 +520,7 @@ UpdateHostSpeakerForm.propTypes = {
     website: PropTypes.string,
     frontpage: PropTypes.bool,
     index: PropTypes.number,
+    logo: PropTypes.string,
 }
 
 export default UpdateHostSpeakerForm

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Query } from 'react-apollo'
-import { GET_SESSIONS_WHERE_TIME, GET_SESSIONS_WHERE_DAY_ORDER_TIME } from '../../lib/graphqlTags'
+import { GET_SESSIONS_WHERE_DAY_ORDER_TIME } from '../../lib/graphqlTags'
 
 import Nav from '../Nav'
 

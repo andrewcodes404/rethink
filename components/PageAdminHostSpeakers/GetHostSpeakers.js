@@ -31,6 +31,9 @@ class comp_name extends React.Component {
             facebook: '',
             twitter: '',
             website: '',
+            frontpage: false,
+            index: 0,
+            logo: '',
         }
     }
 
@@ -70,6 +73,7 @@ class comp_name extends React.Component {
                 website: member.website,
                 frontpage: member.frontpage,
                 index: member.index,
+                logo: member.logo,
             })
         } else
             this.setState({
@@ -90,6 +94,7 @@ class comp_name extends React.Component {
                 website: member.website,
                 frontpage: member.frontpage,
                 index: member.index,
+                logo: member.logo,
             })
     }
 
@@ -134,6 +139,7 @@ class comp_name extends React.Component {
                                     website={this.state.website}
                                     frontpage={this.state.frontpage}
                                     index={this.state.index}
+                                    logo={this.state.logo}
                                 />
 
                                 <Members>
