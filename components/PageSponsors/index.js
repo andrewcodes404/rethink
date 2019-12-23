@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Query } from 'react-apollo'
 import { GET_SPONSORS_WHERE_RANKING } from '../../lib/graphqlTags'
-import { ModalCompanyCard } from '../style/globalComps'
+import ModalCompanyCard from '../lib/ModalCompanyCard'
 
 import ProfileBar from '../ProfileBar'
 
@@ -34,18 +34,25 @@ const LogoContainerLg = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 80px;
+
     div {
         /* border: 1px solid grey; */
         box-shadow: 10px 11px 20px -10px rgba(222, 222, 222, 1);
 
-        width: 45%;
-        height: 300px;
+        width: 80%;
+        height: 200px;
         padding: 20px;
-        margin: 20px;
+        margin: 20px auto;
         cursor: pointer;
         border-top: 1px solid white;
         border-left: 1px solid white;
         transition: 0.3s;
+
+        @media (min-width: 768px) {
+            height: 300px;
+            width: 45%;
+            margin: 20px;
+        }
 
         img {
             object-fit: contain;
@@ -80,13 +87,9 @@ const LogoContainerLg = styled.div`
             box-shadow: 18px 23px 39px -2px rgba(194, 194, 194, 1);
             border-top: 1px solid #fafafa;
             border-left: 1px solid #fafafa;
-            /* padding: 18px; */
+
             img {
                 transform: scale(1.02);
-                /* animation: shake 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-                transform: translate3d(0, 0, 0); */
-                /* backface-visibility: hidden;
-                perspective: 1000px; */
             }
         }
     }
@@ -100,7 +103,7 @@ const LogoContainerMd = styled.div`
     div {
         box-shadow: 10px 11px 20px -10px rgba(222, 222, 222, 1);
 
-        width: 22%;
+        width: 40%;
         height: 150px;
         padding: 15px;
         margin: 15px;
@@ -109,6 +112,13 @@ const LogoContainerMd = styled.div`
         border-top: 1px solid white;
         border-left: 1px solid white;
         transition: 0.3s;
+
+        @media (min-width: 768px) {
+            width: 22%;
+            height: 150px;
+            padding: 15px;
+            margin: 15px;
+        }
 
         img {
             object-fit: contain;
@@ -138,15 +148,22 @@ const LogoContainerSm = styled.div`
     margin: 0 auto 80px;
     div {
         box-shadow: 10px 11px 20px -10px rgba(222, 222, 222, 1);
-        width: 16%;
-        height: 120px;
+        width: 40%;
+        height: 150px;
         padding: 15px;
-        margin: 20px 10px;
+        margin: 15px;
 
         cursor: pointer;
         border-top: 1px solid white;
         border-left: 1px solid white;
         transition: 0.3s;
+
+        @media (min-width: 768px) {
+            width: 16%;
+            height: 120px;
+            padding: 15px;
+            margin: 20px 10px;
+        }
 
         img {
             object-fit: contain;
@@ -223,82 +240,26 @@ class PageSponsors extends React.Component {
     }
 
     render() {
-        // const platinum = sponsorData.filter(x => x.ranking === '1')
-        // const pro = sponsorData.filter(x => x.ranking === '2')
-        // const basic = sponsorData.filter(x => x.ranking === '3')
-
         return (
             <div style={{ positon: 'relative' }}>
                 {this.state.showModal && (
                     <ModalCompanyCard
-                        onClick={() => {
+                        closeModal={() => {
                             this.closeModal()
                         }}
-                        // style={this.state.showModal && '{filter: opacity(1);}'}
-                        // className={this.state.showModal && 'fade-in'}
-                    >
-                        <div className="card">
-                            <div className="logo">
-                                <img src={this.state.logo} />
-                            </div>
-
-                            <div className="content">
-                                <h2>{this.state.name}</h2>
-
-                                <div dangerouslySetInnerHTML={{ __html: this.state.description }}></div>
-
-                                <div className="social-wrapper">
-                                    {this.state.linkedIn && (
-                                        <div className="social-icon">
-                                            <a href={this.state.linkedIn} target="_blank" rel="noopener noreferrer">
-                                                <img src="./static/social/linkedin.png" alt="" srcSet="" />
-                                            </a>
-                                        </div>
-                                    )}
-
-                                    {this.state.instagram && (
-                                        <div className="social-icon">
-                                            <a
-                                                href={`https://www.instagram.com/${this.state.instagram}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img src="./static/social/instagram.png" alt="" srcSet="" />
-                                            </a>
-                                        </div>
-                                    )}
-
-                                    {this.state.facebook && (
-                                        <div className="social-icon">
-                                            <a href={this.state.facebook} target="_blank" rel="noopener noreferrer">
-                                                <img src="./static/social/facebook.png" alt="" srcSet="" />
-                                            </a>
-                                        </div>
-                                    )}
-
-                                    {this.state.twitter && (
-                                        <div className="social-icon">
-                                            <a
-                                                href={`https://www.twitter.com/${this.state.twitter}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img src="./static/social/twitter.png" alt="" srcSet="" />
-                                            </a>
-                                        </div>
-                                    )}
-                                    <div className="some-height"></div>
-                                    {this.state.website && (
-                                        <div className="website">
-                                            <a href={this.state.website} target="_blank" rel="noopener noreferrer">
-                                                <p>{this.state.website}</p>
-                                            </a>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    </ModalCompanyCard>
+                        type={this.state.type}
+                        ranking={this.state.ranking}
+                        index={this.state.index}
+                        name={this.state.name}
+                        logo={this.state.logo}
+                        description={this.state.description}
+                        website={this.state.website}
+                        instagram={this.state.instagram}
+                        facebook={this.state.facebook}
+                        twitter={this.state.twitter}
+                        linkedIn={this.state.linkedIn}
+                        shareBtn={this.state.shareBtn}
+                    />
                 )}
                 <div className="text-content-title-wrapper">
                     <div className="text-content">

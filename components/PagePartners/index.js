@@ -1,166 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-
 import Nav from '../Nav'
 import { Query } from 'react-apollo'
 import { GET_PARTNERS } from '../../lib/graphqlTags'
-import { ModalCompanyCard } from '../style/globalComps'
-import styled from 'styled-components'
-
-import Close from '@material-ui/icons/Close'
-
-const CardContainerWrapper = styled.div`
-    .container-title {
-        margin: 40px auto;
-
-        @media (min-width: 746px) {
-            margin: 60px 0;
-        }
-    }
-    margin-bottom: 50px;
-`
-
-const CardContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    /* justify-content: center; */
-
-    .card-with-title {
-        width: 90%;
-        max-width: 400px;
-        height: 300px;
-        padding: 15px;
-        margin: 15px;
-
-        @media (min-width: 746px) {
-            width: 45%;
-            height: 400px;
-        }
-
-        h2 {
-            margin-bottom: 15px;
-        }
-    }
-    .card-with-title--card {
-        width: 100%;
-        margin: 0 auto 15px;
-        padding: 15px;
-
-        height: 80%;
-        /* @media (min-width: 746px) {
-            width: 45%;
-
-            padding: 15px;
-            margin: 15px;
-        } */
-    }
-
-    .large {
-        width: 45%;
-        margin: 0 auto 15px;
-        padding: 15px;
-        @media (min-width: 746px) {
-            width: 45%;
-
-            padding: 15px;
-            margin: 15px;
-        }
-    }
-    .medium {
-        width: 45%;
-        margin: 0 auto 15px;
-        padding: 15px;
-        @media (min-width: 746px) {
-            width: 23%;
-            margin: 6px;
-        }
-    }
-    .small {
-        width: 30%;
-        padding: 0 10px;
-        margin: 5px;
-        @media (min-width: 746px) {
-            width: 19%;
-        }
-    }
-`
-
-const Card = styled.div`
-    box-shadow: 8px 9px 18px -8px rgba(222, 222, 222, 1);
-    cursor: pointer;
-    border-top: 1px solid white;
-    border-left: 1px solid white;
-    transition: 0.3s;
-
-    .img-wrapper-lrg {
-        img {
-            width: 90%;
-            height: 90%;
-            object-fit: scale-down;
-        }
-        width: 80%;
-        margin: auto;
-        height: 100%;
-
-        @media (min-width: 746px) {
-            width: 80%;
-            height: 100%;
-            margin: 0 auto;
-            text-align: center;
-        }
-    }
-
-    .img-wrapper-lrg2 {
-        img {
-            width: 90%;
-            height: 90%;
-            object-fit: scale-down;
-        }
-        @media (min-width: 746px) {
-            width: 100%;
-            height: 230px;
-            margin: 0 auto;
-            text-align: center;
-        }
-    }
-
-    .img-wrapper-med {
-        img {
-            width: 90%;
-            height: 90%;
-            object-fit: scale-down;
-        }
-        @media (min-width: 746px) {
-            width: 100%;
-            height: 180px;
-            margin: 0 auto;
-            text-align: center;
-        }
-    }
-
-    .img-wrapper-sml {
-        @media (min-width: 746px) {
-            width: 100%;
-            height: 180px;
-            margin: 0 auto;
-        }
-
-        img {
-            width: 90%;
-            height: 90%;
-            object-fit: scale-down;
-        }
-    }
-
-    &:hover {
-        box-shadow: 18px 23px 35px -10px rgba(194, 194, 194, 1);
-        border-top: 1px solid #fafafa;
-        border-left: 1px solid #fafafa;
-        img {
-            transform: scale(1.02);
-        }
-    }
-`
+import ModalCompanyCard from '../lib/ModalCompanyCard'
+import { CardContainerWrapper, CardContainer, Card } from '../style/globalComps'
 
 class Index extends React.Component {
     constructor(props) {
@@ -210,78 +53,22 @@ class Index extends React.Component {
 
                 {this.state.showModal && (
                     <ModalCompanyCard
-                        onClick={() => {
+                        closeModal={() => {
                             this.closeModal()
                         }}
-                    >
-                        <div className="card">
-                            <div className="close-modal-button" onClick={this.closeModal}>
-                                <Close />
-                            </div>
-
-                            <div className="logo">
-                                <img src={this.state.logo} />
-                            </div>
-
-                            <div className="content">
-                                <h2>{this.state.name}</h2>
-
-                                <div dangerouslySetInnerHTML={{ __html: this.state.description }}></div>
-
-                                <div className="social-wrapper">
-                                    {this.state.linkedIn && (
-                                        <div className="social-icon">
-                                            <a href={this.state.linkedIn} target="_blank" rel="noopener noreferrer">
-                                                <img src="./static/social/linkedin.png" alt="" srcSet="" />
-                                            </a>
-                                        </div>
-                                    )}
-
-                                    {this.state.instagram && (
-                                        <div className="social-icon">
-                                            <a
-                                                href={`https://www.instagram.com/${this.state.instagram}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img src="./static/social/instagram.png" alt="" srcSet="" />
-                                            </a>
-                                        </div>
-                                    )}
-
-                                    {this.state.facebook && (
-                                        <div className="social-icon">
-                                            <a href={this.state.facebook} target="_blank" rel="noopener noreferrer">
-                                                <img src="./static/social/facebook.png" alt="" srcSet="" />
-                                            </a>
-                                        </div>
-                                    )}
-
-                                    {this.state.twitter && (
-                                        <div className="social-icon">
-                                            <a
-                                                href={`https://www.twitter.com/${this.state.twitter}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img src="./static/social/twitter.png" alt="" srcSet="" />
-                                            </a>
-                                        </div>
-                                    )}
-
-                                    <div className="some-height"></div>
-
-                                    {this.state.website && (
-                                        <div className="website">
-                                            <a href={this.state.website} target="_blank" rel="noopener noreferrer">
-                                                <p>{this.state.website}</p>
-                                            </a>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    </ModalCompanyCard>
+                        type={this.state.type}
+                        ranking={this.state.ranking}
+                        index={this.state.index}
+                        name={this.state.name}
+                        logo={this.state.logo}
+                        description={this.state.description}
+                        website={this.state.website}
+                        instagram={this.state.instagram}
+                        facebook={this.state.facebook}
+                        twitter={this.state.twitter}
+                        linkedIn={this.state.linkedIn}
+                        shareBtn={this.state.shareBtn}
+                    />
                 )}
 
                 <div className="text-content-title-wrapper">
@@ -341,9 +128,7 @@ class Index extends React.Component {
                             if (partners) {
                                 addRankingTitle(strategic, 'strategic', 'Strategic')
                                 addRankingTitle(hostVenue, 'hostVenue', 'Host Venue')
-
                                 addRankingTitle(innovation, 'innovation', 'Innovation')
-
                                 addRankingTitle(esg, 'esg', 'ESG')
 
                                 // Filter partners by ranking type
@@ -477,7 +262,4 @@ class Index extends React.Component {
     }
 }
 
-Index.propTypes = {
-    loggedIn: PropTypes.bool,
-}
 export default Index

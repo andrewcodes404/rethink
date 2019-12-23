@@ -1,6 +1,193 @@
 import styled from 'styled-components'
 
-export const ModalCompanyCard = styled.div`
+// Cards----
+// Cards----
+// Cards----
+
+export const CardContainerWrapper = styled.div`
+    .container-title {
+        margin: 40px auto;
+
+        @media (min-width: 746px) {
+            margin: 60px 0;
+        }
+    }
+    margin-bottom: 50px;
+`
+
+export const CardContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+
+    .card-with-title {
+        width: 90%;
+        max-width: 400px;
+        height: 300px;
+        padding: 15px;
+        margin: 15px;
+
+        @media (min-width: 746px) {
+            width: 45%;
+            height: 400px;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+    }
+    .card-with-title--card {
+        width: 100%;
+        margin: 0 auto 15px;
+        padding: 15px;
+
+        height: 80%;
+        /* @media (min-width: 746px) {
+            width: 45%;
+
+            padding: 15px;
+            margin: 15px;
+        } */
+    }
+
+    .large {
+        width: 45%;
+        margin: 0 auto 15px;
+        padding: 15px;
+        @media (min-width: 746px) {
+            width: 45%;
+
+            padding: 15px;
+            margin: 15px;
+        }
+    }
+    .medium {
+        width: 45%;
+        margin: 0 auto 15px;
+        padding: 15px;
+        @media (min-width: 746px) {
+            width: 23%;
+            margin: 6px;
+        }
+    }
+    .small {
+        width: 30%;
+        padding: 0 10px;
+        margin: 5px;
+        @media (min-width: 746px) {
+            width: 19%;
+        }
+    }
+`
+
+export const Card = styled.div`
+    box-shadow: 8px 9px 18px -8px rgba(222, 222, 222, 1);
+    cursor: pointer;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    transition: 0.3s;
+
+    .img-wrapper-lrg {
+        img {
+            width: 90%;
+            height: 90%;
+            object-fit: scale-down;
+        }
+        width: 80%;
+        margin: auto;
+        height: 100%;
+
+        @media (min-width: 746px) {
+            width: 80%;
+            height: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+
+    .img-wrapper-lrg2 {
+        img {
+            width: 90%;
+            height: 90%;
+            object-fit: scale-down;
+        }
+        @media (min-width: 746px) {
+            width: 100%;
+            height: 230px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+
+    .img-wrapper-med {
+        img {
+            width: 90%;
+            height: 90%;
+            object-fit: scale-down;
+        }
+        @media (min-width: 746px) {
+            width: 100%;
+            height: 180px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+
+    .img-wrapper-sml {
+        @media (min-width: 746px) {
+            width: 100%;
+            height: 180px;
+            margin: 0 auto;
+        }
+
+        img {
+            width: 90%;
+            height: 90%;
+            object-fit: scale-down;
+        }
+    }
+
+    &:hover {
+        box-shadow: 18px 23px 35px -10px rgba(194, 194, 194, 1);
+        border-top: 1px solid #fafafa;
+        border-left: 1px solid #fafafa;
+        img {
+            transform: scale(1.02);
+        }
+    }
+`
+
+// Cards----
+// Cards----
+// Cards----
+
+// Modals ---
+// Modals ---
+// Modals ---
+
+export const ModalCloseBtn = styled.div`
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    line-height: 0;
+    border: 1px solid #000;
+    /* padding: 5px; */
+    border-radius: 10px;
+    font-size: 15px;
+    /* color: white;
+        background: black; */
+    transition: 0.4s;
+
+    &:hover {
+        transform: rotate(90deg);
+        background: ${props => props.theme.green};
+        color: white;
+        border: unset;
+    }
+`
+
+export const ModalCompanyCardStyle = styled.div`
     transition: 1s;
 
     @keyframes shake {
@@ -40,6 +227,7 @@ export const ModalCompanyCard = styled.div`
     /* overflow: scroll; */
 
     .card {
+        position: relative;
         width: 90%;
         max-width: 700px;
         background: white;
@@ -127,7 +315,6 @@ export const ModalCompanyCard = styled.div`
         .some-height {
             width: 15px;
             height: 70px;
-            /* border: 1px solid #000; */
         }
 
         .website {
@@ -135,8 +322,6 @@ export const ModalCompanyCard = styled.div`
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* margin-left: 20px; */
-            /* margin-top: 20px; */
 
             p {
                 margin: 0;
@@ -145,6 +330,10 @@ export const ModalCompanyCard = styled.div`
         }
     }
 `
+
+// Modals ---
+// Modals ---
+// Modals ---
 
 export const Logos = styled.div`
     width: 90%;
