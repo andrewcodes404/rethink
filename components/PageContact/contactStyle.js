@@ -25,7 +25,7 @@ export const StyledContact = styled.div`
         }
 
         p {
-            margin: 0 0 15px;
+            margin: 0 0 5px;
         }
 
         a {
@@ -86,8 +86,9 @@ export const StyledContact = styled.div`
         flex-direction: column;
         max-width: 650px;
 
-        @media (min-width: 567px) {
+        @media (min-width: 768px) {
             flex-direction: row;
+            max-width: unset;
         }
     }
 
@@ -104,6 +105,10 @@ export const StyledContact = styled.div`
         }
         p {
             margin: 0 0 5px;
+        }
+
+        @media (min-width: 567px) {
+            width: 450px;
         }
     }
 

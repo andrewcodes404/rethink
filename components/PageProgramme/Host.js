@@ -60,7 +60,7 @@ class Host extends React.Component {
 }
 
 Host.propTypes = {
-    hostId: PropTypes.object,
+    hostId: PropTypes.string,
 }
 
 export default Host

@@ -23,31 +23,30 @@ export const CardContainer = styled.div`
     .card-with-title {
         width: 90%;
         max-width: 400px;
-        height: 300px;
+        /* height: 300px; */
         padding: 15px;
         margin: 15px;
 
         @media (min-width: 746px) {
             width: 45%;
-            height: 400px;
+            /* height: 400px; */
         }
 
         h2 {
             margin-bottom: 15px;
         }
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     .card-with-title--card {
         width: 100%;
         margin: 0 auto 15px;
         padding: 15px;
 
-        height: 80%;
-        /* @media (min-width: 746px) {
-            width: 45%;
-
-            padding: 15px;
-            margin: 15px;
-        } */
+        min-height: 240px;
+        height: 60%;
     }
 
     .large {
@@ -81,10 +80,11 @@ export const CardContainer = styled.div`
 `
 
 export const Card = styled.div`
-    box-shadow: 8px 9px 18px -8px rgba(222, 222, 222, 1);
+    /* box-shadow: 8px 9px 18px -8px rgba(222, 222, 222, 1); */
+    box-shadow: 8px 9px 18px -2px rgba(222, 222, 222, 1);
     cursor: pointer;
-    border-top: 1px solid white;
-    border-left: 1px solid white;
+    border-top: 1px solid #f3f3f3;
+    border-left: 1px solid #f3f3f3;
     transition: 0.3s;
 
     .img-wrapper-lrg {

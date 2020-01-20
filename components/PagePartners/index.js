@@ -126,7 +126,7 @@ class Index extends React.Component {
                             }
 
                             if (partners) {
-                                addRankingTitle(strategic, 'strategic', 'Strategic')
+                                addRankingTitle(strategic, 'strategic', 'Programme & Education Partner')
                                 addRankingTitle(hostVenue, 'hostVenue', 'Host Venue')
                                 addRankingTitle(innovation, 'innovation', 'Innovation')
                                 addRankingTitle(esg, 'esg', 'ESG')

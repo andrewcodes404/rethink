@@ -194,8 +194,6 @@ class ModalHostSpeaker extends React.Component {
             logo,
         } = this.state.host
 
-        console.log('this.state.host 🏖️ 🏖️ 🏖️ 🏖️= ', this.state.host)
-
         return (
             <ModalStyled onClick={this.closeModal}>
                 <ModalCard>

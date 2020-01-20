@@ -4,7 +4,6 @@ import { Query } from 'react-apollo'
 import { GET_SESSIONS_WHERE_DAY_ORDER_TIME } from '../../lib/graphqlTags'
 
 import Nav from '../Nav'
-
 import Host from './Host'
 import Sponsors from './Sponsors'
 import Supporters from './Supporters'
@@ -61,10 +60,10 @@ class Index extends React.Component {
                                         showDay: 'one',
                                     })
                                 }}
-                                className={this.state.showDay === 'one' && 'active'}
                             >
                                 Day 1
                             </h2>
+                            <p>23 June 2020</p>
                         </div>
 
                         <div className={`btn ${this.state.showDay === 'two' && 'active'}`}>
@@ -77,6 +76,8 @@ class Index extends React.Component {
                             >
                                 Day 2
                             </h2>
+
+                            <p>24 June 2020</p>
                         </div>
                     </DayBtns>
 
@@ -114,14 +115,19 @@ class Index extends React.Component {
                                                         <div className="session-header">
                                                             <div className="session-header--item1">
                                                                 <div className="theme-icon">
-                                                                    <img
-                                                                        src={`static/session-themes/${theme}.png`}
-                                                                        alt=""
-                                                                        srcSet=""
-                                                                    />
+                                                                    {theme && (
+                                                                        <img
+                                                                            src={`static/session-themes/${theme}.png`}
+                                                                            alt=""
+                                                                            srcSet=""
+                                                                        />
+                                                                    )}
                                                                 </div>
                                                                 <h3 className="theme-title">
-                                                                    {start}-{end} - {title}
+                                                                    <div className="theme-title--time">
+                                                                        {start}-{end}
+                                                                    </div>
+                                                                    <div className="theme-title--text">{title}</div>
                                                                 </h3>
                                                             </div>
                                                             <div className="session-header--item2">

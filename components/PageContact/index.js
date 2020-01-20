@@ -17,16 +17,49 @@ const Contact = () => (
         <div className="text-content-title-wrapper" data-aos="fade-in">
             <div className="get-in-touch">
                 <h2 data-aos="my-anim">Contact</h2>
-
-                <p>
-                    Say hello to the team at{' '}
-                    <a href="mailto:hello@rethink-event.com?Subject=Hello" target="_blank" rel="noopener noreferrer">
-                        {' '}
-                        hello@rethink-event.com
-                    </a>{' '}
-                </p>
-
-                <p>or...</p>
+                <h3>
+                    Looking for general news and updates on ReThink? Then the easiest thing to do is sign up to the{' '}
+                    <a href="https://mailchi.mp/rethink-event.com/newsletter" target="_blank" rel="noopener noreferrer">
+                        ReThink Newsletter
+                    </a>
+                </h3>
+                {/* <p>Otherwise, here’s who to contact:</p> */}
+                <br />
+                <h5>
+                    - For queries about delegate places, media / NGO / industry partnerships or volunteering at the
+                    event:
+                </h5>
+                <br />
+                <p style={{ fontWeight: 'bold' }}>Karen Ko</p>
+                <p>Head of Partnerships &amp; Marketing</p>
+                <a
+                    href="mailto:hello@karen.k@rethink-event.com?Subject=Hello"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    {' '}
+                    <p>karen.k@rethink-event.com </p>
+                </a>{' '}
+                <br />
+                <br />
+                <br />
+                <h5>
+                    - For details on the innovation showcase, event sponsorship, speaking in the conference, hosting
+                    future ReThink events or anything else:
+                </h5>
+                <br />
+                <p style={{ fontWeight: 'bold' }}>Chris Brown, Founder &amp; Director</p>
+                <a
+                    href="mailto:hello@chris.b@rethink-event.com ?Subject=Hello"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    {' '}
+                    <p>chris.b@rethink-event.com</p>
+                </a>{' '}
+                <br />
+                <br />
+                <br />
                 <p className="full-details">
                     <a
                         href="https://docs.google.com/forms/d/e/1FAIpQLSeF4V1J-jKBahE1DWwmTLXwSEmQ_dAAg4Zf1ogeoGCP1ZXbSA/viewform"
@@ -36,7 +69,6 @@ const Contact = () => (
                         Click here to receive full details on ReThink 2020
                     </a>
                 </p>
-
                 <div className="social-wrapper">
                     <div className="social-icon">
                         <a href="https://www.linkedin.com/in/enviroeventshk/" target="_blank" rel="noopener noreferrer">
@@ -62,7 +94,6 @@ const Contact = () => (
                         </a>
                     </div>
                 </div>
-
                 <div className="info">
                     <div className="location">
                         <h3>Location</h3>

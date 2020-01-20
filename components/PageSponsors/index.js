@@ -337,10 +337,39 @@ class PageSponsors extends React.Component {
                                 click here
                             </a>
                         </h3>
-
-                        <h2 data-aos="my-anim">Sustainability Partners</h2>
                     </div>
 
+                    <h2 data-aos="my-anim">Headline Event Sponsor</h2>
+                    <Query
+                        query={GET_SPONSORS_WHERE_RANKING}
+                        variables={{
+                            ranking: 'headlineSponsor',
+                        }}
+                    >
+                        {({ data, error, loading }) => {
+                            if (loading) return <p>Loading...</p>
+                            if (error) return <p>Error: {error.message}</p>
+                            if (!data) return <p>No Data</p>
+                            const { sponsors } = data
+                            return (
+                                <LogoContainerLg>
+                                    {sponsors.map((sponsor, i) => {
+                                        return (
+                                            <div
+                                                key={i}
+                                                onClick={() => {
+                                                    this.showModal(sponsor)
+                                                }}
+                                            >
+                                                <img src={sponsor.logo} />
+                                            </div>
+                                        )
+                                    })}
+                                </LogoContainerLg>
+                            )
+                        }}
+                    </Query>
+                    <h2 data-aos="my-anim">Sustainability Partners</h2>
                     <Query
                         query={GET_SPONSORS_WHERE_RANKING}
                         variables={{

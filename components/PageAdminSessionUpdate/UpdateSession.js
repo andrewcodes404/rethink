@@ -21,7 +21,7 @@ import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import OutlinedInput from '@material-ui/core/OutlinedInput'
+
 import Chip from '@material-ui/core/Chip'
 import Radio from '@material-ui/core/Radio'
 // import FormHelperText from '@material-ui/core/FormHelperText '
@@ -58,7 +58,6 @@ class UpdateSession extends React.Component {
     }
 
     componentDidMount = () => {
-        console.log('this.props = ', this.props)
         this.props.client
             .query({
                 query: GET_HOSTSPEAKERS,
@@ -152,8 +151,6 @@ class UpdateSession extends React.Component {
     }
 
     handleEditorChange = e => {
-        console.log('Content was updated:', e.target.getContent())
-
         const id = e.target.id
         const value = e.target.getContent()
 
@@ -248,7 +245,6 @@ class UpdateSession extends React.Component {
                         <Form
                             id="updateSession"
                             onSubmit={async e => {
-                                console.log('this.state.speakersId = ', this.state.speakersId)
                                 e.preventDefault()
                                 await UpdateSession()
                                 this.showSuccess()
@@ -285,6 +281,7 @@ class UpdateSession extends React.Component {
                                             id: 'session-theme',
                                         }}
                                     >
+                                        <MenuItem value={'intro'}>Intro</MenuItem>
                                         <MenuItem value={'sourceMan'}>Sourcing &amp; Manufacturing</MenuItem>
                                         <MenuItem value={'wasteMan'}>Waste &amp; Resource Management</MenuItem>
                                         <MenuItem value={'peopleCult'}>People &amp; Culture</MenuItem>
@@ -298,14 +295,13 @@ class UpdateSession extends React.Component {
                                         id="start"
                                         label="Starts"
                                         type="time"
-                                        // defaultValue="10:30"
                                         value={this.state.start}
                                         className="section-theme--time-picker"
                                         InputLabelProps={{
                                             shrink: true,
                                         }}
                                         inputProps={{
-                                            step: 300, // 5 min
+                                            step: 300,
                                         }}
                                         onChange={this.handleChange}
                                         required
@@ -587,6 +583,7 @@ class UpdateSession extends React.Component {
 }
 UpdateSession.propTypes = {
     client: PropTypes.object,
+    session: PropTypes.object,
 }
 
 export default withApollo(UpdateSession)
