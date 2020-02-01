@@ -275,7 +275,9 @@ class Index extends React.Component {
                                                                 <div className="learnings text-section">
                                                                     <p className="sub-title">Learnings</p>
 
-                                                                    <p className="text-small">{learnings}</p>
+                                                                    <div
+                                                                        dangerouslySetInnerHTML={{ __html: learnings }}
+                                                                    ></div>
                                                                 </div>
                                                             )}
                                                             <SponsorsAndSupportersWrapper>
