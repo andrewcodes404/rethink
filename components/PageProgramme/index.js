@@ -149,9 +149,9 @@ class Index extends React.Component {
                                                                 x => x === id
                                                             ) === id && 'show-session'}`}
                                                         >
-                                                            {host && <Host hostId={host} />}
+                                                            {/* {host && <Host hostId={host} />} */}
 
-                                                            {speakers.length > 0 && <Speakers speakers={speakers} />}
+                                                            {/* {speakers.length > 0 && <Speakers speakers={speakers} />} */}
 
                                                             {overview && (
                                                                 <div className="overview text-section">
@@ -258,9 +258,9 @@ class Index extends React.Component {
                                                                 x => x === id
                                                             ) === id && 'show-session'}`}
                                                         >
-                                                            {host && <Host hostId={host} />}
+                                                            {/* {host && <Host hostId={host} />} */}
 
-                                                            {speakers.length > 0 && <Speakers speakers={speakers} />}
+                                                            {/* {speakers.length > 0 && <Speakers speakers={speakers} />} */}
 
                                                             {overview && (
                                                                 <div className="overview text-section">

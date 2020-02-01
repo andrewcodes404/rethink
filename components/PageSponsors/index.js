@@ -400,10 +400,6 @@ class PageSponsors extends React.Component {
                         }}
                     </Query>
 
-                    <div className="text-content">
-                        <h2 data-aos="my-anim">Event Sponsors</h2>
-                    </div>
-
                     <Query
                         query={GET_SPONSORS_WHERE_RANKING}
                         variables={{
@@ -415,21 +411,30 @@ class PageSponsors extends React.Component {
                             if (error) return <p>Error: {error.message}</p>
                             if (!data) return <p>No Data</p>
                             const { sponsors } = data
+                            console.log('sponsors = ', sponsors)
                             return (
-                                <LogoContainerMd>
-                                    {sponsors.map((sponsor, i) => {
-                                        return (
-                                            <div
-                                                key={i}
-                                                onClick={() => {
-                                                    this.showModal(sponsor)
-                                                }}
-                                            >
-                                                <img src={sponsor.logo} />
-                                            </div>
-                                        )
-                                    })}
-                                </LogoContainerMd>
+                                <>
+                                    {sponsors.length !== 0 && (
+                                        <div className="text-content">
+                                            <h2 data-aos="my-anim">Event Sponsors</h2>
+                                        </div>
+                                    )}
+
+                                    <LogoContainerMd>
+                                        {sponsors.map((sponsor, i) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    onClick={() => {
+                                                        this.showModal(sponsor)
+                                                    }}
+                                                >
+                                                    <img src={sponsor.logo} />
+                                                </div>
+                                            )
+                                        })}
+                                    </LogoContainerMd>
+                                </>
                             )
                         }}
                     </Query>
