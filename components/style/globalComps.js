@@ -682,7 +682,7 @@ export const CarouselWrapper = styled.div`
     .button-wrapper {
         margin: 0 auto;
         position: absolute;
-        /* border: 1px solid green; */
+
         top: 25%;
         left: -40px;
         right: -40px;
@@ -717,7 +717,7 @@ export const CarouselWrapper = styled.div`
 
 export const CarouselItem = styled.div`
     width: 300px;
-    margin: -30px auto;
+    margin: -30px auto 0;
 
     @media (min-width: 1024px) {
         width: unset;

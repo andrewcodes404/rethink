@@ -38,45 +38,43 @@ class hostSpeakersCarousel extends React.Component {
                     const { hostSpeakers } = data
 
                     return (
-                        <div>
-                            <CarouselWrapper>
-                                <AliceCarousel
-                                    responsive={this.responsive}
-                                    mouseDragEnabled
-                                    autoPlayInterval={2500}
-                                    autoPlay={true}
-                                    fadeOutAnimation={true}
-                                    dotsDisabled={true}
-                                    buttonsDisabled={true}
-                                    slideToIndex={this.state.currentIndex}
-                                    onSlideChanged={this.onSlideChanged}
-                                >
-                                    {hostSpeakers.map((hostSpeaker, i) => {
-                                        return (
-                                            <CarouselItem key={i}>
-                                                <div className="headshot">
-                                                    <img src={hostSpeaker.headshot} alt="" srcSet="" />
-                                                </div>
-                                                <div className="text">
-                                                    <h4>{hostSpeaker.name}</h4>
-                                                    <h4>{hostSpeaker.title}</h4>
-                                                    <p>{hostSpeaker.company}</p>
-                                                </div>
-                                            </CarouselItem>
-                                        )
-                                    })}
-                                </AliceCarousel>
+                        <CarouselWrapper>
+                            <AliceCarousel
+                                responsive={this.responsive}
+                                mouseDragEnabled
+                                autoPlayInterval={2500}
+                                autoPlay={true}
+                                fadeOutAnimation={true}
+                                dotsDisabled={true}
+                                buttonsDisabled={true}
+                                slideToIndex={this.state.currentIndex}
+                                onSlideChanged={this.onSlideChanged}
+                            >
+                                {hostSpeakers.map((hostSpeaker, i) => {
+                                    return (
+                                        <CarouselItem key={i}>
+                                            <div className="headshot">
+                                                <img src={hostSpeaker.headshot} alt="" srcSet="" />
+                                            </div>
+                                            <div className="text">
+                                                <h4>{hostSpeaker.name}</h4>
+                                                <h4>{hostSpeaker.title}</h4>
+                                                <p>{hostSpeaker.company}</p>
+                                            </div>
+                                        </CarouselItem>
+                                    )
+                                })}
+                            </AliceCarousel>
 
-                                <div className="button-wrapper">
-                                    <div className="next-btn" onClick={() => this.slidePrev()}>
-                                        &lt;
-                                    </div>
-                                    <div className="next-btn" onClick={() => this.slideNext()}>
-                                        &gt;
-                                    </div>
+                            <div className="button-wrapper">
+                                <div className="next-btn" onClick={() => this.slidePrev()}>
+                                    &lt;
                                 </div>
-                            </CarouselWrapper>
-                        </div>
+                                <div className="next-btn" onClick={() => this.slideNext()}>
+                                    &gt;
+                                </div>
+                            </div>
+                        </CarouselWrapper>
                     )
                 }}
             </Query>

@@ -119,17 +119,17 @@ class PageHome extends React.Component {
                             </h3>
                         </LinkIntext>
                     </div>
+                </div>
 
-                    <div className="text-content-title-wrapper-small">
-                        <h2 data-aos="my-anim">
-                            <Link href="/sponsors">
-                                <a>Speaker Highlights</a>
-                            </Link>
-                        </h2>
-                        <div className="text-content">
-                            <CarouselHostSpeakers />
-                        </div>
-                    </div>
+                <div className="text-content-title-wrapper-small">
+                    <h2 data-aos="my-anim">
+                        <Link href="/sponsors">
+                            <a>Speaker Highlights</a>
+                        </Link>
+                    </h2>
+                    <br />
+
+                    <CarouselHostSpeakers />
                 </div>
 
                 <CarouselTank />

@@ -35,17 +35,19 @@ const ModalCard = styled.div`
 
     @media (min-width: 768px) {
         min-width: 850px;
-        max-width: 900px;
+        max-width: 1000px;
     }
 
     .top-content {
         display: flex;
-        justify-content: space-between;
+
         margin-bottom: 50px;
         width: 100%;
         flex-direction: column;
+        align-items: center;
 
         @media (min-width: 768px) {
+            justify-content: space-between;
             flex-direction: row;
         }
     }
@@ -68,8 +70,8 @@ const ModalCard = styled.div`
     }
 
     .item2 {
-        width: 550px;
-        min-width: 550px;
+        /* width: 550px; */
+        /* min-width: 550px; */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -83,26 +85,30 @@ const ModalCard = styled.div`
     .item2-row {
         display: flex;
         flex-direction: column-reverse;
+        margin-bottom: 40px;
 
         @media (min-width: 768px) {
+            margin-bottom: 0;
             flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
         }
     }
 
     .logo {
         width: 200px;
-        height: 200px;
         display: flex;
         align-items: flex-start;
+
         img {
-            object-fit: cover;
+            object-fit: contain;
             height: 100%;
         }
 
         @media (min-width: 768px) {
-            width: 200px;
-            height: 200px;
             margin-left: 50px;
+            min-height: 250px;
+            min-width: 200px;
         }
     }
 
@@ -263,11 +269,11 @@ class ModalHostSpeaker extends React.Component {
                                         )}
                                     </div>
                                 </div>
-
-                                <div className="logo">
-                                    <img src={logo} alt="" />
-                                </div>
                             </div>
+                        </div>
+
+                        <div className="logo">
+                            <img src={logo} alt="" />
                         </div>
                     </div>
 

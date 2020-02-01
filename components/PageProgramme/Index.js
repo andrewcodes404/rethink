@@ -152,10 +152,10 @@ class Index extends React.Component {
                                                             {host && <Host hostId={host} />}
 
                                                             {speakers.length > 0 && <Speakers speakers={speakers} />}
+
                                                             {overview && (
                                                                 <div className="overview text-section">
                                                                     <p className="sub-title">Overview</p>
-
                                                                     <div
                                                                         dangerouslySetInnerHTML={{ __html: overview }}
                                                                     ></div>
@@ -224,14 +224,19 @@ class Index extends React.Component {
                                                         <div className="session-header">
                                                             <div className="session-header--item1">
                                                                 <div className="theme-icon">
-                                                                    <img
-                                                                        src={`static/session-themes/${theme}.png`}
-                                                                        alt=""
-                                                                        srcSet=""
-                                                                    />
+                                                                    {theme && (
+                                                                        <img
+                                                                            src={`static/session-themes/${theme}.png`}
+                                                                            alt=""
+                                                                            srcSet=""
+                                                                        />
+                                                                    )}
                                                                 </div>
                                                                 <h3 className="theme-title">
-                                                                    {start}-{end} - {title}
+                                                                    <div className="theme-title--time">
+                                                                        {start}-{end}
+                                                                    </div>
+                                                                    <div className="theme-title--text">{title}</div>
                                                                 </h3>
                                                             </div>
                                                             <div className="session-header--item2">
@@ -256,11 +261,13 @@ class Index extends React.Component {
                                                             {host && <Host hostId={host} />}
 
                                                             {speakers.length > 0 && <Speakers speakers={speakers} />}
+
                                                             {overview && (
                                                                 <div className="overview text-section">
                                                                     <p className="sub-title">Overview</p>
-
-                                                                    <p className="text-small">{overview}</p>
+                                                                    <div
+                                                                        dangerouslySetInnerHTML={{ __html: overview }}
+                                                                    ></div>
                                                                 </div>
                                                             )}
 
