@@ -35,29 +35,32 @@ class Hero extends React.Component {
         this.state = {
             ssrDone: false,
             innerWidth: 0,
-            renderHero: false,
+            // renderHero: false,
+            renderHero: true,
         }
     }
 
     componentDidMount() {
         this.setState({ ssrDone: true, innerWidth: window.innerWidth }, () => {
-            if (this.state.innerWidth > 450) {
-                var v = document.getElementById('theVideo')
-                // v.playbackRate = 0.75;
-                v.addEventListener('playing', () => {
-                    // console.log("video is playing")
-                    this.setState({ renderHero: true })
-                })
-            } else {
-                this.setState({ renderHero: true })
-            }
+            console.log('no video')
+
+            // if (this.state.innerWidth > 450) {
+            //     var v = document.getElementById('theVideo')
+            //     // v.playbackRate = 0.75;
+            //     v.addEventListener('playing', () => {
+            //         // console.log("video is playing")
+            //         this.setState({ renderHero: true })
+            //     })
+            // } else {
+            //     this.setState({ renderHero: true })
+            // }
         })
     }
 
     render() {
         return (
             <StyledHero id="top">
-                {this.state.innerWidth > 450 ? (
+                {/* {this.state.innerWidth > 450 ? (
                     <div className={`bkg-img ${this.state.renderHero && 'fade-in'} `}>
                         <video id="theVideo" autoPlay loop muted>
                             <source src="./static/video/Beetle-Nut-Trees/MP4/Beetle-Nut-Trees.mp4" type="video/mp4" />
@@ -75,7 +78,18 @@ class Hero extends React.Component {
                             alt="landscape"
                         />
                     </div>
-                )}
+                )} */}
+
+                <div className="bkg-img" data-aos="fade-in" data-aos-delay="500" data-aos-duration="500">
+                    <img
+                        src="./static/photos/land-med.jpg"
+                        srcSet="
+                  ./static/photos/land-sml.jpg 700w,
+                  ./static/photos/land-med.jpg 1000w,
+                  ./static/photos/land-lrg.jpg 2000w"
+                        alt="landscape"
+                    />
+                </div>
 
                 {this.state.renderHero && (
                     <div className="hero-content" data-aos="fade-in" data-aos-delay="1500" data-aos-duration="1500">
@@ -93,7 +107,7 @@ class Hero extends React.Component {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Register
+                                Attend
                             </a>
                         </RegisterButton>
 

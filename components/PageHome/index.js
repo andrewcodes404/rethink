@@ -123,7 +123,7 @@ class PageHome extends React.Component {
 
                 <div className="text-content-title-wrapper-small">
                     <h2 data-aos="my-anim">
-                        <Link href="/sponsors">
+                        <Link href="/programme">
                             <a>Speaker Highlights</a>
                         </Link>
                     </h2>

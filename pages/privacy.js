@@ -107,6 +107,81 @@ class Privacy extends React.Component {
                                 request access to your Personal Data, please contact our Administration Department at
                                 enviroeventshk@gmail.com
                             </p>
+
+                            <h3> SPECIAL ARRANGEMENTS IN TROPICAL CYCLONE OR BLACK RAINSTORM SITUATIONS</h3>
+                            <p>
+                                ReThink 2020 will continue as scheduled when the Standby Signal No.1 or the Strong Wind
+                                Signal No.3 is in force.
+                            </p>
+
+                            <p style={{ fontWeight: 'bold' }}>
+                                Pre-No. 8 Signal Special Announcement or Tropical Cyclone Warning Signal No. 8 (or
+                                above)
+                            </p>
+                            <p>
+                                All participants are requested to note the respective contingency measures in the event
+                                of Tropical Cyclone (commonly known as “typhoon”) No. 8 Signal (or above), or the Black
+                                Rainstorm Warning Signal being issued during or before the commencement of ReThink 2020
+                            </p>
+
+                            <h3>At 7:00am</h3>
+                            <p>
+                                - If the Pre-No. 8 Signal Special Announcement or the Tropical Cyclone Warning Signal
+                                No. 8 (or above) is issued or in force, the morning sessions of ReThink 2020 will be
+                                cancelled.
+                            </p>
+                            <p>
+                                - If the Tropical Cyclone Warning Signal No. 8 (or above) is issued but cancelled at
+                                6:59am or before, ReThink 2020 will continue as originally scheduled.
+                            </p>
+                            <h3>At 11:00am</h3>
+                            <p>
+                                - After the morning session is cancelled, if the Pre-No. 8 Signal Special Announcement
+                                or the Tropical Cyclone Warning Signal No. 8 (or above) is still effective at 11:00am,
+                                the afternoon agenda of ReThink 2020 will be cancelled.
+                            </p>
+                            <p>
+                                - If the Tropical Cyclone Warning Signal No. 8 (or above) is cancelled at 10:59am or
+                                before, ReThink 2020 will resume at 1:00 pm with the agenda adjusted.
+                            </p>
+                            <h3>23rd June at 4:00pm</h3>
+                            <p>
+                                - If the Tropical Cyclone Warning Signal No. 8 (or above) is still effective at 4:00pm,
+                                the cocktail and dinner activities of ReThink 2020 on 23 June 2020 will be cancelled.
+                            </p>
+                            <p>
+                                - If the Tropical Cyclone Warning Signal No. 8 (or above) is issued but cancelled at
+                                3:59pm or before, the cocktail and dinner activities of ReThink 2020 on 23 June will
+                                continue as originally scheduled.
+                            </p>
+                            <h3>During ReThink 2020</h3>
+                            <p>
+                                If the Pre-No. 8 Signal Special Announcement is issued during ReThink 2020, the event
+                                will be closed within two hours after the announcement. The Organiser will notify the
+                                participants at once through onsite announcement. In the unlikely situation where the
+                                Tropical Cyclone Warning Signal No. 8 (or above) is issued without a pre-announcement,
+                                the same arrangement will apply.
+                            </p>
+                            <p>
+                                * Exhibiting staff, speakers, media and delegates are reminded to return to the venue as
+                                soon as possible.
+                            </p>
+                            <p>
+                                * The registration counter will be re-opened as soon as possible after the Warning
+                                Signal is cancelled.
+                            </p>
+                            <p>
+                                * ReThink 2020 will continue as scheduled when the Amber Rainstorm Signal or the Red
+                                Rainstorm Signal is in force.
+                            </p>
+                            <h3>Event Terms</h3>
+                            <p>
+                                Confirmed delegate places are non-refundable except in the instance that the event is
+                                cancelled. If your plans change and you are unable to attend, then you may transfer your
+                                place to a colleague at the Organiser’s discretion. Requests to transfer must be
+                                received no later than 17:00 (HKT) on Friday 19 June 2020. Service charges, transaction
+                                and bank fees are non-refundable.
+                            </p>
                         </div>{' '}
                     </div>
                 </StyledPrivacy>

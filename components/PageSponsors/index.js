@@ -440,7 +440,7 @@ class PageSponsors extends React.Component {
                     </Query>
 
                     <div className="text-content">
-                        <h2 data-aos="my-anim">Innovation Showcase</h2>
+                        <h2 data-aos="my-anim">Solutions Showcase</h2>
                     </div>
 
                     <Query

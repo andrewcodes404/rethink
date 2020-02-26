@@ -44,11 +44,12 @@ const Contact = () => (
                 <br />
                 <br />
                 <h5>
-                    - For details on the innovation showcase, event sponsorship, speaking in the conference, hosting
+                    - For details on the solutions showcase, event sponsorship, speaking in the conference, hosting
                     future ReThink events or anything else:
                 </h5>
                 <br />
-                <p style={{ fontWeight: 'bold' }}>Chris Brown, Founder &amp; Director</p>
+                <p style={{ fontWeight: 'bold' }}>Chris Brown</p>
+                <p>Founder &amp; Director</p>
                 <a
                     href="mailto:hello@chris.b@rethink-event.com ?Subject=Hello"
                     target="_blank"
