@@ -35,6 +35,7 @@ class Hero extends React.Component {
         this.state = {
             ssrDone: false,
             innerWidth: 0,
+            //turn this on for video
             // renderHero: false,
             renderHero: true,
         }
