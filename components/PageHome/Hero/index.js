@@ -45,6 +45,7 @@ class Hero extends React.Component {
         this.setState({ ssrDone: true, innerWidth: window.innerWidth }, () => {
             console.log('no video')
 
+            //this is the video fn
             // if (this.state.innerWidth > 450) {
             //     var v = document.getElementById('theVideo')
             //     // v.playbackRate = 0.75;
