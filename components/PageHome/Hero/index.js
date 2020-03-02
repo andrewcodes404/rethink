@@ -103,7 +103,7 @@ class Hero extends React.Component {
                             23 &amp; 24 JUNE 2020 <br /> K11 ATELIER KING'S ROAD, HONG KONG
                         </h1>
 
-                        <RegisterButton data-aos="fade-in" data-aos-delay="2000" data-aos-duration="2000">
+                        <RegisterButton data-aos="fade-in" data-aos-delay="500" data-aos-duration="2000">
                             <a
                                 href="https://docs.google.com/forms/d/e/1FAIpQLSeF4V1J-jKBahE1DWwmTLXwSEmQ_dAAg4Zf1ogeoGCP1ZXbSA/viewform"
                                 target="_blank"
@@ -113,7 +113,7 @@ class Hero extends React.Component {
                             </a>
                         </RegisterButton>
 
-                        <SponsorButton data-aos="fade-in" data-aos-delay="2000" data-aos-duration="2000">
+                        <SponsorButton data-aos="fade-in" data-aos-delay="500" data-aos-duration="2000">
                             {' '}
                             <a
                                 href="https://docs.google.com/forms/d/e/1FAIpQLSeF4V1J-jKBahE1DWwmTLXwSEmQ_dAAg4Zf1ogeoGCP1ZXbSA/viewform"

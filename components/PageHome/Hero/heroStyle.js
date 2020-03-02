@@ -2,6 +2,7 @@ import styled from 'styled-components'
 export const StyledHero = styled.div`
     /* height: calc(100vh - 160px); */
     height: 100vh;
+    min-height: 750px;
     display: flex;
     flex-direction: column;
     justify-content: center;
