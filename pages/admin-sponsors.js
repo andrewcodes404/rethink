@@ -1,38 +1,31 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Router from 'next/router'
-import NavAdmin from '../components/PageHeadFooter/Nav/NavAdmin'
+import NavAdmin from '../components/NavAdmin'
 import PageAdminSponsors from '../components/PageAdminSponsors/Index'
 import Spinner from '../components/lib/Spinner'
-class AdminSponsors extends React.Component {
-    componentDidMount() {
-        if (!this.props.loggedIn) {
-            Router.push('/error', '/')
-        }
-    }
 
+import { Query } from 'react-apollo'
+import { CURRENT_USER_QUERY } from '../lib/graphqlTags'
+
+class AdminSponsors extends React.Component {
     render() {
         return (
-            <div>
-                {!this.props.loggedIn ? (
-                    <Spinner />
-                ) : (
-                    <div>
-                        <NavAdmin
-                            userName={this.props.user.name}
-                            loggedIn={this.props.loggedIn}
-                        />
-                        <PageAdminSponsors />
-                    </div>
-                )}
-            </div>
+            <Query query={CURRENT_USER_QUERY}>
+                {({ data: { user }, error, loading }) => {
+                    if (loading) return <Spinner />
+                    if (error) return <p>Error: {error.message}</p>
+                    if (!user) Router.push('/')
+
+                    return (
+                        <>
+                            <NavAdmin />
+                            <PageAdminSponsors />
+                        </>
+                    )
+                }}
+            </Query>
         )
     }
-}
-
-AdminSponsors.propTypes = {
-    user: PropTypes.object,
-    loggedIn: PropTypes.bool,
 }
 
 export default AdminSponsors

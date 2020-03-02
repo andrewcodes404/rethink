@@ -4,7 +4,7 @@ import PageHome from '../components/PageHome'
 
 class Index extends React.Component {
     render() {
-        return <PageHome loggedIn={this.props.loggedIn} />
+        return <PageHome />
     }
 }
 

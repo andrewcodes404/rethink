@@ -1,6 +1,193 @@
 import styled from 'styled-components'
 
-export const ModalCompanyCard = styled.div`
+// Cards----
+// Cards----
+// Cards----
+
+export const CardContainerWrapper = styled.div`
+    .container-title {
+        margin: 40px auto;
+
+        @media (min-width: 746px) {
+            margin: 60px 0;
+        }
+    }
+    margin-bottom: 50px;
+`
+
+export const CardContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+
+    .card-with-title {
+        width: 90%;
+        max-width: 400px;
+        /* height: 300px; */
+        padding: 15px;
+        margin: 15px;
+
+        @media (min-width: 746px) {
+            width: 45%;
+            /* height: 400px; */
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .card-with-title--card {
+        width: 100%;
+        margin: 0 auto 15px;
+        padding: 15px;
+
+        min-height: 240px;
+        height: 60%;
+    }
+
+    .large {
+        width: 45%;
+        margin: 0 auto 15px;
+        padding: 15px;
+        @media (min-width: 746px) {
+            width: 45%;
+
+            padding: 15px;
+            margin: 15px;
+        }
+    }
+    .medium {
+        width: 45%;
+        margin: 0 auto 15px;
+        padding: 15px;
+        @media (min-width: 746px) {
+            width: 23%;
+            margin: 6px;
+        }
+    }
+    .small {
+        width: 30%;
+        padding: 0 10px;
+        margin: 5px;
+        @media (min-width: 746px) {
+            width: 19%;
+        }
+    }
+`
+
+export const Card = styled.div`
+    /* box-shadow: 8px 9px 18px -8px rgba(222, 222, 222, 1); */
+    box-shadow: 8px 9px 18px -2px rgba(222, 222, 222, 1);
+    cursor: pointer;
+    border-top: 1px solid #f3f3f3;
+    border-left: 1px solid #f3f3f3;
+    transition: 0.3s;
+
+    .img-wrapper-lrg {
+        img {
+            width: 90%;
+            height: 90%;
+            object-fit: scale-down;
+        }
+        width: 80%;
+        margin: auto;
+        height: 100%;
+
+        @media (min-width: 746px) {
+            width: 80%;
+            height: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+
+    .img-wrapper-lrg2 {
+        img {
+            width: 90%;
+            height: 90%;
+            object-fit: scale-down;
+        }
+        @media (min-width: 746px) {
+            width: 100%;
+            height: 230px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+
+    .img-wrapper-med {
+        img {
+            width: 90%;
+            height: 90%;
+            object-fit: scale-down;
+        }
+        @media (min-width: 746px) {
+            width: 100%;
+            height: 180px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+
+    .img-wrapper-sml {
+        @media (min-width: 746px) {
+            width: 100%;
+            height: 180px;
+            margin: 0 auto;
+        }
+
+        img {
+            width: 90%;
+            height: 90%;
+            object-fit: scale-down;
+        }
+    }
+
+    &:hover {
+        box-shadow: 18px 23px 35px -10px rgba(194, 194, 194, 1);
+        border-top: 1px solid #fafafa;
+        border-left: 1px solid #fafafa;
+        img {
+            transform: scale(1.02);
+        }
+    }
+`
+
+// Cards----
+// Cards----
+// Cards----
+
+// Modals ---
+// Modals ---
+// Modals ---
+
+export const ModalCloseBtn = styled.div`
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    line-height: 0;
+    border: 1px solid #000;
+    /* padding: 5px; */
+    border-radius: 10px;
+    font-size: 15px;
+    /* color: white;
+        background: black; */
+    transition: 0.4s;
+
+    &:hover {
+        transform: rotate(90deg);
+        background: ${props => props.theme.green};
+        color: white;
+        border: unset;
+    }
+`
+
+export const ModalCompanyCardStyle = styled.div`
     transition: 1s;
 
     @keyframes shake {
@@ -40,6 +227,7 @@ export const ModalCompanyCard = styled.div`
     /* overflow: scroll; */
 
     .card {
+        position: relative;
         width: 90%;
         max-width: 700px;
         background: white;
@@ -127,7 +315,6 @@ export const ModalCompanyCard = styled.div`
         .some-height {
             width: 15px;
             height: 70px;
-            /* border: 1px solid #000; */
         }
 
         .website {
@@ -135,8 +322,6 @@ export const ModalCompanyCard = styled.div`
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* margin-left: 20px; */
-            /* margin-top: 20px; */
 
             p {
                 margin: 0;
@@ -145,6 +330,10 @@ export const ModalCompanyCard = styled.div`
         }
     }
 `
+
+// Modals ---
+// Modals ---
+// Modals ---
 
 export const Logos = styled.div`
     width: 90%;
@@ -312,9 +501,15 @@ export const Spinner = styled.div`
 `
 
 export const LinkIntext = styled.div`
-    p {
+    text-align: center;
+    margin: 60px 0;
+    p,
+    h2,
+    h3 {
         font-weight: bold;
         position: relative;
+        display: inline;
+        margin: 0 auto;
     }
 
     a,
@@ -334,7 +529,7 @@ export const LinkIntext = styled.div`
                 width: 400px;
                 height: 5px;
                 left: 11px;
-                top: 16px;
+                top: 20px;
                 background: ${props => props.theme.yellow};
                 z-index: -1;
             }
@@ -466,4 +661,117 @@ export const SponsorButton = styled.button`
     text-transform: uppercase;
     padding: 5px 10px;
     border: unset;
+`
+
+export const CarouselWrapper = styled.div`
+    position: relative;
+    margin: 20px auto;
+
+    @media (min-width: 767px) {
+        max-width: unset;
+    }
+
+    @media (min-width: 1024px) {
+    }
+
+    .alice-carousel {
+        max-width: 850px;
+        margin: 0 auto;
+    }
+
+    .button-wrapper {
+        margin: 0 auto;
+        position: absolute;
+
+        top: 25%;
+        left: -40px;
+        right: -40px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media (min-width: 767px) {
+            top: 40%;
+        }
+
+        .next-btn {
+            line-height: 1;
+            display: inline-block;
+            border: none;
+            margin: 0 10px;
+            color: lightgrey;
+            font-size: 30px;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.4s;
+            &:hover {
+                color: green;
+            }
+
+            @media (min-width: 1024px) {
+                font-size: 60px;
+            }
+        }
+    }
+`
+
+export const CarouselItem = styled.div`
+    width: 300px;
+    margin: -30px auto 0;
+
+    @media (min-width: 1024px) {
+        width: unset;
+        padding: 7px;
+    }
+
+    .logo {
+        width: 200px;
+        max-width: 200px;
+        height: 200px;
+        padding: 20px;
+        /* margin: 0 auto 20px; */
+        overflow: hidden;
+        @media (min-width: 1024px) {
+            width: unset;
+        }
+        img {
+            object-fit: scale-down;
+            height: 100%;
+        }
+    }
+    .headshot {
+        width: 200px;
+        max-width: 200px;
+        height: 200px;
+        margin: 0 auto 20px;
+        overflow: hidden;
+        @media (min-width: 1024px) {
+            width: unset;
+        }
+
+        img {
+            object-fit: cover;
+            height: 100%;
+        }
+    }
+    .text {
+        color: black;
+        width: 200px;
+        margin: 0 auto;
+        p {
+            margin: 0 0 5px 0;
+            color: black;
+            padding: 0;
+            line-height: 1;
+            font-size: 15px;
+            font-weight: normal;
+        }
+        h4 {
+            /* font-size: 16px;
+            border: 1px solid #000; */
+            margin: 0 0 5px 0;
+            color: black;
+            font-weight: lighter;
+        }
+    }
 `

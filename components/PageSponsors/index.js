@@ -1,33 +1,58 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import PropTypes from 'prop-types'
-import NavSimple from '../PageHeadFooter/Nav/NavSimple'
+
 import styled from 'styled-components'
 import { Query } from 'react-apollo'
 import { GET_SPONSORS_WHERE_RANKING } from '../../lib/graphqlTags'
-import { ModalCompanyCard } from '../style/globalComps'
+import ModalCompanyCard from '../lib/ModalCompanyCard'
 
-const HeightForNav = styled.div`
-    height: 100px;
-`
+import ProfileBar from '../ProfileBar'
+
+const profileDataSponsor = [
+    {
+        title: 'Sponsors',
+        bkgImg: 'sponsor',
+        icon: 'speaker',
+        list: [
+            'Consultancy Services',
+            'Efficient Energy & Utilities',
+            'Facilities Management',
+            'Government Agencies',
+            'GreenTech Applications',
+            'IT & Back Office Solutions',
+            'Recycling & Waste Management Technology',
+            'Sourcing & Procurement Solutions',
+            'Supply Chain Management & Logistics',
+            'Sustainable Products; Suppliers & Distributors',
+        ],
+    },
+]
 
 const LogoContainerLg = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 80px;
+
     div {
         /* border: 1px solid grey; */
         box-shadow: 10px 11px 20px -10px rgba(222, 222, 222, 1);
 
-        width: 45%;
-        height: 300px;
+        width: 80%;
+        height: 200px;
         padding: 20px;
-        margin: 20px;
+        margin: 20px auto;
         cursor: pointer;
         border-top: 1px solid white;
         border-left: 1px solid white;
         transition: 0.3s;
+
+        @media (min-width: 768px) {
+            height: 300px;
+            width: 45%;
+            margin: 20px;
+        }
 
         img {
             object-fit: contain;
@@ -62,13 +87,9 @@ const LogoContainerLg = styled.div`
             box-shadow: 18px 23px 39px -2px rgba(194, 194, 194, 1);
             border-top: 1px solid #fafafa;
             border-left: 1px solid #fafafa;
-            /* padding: 18px; */
+
             img {
                 transform: scale(1.02);
-                /* animation: shake 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-                transform: translate3d(0, 0, 0); */
-                /* backface-visibility: hidden;
-                perspective: 1000px; */
             }
         }
     }
@@ -82,7 +103,7 @@ const LogoContainerMd = styled.div`
     div {
         box-shadow: 10px 11px 20px -10px rgba(222, 222, 222, 1);
 
-        width: 22%;
+        width: 40%;
         height: 150px;
         padding: 15px;
         margin: 15px;
@@ -91,6 +112,13 @@ const LogoContainerMd = styled.div`
         border-top: 1px solid white;
         border-left: 1px solid white;
         transition: 0.3s;
+
+        @media (min-width: 768px) {
+            width: 22%;
+            height: 150px;
+            padding: 15px;
+            margin: 15px;
+        }
 
         img {
             object-fit: contain;
@@ -120,15 +148,22 @@ const LogoContainerSm = styled.div`
     margin: 0 auto 80px;
     div {
         box-shadow: 10px 11px 20px -10px rgba(222, 222, 222, 1);
-        width: 16%;
-        height: 120px;
+        width: 40%;
+        height: 150px;
         padding: 15px;
-        margin: 20px 10px;
+        margin: 15px;
 
         cursor: pointer;
         border-top: 1px solid white;
         border-left: 1px solid white;
         transition: 0.3s;
+
+        @media (min-width: 768px) {
+            width: 16%;
+            height: 120px;
+            padding: 15px;
+            margin: 20px 10px;
+        }
 
         img {
             object-fit: contain;
@@ -205,103 +240,136 @@ class PageSponsors extends React.Component {
     }
 
     render() {
-        // const platinum = sponsorData.filter(x => x.ranking === '1')
-        // const pro = sponsorData.filter(x => x.ranking === '2')
-        // const basic = sponsorData.filter(x => x.ranking === '3')
-
         return (
             <div style={{ positon: 'relative' }}>
-                <HeightForNav />
-                <NavSimple loggedIn={this.props.loggedIn} />
                 {this.state.showModal && (
                     <ModalCompanyCard
-                        onClick={() => {
+                        closeModal={() => {
                             this.closeModal()
                         }}
-                        // style={this.state.showModal && '{filter: opacity(1);}'}
-                        // className={this.state.showModal && 'fade-in'}
-                    >
-                        <div className="card">
-                            <div className="logo">
-                                <img src={this.state.logo} />
-                            </div>
-
-                            <div className="content">
-                                <h2>{this.state.name}</h2>
-
-                                <div dangerouslySetInnerHTML={{ __html: this.state.description }}></div>
-
-                                <div className="social-wrapper">
-                                    {this.state.linkedIn && (
-                                        <div className="social-icon">
-                                            <a href={this.state.linkedIn} target="_blank" rel="noopener noreferrer">
-                                                <img src="./static/social/linkedin.png" alt="" srcSet="" />
-                                            </a>
-                                        </div>
-                                    )}
-
-                                    {this.state.instagram && (
-                                        <div className="social-icon">
-                                            <a
-                                                href={`https://www.instagram.com/${this.state.instagram}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img src="./static/social/instagram.png" alt="" srcSet="" />
-                                            </a>
-                                        </div>
-                                    )}
-
-                                    {this.state.facebook && (
-                                        <div className="social-icon">
-                                            <a href={this.state.facebook} target="_blank" rel="noopener noreferrer">
-                                                <img src="./static/social/facebook.png" alt="" srcSet="" />
-                                            </a>
-                                        </div>
-                                    )}
-
-                                    {this.state.twitter && (
-                                        <div className="social-icon">
-                                            <a
-                                                href={`https://www.twitter.com/${this.state.twitter}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img src="./static/social/twitter.png" alt="" srcSet="" />
-                                            </a>
-                                        </div>
-                                    )}
-                                    <div className="some-height"></div>
-                                    {this.state.website && (
-                                        <div className="website">
-                                            <a href={this.state.website} target="_blank" rel="noopener noreferrer">
-                                                <p>{this.state.website}</p>
-                                            </a>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    </ModalCompanyCard>
+                        type={this.state.type}
+                        ranking={this.state.ranking}
+                        index={this.state.index}
+                        name={this.state.name}
+                        logo={this.state.logo}
+                        description={this.state.description}
+                        website={this.state.website}
+                        instagram={this.state.instagram}
+                        facebook={this.state.facebook}
+                        twitter={this.state.twitter}
+                        linkedIn={this.state.linkedIn}
+                        shareBtn={this.state.shareBtn}
+                    />
                 )}
                 <div className="text-content-title-wrapper">
                     <div className="text-content">
                         <h2 data-aos="my-anim">Sponsors</h2>
                         <p>
-                            ReThink's sponsors are steering Hong Kong's sustainability conversation - demonstrating
-                            their commitment to driving change through thought leadership, best practice, collaboration
-                            and innovation.
+                            ReThink is an event exclusively for sustainability professionals who will attend with their
+                            colleagues from Finance, People, Operations and Procurement to achieve wider understanding
+                            and deliver significant and purposeful change back into their organisation.
                         </p>
+
+                        <p>
+                            Use the power of this live event platform to interact with customers and stakeholders from
+                            across the ecosystem; demonstrate your commitment to accelerating sustainable development in
+                            Hong Kong, launch new solutions, host workshops, build partnerships and generate significant
+                            brand awareness at the highest level.
+                        </p>
+                        <p>
+                            Directly influence sustainability leaders, C-Suite decision makers and government
+                            departments who will attend to source cutting edge technology, sustainable supply chain
+                            solutions and innovative products that reflect the demands of their customers.
+                        </p>
+
+                        <p>
+                            Showcasing at ReThink will put your innovations, services or solutions in front of
+                            procurement teams, business owners and those responsible for meeting sustainability goals
+                            and driving efficiencies across their organisation or across multi-site facilities.
+                        </p>
+
+                        <h3>The Innovation Showcase is open for suppliers and service providers, including:</h3>
+                        <ProfileBar profileData={profileDataSponsor} profileMessage="sponsor" />
+
+                        <br />
+                        <br />
+                        <br />
+                        <h2>How We Deliver the Audience</h2>
+
+                        <p>
+                            We attract our audience using a comprehensive multi-channel marketing and recruitment
+                            campaign that includes:
+                        </p>
+
+                        <ul>
+                            <li>A delegate nomination and approval process to guarantee quality attendees*</li>
+                            <li>Partnerships with business chambers, industry associations and professional groups</li>
+                            <li>Collaboration with media channels and carefully selected forums, blogs and websites</li>
+                            <li>Comprehensive PR campaign</li>
+                            <li>Continuous social media engagement</li>
+                        </ul>
+
+                        <p>
+                            The ReThink proposition is genuinely exciting and offers something different to other events
+                            including:
+                        </p>
+
+                        <ul>
+                            <li>Focussed conference with purposeful learnings that business can put into action</li>
+                            <li>
+                                Creative and varied conference formats to provide two-full-days of engaging debate and
+                                discussions
+                            </li>
+                            <li>Workshop sessions to provide deeper insight into pan-industry challenges</li>
+                            <li>Combined Conference &amp; Innovation Showcase</li>
+                            <li>NGO &amp; Partnerships Lounge to facilitate collaboration</li>
+                        </ul>
+
+                        <p>
+                            * All applications to attend are checked and upon confirmation delegates are required to
+                            make a donation to the 2020 ReThink Beneficiary Fund - with all proceeds going to ReThink’s
+                            Charity Partners.
+                        </p>
+
                         <h3 className="link-green">
                             Want to be a ReThink sponsor?{' '}
                             <a href="https://forms.gle/cvuvpHGz4jcSyUCy8" target="_blank" rel="noopener noreferrer">
                                 click here
                             </a>
                         </h3>
-
-                        <h2 data-aos="my-anim">Sustainability Partners</h2>
                     </div>
 
+                    <h2 data-aos="my-anim">Headline Event Sponsor</h2>
+                    <Query
+                        query={GET_SPONSORS_WHERE_RANKING}
+                        variables={{
+                            ranking: 'headlineSponsor',
+                        }}
+                    >
+                        {({ data, error, loading }) => {
+                            if (loading) return <p>Loading...</p>
+                            if (error) return <p>Error: {error.message}</p>
+                            if (!data) return <p>No Data</p>
+                            const { sponsors } = data
+                            return (
+                                <LogoContainerLg>
+                                    {sponsors.map((sponsor, i) => {
+                                        return (
+                                            <div
+                                                key={i}
+                                                onClick={() => {
+                                                    this.showModal(sponsor)
+                                                }}
+                                            >
+                                                <img src={sponsor.logo} />
+                                            </div>
+                                        )
+                                    })}
+                                </LogoContainerLg>
+                            )
+                        }}
+                    </Query>
+                    <h2 data-aos="my-anim">Sustainability Partners</h2>
                     <Query
                         query={GET_SPONSORS_WHERE_RANKING}
                         variables={{
@@ -332,10 +400,6 @@ class PageSponsors extends React.Component {
                         }}
                     </Query>
 
-                    <div className="text-content">
-                        <h2 data-aos="my-anim">Event Sponsors</h2>
-                    </div>
-
                     <Query
                         query={GET_SPONSORS_WHERE_RANKING}
                         variables={{
@@ -347,27 +411,36 @@ class PageSponsors extends React.Component {
                             if (error) return <p>Error: {error.message}</p>
                             if (!data) return <p>No Data</p>
                             const { sponsors } = data
+                            console.log('sponsors = ', sponsors)
                             return (
-                                <LogoContainerMd>
-                                    {sponsors.map((sponsor, i) => {
-                                        return (
-                                            <div
-                                                key={i}
-                                                onClick={() => {
-                                                    this.showModal(sponsor)
-                                                }}
-                                            >
-                                                <img src={sponsor.logo} />
-                                            </div>
-                                        )
-                                    })}
-                                </LogoContainerMd>
+                                <>
+                                    {sponsors.length !== 0 && (
+                                        <div className="text-content">
+                                            <h2 data-aos="my-anim">Event Sponsors</h2>
+                                        </div>
+                                    )}
+
+                                    <LogoContainerMd>
+                                        {sponsors.map((sponsor, i) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    onClick={() => {
+                                                        this.showModal(sponsor)
+                                                    }}
+                                                >
+                                                    <img src={sponsor.logo} />
+                                                </div>
+                                            )
+                                        })}
+                                    </LogoContainerMd>
+                                </>
                             )
                         }}
                     </Query>
 
                     <div className="text-content">
-                        <h2 data-aos="my-anim">Innovation Showcase</h2>
+                        <h2 data-aos="my-anim">Solutions Showcase</h2>
                     </div>
 
                     <Query

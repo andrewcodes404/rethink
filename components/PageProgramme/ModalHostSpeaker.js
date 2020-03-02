@@ -7,23 +7,23 @@ import styled from 'styled-components'
 const ModalStyled = styled.div`
     position: fixed;
     top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     background: rgba(000, 000, 000, 0.5);
     min-height: 100vh;
     overflow: scroll;
     z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 250px;
+
+    ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent; /* make scrollbar transparent */
+    }
 `
 
 const ModalCard = styled.div`
     width: 90%;
-    max-width: 800px;
+    max-width: 450px;
     margin: 100px auto 100px;
     background: white;
     display: flex;
@@ -33,30 +33,82 @@ const ModalCard = styled.div`
     padding: 50px;
     position: relative;
 
+    @media (min-width: 768px) {
+        min-width: 850px;
+        max-width: 1000px;
+    }
+
     .top-content {
         display: flex;
-        justify-content: space-between;
+
         margin-bottom: 50px;
         width: 100%;
+        flex-direction: column;
+        align-items: center;
+
+        @media (min-width: 768px) {
+            justify-content: space-between;
+            flex-direction: row;
+        }
     }
 
     .headshot {
         width: 200px;
         height: 250px;
+        min-width: 200px;
+
+        margin: 0 0 20px;
+
+        @media (min-width: 768px) {
+            margin-right: 20px;
+            margin-bottom: 0;
+        }
         img {
             object-fit: cover;
             height: 100%;
         }
     }
 
-    .headlines {
-        width: 60%;
+    .item2 {
+        /* width: 550px; */
+        /* min-width: 550px; */
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-content: center;
+
         h2 {
             margin-bottom: 10px;
+        }
+    }
+
+    .item2-row {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-bottom: 40px;
+
+        @media (min-width: 768px) {
+            margin-bottom: 0;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+    }
+
+    .logo {
+        width: 200px;
+        display: flex;
+        align-items: flex-start;
+
+        img {
+            object-fit: contain;
+            height: 100%;
+        }
+
+        @media (min-width: 768px) {
+            margin-left: 50px;
+            min-height: 250px;
+            min-width: 200px;
         }
     }
 
@@ -134,7 +186,19 @@ class ModalHostSpeaker extends React.Component {
     }
 
     render() {
-        const { bio, company, facebook, headshot, insta, linkedIn, name, title, twitter, website } = this.state.host
+        const {
+            bio,
+            company,
+            facebook,
+            headshot,
+            insta,
+            linkedIn,
+            name,
+            title,
+            twitter,
+            website,
+            logo,
+        } = this.state.host
 
         return (
             <ModalStyled onClick={this.closeModal}>
@@ -148,59 +212,68 @@ class ModalHostSpeaker extends React.Component {
                             <img src={headshot} alt={name} />
                         </div>
 
-                        <div className="headlines">
+                        <div className="item2">
                             <h2>{name}</h2>
-                            <h3>{title}</h3>
-                            <h3>{company}</h3>
-                            {website && (
-                                <div className="website">
-                                    <a href={website} target="_blank" rel="noopener noreferrer">
-                                        <p>{website}</p>
-                                    </a>
+
+                            <div className="item2-row">
+                                <div>
+                                    <h3>{title}</h3>
+                                    <h3>{company}</h3>
+                                    {website && (
+                                        <div className="website">
+                                            <a href={website} target="_blank" rel="noopener noreferrer">
+                                                <p>{website}</p>
+                                            </a>
+                                        </div>
+                                    )}
+
+                                    <div className="social-wrapper">
+                                        {insta && (
+                                            <div className="social-icon">
+                                                <a
+                                                    href={`https://www.instagram.com/${insta}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <img src="./static/social/instagram.png" alt="" srcSet="" />
+                                                </a>
+                                            </div>
+                                        )}
+
+                                        {facebook && (
+                                            <div className="social-icon">
+                                                <a href={facebook} target="_blank" rel="noopener noreferrer">
+                                                    <img src="./static/social/facebook.png" alt="" srcSet="" />
+                                                </a>
+                                            </div>
+                                        )}
+
+                                        {twitter && (
+                                            <div className="social-icon">
+                                                <a
+                                                    href={`https://www.twitter.com/${twitter}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <img src="./static/social/twitter.png" alt="" srcSet="" />
+                                                </a>
+                                            </div>
+                                        )}
+
+                                        {linkedIn && (
+                                            <div className="social-icon">
+                                                <a href={linkedIn} target="_blank" rel="noopener noreferrer">
+                                                    <img src="./static/social/linkedin.png" alt="" srcSet="" />
+                                                </a>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
-                            )}
-
-                            <div className="social-wrapper">
-                                {insta && (
-                                    <div className="social-icon">
-                                        <a
-                                            href={`https://www.instagram.com/${insta}`}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            <img src="./static/social/instagram.png" alt="" srcSet="" />
-                                        </a>
-                                    </div>
-                                )}
-
-                                {facebook && (
-                                    <div className="social-icon">
-                                        <a href={facebook} target="_blank" rel="noopener noreferrer">
-                                            <img src="./static/social/facebook.png" alt="" srcSet="" />
-                                        </a>
-                                    </div>
-                                )}
-
-                                {twitter && (
-                                    <div className="social-icon">
-                                        <a
-                                            href={`https://www.twitter.com/${twitter}`}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            <img src="./static/social/twitter.png" alt="" srcSet="" />
-                                        </a>
-                                    </div>
-                                )}
-
-                                {linkedIn && (
-                                    <div className="social-icon">
-                                        <a href={linkedIn} target="_blank" rel="noopener noreferrer">
-                                            <img src="./static/social/linkedin.png" alt="" srcSet="" />
-                                        </a>
-                                    </div>
-                                )}
                             </div>
+                        </div>
+
+                        <div className="logo">
+                            <img src={logo} alt="" />
                         </div>
                     </div>
 

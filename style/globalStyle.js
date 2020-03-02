@@ -14,11 +14,9 @@ const GlobalStyle = createGlobalStyle`
 
 
   body {
-      /* font-family: commuters-sans, sans-serif; */
-      /* font-family: 'Open Sans', sans-serif; */
+     
       font-family: 'Montserrat', sans-serif;
-      /* overflow: hidden; */
-      /* overflow-x: hidden; */
+
       position: relative;
 
   }
@@ -26,6 +24,15 @@ const GlobalStyle = createGlobalStyle`
 
 .height-for-nav{
   height: 100px;
+}
+
+
+.highlight{
+  background: orange;
+  &:after,
+  &:before{
+    content: '######'
+  }
 }
 
   .push-down {
@@ -55,6 +62,10 @@ const GlobalStyle = createGlobalStyle`
       margin: 0px 0 40px;
     }
 
+  }
+
+  .title{
+    margin: 40px 0 60px;
   }
 
   .no-highlight:before{
@@ -92,6 +103,8 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     margin-bottom: 20px;
     font-weight: 200;
+    line-height: 1.4;
+
     @media (min-width:767px) {
       font-size: 20px;
       margin-bottom: 30px;
@@ -99,7 +112,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   li {
-        line-height: 1.3;
+  line-height: 1.3;
     font-size: 16px;
     
     font-weight: 200;
@@ -114,8 +127,12 @@ blockquote{
   font-style: italic;
   font-weight: 200;
   position: relative;
+
   @media (min-width:767px) {
     font-size: 28px;
+    width: 85%;
+    margin: 60px auto 0;
+
   };
 }
 
@@ -232,6 +249,20 @@ blockquote:before{
       width: ${props => props.theme.contentWidthTab};
     }
   }
+
+.text-content-title-wrapper-small{
+
+  padding: 30px 0 0;
+    margin: 0 auto;
+    width: ${props => props.theme.contentWidthMob};
+    max-width: ${props => props.theme.maxWidth};
+    @media (min-width: 767px) {
+      /* padding: 60px 0 20px; */
+      width: ${props => props.theme.contentWidthTab};
+    }
+
+}
+
 
   .content-wrapper {
     width: ${props => props.theme.contentWidthMob};

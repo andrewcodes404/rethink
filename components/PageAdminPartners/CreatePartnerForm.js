@@ -193,19 +193,6 @@ class CreatePartnerForm extends React.Component {
                                             required
                                         />
 
-                                        {/* <TextField
-                                            multiline={true}
-                                            rows={6}
-                                            variant="outlined"
-                                            label="Description"
-                                            margin="normal"
-                                            id="description"
-                                            value={this.state.description}
-                                            onChange={this.handleChange}
-                                            required
-                                            className="text-area"
-                                        /> */}
-
                                         <div style={{ width: '95%', margin: '20px auto 0' }}>
                                             <h4 style={{ textAlign: 'left', color: 'black' }}>Description</h4>
                                             <br />
@@ -405,7 +392,6 @@ class CreatePartnerForm extends React.Component {
                                                 onChange={this.handleChange}
                                                 required
                                                 fullWidth={false}
-                                                // helperText="a shifting dream a bittersweet philosophy"
                                             />
                                             <label className="input-checkbox">
                                                 Show in front page carousel

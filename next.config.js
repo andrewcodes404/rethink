@@ -1,12 +1,9 @@
 /* eslint-disable */
+require('dotenv').config()
+
 const withCss = require('@zeit/next-css')
 
 module.exports = withCss({
-
-
-  env: {
-    TINY_MCE_API_KEY: 'wj3gr7di9eazkcvql2oehc86d43j1mnfi41mfo1rozfdodpx'
-  },
     target: `serverless`,
     webpack(config) {
     config.module.rules.push({
@@ -15,5 +12,13 @@ module.exports = withCss({
     });
 
     return config;
-  }
+  },
+  env: {
+    TINY_MCE_API_KEY: process.env.TINY_MCE_API_KEY,
+    GOOGLE_MAPS: process.env.GOOGLE_MAPS,
+  },
 })
+
+
+  
+

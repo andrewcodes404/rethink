@@ -4,3 +4,5 @@ x_notepad.mp
 .vscode
 .next
 .DS_Store
+.env
+.env.build

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Mutation } from 'react-apollo'
-import { UPDATE_HOSTSPEAKER, GET_HOSTSPEAKERS } from '../../lib/graphqlTags'
+import { UPDATE_HOSTSPEAKER, GET_HOSTSPEAKERS_ORDERBY_INDEX } from '../../lib/graphqlTags'
 
 import { Editor } from '@tinymce/tinymce-react'
 
@@ -10,6 +10,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
+import Checkbox from '@material-ui/core/Checkbox'
 
 // icons
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
@@ -45,16 +46,16 @@ class UpdateHostSpeakerForm extends React.Component {
             facebook: props.facebook,
             twitter: props.twitter,
             website: props.website,
+            frontpage: props.frontpage || false,
+            index: props.index,
+            logo: props.logo,
         }
     }
 
     resetState() {
         this.setState({
-            index: 99,
             loading: false,
-            // AdvComAdded: true,
             showUpdateForm: false,
-
             id: '',
             name: '',
             title: '',
@@ -66,6 +67,9 @@ class UpdateHostSpeakerForm extends React.Component {
             facebook: '',
             twitter: '',
             website: '',
+            frontpage: false,
+            index: 99,
+            logo: '',
         })
     }
 
@@ -79,11 +83,8 @@ class UpdateHostSpeakerForm extends React.Component {
     }
 
     handleEditorChange = e => {
-        console.log('Content was updated:', e.target.getContent())
-
         const id = e.target.id
         const value = e.target.getContent()
-
         this.setState({ [id]: value })
     }
 
@@ -92,7 +93,7 @@ class UpdateHostSpeakerForm extends React.Component {
         this.setState({ ranking: id })
     }
 
-    handleChckboxChange = e => {
+    handleCheckboxChange = e => {
         const { checked } = e.target
         this.setState({ frontpage: checked })
     }
@@ -104,11 +105,11 @@ class UpdateHostSpeakerForm extends React.Component {
         })
     }
 
-    uploadFile = async e => {
+    uploadHeadshot = async e => {
         const files = e.target.files
         const data = new FormData()
         data.append('file', files[0])
-        data.append('upload_preset', 'rethink_AdvCom')
+        data.append('upload_preset', 'rethink_hostSpeak')
 
         this.setState({
             loading: true,
@@ -125,6 +126,31 @@ class UpdateHostSpeakerForm extends React.Component {
         // Add to state
         this.setState({
             headshot: file.secure_url,
+            loading: false,
+        })
+    }
+
+    uploadLogo = async e => {
+        const files = e.target.files
+        const data = new FormData()
+        data.append('file', files[0])
+        data.append('upload_preset', 'rethink_hostSpeak')
+
+        this.setState({
+            loading: true,
+        })
+
+        //hit up the cloudinary API
+        const res = await fetch('https://api.cloudinary.com/v1_1/dcqi9fn2y/image/upload', {
+            //this is a config arg so we want POST our data we just created
+            method: 'POST',
+            body: data,
+        })
+        //parse the returning file to json
+        const file = await res.json()
+        // Add to state
+        this.setState({
+            logo: file.secure_url,
             loading: false,
         })
     }
@@ -168,7 +194,7 @@ class UpdateHostSpeakerForm extends React.Component {
                             <Mutation
                                 mutation={UPDATE_HOSTSPEAKER}
                                 variables={this.state}
-                                refetchQueries={[{ query: GET_HOSTSPEAKERS }]}
+                                refetchQueries={[{ query: GET_HOSTSPEAKERS_ORDERBY_INDEX }]}
                             >
                                 {(updateHostSpeaker, { loading, error }) => (
                                     <HostSpeakForm
@@ -187,7 +213,7 @@ class UpdateHostSpeakerForm extends React.Component {
                                                 id="file"
                                                 multiple
                                                 type="file"
-                                                onChange={this.uploadFile}
+                                                onChange={this.uploadHeadshot}
                                             />
                                             <label htmlFor="file">
                                                 <Button
@@ -208,14 +234,47 @@ class UpdateHostSpeakerForm extends React.Component {
                                             )}
 
                                             {this.state.headshot.length > 1 && (
-                                                <img
-                                                    className="thumb"
-                                                    width="200"
-                                                    src={this.state.headshot}
-                                                    alt="Upload Preview"
-                                                />
+                                                <div className="thumb">
+                                                    <img src={this.state.headshot} alt="Upload Preview" />
+                                                </div>
                                             )}
                                         </div>
+
+                                        <div className="img-upload-wrapper">
+                                            <input
+                                                accept=".png,.jpg,.jpeg"
+                                                style={{ display: 'none' }}
+                                                id="logo"
+                                                multiple
+                                                type="file"
+                                                onChange={this.uploadLogo}
+                                                dest=""
+                                            />
+                                            <label htmlFor="logo">
+                                                <Button
+                                                    variant="contained"
+                                                    component="span"
+                                                    size="small"
+                                                    className="upload-btn"
+                                                >
+                                                    Upload Logo
+                                                    <CloudUploadIcon className="icon" />
+                                                </Button>
+                                            </label>
+
+                                            {this.state.logo.length < 1 && (
+                                                <div className="fake-headshot">
+                                                    <PhotoLibrary className="fake-icon" />
+                                                </div>
+                                            )}
+
+                                            {this.state.logo.length > 1 && (
+                                                <div className="thumb">
+                                                    <img src={this.state.logo} alt="Upload Preview" />
+                                                </div>
+                                            )}
+                                        </div>
+
                                         <TextField
                                             type="text"
                                             id="name"
@@ -382,6 +441,32 @@ class UpdateHostSpeakerForm extends React.Component {
                                             }}
                                         />
 
+                                        <div className="btm-wrapper">
+                                            <TextField
+                                                type="number"
+                                                id="index"
+                                                label="index position"
+                                                className="input-number"
+                                                margin="normal"
+                                                variant="outlined"
+                                                value={this.state.index}
+                                                onChange={this.handleChange}
+                                                required
+                                                fullWidth={false}
+                                                // helperText="a shifting dream a bittersweet philosophy"
+                                            />
+                                            <label className="input-checkbox">
+                                                Show in front page carousel
+                                                <Checkbox
+                                                    name="frontpage"
+                                                    id="frontpage"
+                                                    color="default"
+                                                    checked={this.state.frontpage}
+                                                    onChange={this.handleCheckboxChange}
+                                                />
+                                            </label>
+                                        </div>
+
                                         <div className="submit-wrapper">
                                             <Button
                                                 margin="normal"
@@ -433,6 +518,9 @@ UpdateHostSpeakerForm.propTypes = {
     facebook: PropTypes.string,
     twitter: PropTypes.string,
     website: PropTypes.string,
+    frontpage: PropTypes.bool,
+    index: PropTypes.number,
+    logo: PropTypes.string,
 }
 
 export default UpdateHostSpeakerForm

@@ -1,5 +1,46 @@
 import styled from 'styled-components'
 
+export const DayBtns = styled.div`
+    display: flex;
+    border-bottom: 5px solid lightgrey;
+
+    .btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px 10px 30px;
+        cursor: pointer;
+
+        &:hover {
+            color: gold;
+        }
+    }
+
+    h2,
+    p {
+        margin: 0 0 5px 0;
+        transition: 0.2s;
+    }
+
+    .active {
+        color: green;
+        background: lightgrey;
+
+        &:hover {
+            h2 {
+                color: gold;
+            }
+        }
+
+        .corner {
+            background: lightgrey;
+            border-top: 50px solid white;
+            border-right: 40px solid lightgrey;
+        }
+    }
+`
+
 export const ProgrammeStyled = styled.div`
     margin-bottom: 50px;
     .session {
@@ -37,6 +78,24 @@ export const ProgrammeStyled = styled.div`
     }
     .theme-title {
         width: 85%;
+        display: flex;
+
+        flex-direction: column;
+
+        @media (min-width: 746px) {
+            flex-direction: row;
+        }
+    }
+    .theme-title--time {
+        min-width: 120px;
+        margin-bottom: 5px;
+        @media (min-width: 746px) {
+            min-width: 160px;
+        }
+        margin-right: 10px;
+    }
+
+    .theme-title--text {
     }
 
     .session-header--item2 {

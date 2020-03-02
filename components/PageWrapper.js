@@ -5,8 +5,8 @@ import gql from 'graphql-tag'
 
 import Spinner from './lib/Spinner'
 // comps
-import Meta from './PageHeadFooter/Meta'
-import Footer from './PageHeadFooter/Footer'
+
+import Footer from './Footer'
 import styled from 'styled-components'
 
 const PgWrapper = styled.div`
@@ -32,40 +32,18 @@ const CURRENT_USER_QUERY = gql`
 
 class PageWrapper extends React.Component {
     render() {
-        const loggedIn = false
+        // const loggedIn = false
         return (
-            <Query query={CURRENT_USER_QUERY}>
-                {({ data: { user }, error, loading }) => {
-                    if (loading) return <Spinner />
-                    if (error) return <p>Error: {error.message}</p>
+            <div>
+                <PgWrapper>
+                    <div className="page-wrapper">
+                        {React.Children.map(this.props.children, child => React.cloneElement(child))}
+                    </div>
 
-                    //don't use data.user as a bool ☠️
-                    var loggedIn = false
-                    user ? (loggedIn = true) : (loggedIn = false)
-
-                    return (
-                        <PgWrapper>
-                            {/* <Meta /> */}
-                            {/* <Navigation loggedIn={loggedIn} /> */}
-
-                            {/* <div className="page-wrapper">
-                                    {this.props.children}
-                                </div> */}
-                            <div className="page-wrapper">
-                                {React.Children.map(this.props.children, child =>
-                                    React.cloneElement(child, {
-                                        loggedIn,
-                                        user,
-                                    })
-                                )}
-                            </div>
-
-                            <div className="push-down" style={{ borderBottom: '4px solid green' }}></div>
-                            <Footer />
-                        </PgWrapper>
-                    )
-                }}
-            </Query>
+                    <div className="push-down" style={{ borderBottom: '4px solid green' }}></div>
+                    <Footer />
+                </PgWrapper>
+            </div>
         )
     }
 }

@@ -125,9 +125,10 @@ class CreateSponsorForm extends React.Component {
     }
 
     radioBtnData = [
+        { text: 'Headline Event Sponsor', tag: 'headlineSponsor' },
         { text: 'Sustainable Partners', tag: 'susPartner' },
         { text: 'Event Sponsors', tag: 'eventSponsor' },
-        { text: 'Innovation Showcase', tag: 'innovShow' },
+        { text: 'Solutions Showcase', tag: 'innovShow' },
     ]
 
     render() {

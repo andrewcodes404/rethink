@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Mutation } from 'react-apollo'
-import { CREATE_HOSTSPEAKER, GET_HOSTSPEAKERS } from '../../lib/graphqlTags'
+import { CREATE_HOSTSPEAKER, GET_HOSTSPEAKERS_ORDERBY_INDEX } from '../../lib/graphqlTags'
 
 import { Editor } from '@tinymce/tinymce-react'
 
@@ -9,6 +9,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
+import Checkbox from '@material-ui/core/Checkbox'
 
 // icons
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
@@ -44,6 +45,10 @@ class CreateHostSpeakForm extends React.Component {
             facebook: '',
             twitter: '',
             website: '',
+
+            frontpage: false,
+            index: 99,
+            logo: '',
         }
     }
 
@@ -63,6 +68,9 @@ class CreateHostSpeakForm extends React.Component {
             facebook: '',
             twitter: '',
             website: '',
+            frontpage: false,
+            index: 99,
+            logo: '',
         })
     }
 
@@ -86,16 +94,11 @@ class CreateHostSpeakForm extends React.Component {
         this.setState({ [id]: value })
     }
 
-    handleRadioChange = e => {
-        const { id } = e.target
-        this.setState({ ranking: id }, () => {
-            console.log('this.state.id = ', this.state.ranking)
-        })
-    }
-
-    handleChckboxChange = e => {
+    handleCheckboxChange = e => {
         const { checked } = e.target
-        this.setState({ frontpage: checked })
+        this.setState({ frontpage: checked }, () => {
+            console.log('this.state = ', this.state)
+        })
     }
 
     clearModal = () => {
@@ -105,7 +108,7 @@ class CreateHostSpeakForm extends React.Component {
         })
     }
 
-    uploadFile = async e => {
+    uploadHeadshot = async e => {
         const files = e.target.files
         const data = new FormData()
         data.append('file', files[0])
@@ -130,8 +133,29 @@ class CreateHostSpeakForm extends React.Component {
         })
     }
 
-    handleBioChange = data => {
-        console.log('data = ', data)
+    uploadLogo = async e => {
+        const files = e.target.files
+        const data = new FormData()
+        data.append('file', files[0])
+        data.append('upload_preset', 'rethink_hostSpeak')
+
+        this.setState({
+            loading: true,
+        })
+
+        //hit up the cloudinary API
+        const res = await fetch('https://api.cloudinary.com/v1_1/dcqi9fn2y/image/upload', {
+            //this is a config arg so we want POST our data we just created
+            method: 'POST',
+            body: data,
+        })
+        //parse the returning file to json
+        const file = await res.json()
+        // Add to state
+        this.setState({
+            logo: file.secure_url,
+            loading: false,
+        })
     }
 
     render() {
@@ -173,12 +197,11 @@ class CreateHostSpeakForm extends React.Component {
                             <Mutation
                                 mutation={CREATE_HOSTSPEAKER}
                                 variables={this.state}
-                                refetchQueries={[{ query: GET_HOSTSPEAKERS }]}
+                                refetchQueries={[{ query: GET_HOSTSPEAKERS_ORDERBY_INDEX }]}
                             >
                                 {(createHostSpeaker, { loading, error }) => (
                                     <HostSpeakForm
                                         onSubmit={async e => {
-                                            console.log('this.state = ', this.state)
                                             e.preventDefault()
                                             await createHostSpeaker()
                                             this.resetState()
@@ -189,12 +212,12 @@ class CreateHostSpeakForm extends React.Component {
                                             <input
                                                 accept=".png,.jpg,.jpeg"
                                                 style={{ display: 'none' }}
-                                                id="file"
+                                                id="headshot"
                                                 multiple
                                                 type="file"
-                                                onChange={this.uploadFile}
+                                                onChange={this.uploadHeadshot}
                                             />
-                                            <label htmlFor="file">
+                                            <label htmlFor="headshot">
                                                 <Button
                                                     variant="contained"
                                                     component="span"
@@ -221,6 +244,45 @@ class CreateHostSpeakForm extends React.Component {
                                                 />
                                             )}
                                         </div>
+
+                                        <div className="img-upload-wrapper">
+                                            <input
+                                                accept=".png,.jpg,.jpeg"
+                                                style={{ display: 'none' }}
+                                                id="logo"
+                                                multiple
+                                                type="file"
+                                                onChange={this.uploadLogo}
+                                                dest=""
+                                            />
+                                            <label htmlFor="logo">
+                                                <Button
+                                                    variant="contained"
+                                                    component="span"
+                                                    size="small"
+                                                    className="upload-btn"
+                                                >
+                                                    Upload Logo
+                                                    <CloudUploadIcon className="icon" />
+                                                </Button>
+                                            </label>
+
+                                            {this.state.logo.length < 1 && (
+                                                <div className="fake-headshot">
+                                                    <PhotoLibrary className="fake-icon" />
+                                                </div>
+                                            )}
+
+                                            {this.state.logo.length > 1 && (
+                                                <img
+                                                    className="thumb"
+                                                    width="200"
+                                                    src={this.state.logo}
+                                                    alt="Upload Preview"
+                                                />
+                                            )}
+                                        </div>
+
                                         <TextField
                                             type="text"
                                             id="name"
@@ -373,6 +435,31 @@ class CreateHostSpeakForm extends React.Component {
                                                 ),
                                             }}
                                         />
+                                        <div className="btm-wrapper">
+                                            <TextField
+                                                type="number"
+                                                id="index"
+                                                label="index position"
+                                                className="input-number"
+                                                margin="normal"
+                                                variant="outlined"
+                                                value={this.state.index}
+                                                onChange={this.handleChange}
+                                                required
+                                                fullWidth={false}
+                                                // helperText="a shifting dream a bittersweet philosophy"
+                                            />
+                                            <label className="input-checkbox">
+                                                Show in front page carousel
+                                                <Checkbox
+                                                    name="frontpage"
+                                                    id="frontpage"
+                                                    color="default"
+                                                    checked={this.state.frontpage}
+                                                    onChange={this.handleCheckboxChange}
+                                                />
+                                            </label>
+                                        </div>
 
                                         <div className="submit-wrapper">
                                             <Button

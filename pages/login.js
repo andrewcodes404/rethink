@@ -1,36 +1,25 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-
 import UserLogin from '../components/user/UserLogin'
-import NavAdmin from '../components/PageHeadFooter/Nav/NavAdmin'
 import Router from 'next/router'
-
 import Spinner from '../components/lib/Spinner'
-class Login extends React.Component {
-    componentDidMount() {
-        if (this.props.loggedIn) {
-            Router.push('/admin')
-        }
-    }
 
+import { Query } from 'react-apollo'
+import { CURRENT_USER_QUERY } from '../lib/graphqlTags'
+
+class Login extends React.Component {
     render() {
         return (
-            <div>
-                {this.props.loggedIn ? (
-                    <Spinner />
-                ) : (
-                    <div>
-                        <NavAdmin />
-                        <UserLogin />
-                    </div>
-                )}
-            </div>
+            <Query query={CURRENT_USER_QUERY}>
+                {({ data: { user }, error, loading }) => {
+                    if (loading) return <Spinner />
+                    if (error) return <p>Error: {error.message}</p>
+                    if (user) Router.push('/admin')
+
+                    return <UserLogin />
+                }}
+            </Query>
         )
     }
-}
-
-Login.propTypes = {
-    loggedIn: PropTypes.bool,
 }
 
 export default Login

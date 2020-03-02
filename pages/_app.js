@@ -4,7 +4,7 @@ import { ApolloProvider } from 'react-apollo'
 import apolloClient from '../lib/createApolloClient'
 import { ThemeProvider } from 'styled-components'
 import { Normalize } from 'styled-normalize'
-
+import Meta from '../components/Meta'
 import theme from '../style/theme'
 import GlobalStyle from '../style/globalStyle'
 import PageWrapper from '../components/PageWrapper'
@@ -35,11 +35,14 @@ class MyApp extends App {
             <Container>
                 <ApolloProvider client={apollo}>
                     <ThemeProvider theme={theme}>
-                        <PageWrapper>
-                            <Normalize />
-                            <GlobalStyle />
-                            <Component {...pageProps} />
-                        </PageWrapper>
+                        <>
+                            <Meta />
+                            <PageWrapper>
+                                <Normalize />
+                                <GlobalStyle />
+                                <Component {...pageProps} />
+                            </PageWrapper>
+                        </>
                     </ThemeProvider>
                 </ApolloProvider>
             </Container>
