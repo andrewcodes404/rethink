@@ -1,15 +1,28 @@
 import React from 'react'
-import { ModalCompanyCardStyle } from '../style/globalComps'
+import { ModalSpeakerCardStyle } from '../style/globalComps'
 import PropTypes from 'prop-types'
 import Close from '@material-ui/icons/Close'
 import { ModalCloseBtn } from '../style/globalComps'
 
-class ModalCompanyCard extends React.Component {
+class ModalSpeakerCard extends React.Component {
     render() {
-        const { logo, name, description, linkedIn, instagram, facebook, twitter, website } = this.props
+        const {
+            company,
+            title,
+            bio,
+            headshot,
+            logo,
+            name,
+            description,
+            linkedIn,
+            instagram,
+            facebook,
+            twitter,
+            website,
+        } = this.props
 
         return (
-            <ModalCompanyCardStyle
+            <ModalSpeakerCardStyle
                 onClick={() => {
                     this.props.closeModal()
                 }}
@@ -19,13 +32,16 @@ class ModalCompanyCard extends React.Component {
                         <Close />
                     </ModalCloseBtn>
                     <div className="logo">
-                        <img src={logo} />
+                        <img src={headshot} />
                     </div>
 
                     <div className="content">
-                        <h2>{name}</h2>
-                        <br />
-                        <div dangerouslySetInnerHTML={{ __html: description }}></div>
+                        <h3>{name}</h3>
+                        <p>
+                            {title} - <span className="bold">{company}</span>
+                        </p>
+                        <p></p>
+                        <div dangerouslySetInnerHTML={{ __html: bio }}></div>
 
                         <div className="social-wrapper">
                             {linkedIn && (
@@ -78,12 +94,12 @@ class ModalCompanyCard extends React.Component {
                         </div>
                     </div>
                 </div>
-            </ModalCompanyCardStyle>
+            </ModalSpeakerCardStyle>
         )
     }
 }
 
-ModalCompanyCard.propTypes = {
+ModalSpeakerCard.propTypes = {
     logo: PropTypes.string,
     name: PropTypes.string,
     description: PropTypes.string,
@@ -95,4 +111,4 @@ ModalCompanyCard.propTypes = {
     closeModal: PropTypes.func,
 }
 
-export default ModalCompanyCard
+export default ModalSpeakerCard

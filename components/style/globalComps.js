@@ -79,6 +79,76 @@ export const CardContainer = styled.div`
     }
 `
 
+export const CardSpeakerContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+`
+
+export const CardSpeaker = styled.div`
+    box-shadow: 8px 9px 18px -2px rgba(222, 222, 222, 1);
+    cursor: pointer;
+    border-top: 1px solid #f3f3f3;
+    border-left: 1px solid #f3f3f3;
+    transition: 0.4s;
+
+    width: 60%;
+    max-width: 230px;
+    padding: 0 10px;
+    margin: 0 5px 35px;
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+
+    @media (min-width: 520px) {
+        width: 42%;
+        max-width: 330px;
+    }
+    @media (min-width: 746px) {
+        width: 30%;
+    }
+
+    @media (min-width: 1100px) {
+        width: 23%;
+    }
+
+    .headshot-wrapper {
+        width: 150px;
+        height: 150px;
+        margin: 20px auto;
+
+        img {
+            object-fit: cover;
+        }
+    }
+
+    p {
+        margin: 0 0 10px 0;
+        line-height: 1.4;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .company {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    &:hover {
+        box-shadow: 18px 23px 35px -10px rgba(194, 194, 194, 1);
+        border-top: 1px solid #fafafa;
+        border-left: 1px solid #fafafa;
+        img {
+            transform: scale(1.02);
+        }
+    }
+`
+
 export const Card = styled.div`
     /* box-shadow: 8px 9px 18px -8px rgba(222, 222, 222, 1); */
     box-shadow: 8px 9px 18px -2px rgba(222, 222, 222, 1);
@@ -289,6 +359,155 @@ export const ModalCompanyCardStyle = styled.div`
         h2 {
             margin-bottom: 0;
             text-transform: capitalize;
+        }
+        .social-wrapper {
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-icon {
+            width: 40px;
+            margin: 0 10px;
+            &:hover {
+                animation: shake 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+                transform-origin: center;
+            }
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .some-height {
+            width: 15px;
+            height: 70px;
+        }
+
+        .website {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                margin: 0;
+                line-height: 1;
+            }
+        }
+    }
+`
+
+export const ModalSpeakerCardStyle = styled.div`
+    transition: 1s;
+
+    @keyframes shake {
+        10%,
+        90% {
+            transform: translate3d(-1px, 0, 0) rotate(10deg);
+        }
+
+        20%,
+        80% {
+            transform: translate3d(2px, 0, 0) rotate(-10deg);
+        }
+
+        30%,
+        50%,
+        70% {
+            transform: translate3d(-4px, 0, 0) rotate(10deg);
+        }
+
+        40%,
+        60% {
+            transform: translate3d(4px, 0, 0) rotate(-10deg);
+        }
+    }
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* overflow: scroll; */
+
+    .card {
+        position: relative;
+        width: 90%;
+        max-width: 700px;
+        background: white;
+        padding: 20px;
+        position: relative;
+        overflow: scroll;
+        margin: 40px 0;
+
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent; /* make scrollbar transparent */
+        }
+    }
+
+    .close-modal-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        line-height: 0;
+        border: 1px solid #000;
+        /* padding: 5px; */
+        border-radius: 10px;
+        font-size: 15px;
+        /* color: white;
+        background: black; */
+        transition: 0.4s;
+
+        &:hover {
+            transform: rotate(90deg);
+            background: ${props => props.theme.green};
+            color: white;
+            border: unset;
+        }
+    }
+
+    .logo {
+        width: 50%;
+        margin: 0 auto;
+
+        @media (min-width: 746px) {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        img {
+            object-fit: cover;
+            height: 100%;
+        }
+    }
+    .content {
+        width: 90%;
+        margin: 20px auto 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        h3 {
+            margin: 0 0 15px;
+            line-height: 1.4;
+        }
+
+        p {
+            margin: 0 0 10px;
+            line-height: 1.4;
         }
         .social-wrapper {
             margin: 0 auto;

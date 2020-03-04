@@ -29,6 +29,7 @@
         "mui-rte": "^1.10.0",
         "next": "^8.1.0",
         "next-with-apollo": "^4.0.0",
+        "nextjs-redirect": "^1.1.2",
         "react": "^16.8.6",
         "react-alice-carousel": "^1.15.2",
         "react-apollo": "^2.5.8",
