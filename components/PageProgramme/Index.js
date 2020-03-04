@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Query } from 'react-apollo'
+
 import { GET_SESSIONS_WHERE_DAY_ORDER_TIME } from '../../lib/graphqlTags'
 
 import Nav from '../Nav'
@@ -13,11 +14,11 @@ import { ProgrammeStyled, SponsorsAndSupportersWrapper, DayBtns } from './progra
 import ArrowDropDownCircle from '@material-ui/icons/ArrowDropDownCircle'
 
 class Index extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             showSessions: [],
-            showDay: 'one',
+            showDay: props.day ? props.day : 'one',
         }
     }
 
