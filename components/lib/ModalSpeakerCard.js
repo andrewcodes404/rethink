@@ -37,11 +37,9 @@ class ModalSpeakerCard extends React.Component {
 
                     <div className="content">
                         <h3>{name}</h3>
-                        <p>
-                            {title} - <span className="bold">{company}</span>
-                        </p>
-                        <p></p>
-                        <div dangerouslySetInnerHTML={{ __html: bio }}></div>
+                        <p className="title">{title}</p>
+                        <p className="company">{company}</p>
+                        <div className="bio" dangerouslySetInnerHTML={{ __html: bio }}></div>
 
                         <div className="social-wrapper">
                             {linkedIn && (

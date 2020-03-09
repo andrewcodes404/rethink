@@ -39,14 +39,6 @@ class SponsorsCarousel extends React.Component {
 
                     return (
                         <div>
-                            {/* <h3>
-                                To see all partners{' '}
-                                <Link href="/partners">
-                                    <span className="link-green" style={{ textDecoration: 'underline' }}>
-                                        <a href="">click here</a>
-                                    </span>
-                                </Link>
-                            </h3> */}
                             <CarouselWrapper>
                                 <AliceCarousel
                                     responsive={this.responsive}
