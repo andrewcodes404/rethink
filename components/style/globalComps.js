@@ -100,6 +100,7 @@ export const CardSpeaker = styled.div`
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
+    2
     /* align-items: center; */
 
     @media (min-width: 520px) {
@@ -121,11 +122,12 @@ export const CardSpeaker = styled.div`
 
         img {
             object-fit: cover;
+            height: 100%;
         }
     }
 
     p {
-        margin: 0 0 10px 0;
+        margin: 0 0 5px 0;
         line-height: 1.4;
     }
 
@@ -480,12 +482,11 @@ export const ModalSpeakerCardStyle = styled.div`
 
     .logo {
         width: 50%;
-        margin: 0 auto;
+        margin: 0 auto 40px;
 
         @media (min-width: 746px) {
             width: 200px;
             height: 200px;
-            margin: 0 auto;
         }
 
         img {
@@ -501,13 +502,26 @@ export const ModalSpeakerCardStyle = styled.div`
         justify-content: center;
 
         h3 {
-            margin: 0 0 15px;
-            line-height: 1.4;
+            margin: 0 0 8px;
+            line-height: 1;
         }
 
         p {
             margin: 0 0 10px;
-            line-height: 1.4;
+            line-height: 1;
+        }
+
+        .title {
+            font-style: italic;
+            font-size: 18px;
+        }
+
+        .company {
+            font-weight: bold;
+        }
+
+        .bio {
+            margin-top: 15px;
         }
         .social-wrapper {
             margin: 0 auto;

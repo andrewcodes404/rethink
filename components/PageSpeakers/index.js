@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Query } from 'react-apollo'
-import { GET_HOSTSPEAKERS } from '../../lib/graphqlTags'
+import { GET_HOSTSPEAKERS_ORDERBY_INDEX } from '../../lib/graphqlTags'
 import ModalSpeakerCard from '../lib/ModalSpeakerCard'
 import { CardContainerWrapper, CardSpeakerContainer, CardSpeaker } from '../style/globalComps'
 
@@ -108,7 +108,15 @@ class Index extends React.Component {
                         <a>Speakers</a>
                     </h2>
 
-                    <Query query={GET_HOSTSPEAKERS}>
+                    <div className="text-content">
+                        <p>
+                            Some of sustainability’s best and brightest will be condensing their years of experience and
+                            expertise into presentations and panel discussions; covering sourcing, finance, marketing,
+                            culture, policy and supply chain amongst the +30 sessions over the two-day programme.
+                        </p>
+                    </div>
+
+                    <Query query={GET_HOSTSPEAKERS_ORDERBY_INDEX}>
                         {({ data, loading }) => {
                             //  stop partners begin mapped before data arrives
                             if (loading) return null

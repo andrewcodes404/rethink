@@ -129,7 +129,7 @@ class Index extends React.Component {
                                 addRankingTitle(strategic, 'strategic', 'Programme & Education Partner')
                                 addRankingTitle(hostVenue, 'hostVenue', 'Host Venue')
                                 addRankingTitle(innovation, 'innovation', 'Innovation')
-                                addRankingTitle(esg, 'esg', 'Change Partner')
+                                addRankingTitle(esg, 'esg', 'Knowledge Partner')
 
                                 // Filter partners by ranking type
                                 charity = partners.filter(x => x.ranking === 'charity')

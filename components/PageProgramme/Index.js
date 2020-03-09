@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Query } from 'react-apollo'
+import Link from 'next/link'
 
 import { GET_SESSIONS_WHERE_DAY_ORDER_TIME } from '../../lib/graphqlTags'
 
@@ -50,7 +51,14 @@ class Index extends React.Component {
                     <h3>
                         The two-day ReThink conference programme has been curated to offer insight and inspiration to
                         sustainability professionals and those that are now having to integrate sustainable strategies
-                        and solutions.
+                        and solutions
+                    </h3>
+
+                    <h3 className="link-green link-underline">
+                        View all our{' '}
+                        <Link href="/partners">
+                            <a>inspirational speakers </a>
+                        </Link>
                     </h3>
 
                     <DayBtns>

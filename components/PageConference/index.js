@@ -91,6 +91,14 @@ const TheConference = () => (
                     </h3>
                 </LinkIntext>
 
+                <LinkIntext>
+                    <h3 className="" data-aos="">
+                        <Link href="/speakers">
+                            <a> View all our inspirational speakers </a>
+                        </Link>
+                    </h3>
+                </LinkIntext>
+
                 <p style={{ textAlign: 'center' }}>
                     Interested in speaking at ReThink 2020?{' '}
                     <Link href="https://forms.gle/VXm64aAsy4fWxPRM6">
