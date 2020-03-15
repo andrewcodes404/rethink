@@ -837,7 +837,7 @@ export const BackgroundCoverImage = styled.div`
     }
 `
 
-export const RegisterButton = styled.button`
+export const GreenButton = styled.button`
   outline: inherit !important;
   margin: 10px;
   cursor: pointer;
@@ -848,6 +848,7 @@ export const RegisterButton = styled.button`
   a:link,
   a:visited,
   a:active {
+    transition: 0.4s;
     color: ${props => props.theme.grey};
   }
 
@@ -867,7 +868,7 @@ export const RegisterButton = styled.button`
   border: unset;
 `
 
-export const SponsorButton = styled.button`
+export const YellowButton = styled.button`
     outline: inherit !important;
     margin: 10px;
     cursor: pointer;

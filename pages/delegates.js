@@ -114,13 +114,13 @@ class Delegates extends React.Component {
 
                             <h3 style={{ textAlign: 'center' }}>
                                 <a
-                                    href="https://docs.google.com/forms/d/e/1FAIpQLSeF4V1J-jKBahE1DWwmTLXwSEmQ_dAAg4Zf1ogeoGCP1ZXbSA/viewform"
+                                    href="https://app.micepad.co/pages/#/prefill/ReThink2020"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Delegate places are limited each day{' '}
-                                    <span style={{ textDecoration: 'underline' }}>click here</span> to register your
-                                    interest in attending
+                                    Delegate places are limited each day <br></br>
+                                    <span style={{ textDecoration: 'underline' }}>click here</span> to book your 1-day
+                                    or 2-day pass
                                 </a>
                             </h3>
                         </div>

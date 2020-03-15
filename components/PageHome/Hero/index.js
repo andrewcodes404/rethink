@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { StyledHero, StyledIconBar } from './heroStyle'
-import { RegisterButton, SponsorButton } from '../../style/globalComps'
+import { GreenButton, YellowButton } from '../../style/globalComps'
 
 const iconData = [
     {
@@ -103,26 +103,33 @@ class Hero extends React.Component {
                             23 &amp; 24 JUNE 2020 <br /> K11 ATELIER KING'S ROAD, HONG KONG
                         </h1>
 
-                        <RegisterButton data-aos="fade-in" data-aos-delay="500" data-aos-duration="2000">
+                        <GreenButton data-aos="fade-in" data-aos-delay="500" data-aos-duration="2000">
                             <a
-                                href="https://docs.google.com/forms/d/e/1FAIpQLSeF4V1J-jKBahE1DWwmTLXwSEmQ_dAAg4Zf1ogeoGCP1ZXbSA/viewform"
+                                href="https://app.micepad.co/pages/#/prefill/ReThink2020 "
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 Attend
                             </a>
-                        </RegisterButton>
+                        </GreenButton>
 
-                        <SponsorButton data-aos="fade-in" data-aos-delay="500" data-aos-duration="2000">
+                        <YellowButton data-aos="fade-in" data-aos-delay="500" data-aos-duration="2000">
                             {' '}
                             <a
-                                href="https://docs.google.com/forms/d/e/1FAIpQLSeF4V1J-jKBahE1DWwmTLXwSEmQ_dAAg4Zf1ogeoGCP1ZXbSA/viewform"
+                                href="https://mailchi.mp/rethink-event.com/newsletter"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
+                                Newsletter
+                            </a>
+                        </YellowButton>
+
+                        <GreenButton data-aos="fade-in" data-aos-delay="500" data-aos-duration="2000">
+                            {' '}
+                            <a href="https://forms.gle/2a96ETPE7vMDMioA7 " target="_blank" rel="noopener noreferrer">
                                 Sponsor
                             </a>
-                        </SponsorButton>
+                        </GreenButton>
                     </div>
                 )}
 

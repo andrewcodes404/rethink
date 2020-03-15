@@ -12,6 +12,7 @@ import Supporters from './Supporters'
 import Speakers from './Speakers'
 
 import { ProgrammeStyled, SponsorsAndSupportersWrapper, DayBtns } from './programmeStyle'
+import { GreenButton } from '../style/globalComps'
 import ArrowDropDownCircle from '@material-ui/icons/ArrowDropDownCircle'
 
 class Index extends React.Component {
@@ -56,7 +57,7 @@ class Index extends React.Component {
 
                     <h3 className="link-green link-underline">
                         View all our{' '}
-                        <Link href="/partners">
+                        <Link href="/speakers">
                             <a>inspirational speakers </a>
                         </Link>
                     </h3>
@@ -308,6 +309,17 @@ class Index extends React.Component {
                             }}
                         </Query>
                     )}
+
+                    <GreenButton style={{ display: 'block', margin: '0 auto' }}>
+                        {' '}
+                        <a
+                            href="https://app.micepad.co/pages/#/prefill/ReThink2020"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            REGISTER FOR YOUR PLACE AT RETHINK 2020
+                        </a>
+                    </GreenButton>
                 </div>
             </div>
         )
