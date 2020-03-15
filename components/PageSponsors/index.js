@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { Query } from 'react-apollo'
 import { GET_SPONSORS_WHERE_RANKING } from '../../lib/graphqlTags'
 import ModalCompanyCard from '../lib/ModalCompanyCard'
-
+import { GreenButton } from '../style/globalComps'
 import ProfileBar from '../ProfileBar'
 
 const profileDataSponsor = [
@@ -333,7 +333,7 @@ class PageSponsors extends React.Component {
 
                         <h3 className="link-green">
                             Want to be a ReThink sponsor?{' '}
-                            <a href="https://forms.gle/cvuvpHGz4jcSyUCy8" target="_blank" rel="noopener noreferrer">
+                            <a href="https://forms.gle/2a96ETPE7vMDMioA7" target="_blank" rel="noopener noreferrer">
                                 click here
                             </a>
                         </h3>
@@ -472,6 +472,16 @@ class PageSponsors extends React.Component {
                             )
                         }}
                     </Query>
+
+                    <GreenButton style={{ display: 'block', margin: '0 auto' }}>
+                        {' '}
+                        <a href="https://forms.gle/2a96ETPE7vMDMioA7" target="_blank" rel="noopener noreferrer">
+                            Request details about Sponsorship or Solutions Showcase opportunities
+                        </a>
+                    </GreenButton>
+
+                    <br />
+                    <br />
                 </div>
             </div>
         )

@@ -4,8 +4,9 @@ import styled from 'styled-components'
 import { Query } from 'react-apollo'
 import { GET_HOSTSPEAKERS_ORDERBY_INDEX } from '../../lib/graphqlTags'
 import ModalSpeakerCard from '../lib/ModalSpeakerCard'
+import { GreenButton } from '../style/globalComps'
 import { CardContainerWrapper, CardSpeakerContainer, CardSpeaker } from '../style/globalComps'
-
+import Link from 'next/link'
 const CardContWrapper = styled.div`
     display: flex;
     align-items: center;
@@ -147,6 +148,12 @@ class Index extends React.Component {
                             )
                         }}
                     </Query>
+                    <GreenButton style={{ display: 'block', margin: '0 auto' }}>
+                        {' '}
+                        <Link href="./programme">
+                            <a rel="noopener noreferrer">View the full conference schedule</a>
+                        </Link>
+                    </GreenButton>
 
                     <div className="text-content"></div>
                 </div>
