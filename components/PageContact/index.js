@@ -2,7 +2,7 @@ import React from 'react'
 import GoogleMapReact from 'google-map-react'
 
 import { StyledContact, Founder } from './contactStyle'
-import { BackgroundCoverImage, RegisterButton, LinkIntext } from '../style/globalComps'
+import { BackgroundCoverImage, GreenButton, LinkIntext } from '../style/globalComps'
 
 import LinkedIn from '../../static/icons/linkedIn-green.svg'
 import Facebook from '../../static/icons/facebook-green.svg'
@@ -159,7 +159,7 @@ const Contact = () => (
                             <h2 className="no-highlight">Chris Brown</h2>
 
                             <div className="contact-btn">
-                                <RegisterButton>
+                                <GreenButton>
                                     <a
                                         href="mailto:chris.b@rethink-event.com "
                                         target="_blank"
@@ -167,10 +167,10 @@ const Contact = () => (
                                     >
                                         email
                                     </a>
-                                </RegisterButton>
+                                </GreenButton>
                             </div>
                             <div className="contact-btn">
-                                <RegisterButton>
+                                <GreenButton>
                                     <a
                                         href="https://www.linkedin.com/in/enviroeventshk/"
                                         target="_blank"
@@ -178,7 +178,7 @@ const Contact = () => (
                                     >
                                         linkedIn
                                     </a>
-                                </RegisterButton>
+                                </GreenButton>
                             </div>
                         </div>
 
