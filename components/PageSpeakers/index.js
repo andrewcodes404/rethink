@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Query } from 'react-apollo'
 import { GET_HOSTSPEAKERS_ORDERBY_INDEX } from '../../lib/graphqlTags'
 import ModalSpeakerCard from '../lib/ModalSpeakerCard'
-import { GreenButton } from '../style/globalComps'
+import { GreenButton, YellowButton } from '../style/globalComps'
 import { CardContainerWrapper, CardSpeakerContainer, CardSpeaker } from '../style/globalComps'
 import Link from 'next/link'
 const CardContWrapper = styled.div`
@@ -117,6 +117,24 @@ class Index extends React.Component {
                         </p>
                     </div>
 
+                    <GreenButton style={{ display: 'block', margin: '0 auto' }}>
+                        {' '}
+                        <Link href="./programme">
+                            <a rel="noopener noreferrer">View the full conference schedule</a>
+                        </Link>
+                    </GreenButton>
+
+                    <YellowButton style={{ display: 'block', margin: '30px auto' }}>
+                        <a
+                            href="https://app.micepad.co/pages/#/prefill/ReThink2020"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            {' '}
+                            REGISTER FOR YOUR PLACE AT RETHINK 2020
+                        </a>
+                    </YellowButton>
+
                     <Query query={GET_HOSTSPEAKERS_ORDERBY_INDEX}>
                         {({ data, loading }) => {
                             //  stop partners begin mapped before data arrives
@@ -148,12 +166,6 @@ class Index extends React.Component {
                             )
                         }}
                     </Query>
-                    <GreenButton style={{ display: 'block', margin: '0 auto' }}>
-                        {' '}
-                        <Link href="./programme">
-                            <a rel="noopener noreferrer">View the full conference schedule</a>
-                        </Link>
-                    </GreenButton>
 
                     <div className="text-content"></div>
                 </div>

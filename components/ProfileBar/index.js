@@ -4,7 +4,7 @@ import { StyledProfileBar } from './profileBarStyle'
 
 class ProfileBar extends React.Component {
     render() {
-        const link = ' https://app.micepad.co/pages/#/prefill/ReThink2020'
+        const link = 'https://forms.gle/2a96ETPE7vMDMioA7'
 
         return (
             <StyledProfileBar>

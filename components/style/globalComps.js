@@ -838,34 +838,33 @@ export const BackgroundCoverImage = styled.div`
 `
 
 export const GreenButton = styled.button`
-  outline: inherit !important;
-  margin: 10px;
-  cursor: pointer;
-  transition: 0.4s;
-
-  /* color: ${props => props.theme.grey}; */
-  a,
-  a:link,
-  a:visited,
-  a:active {
+    outline: inherit !important;
+    margin: 10px;
+    cursor: pointer;
     transition: 0.4s;
-    color: ${props => props.theme.grey};
-  }
 
-  background-color: ${props => props.theme.green};
-  &:hover {
-    background-color: ${props => props.theme.grey};
     a,
-  a:link,
-  a:visited,
-  a:active {
-    color: ${props => props.theme.green};
-  }
-  }
-  font-size: 24px;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  border: unset;
+    a:link,
+    a:visited,
+    a:active {
+        transition: 0.4s;
+        color: ${props => props.theme.grey};
+    }
+
+    background-color: ${props => props.theme.green};
+    &:hover {
+        background-color: ${props => props.theme.grey};
+        a,
+        a:link,
+        a:visited,
+        a:active {
+            color: ${props => props.theme.green};
+        }
+    }
+    font-size: 24px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border: unset;
 `
 
 export const YellowButton = styled.button`
