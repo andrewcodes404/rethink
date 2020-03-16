@@ -104,7 +104,7 @@ class Index extends React.Component {
                             if (!data) return <p>No Data</p>
 
                             let strategic = {}
-                            let hostVenue = {}
+                            let hostVenues = {}
                             let innovation = {}
                             let esg = {}
                             let largeCards = []
@@ -112,11 +112,11 @@ class Index extends React.Component {
                             let eventConf = {}
                             let mediaPartners = {}
                             let community = {}
+                            let otherLargeCards = []
 
                             const { partners } = data
 
                             // add ranking display text to single largeCard partners
-
                             const addRankingTitle = (objName, rankingValue, rankingDisplayText) => {
                                 objName = partners.find(x => x.ranking === rankingValue)
                                 if (objName) {
@@ -127,13 +127,21 @@ class Index extends React.Component {
 
                             if (partners) {
                                 addRankingTitle(strategic, 'strategic', 'Programme & Education Partner')
-                                addRankingTitle(hostVenue, 'hostVenue', 'Host Venue')
+                                addRankingTitle(hostVenues, 'hostVenue', 'Host Venues')
                                 addRankingTitle(innovation, 'innovation', 'Innovation')
                                 addRankingTitle(esg, 'esg', 'Knowledge Partner')
 
+                                // create a group of host venues
+                                hostVenues = partners.filter(x => x.ranking === 'hostVenue')
+
+                                // create a group of other prstners for large cards
+                                const esg = partners.find(x => x.ranking === 'esg')
+                                const strategic = partners.find(x => x.ranking === 'strategic')
+                                otherLargeCards.push(esg)
+                                otherLargeCards.push(strategic)
+
                                 // Filter partners by ranking type
                                 charity = partners.filter(x => x.ranking === 'charity')
-
                                 eventConf = partners.filter(x => x.ranking === 'eventConf')
 
                                 mediaPartners = partners.filter(x => x.ranking === 'mediaPartners')
@@ -143,8 +151,31 @@ class Index extends React.Component {
 
                             return (
                                 <CardContainerWrapper>
+                                    <h2 data-aos="my-anim">Host Venues</h2>
                                     <CardContainer>
-                                        {largeCards.map((partner, i) => {
+                                        {hostVenues.map((partner, i) => {
+                                            return (
+                                                <div className="card-with-title" key={i}>
+                                                    {/* <h2 data-aos="my-anim">
+                                                        {partner.rankingTitle && partner.rankingTitle}
+                                                    </h2> */}
+                                                    <Card
+                                                        onClick={() => {
+                                                            this.showModal(partner)
+                                                        }}
+                                                        className="card-with-title--card"
+                                                    >
+                                                        <div className="img-wrapper-lrg">
+                                                            <img src={partner.logo} />
+                                                        </div>
+                                                    </Card>
+                                                </div>
+                                            )
+                                        })}
+                                    </CardContainer>
+
+                                    <CardContainer>
+                                        {otherLargeCards.map((partner, i) => {
                                             return (
                                                 <div className="card-with-title" key={i}>
                                                     <h2 data-aos="my-anim">
@@ -168,7 +199,6 @@ class Index extends React.Component {
                                     <h2 data-aos="my-anim" className="container-title">
                                         Charity Partners
                                     </h2>
-
                                     <CardContainer>
                                         {charity.map((partner, i) => {
                                             return (
@@ -186,11 +216,9 @@ class Index extends React.Component {
                                             )
                                         })}
                                     </CardContainer>
-
                                     <h2 data-aos="my-anim" className="container-title">
                                         Event &amp; Conference Partners
                                     </h2>
-
                                     <CardContainer>
                                         {eventConf.map((partner, i) => {
                                             return (
@@ -208,11 +236,9 @@ class Index extends React.Component {
                                             )
                                         })}
                                     </CardContainer>
-
                                     <h2 data-aos="my-anim" className="container-title">
                                         Media Partners
                                     </h2>
-
                                     <CardContainer>
                                         {mediaPartners.map((partner, i) => {
                                             return (
@@ -230,11 +256,9 @@ class Index extends React.Component {
                                             )
                                         })}
                                     </CardContainer>
-
                                     <h2 data-aos="my-anim" className="container-title">
                                         Community Partners
                                     </h2>
-
                                     <CardContainer>
                                         {community.map((partner, i) => {
                                             return (
