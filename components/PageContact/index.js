@@ -107,8 +107,8 @@ const Contact = () => (
 
                     <div className="event-times">
                         <h3>Event Times</h3>
-                        <p>Tuesday 23 June - 09.00 – 18.00</p>
-                        <p>Wednesday 24 June - 09.00 – 17.30</p>
+                        <p>Wednesday 02 September : 08.45 – 18.00</p>
+                        <p>Thursday 03 September : 08.45 – 17.45</p>
                     </div>
                 </div>
             </div>
