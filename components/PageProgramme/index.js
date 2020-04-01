@@ -73,7 +73,7 @@ class Index extends React.Component {
                             >
                                 Day 1
                             </h2>
-                            <p>23 June 2020</p>
+                            <p>2nd September 2020</p>
                         </div>
 
                         <div className={`btn ${this.state.showDay === 'two' && 'active'}`}>
@@ -87,7 +87,7 @@ class Index extends React.Component {
                                 Day 2
                             </h2>
 
-                            <p>24 June 2020</p>
+                            <p>3rd September 2020</p>
                         </div>
                     </DayBtns>
 
