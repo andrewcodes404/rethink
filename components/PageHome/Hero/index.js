@@ -96,11 +96,11 @@ class Hero extends React.Component {
                 {this.state.renderHero && (
                     <div className="hero-content" data-aos="fade-in" data-aos-delay="1500" data-aos-duration="1500">
                         <div className="hero-logo">
-                            <img src="./static/graphics/sept-logo-white.png" alt="" />
+                            <img src="./static/graphics/hero-logo.svg" alt="" />
                         </div>
 
                         <h1>
-                            23 &amp; 24 JUNE 2020 <br /> K11 ATELIER KING'S ROAD, HONG KONG
+                            02 &amp; 03 SEPTEMBER 2020 <br /> K11 ATELIER KING'S ROAD, HONG KONG
                         </h1>
 
                         <GreenButton data-aos="fade-in" data-aos-delay="500" data-aos-duration="2000">
