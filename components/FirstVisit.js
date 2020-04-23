@@ -274,7 +274,7 @@ class FirstVisit extends React.Component {
                                 </div>
 
                                 <div className="poster--text">
-                                    <img src="./static/graphics/logo_and_strap_white.svg" alt="" />
+                                    <img src="./static/graphics/sept-logo-white.png" alt="" />
                                 </div>
                                 <div className="poster--bkg-img">
                                     <img src="static/photos/building.jpg" alt="" srcSet="" />
