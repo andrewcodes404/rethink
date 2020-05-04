@@ -126,9 +126,10 @@ class Index extends React.Component {
                             }
 
                             if (partners) {
+                                //rename partners title
                                 addRankingTitle(strategic, 'strategic', 'Programme & Education Partner')
                                 addRankingTitle(hostVenues, 'hostVenue', 'Host Venues')
-                                addRankingTitle(innovation, 'innovation', 'Innovation')
+                                addRankingTitle(innovation, 'innovation', 'Innovation Partners')
                                 addRankingTitle(esg, 'esg', 'Knowledge Partner')
 
                                 // create a group of host venues
@@ -143,7 +144,7 @@ class Index extends React.Component {
                                 // Filter partners by ranking type
                                 charity = partners.filter(x => x.ranking === 'charity')
                                 eventConf = partners.filter(x => x.ranking === 'eventConf')
-
+                                innovation = partners.filter(x => x.ranking === 'innovation')
                                 mediaPartners = partners.filter(x => x.ranking === 'mediaPartners')
 
                                 community = partners.filter(x => x.ranking === 'community')
@@ -192,6 +193,27 @@ class Index extends React.Component {
                                                         </div>
                                                     </Card>
                                                 </div>
+                                            )
+                                        })}
+                                    </CardContainer>
+
+                                    <h2 data-aos="my-anim" className="container-title">
+                                        Innovation Partners
+                                    </h2>
+                                    <CardContainer>
+                                        {innovation.map((partner, i) => {
+                                            return (
+                                                <Card
+                                                    key={i}
+                                                    onClick={() => {
+                                                        this.showModal(partner)
+                                                    }}
+                                                    className="large"
+                                                >
+                                                    <div className="img-wrapper-lrg2">
+                                                        <img src={partner.logo} />
+                                                    </div>
+                                                </Card>
                                             )
                                         })}
                                     </CardContainer>
