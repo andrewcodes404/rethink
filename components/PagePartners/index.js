@@ -103,8 +103,6 @@ class Index extends React.Component {
                             if (error) return <p>Error: {error.message}</p>
                             if (!data) return <p>No Data</p>
 
-                            console.log('data = ', data)
-
                             let strategic = {}
                             let hostVenues = {}
                             let innovation = {}
@@ -150,8 +148,6 @@ class Index extends React.Component {
                                 mediaPartners = partners.filter(x => x.ranking === 'mediaPartners')
 
                                 community = partners.filter(x => x.ranking === 'community')
-
-                                console.log('innovation = ', innovation)
                             }
 
                             return (
