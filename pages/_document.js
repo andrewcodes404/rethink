@@ -24,7 +24,6 @@ export default class MyDocument extends Document {
     `,
         }
     }
-
     render() {
         const { isProduction } = this.props
         return (
@@ -40,7 +39,6 @@ export default class MyDocument extends Document {
                             <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX-X" />
                             {/* We call the function above to inject the contents of the script tag */}
                             <script dangerouslySetInnerHTML={this.setGoogleTags()} />
-                            <script dangerouslySetInnerHTML={this.setGoogleTags2()} />
                         </Fragment>
                     )}
                 </body>
