@@ -13,7 +13,6 @@ const Meta = () => (
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
         {/* FAVICON --- FAVICON --- FAVICON --- FAVICON --- FAVICON ---  */}
-
         <link rel="apple-touch-icon" sizes="180x180" href="/static/fav/qu/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/static/fav/qu/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/static/fav/qu/favicon-16x16.png" />
@@ -24,7 +23,10 @@ const Meta = () => (
         <meta name="msapplication-config" content="/static/fav/qu/browserconfig.xml" />
         <meta name="theme-color" content="#ffffff" />
 
+        {/* google analytics */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-96559774-20"></script>
+
+
 
         {/* <!-- META -- META -- META -- META --  --> */}
 
