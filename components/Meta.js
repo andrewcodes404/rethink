@@ -13,7 +13,6 @@ const Meta = () => (
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
         {/* FAVICON --- FAVICON --- FAVICON --- FAVICON --- FAVICON ---  */}
-
         <link rel="apple-touch-icon" sizes="180x180" href="/static/fav/qu/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/static/fav/qu/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/static/fav/qu/favicon-16x16.png" />
@@ -24,7 +23,17 @@ const Meta = () => (
         <meta name="msapplication-config" content="/static/fav/qu/browserconfig.xml" />
         <meta name="theme-color" content="#ffffff" />
 
+        {/* google analytics */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-96559774-20"></script>
+
+        {/* <!-- Google Tag Manager --> */}
+        <script>(function(w,d,s,l,i){w[l] = w[l] || []{'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-584PS8B');</script>
+        {/* <!-- End Google Tag Manager --> */}
+
 
         {/* <!-- META -- META -- META -- META --  --> */}
 
