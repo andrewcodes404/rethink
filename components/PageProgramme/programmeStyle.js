@@ -156,8 +156,9 @@ export const ProgrammeStyled = styled.div`
 
     .hostSpeaker {
         display: flex;
-        flex-direction: column;
+        /* flex-direction: column; */
         margin-bottom: 15px;
+
         span {
             line-height: 1.6;
         }
@@ -180,6 +181,14 @@ export const ProgrammeStyled = styled.div`
                 border-bottom: 1px solid green;
             }
         }
+    }
+
+    .hostSpeaker__name {
+        white-space: nowrap;
+        min-width: 150px;
+    }
+    .hostSpeaker__title {
+        /* border: 1px solid green; */
     }
 
     .hostSpeaker--hyphen {

@@ -38,9 +38,9 @@ class Speakers extends React.Component {
                                                 })
                                             }}
                                         >
-                                            <span className="bold">{speaker.name}</span>
+                                            <span className="bold hostSpeaker__name">{speaker.name}</span>
                                             <span className="hostSpeaker--hyphen">-</span>
-                                            <span>{speaker.title}</span>
+                                            <span className="hostSpeaker__title">{speaker.title}</span>
                                             <span className="hostSpeaker--hyphen">-</span>
                                             <span>{speaker.company}</span>
                                         </div>
