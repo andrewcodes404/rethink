@@ -33,7 +33,7 @@ class Host extends React.Component {
                                         })
                                     }}
                                 >
-                                    <span className="bold">{host.name}</span>
+                                    <span className="bold hostSpeaker__name">{host.name}</span>
                                     <span className="hostSpeaker--hyphen">-</span>
                                     <span>{host.title}</span>
                                     <span className="hostSpeaker--hyphen">-</span>
