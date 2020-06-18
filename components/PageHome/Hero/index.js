@@ -126,7 +126,7 @@ class Hero extends React.Component {
 
                         <GreenButton data-aos="fade-in" data-aos-delay="500" data-aos-duration="2000">
                             {' '}
-                            <a href="https://forms.gle/2a96ETPE7vMDMioA7 " target="_blank" rel="noopener noreferrer">
+                            <a href="http://eepurl.com/g7u6R5" target="_blank" rel="noopener noreferrer">
                                 Sponsor
                             </a>
                         </GreenButton>

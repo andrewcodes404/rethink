@@ -4,7 +4,7 @@ import { StyledProfileBar } from './profileBarStyle'
 
 class ProfileBar extends React.Component {
     render() {
-        const link = 'https://forms.gle/P7auUx4Fz4wsMtVW8'
+        const link = 'http://eepurl.com/g7u6R5'
 
         return (
             <StyledProfileBar>
