@@ -475,7 +475,7 @@ class PageSponsors extends React.Component {
 
                     <GreenButton style={{ display: 'block', margin: '0 auto' }}>
                         {' '}
-                        <a href="https://forms.gle/2a96ETPE7vMDMioA7" target="_blank" rel="noopener noreferrer">
+                        <a href="http://eepurl.com/g7u6R5" target="_blank" rel="noopener noreferrer">
                             Request details about Sponsorship or Solutions Showcase opportunities
                         </a>
                     </GreenButton>
