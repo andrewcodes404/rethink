@@ -298,7 +298,11 @@ class PageSponsors extends React.Component {
 
                         <GreenButton style={{ display: 'block', margin: '0 auto' }}>
                             {' '}
-                            <a href="http://eepurl.com/g7u6R5" target="_blank" rel="noopener noreferrer">
+                            <a
+                                href="https://rethink-event.us20.list-manage.com/subscribe?u=689c9c9b54458f75cbd8a723f&id=cc903b4d8a"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 Request details about Sponsorship or Solutions Showcase opportunities
                             </a>
                         </GreenButton>
@@ -371,7 +375,11 @@ class PageSponsors extends React.Component {
 
                         <h3 className="link-green">
                             Want to be a ReThink sponsor?{' '}
-                            <a href="https://forms.gle/2a96ETPE7vMDMioA7" target="_blank" rel="noopener noreferrer">
+                            <a
+                                href="https://rethink-event.us20.list-manage.com/subscribe?u=689c9c9b54458f75cbd8a723f&id=cc903b4d8a"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 click here
                             </a>
                         </h3>
@@ -483,7 +491,11 @@ class PageSponsors extends React.Component {
 
                     <GreenButton style={{ display: 'block', margin: '0 auto' }}>
                         {' '}
-                        <a href="http://eepurl.com/g7u6R5" target="_blank" rel="noopener noreferrer">
+                        <a
+                            href="https://rethink-event.us20.list-manage.com/subscribe?u=689c9c9b54458f75cbd8a723f&id=cc903b4d8a"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             Request details about Sponsorship or Solutions Showcase opportunities
                         </a>
                     </GreenButton>
