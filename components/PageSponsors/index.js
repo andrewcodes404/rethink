@@ -261,9 +261,47 @@ class PageSponsors extends React.Component {
                         shareBtn={this.state.shareBtn}
                     />
                 )}
+
                 <div className="text-content-title-wrapper">
                     <div className="text-content">
                         <h2 data-aos="my-anim">Sponsors</h2>
+
+                        <Query
+                            query={GET_SPONSORS_WHERE_RANKING}
+                            variables={{
+                                ranking: 'innovShow',
+                            }}
+                        >
+                            {({ data, error, loading }) => {
+                                if (loading) return <p>Loading...</p>
+                                if (error) return <p>Error: {error.message}</p>
+                                if (!data) return <p>No Data</p>
+                                const { sponsors } = data
+                                return (
+                                    <LogoContainerSm>
+                                        {sponsors.map((sponsor, i) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    onClick={() => {
+                                                        this.showModal(sponsor)
+                                                    }}
+                                                >
+                                                    <img src={sponsor.logo} />
+                                                </div>
+                                            )
+                                        })}
+                                    </LogoContainerSm>
+                                )
+                            }}
+                        </Query>
+
+                        <GreenButton style={{ display: 'block', margin: '0 auto' }}>
+                            {' '}
+                            <a href="http://eepurl.com/g7u6R5" target="_blank" rel="noopener noreferrer">
+                                Request details about Sponsorship or Solutions Showcase opportunities
+                            </a>
+                        </GreenButton>
                         <p>
                             ReThink is an event exclusively for sustainability professionals who will attend with their
                             colleagues from Finance, People, Operations and Procurement to achieve wider understanding
@@ -442,36 +480,6 @@ class PageSponsors extends React.Component {
                     <div className="text-content">
                         <h2 data-aos="my-anim">Solutions Showcase</h2>
                     </div>
-
-                    <Query
-                        query={GET_SPONSORS_WHERE_RANKING}
-                        variables={{
-                            ranking: 'innovShow',
-                        }}
-                    >
-                        {({ data, error, loading }) => {
-                            if (loading) return <p>Loading...</p>
-                            if (error) return <p>Error: {error.message}</p>
-                            if (!data) return <p>No Data</p>
-                            const { sponsors } = data
-                            return (
-                                <LogoContainerSm>
-                                    {sponsors.map((sponsor, i) => {
-                                        return (
-                                            <div
-                                                key={i}
-                                                onClick={() => {
-                                                    this.showModal(sponsor)
-                                                }}
-                                            >
-                                                <img src={sponsor.logo} />
-                                            </div>
-                                        )
-                                    })}
-                                </LogoContainerSm>
-                            )
-                        }}
-                    </Query>
 
                     <GreenButton style={{ display: 'block', margin: '0 auto' }}>
                         {' '}
