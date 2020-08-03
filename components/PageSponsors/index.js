@@ -266,6 +266,110 @@ class PageSponsors extends React.Component {
                     <div className="text-content">
                         <h2 data-aos="my-anim">Sponsors</h2>
 
+                        <h2 data-aos="my-anim">Headline Event Sponsor</h2>
+                        <Query
+                            query={GET_SPONSORS_WHERE_RANKING}
+                            variables={{
+                                ranking: 'headlineSponsor',
+                            }}
+                        >
+                            {({ data, error, loading }) => {
+                                if (loading) return <p>Loading...</p>
+                                if (error) return <p>Error: {error.message}</p>
+                                if (!data) return <p>No Data</p>
+                                const { sponsors } = data
+                                return (
+                                    <LogoContainerLg>
+                                        {sponsors.map((sponsor, i) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    onClick={() => {
+                                                        this.showModal(sponsor)
+                                                    }}
+                                                >
+                                                    <img src={sponsor.logo} />
+                                                </div>
+                                            )
+                                        })}
+                                    </LogoContainerLg>
+                                )
+                            }}
+                        </Query>
+                        <h2 data-aos="my-anim">Sustainability Partners</h2>
+                        <Query
+                            query={GET_SPONSORS_WHERE_RANKING}
+                            variables={{
+                                ranking: 'susPartner',
+                            }}
+                        >
+                            {({ data, error, loading }) => {
+                                if (loading) return <p>Loading...</p>
+                                if (error) return <p>Error: {error.message}</p>
+                                if (!data) return <p>No Data</p>
+                                const { sponsors } = data
+                                return (
+                                    <LogoContainerLg>
+                                        {sponsors.map((sponsor, i) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    onClick={() => {
+                                                        this.showModal(sponsor)
+                                                    }}
+                                                >
+                                                    <img src={sponsor.logo} />
+                                                </div>
+                                            )
+                                        })}
+                                    </LogoContainerLg>
+                                )
+                            }}
+                        </Query>
+
+                        <Query
+                            query={GET_SPONSORS_WHERE_RANKING}
+                            variables={{
+                                ranking: 'eventSponsor',
+                            }}
+                        >
+                            {({ data, error, loading }) => {
+                                if (loading) return <p>Loading...</p>
+                                if (error) return <p>Error: {error.message}</p>
+                                if (!data) return <p>No Data</p>
+                                const { sponsors } = data
+                                console.log('sponsors = ', sponsors)
+                                return (
+                                    <>
+                                        {sponsors.length !== 0 && (
+                                            <div className="text-content">
+                                                <h2 data-aos="my-anim">Event Sponsors</h2>
+                                            </div>
+                                        )}
+
+                                        <LogoContainerMd>
+                                            {sponsors.map((sponsor, i) => {
+                                                return (
+                                                    <div
+                                                        key={i}
+                                                        onClick={() => {
+                                                            this.showModal(sponsor)
+                                                        }}
+                                                    >
+                                                        <img src={sponsor.logo} />
+                                                    </div>
+                                                )
+                                            })}
+                                        </LogoContainerMd>
+                                    </>
+                                )
+                            }}
+                        </Query>
+
+                        <div className="text-content">
+                            <h2 data-aos="my-anim">Solutions Showcase</h2>
+                        </div>
+
                         <Query
                             query={GET_SPONSORS_WHERE_RANKING}
                             variables={{
@@ -383,110 +487,6 @@ class PageSponsors extends React.Component {
                                 click here
                             </a>
                         </h3>
-                    </div>
-
-                    <h2 data-aos="my-anim">Headline Event Sponsor</h2>
-                    <Query
-                        query={GET_SPONSORS_WHERE_RANKING}
-                        variables={{
-                            ranking: 'headlineSponsor',
-                        }}
-                    >
-                        {({ data, error, loading }) => {
-                            if (loading) return <p>Loading...</p>
-                            if (error) return <p>Error: {error.message}</p>
-                            if (!data) return <p>No Data</p>
-                            const { sponsors } = data
-                            return (
-                                <LogoContainerLg>
-                                    {sponsors.map((sponsor, i) => {
-                                        return (
-                                            <div
-                                                key={i}
-                                                onClick={() => {
-                                                    this.showModal(sponsor)
-                                                }}
-                                            >
-                                                <img src={sponsor.logo} />
-                                            </div>
-                                        )
-                                    })}
-                                </LogoContainerLg>
-                            )
-                        }}
-                    </Query>
-                    <h2 data-aos="my-anim">Sustainability Partners</h2>
-                    <Query
-                        query={GET_SPONSORS_WHERE_RANKING}
-                        variables={{
-                            ranking: 'susPartner',
-                        }}
-                    >
-                        {({ data, error, loading }) => {
-                            if (loading) return <p>Loading...</p>
-                            if (error) return <p>Error: {error.message}</p>
-                            if (!data) return <p>No Data</p>
-                            const { sponsors } = data
-                            return (
-                                <LogoContainerLg>
-                                    {sponsors.map((sponsor, i) => {
-                                        return (
-                                            <div
-                                                key={i}
-                                                onClick={() => {
-                                                    this.showModal(sponsor)
-                                                }}
-                                            >
-                                                <img src={sponsor.logo} />
-                                            </div>
-                                        )
-                                    })}
-                                </LogoContainerLg>
-                            )
-                        }}
-                    </Query>
-
-                    <Query
-                        query={GET_SPONSORS_WHERE_RANKING}
-                        variables={{
-                            ranking: 'eventSponsor',
-                        }}
-                    >
-                        {({ data, error, loading }) => {
-                            if (loading) return <p>Loading...</p>
-                            if (error) return <p>Error: {error.message}</p>
-                            if (!data) return <p>No Data</p>
-                            const { sponsors } = data
-                            console.log('sponsors = ', sponsors)
-                            return (
-                                <>
-                                    {sponsors.length !== 0 && (
-                                        <div className="text-content">
-                                            <h2 data-aos="my-anim">Event Sponsors</h2>
-                                        </div>
-                                    )}
-
-                                    <LogoContainerMd>
-                                        {sponsors.map((sponsor, i) => {
-                                            return (
-                                                <div
-                                                    key={i}
-                                                    onClick={() => {
-                                                        this.showModal(sponsor)
-                                                    }}
-                                                >
-                                                    <img src={sponsor.logo} />
-                                                </div>
-                                            )
-                                        })}
-                                    </LogoContainerMd>
-                                </>
-                            )
-                        }}
-                    </Query>
-
-                    <div className="text-content">
-                        <h2 data-aos="my-anim">Solutions Showcase</h2>
                     </div>
 
                     <GreenButton style={{ display: 'block', margin: '0 auto' }}>
