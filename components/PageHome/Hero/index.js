@@ -100,7 +100,7 @@ class Hero extends React.Component {
                         </div>
 
                         <h1>
-                            02 &amp; 03 SEPTEMBER 2020 <br /> K11 ATELIER KING'S ROAD, HONG KONG
+                            28 &amp; 29 OCTOBER 2020 <br /> K11 ATELIER KING'S ROAD, HONG KONG
                         </h1>
 
                         <GreenButton data-aos="fade-in" data-aos-delay="500" data-aos-duration="2000">
