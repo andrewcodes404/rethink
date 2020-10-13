@@ -266,7 +266,7 @@ class PageSponsors extends React.Component {
                     <div className="text-content">
                         <h2 data-aos="my-anim">Sponsors</h2>
 
-                        <h2 data-aos="my-anim">Headline Event Sponsor</h2>
+                        {/* <h2 data-aos="my-anim">Headline Event Sponsor</h2>
                         <Query
                             query={GET_SPONSORS_WHERE_RANKING}
                             variables={{
@@ -295,7 +295,7 @@ class PageSponsors extends React.Component {
                                     </LogoContainerLg>
                                 )
                             }}
-                        </Query>
+                        </Query> */}
                         <h2 data-aos="my-anim">Sustainability Partners</h2>
                         <Query
                             query={GET_SPONSORS_WHERE_RANKING}
