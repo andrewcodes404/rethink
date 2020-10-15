@@ -108,14 +108,13 @@ const Contact = () => (
                     <div className="event-times">
                         <h3>Event Times</h3>
                         <p className="bold">Wednesday 28 October : </p>
-                        <p>Exhibitor Access: 08.00 - 19.00</p>
-                        <p>Delegate Access: 08.45 - 19.00 (check-in open from 08.15)</p>
-                        <p>Conference Programme: 09.15 - 17.55</p>
-                        <p>Drinks Reception: 17.45 - 19.00 </p>
+                        <p>Showcase Sponsor Access: 08.00 - 19.00</p>
+                        <p>Delegate Access: 08.45 - 19.00 (delegate check-in open from 08.15)</p>
+                        <p>Conference Programme: 09.15 - 18.15</p>
 
                         <p className="bold">Thursday 29 October : </p>
-                        <p>Exhibitor Access: 08.15 - 18.00</p>
-                        <p> Delegate Access: 08.45 - 18.00 (check-in open from 08.30)</p>
+                        <p>Showcase Sponsor Access: 08.15 - 18.00</p>
+                        <p> Delegate Access: 08.45 - 18.00 (delegate check-in open from 08.30)</p>
                         <p>Conference Programme: 09.15 - 17.50</p>
                     </div>
                 </div>
