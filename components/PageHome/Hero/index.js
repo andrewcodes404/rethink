@@ -5,26 +5,26 @@ import { GreenButton, YellowButton } from '../../style/globalComps'
 
 const iconData = [
     {
-        text: '+800 attendees',
+        text: '+2000 Attendees',
         img: 'delegate',
     },
 
     {
-        text: '28 Conference Sessions',
+        text: '+100 Solutions',
         img: 'speaker',
     },
 
     {
-        text: '15 Expert Panels',
+        text: '32 Expert Workshops',
         img: 'panels',
     },
 
     {
-        text: '8 Workshops',
+        text: '6 Global Keynotes',
         img: 'workshops',
     },
     {
-        text: '4 Keynote Presentations',
+        text: '4 Themed Theatre',
         img: 'case-studies',
     },
 ]
@@ -96,19 +96,15 @@ class Hero extends React.Component {
                 {this.state.renderHero && (
                     <div className="hero-content" data-aos="fade-in" data-aos-delay="1500" data-aos-duration="1500">
                         <div className="hero-logo">
-                            <img src="./static/graphics/hero-logo.svg" alt="" />
+                            <img src="./static/2021/hero-logo.png" alt="" />
                         </div>
 
                         <h1>
-                            28 &amp; 29 OCTOBER 2020 <br /> K11 ATELIER KING'S ROAD, HONG KONG
+                            08 - 09 JUNE 2021 <br /> Hall 1, HKCEC, WanChai, Hong Kong
                         </h1>
 
                         <GreenButton data-aos="fade-in" data-aos-delay="500" data-aos-duration="2000">
-                            <a
-                                href="https://app.micepad.co/pages/#/prefill/ReThink2020 "
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
+                            <a href="https://forms.gle/35b6xTmNWggW7Bfs5" target="_blank" rel="noopener noreferrer">
                                 Attend
                             </a>
                         </GreenButton>
@@ -126,7 +122,11 @@ class Hero extends React.Component {
 
                         <GreenButton data-aos="fade-in" data-aos-delay="500" data-aos-duration="2000">
                             {' '}
-                            <a href="http://eepurl.com/g7u6R5" target="_blank" rel="noopener noreferrer">
+                            <a
+                                href="https://rethink-event.us20.list-manage.com/subscribe?u=689c9c9b54458f75cbd8a723f&id=cc903b4d8a"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 Sponsor
                             </a>
                         </GreenButton>

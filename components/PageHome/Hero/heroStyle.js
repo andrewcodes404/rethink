@@ -106,7 +106,7 @@ display: none;
     .icon-card {
       /* height: 110px; */
       padding: 10px 0 15px;
-      width: 140px;
+      width: 150px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -124,6 +124,10 @@ display: none;
       margin: 0;
       height: 34px;
       text-align: center;
+      h4{
+        
+        font-size: 14px
+      }
     }
   }
 `
