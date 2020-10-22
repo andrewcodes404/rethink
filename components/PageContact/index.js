@@ -23,53 +23,6 @@ const Contact = () => (
                         ReThink Newsletter
                     </a>
                 </h3>
-                {/* <p>Otherwise, here’s who to contact:</p> */}
-                <br />
-                <h5>
-                    - For queries about delegate places, media / NGO / industry partnerships or volunteering at the
-                    event:
-                </h5>
-                <br />
-                <p style={{ fontWeight: 'bold' }}>Karen Ko</p>
-                <p>Head of Partnerships &amp; Marketing</p>
-                <a
-                    href="mailto:hello@karen.k@rethink-event.com?Subject=Hello"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    {' '}
-                    <p>karen.k@rethink-event.com </p>
-                </a>{' '}
-                <br />
-                <br />
-                <br />
-                <h5>
-                    - For details on the solutions showcase, event sponsorship, speaking in the conference, hosting
-                    future ReThink events or anything else:
-                </h5>
-                <br />
-                <p style={{ fontWeight: 'bold' }}>Chris Brown</p>
-                <p>Founder &amp; Director</p>
-                <a
-                    href="mailto:hello@chris.b@rethink-event.com ?Subject=Hello"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    {' '}
-                    <p>chris.b@rethink-event.com</p>
-                </a>{' '}
-                <br />
-                <br />
-                <br />
-                <p className="full-details">
-                    <a
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSeF4V1J-jKBahE1DWwmTLXwSEmQ_dAAg4Zf1ogeoGCP1ZXbSA/viewform"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Click here to receive full details on ReThink 2020
-                    </a>
-                </p>
                 <div className="social-wrapper">
                     <div className="social-icon">
                         <a href="https://www.linkedin.com/in/enviroeventshk/" target="_blank" rel="noopener noreferrer">
@@ -95,31 +48,65 @@ const Contact = () => (
                         </a>
                     </div>
                 </div>
-                <div className="info">
-                    <div className="location">
-                        <h3>Location</h3>
-                        <p>ReThink 2020</p>
-                        <p>K11 ATELIER, King’s Road</p>
-                        <p>728 King's Road, Quarry Bay</p>
-                        <p>Hong Kong</p>
-                        <p>1 Minute Walk from Exit C, Quarry Bay MTR Station </p>
-                    </div>
-
-                    <div className="event-times">
-                        <h3>Event Times</h3>
-                        <p className="bold">Wednesday 28 October : </p>
-                        <p>Showcase Sponsor Access: 08.00 - 19.00</p>
-                        <p>Delegate Access: 08.45 - 19.00 (delegate check-in open from 08.15)</p>
-                        <p>Conference Programme: 09.15 - 18.15</p>
-
-                        <p className="bold">Thursday 29 October : </p>
-                        <p>Showcase Sponsor Access: 08.15 - 18.00</p>
-                        <p> Delegate Access: 08.45 - 18.00 (delegate check-in open from 08.30)</p>
-                        <p>Conference Programme: 09.15 - 17.50</p>
-                    </div>
-                </div>
+                <br />
+                <h5>
+                    - For general queries, please email:{' '}
+                    <a href="mailto:hello@rethink-event.com" target="_blank" rel="noopener noreferrer">
+                        hello@rethink-event.com
+                    </a>
+                </h5>
+                <br />
+                <br />
+                <h5>- For queries about media / NGO / industry partnerships, please contact:</h5>
+                <br />
+                <p style={{ fontWeight: 'bold' }}>Karen Ko</p>
+                <p>Head of Partnerships &amp; Marketing</p>
+                <a href="mailto:karen.k@rethink-event.com" target="_blank" rel="noopener noreferrer">
+                    {' '}
+                    <p>karen.k@rethink-event.com </p>
+                </a>{' '}
+                <br />
+                <br />
+                <br />
+                <h5>- For details on the solutions showcase or corporate event sponsorship, please contact:</h5>
+                <br />
+                <p style={{ fontWeight: 'bold' }}>Keiko Ko</p>
+                <p>Head of Sponsorship</p>
+                <a href="mailto:hello@keiko.k@rethink-event.com" target="_blank" rel="noopener noreferrer">
+                    {' '}
+                    <p>keiko.k@rethink-event.com</p>
+                </a>{' '}
+                <br />
+                <br />
+                <br />
+                <h5>
+                    - If you’re interested in speaking in the conference or volunteering at ReThink 2021, please
+                    contact:
+                </h5>
+                <br />
+                <p style={{ fontWeight: 'bold' }}>Keiko Ko</p>
+                <p>Head of Sponsorship</p>
+                <a href="mailto:Tiffany Liang" target="_blank" rel="noopener noreferrer">
+                    {' '}
+                    <p>Tiffany Liang</p>
+                </a>{' '}
+                <br />
+                <br />
+                <br />
+                <h2>Event Details</h2>
+                <h3>ReThink HK 2021</h3>
+                <p>Sustainable Business Forum &amp; Solutions Expo</p>
+                <p>#AccelerateTheChange</p>
+                <br />
+                <p>08 - 09 June 2021 09.30 – 18.00 </p>
+                <h3>Location</h3>
+                <p>Hong Kong Convention &amp; Exhibition Centre </p>
+                <p>Hall 1E</p>
+                <p>1 Expo Drive</p>
+                <p>Wanchai</p>
+                <p>Hong Kong</p>
             </div>
-
+            {/* 
             <div className="images">
                 <div className="image">
                     <img src="static/photos/K11.png" alt="K11 exhibiton center" srcSet="" />
@@ -128,7 +115,7 @@ const Contact = () => (
                 <div className="image">
                     <img src="static/graphics/map.jpg" alt="map" />
                 </div>
-            </div>
+            </div> */}
         </div>
         {/* 
         <div style={{ height: '500px', width: '100%' }}>
@@ -156,7 +143,7 @@ const Contact = () => (
             />
         </BackgroundCoverImage> */}
 
-        <Founder>
+        {/* <Founder>
             <div className="text-content-title-wrapper" data-aos="fade-in">
                 <h2 data-aos="my-anim">Meet the founder</h2>
                 <br />
@@ -216,7 +203,7 @@ const Contact = () => (
                     </p>
                 </div>
             </div>
-        </Founder>
+        </Founder> */}
     </StyledContact>
 )
 
