@@ -106,7 +106,7 @@ class Index extends React.Component {
 
                 <div className="text-content-title-wrapper">
                     <h2 data-aos="my-anim">
-                        <a>Speakers</a>
+                        <a>2020 Speakers</a>
                     </h2>
 
                     <div className="text-content">

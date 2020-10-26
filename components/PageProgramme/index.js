@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Nav from '../Nav'
-import { GreenButton } from '../style/globalComps'
+import { GreenButton, LinkIntext } from '../style/globalComps'
 import CarouselHostSpeakers from '../carousels/CarouselHostSpeakers'
 
 class Index extends React.Component {
@@ -88,6 +88,15 @@ class Index extends React.Component {
                     <div className="text-content-title-wrapper-small">
                         <CarouselHostSpeakers />
                     </div>
+                    <LinkIntext>
+                        <h3 className="" data-aos="">
+                            <a href="/speakers">See all 2020 Conference Speakers</a>
+
+                            <Link href="">
+                                <a></a>
+                            </Link>
+                        </h3>
+                    </LinkIntext>
 
                     <GreenButton style={{ display: 'block', margin: '0 auto' }}>
                         {' '}

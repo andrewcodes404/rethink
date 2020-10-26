@@ -283,14 +283,28 @@ class PageSponsors extends React.Component {
                             <li>Position yourself as a thought leader and share your best practice expertise </li>
                             <li>
                                 Launch innovations, showcase products, services and solutions to a qualified audience of
-                                corporate, specifiers, buyers and{' '}
+                                corporate, specifiers, buyers and investors
                             </li>
-                            investors
+
                             <li>Generate new business enquiries and establish collaborative partnerships</li>
                         </ul>
+                        <br />
+                        <h3> ReThink 2020 attracted:</h3>
+
+                        <ul>
+                            <li>875 applications to attend</li>
+                            <li>435 unique in person attendees (reduced due to social distancing) </li>
+                            <li>316 additional online attendees </li>
+                        </ul>
+
                         <h3 className="link-green">
-                            <a href="mailto:hello@rethink-event.com" target="_blank" rel="noopener noreferrer">
-                                Request the 2021 Prospectus
+                            <a
+                                href="mailto:hello@rethink-event.com?subject=Please%20send%20me%20the%20ReThink
+                            %202021%20Sponsorship%20Prospectus"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Please send me the ReThink 2021 Sponsorship Prospectus
                             </a>
                         </h3>
                         <h3>
@@ -306,7 +320,7 @@ class PageSponsors extends React.Component {
                             ReThink 2020 attracted over 600 unique attendees –{' '}
                             <a
                                 style={{ textDecoration: 'underline' }}
-                                href="mailto:hello@rethink-event.com"
+                                href="mailto:hello@rethink-event.com?subject=Please%20send%20me%20the%20ReThink%202020%20delegate%20list"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >

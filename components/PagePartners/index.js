@@ -84,7 +84,7 @@ class Index extends React.Component {
                             potential supporters.
                         </p>
 
-                        <h3>Partnership opportunities?</h3>
+                        <h3>Partnership opportunities</h3>
 
                         <ul>
                             <li>
@@ -104,6 +104,7 @@ class Index extends React.Component {
                         </h3>
 
                         <div className="text-content">
+                            <h3>2020 Partners</h3>
                             <CarouselPartners />
                         </div>
                     </div>

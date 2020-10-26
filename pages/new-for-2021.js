@@ -43,21 +43,32 @@ class Delegates extends React.Component {
 
                     <div className="text-content">
                         <h3>Start-up Showcase </h3>
-
+                        <h3>ReThink 2021 will see the introduction of new partner-led content initiatives</h3>
+                        <p>8th June 2021</p>
                         <ul>
-                            <li>Hong Kong registered PropTech, GreenTech &amp; CleanTech solutions </li>
-                            <li>Incorporated no earlier than 01.06.2018</li>
+                            <li>The Hong Kong Ocean Economy Summit, in partnership with O3C </li>
+                            <li>Redefining Value Stage, in partnership with Dream Impact & Shared Value Project HK</li>
                         </ul>
+                        <p>9th June 2021</p>
+                        <ul>
+                            <li>Beyond Plastics Live, in partnership with A Plastic Ocean Foundation </li>
+                            <li> Future Working Lives Stage, in partnership with Community Business</li>
+                        </ul>
+                        <p style={{ fontWeight: 'bold' }}>More to be announced soon! </p>
 
+                        <h2>New low-cost showcase opportunities:</h2>
+
+                        <h3>Start-up Showcase </h3>
+                        <ul>
+                            <li>Hong Kong registered CleanTech, FinTech, GreenTech & PropTech solutions</li>
+                            <li>Incorporated no earlier than 01.06.2018 (BRC required upon application) </li>
+                        </ul>
                         <h3>Innovation Pavilion </h3>
-
                         <ul>
                             <li>Solutions on display for the first time in Hong Kong</li>
                             <li>Deployable solutions seeking investment or corporate exposure </li>
                         </ul>
-
                         <h3>Marketplace </h3>
-
                         <ul>
                             <li>Hong Kong brands on display looking to meet buyers and resellers</li>
                             <li>
@@ -65,23 +76,18 @@ class Delegates extends React.Component {
                                 the shop shelves and e-stores in 2021!{' '}
                             </li>
                         </ul>
-
                         <h3>International Showcases</h3>
-
                         <ul>
                             <li>Hosting tech and sustainable products, solutions, and innovation from overseas</li>
                             <li>Supported by international trade organisations and Chambers of commerce</li>
                         </ul>
-
                         <h2>Subsidies & Support</h2>
                         <h3>HKSAR Government Convention & Exhibition Industry Subsidy Scheme</h3>
-
                         <p>
                             To assist companies in exploring markets and business opportunities, the HKSAR Government
                             has launched a subsidy scheme to assist independent organisers to be passed on to exhibitors
                             – local or overseas, large or small, to participate in trade exhibitions.{' '}
                         </p>
-
                         <p>
                             Local companies, if eligible, may also apply for the Dedicated Fund on Branding, Upgrading
                             and Domestic Sales (BUD Fund) or the SME Export Marketing Fund (EMF) for funding on a
@@ -102,9 +108,7 @@ class Delegates extends React.Component {
                         <br />
                         <br />
                         <br />
-
-                        <h2>Sponsors</h2>
-
+                        <h2>2020 Sponsors</h2>
                         <div className="text-content">
                             <CarouselSponsors />
                         </div>

@@ -51,7 +51,11 @@ const Contact = () => (
                 <br />
                 <h5>
                     - For general queries, please email:{' '}
-                    <a href="mailto:hello@rethink-event.com" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="mailto:hello@rethink-event.com?subject=ReThink 2021%20General%20Enquiry"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         hello@rethink-event.com
                     </a>
                 </h5>
@@ -61,7 +65,11 @@ const Contact = () => (
                 <br />
                 <p style={{ fontWeight: 'bold' }}>Karen Ko</p>
                 <p>Head of Partnerships &amp; Marketing</p>
-                <a href="mailto:karen.k@rethink-event.com" target="_blank" rel="noopener noreferrer">
+                <a
+                    href="mailto:karen.k@rethink-event.com?subject=ReThink%202021%20partnership enquiry"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     {' '}
                     <p>karen.k@rethink-event.com </p>
                 </a>{' '}
@@ -72,7 +80,11 @@ const Contact = () => (
                 <br />
                 <p style={{ fontWeight: 'bold' }}>Keiko Ko</p>
                 <p>Head of Sponsorship</p>
-                <a href="mailto:hello@keiko.k@rethink-event.com" target="_blank" rel="noopener noreferrer">
+                <a
+                    href="mailto:hello@keiko.k@rethink-event.com?subject=ReThink%202021 sponsorship%20enquiry"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     {' '}
                     <p>keiko.k@rethink-event.com</p>
                 </a>{' '}
@@ -84,11 +96,15 @@ const Contact = () => (
                     contact:
                 </h5>
                 <br />
-                <p style={{ fontWeight: 'bold' }}>Keiko Ko</p>
+                <p style={{ fontWeight: 'bold' }}>Tiffany Liang</p>
                 <p>Head of Sponsorship</p>
-                <a href="mailto:Tiffany Liang" target="_blank" rel="noopener noreferrer">
+                <a
+                    href="mailto:tiffany@rethink-event.com?subject=2021%20conference%20enquiry"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     {' '}
-                    <p>Tiffany Liang</p>
+                    <p>tiffany@rethink-event.com</p>
                 </a>{' '}
                 <br />
                 <br />
@@ -98,13 +114,15 @@ const Contact = () => (
                 <p>Sustainable Business Forum &amp; Solutions Expo</p>
                 <p>#AccelerateTheChange</p>
                 <br />
-                <p>08 - 09 June 2021 09.30 – 18.00 </p>
+                <p>
+                    08 - 09 June 2021 <br />
+                    09.30 – 18.00{' '}
+                </p>
                 <h3>Location</h3>
-                <p>Hong Kong Convention &amp; Exhibition Centre </p>
+                <p style={{ fontWeight: 'bold' }}>Hong Kong Convention &amp; Exhibition Centre </p>
                 <p>Hall 1E</p>
                 <p>1 Expo Drive</p>
-                <p>Wanchai</p>
-                <p>Hong Kong</p>
+                <p>Wanchai, Hong Kong</p>
             </div>
             {/* 
             <div className="images">

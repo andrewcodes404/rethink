@@ -38,7 +38,7 @@ class PageHome extends React.Component {
                             each and every day.
                         </p>
 
-                        <h3>However, there is hope. And, there is ambition.</h3>
+                        <p>However, there is hope. And, there is ambition.</p>
                         <p>
                             We want to hand future generations a realistic chance of sharing our planet in harmony with
                             nature.
@@ -97,7 +97,7 @@ class PageHome extends React.Component {
                 <div className="text-content-title-wrapper-small">
                     <h2 data-aos="my-anim">
                         <Link href="/sponsors">
-                            <a>Sponsors</a>
+                            <a>2020 Sponsors</a>
                         </Link>
                     </h2>
                     <div className="text-content">
@@ -108,7 +108,7 @@ class PageHome extends React.Component {
                 <div className="text-content-title-wrapper-small">
                     <h2 data-aos="my-anim">
                         <Link href="/partners">
-                            <a>Partners</a>
+                            <a>2020 Partners</a>
                         </Link>
                     </h2>
                     <div className="text-content">
@@ -125,8 +125,8 @@ class PageHome extends React.Component {
 
                     <div className="text-content">
                         <p>
-                            ReThink 2021 provides dialogue, insight and expertise across globally recognised risk and
-                            opportunity topics, in a Hong Kong context.
+                            ReThink 2021 provides an ambitious dialogue, insight and expertise across globally
+                            recognised risk and opportunity topics, in a Hong Kong context.
                         </p>
 
                         <p>
@@ -136,7 +136,7 @@ class PageHome extends React.Component {
                         </p>
                         <LinkIntext>
                             <h3 className="" data-aos="">
-                                <a href="https://rethink-event.com/programme" target="_blank" rel="noopener noreferrer">
+                                <a href="/programme" target="_blank" rel="noopener noreferrer">
                                     More details on the programme
                                 </a>
 
@@ -151,13 +151,23 @@ class PageHome extends React.Component {
                 <div className="text-content-title-wrapper-small">
                     <h2 data-aos="my-anim">
                         <Link href="/programme">
-                            <a>Speaker Highlights</a>
+                            <a>2020 Speaker Highlights</a>
                         </Link>
                     </h2>
                     <br />
 
                     <CarouselHostSpeakers />
                 </div>
+
+                <LinkIntext>
+                    <h3 className="" data-aos="">
+                        <a href="/speakers">See all 2020 Conference Speakers</a>
+
+                        <Link href="">
+                            <a></a>
+                        </Link>
+                    </h3>
+                </LinkIntext>
 
                 <CarouselTank />
                 <div className="text-content-title-wrapper">

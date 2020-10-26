@@ -11,7 +11,7 @@ const iconData = [
 
     {
         text: '+100 Solutions',
-        img: 'speaker',
+        img: 'workshops',
     },
 
     {
@@ -21,7 +21,7 @@ const iconData = [
 
     {
         text: '6 Global Keynotes',
-        img: 'workshops',
+        img: 'speaker',
     },
     {
         text: '4 Themed Theatre',

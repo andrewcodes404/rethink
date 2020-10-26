@@ -47,6 +47,8 @@ const DelegatesStyled = styled.div`
         cursor: pointer;
         transition: 0.3s;
         border: 2px solid white;
+        display: flex;
+        align-items: center;
         &:hover {
             /* background: gold; */
             border: 2px solid gold;
@@ -82,14 +84,14 @@ class Delegates extends React.Component {
                                 <div className="logo">
                                     {' '}
                                     <a href="https://www.soapcycling.org/" target="_blank" rel="noopener noreferrer">
-                                        <img src="static/graphics/soap-cycling.png" alt="" srcSet="" />
+                                        <img src="static/2021/impact.png" alt="" srcSet="" />
                                     </a>
                                 </div>
 
                                 <div className="logo">
                                     {' '}
                                     <a href="https://feedinghk.org/" target="_blank" rel="noopener noreferrer">
-                                        <img src="static/graphics/feeding-hk.jpg" alt="" srcSet="" />{' '}
+                                        <img src="static/2021/horizon.jpg" alt="" srcSet="" />{' '}
                                     </a>
                                 </div>
                             </div>
@@ -121,8 +123,15 @@ class Delegates extends React.Component {
                                     Anyone that is driven by, or challenged with, sustainability goals for their
                                     business or organisation{' '}
                                 </li>
-                                <li>Businesses leaders, from across all industries </li>
-                                <li>Sustainability teams from corporates and MNCs</li>
+                                <li>
+                                    Business unit leaders responsible for accelerating transformation and operational
+                                    efficiencies{' '}
+                                </li>
+                                <li>
+                                    Sustainability teams from corporates and MNCs researching and resourcing sustainable
+                                    solutions
+                                </li>
+                                <li>Hong Kong registered NGOs and charities</li>
                             </ul>
 
                             <h3>Corporate delegate packages</h3>
