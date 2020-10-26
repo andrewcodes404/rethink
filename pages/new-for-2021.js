@@ -1,36 +1,8 @@
 import React from 'react'
 import Nav from '../components/Nav'
-import Link from 'next/link'
+import { GreenButton } from '../components/style/globalComps'
 
-import { ImageBanner, GreenButton, LinkIntext } from '../components/style/globalComps'
-
-import ProfileBar from '../components/ProfileBar'
 import CarouselSponsors from '../components/carousels/CarouselSponsors'
-
-const profileDataDelegate = [
-    {
-        title: 'Delegates',
-        bkgImg: 'delegate',
-        icon: 'delegate',
-        list: [
-            'Brand Owners',
-            'Construction & Infrastructure',
-            'Festival & Event Organisers',
-            'Financial Institutions',
-            'Government Buildings',
-            'Hotels & Hospitality',
-            'High Street Retail',
-            'Leisure & Entertainment Venues',
-            'Logistics & Supply Chain',
-            'NGOs/Charities ',
-            'Real Estate/Property Management',
-            'Schools & Universities',
-            'Supermarkets',
-        ],
-    },
-]
-
-import styled from 'styled-components'
 
 class Delegates extends React.Component {
     render() {
@@ -39,24 +11,29 @@ class Delegates extends React.Component {
                 <Nav />
 
                 <div className="text-content-title-wrapper">
-                    <h2 data-aos="my-anim">New for 2021</h2>
+                    <h2 data-aos="my-anim">New content for 2021</h2>
 
                     <div className="text-content">
-                        <h3>Start-up Showcase </h3>
-                        <h3>ReThink 2021 will see the introduction of new partner-led content initiatives</h3>
-                        <p>8th June 2021</p>
+                        <h3>ReThink 2021 will see the introduction of exciting new partner-led content initiatives </h3>
+
+                        <p style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Day 1 - 8th June 2021</p>
                         <ul>
                             <li>The Hong Kong Ocean Economy Summit, in partnership with O3C </li>
                             <li>Redefining Value Stage, in partnership with Dream Impact & Shared Value Project HK</li>
                         </ul>
-                        <p>9th June 2021</p>
+                        <p style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Day 2 - 9th June 2021</p>
                         <ul>
                             <li>Beyond Plastics Live, in partnership with A Plastic Ocean Foundation </li>
                             <li> Future Working Lives Stage, in partnership with Community Business</li>
                         </ul>
-                        <p style={{ fontWeight: 'bold' }}>More to be announced soon! </p>
+                        <p>More to be announced soon! </p>
 
-                        <h2>New low-cost showcase opportunities:</h2>
+                        <h2>Solutions Showcase</h2>
+
+                        <p style={{ fontWeight: '400' }}>
+                            Low-cost showcase opportunities to display products, promote services and launch new
+                            solutions:
+                        </p>
 
                         <h3>Start-up Showcase </h3>
                         <ul>
@@ -81,14 +58,21 @@ class Delegates extends React.Component {
                             <li>Hosting tech and sustainable products, solutions, and innovation from overseas</li>
                             <li>Supported by international trade organisations and Chambers of commerce</li>
                         </ul>
+
+                        <p>
+                            The zero-waste showcase booth arrangements will be produced, installed, dismantled and
+                            recycled where the display materials cannot be reused by the contractor.{' '}
+                        </p>
+                        <br />
+
                         <h2>Subsidies & Support</h2>
                         <h3>HKSAR Government Convention & Exhibition Industry Subsidy Scheme</h3>
-                        <p>
+                        <p style={{ fontWeight: '400' }}>
                             To assist companies in exploring markets and business opportunities, the HKSAR Government
                             has launched a subsidy scheme to assist independent organisers to be passed on to exhibitors
                             – local or overseas, large or small, to participate in trade exhibitions.{' '}
                         </p>
-                        <p>
+                        <p style={{ fontWeight: '400' }}>
                             Local companies, if eligible, may also apply for the Dedicated Fund on Branding, Upgrading
                             and Domestic Sales (BUD Fund) or the SME Export Marketing Fund (EMF) for funding on a
                             matching basis for exhibition-related expenses.

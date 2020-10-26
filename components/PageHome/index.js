@@ -125,14 +125,15 @@ class PageHome extends React.Component {
 
                     <div className="text-content">
                         <p>
-                            ReThink 2021 provides an ambitious dialogue, insight and expertise across globally
-                            recognised risk and opportunity topics, in a Hong Kong context.
+                            The 2021 edition will expand on our founder’s ambition to curate a high-value business
+                            ecosystem event which is outcome focussed, delivers immediate and measurable impact,
+                            facilitates collaboration and leads to real action towards a more equitable and climate
+                            smart future for Hong Kong.
                         </p>
 
                         <p>
-                            The programme addresses the very specific societal and environmental sustainability
-                            challenges faced by Hong Kong organisations operating in our unique city, and those
-                            sourcing, trading or collaborating across borders.
+                            The content-led hybrid-format event model put thought-leadership and debate alongside
+                            innovation and real solutions.
                         </p>
                         <LinkIntext>
                             <h3 className="" data-aos="">

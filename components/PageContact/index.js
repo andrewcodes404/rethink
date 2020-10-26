@@ -92,12 +92,11 @@ const Contact = () => (
                 <br />
                 <br />
                 <h5>
-                    - If you’re interested in speaking in the conference or volunteering at ReThink 2021, please
-                    contact:
+                    - If you’re interested in speaking in the conference or volunteering at ReThink 2021, please contact
                 </h5>
                 <br />
                 <p style={{ fontWeight: 'bold' }}>Tiffany Liang</p>
-                <p>Head of Sponsorship</p>
+                <p>Sustainability Executive </p>
                 <a
                     href="mailto:tiffany@rethink-event.com?subject=2021%20conference%20enquiry"
                     target="_blank"
