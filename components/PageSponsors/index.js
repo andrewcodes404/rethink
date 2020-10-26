@@ -317,7 +317,7 @@ class PageSponsors extends React.Component {
                             stakeholder in the mission of driving sustainable development across Hong Kong’s ecosystem.
                         </p>
                         <p>
-                            ReThink 2020 attracted over 600 unique attendees –{' '}
+                            ReThink 2020 attracted over 750 unique attendees –{' '}
                             <a
                                 style={{ textDecoration: 'underline' }}
                                 href="mailto:hello@rethink-event.com?subject=Please%20send%20me%20the%20ReThink%202020%20delegate%20list"

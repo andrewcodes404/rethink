@@ -44,14 +44,14 @@ const DelegatesStyled = styled.div`
     .logo {
         width: 45%;
         padding: 30px;
-        cursor: pointer;
+        /* cursor: pointer; */
         transition: 0.3s;
         border: 2px solid white;
         display: flex;
         align-items: center;
         &:hover {
             /* background: gold; */
-            border: 2px solid gold;
+            /* border: 2px solid gold; */
         }
     }
 `
@@ -83,16 +83,15 @@ class Delegates extends React.Component {
                             <div className="logos">
                                 <div className="logo">
                                     {' '}
-                                    <a href="https://www.soapcycling.org/" target="_blank" rel="noopener noreferrer">
-                                        <img src="static/2021/impact.png" alt="" srcSet="" />
-                                    </a>
+                                    {/* <a href="https://www.soapcycling.org/" target="_blank" rel="noopener noreferrer"> */}
+                                    <img src="static/2021/impact.png" alt="" srcSet="" />
+                                    {/* </a> */}
                                 </div>
 
                                 <div className="logo">
                                     {' '}
-                                    <a href="https://feedinghk.org/" target="_blank" rel="noopener noreferrer">
-                                        <img src="static/2021/horizon.jpg" alt="" srcSet="" />{' '}
-                                    </a>
+                                    {/* <a href="https://feedinghk.org/" target="_blank" rel="noopener noreferrer"> */}
+                                    <img src="static/2021/horizon.jpg" alt="" srcSet="" /> {/* </a> */}
                                 </div>
                             </div>
 
