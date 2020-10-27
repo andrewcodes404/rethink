@@ -147,7 +147,7 @@ class Privacy extends React.Component {
                             <h3>23rd June at 4:00pm</h3>
                             <p>
                                 - If the Tropical Cyclone Warning Signal No. 8 (or above) is still effective at 4:00pm,
-                                the cocktail and dinner activities of ReThink 2021 on 08 June 2020 will be cancelled.
+                                the cocktail and dinner activities of ReThink 2021 on 08 June 2021 will be cancelled.
                             </p>
                             <p>
                                 - If the Tropical Cyclone Warning Signal No. 8 (or above) is issued but cancelled at
@@ -179,7 +179,7 @@ class Privacy extends React.Component {
                                 Confirmed delegate places are non-refundable except in the instance that the event is
                                 cancelled. If your plans change and you are unable to attend, then you may transfer your
                                 place to a colleague at the Organiser’s discretion. Requests to transfer must be
-                                received no later than 17:00 (HKT) on Friday 21 May 2020. Service charges, transaction
+                                received no later than 17:00 (HKT) on Friday 21 May 2021. Service charges, transaction
                                 and bank fees are non-refundable.
                             </p>
                         </div>{' '}
