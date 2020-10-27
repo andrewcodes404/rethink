@@ -81,7 +81,7 @@ const Contact = () => (
                 <p style={{ fontWeight: 'bold' }}>Keiko Ko</p>
                 <p>Head of Sponsorship</p>
                 <a
-                    href="mailto:hello@keiko.k@rethink-event.com?subject=ReThink%202021 sponsorship%20enquiry"
+                    href="mailto:keiko.k@rethink-event.com?subject=ReThink%202021 sponsorship%20enquiry"
                     target="_blank"
                     rel="noopener noreferrer"
                 >

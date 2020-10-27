@@ -356,7 +356,7 @@ class PageSponsors extends React.Component {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Request details about sponsorship and showcase opportunities at ReThink 202
+                                Request details about sponsorship and showcase opportunities at ReThink 2021
                             </a>
                         </GreenButton>
                         <br />
