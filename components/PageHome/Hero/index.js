@@ -86,9 +86,9 @@ class Hero extends React.Component {
                     <img
                         src="./static/photos/land-med.jpg"
                         srcSet="
-                  ./static/photos/land-sml.jpg 700w,
-                  ./static/photos/land-med.jpg 1000w,
-                  ./static/photos/land-lrg.jpg 2000w"
+                  ./static/2021/hero-bg-sml.jpg 700w,
+                  ./static/2021/hero-bg-med.jpg 1000w,
+                  ./static/2021/hero-bg-lrg.jpg 2000w"
                         alt="landscape"
                     />
                 </div>
