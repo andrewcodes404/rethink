@@ -264,142 +264,91 @@ class PageSponsors extends React.Component {
 
                 <div className="text-content-title-wrapper">
                     <div className="text-content">
-                        <h2 data-aos="my-anim">Sponsors</h2>
+                        <h2 data-aos="my-anim">Sponsors & Showcase</h2>
+                        <p>
+                            Enhance your presence at ReThink 2021 by positioning your business in front of change-makers
+                            and business leaders as a potential partner, supplier or solutions provider that can help
+                            organisations in Hong Kong achieve their carbon reduction, engagement, strategic or specific
+                            sustainability goals.
+                        </p>
+                        <h3>
+                            Ensure you maintain a competitive edge and make the most of sponsorship opportunities which
+                            will enable you to:
+                        </h3>
+                        <ul>
+                            <li>
+                                Increase brand awareness - not just at the event but across the six-month ecosystem-wide
+                                campaign{' '}
+                            </li>
+                            <li>Position yourself as a thought leader and share your best practice expertise </li>
+                            <li>
+                                Launch innovations, showcase products, services and solutions to a qualified audience of
+                                corporate, specifiers, buyers and investors
+                            </li>
 
-                        {/* <h2 data-aos="my-anim">Headline Event Sponsor</h2>
-                        <Query
-                            query={GET_SPONSORS_WHERE_RANKING}
-                            variables={{
-                                ranking: 'headlineSponsor',
-                            }}
-                        >
-                            {({ data, error, loading }) => {
-                                if (loading) return <p>Loading...</p>
-                                if (error) return <p>Error: {error.message}</p>
-                                if (!data) return <p>No Data</p>
-                                const { sponsors } = data
-                                return (
-                                    <LogoContainerLg>
-                                        {sponsors.map((sponsor, i) => {
-                                            return (
-                                                <div
-                                                    key={i}
-                                                    onClick={() => {
-                                                        this.showModal(sponsor)
-                                                    }}
-                                                >
-                                                    <img src={sponsor.logo} />
-                                                </div>
-                                            )
-                                        })}
-                                    </LogoContainerLg>
-                                )
-                            }}
-                        </Query> */}
-                        <h2 data-aos="my-anim">Sustainability Partners</h2>
-                        <Query
-                            query={GET_SPONSORS_WHERE_RANKING}
-                            variables={{
-                                ranking: 'susPartner',
-                            }}
-                        >
-                            {({ data, error, loading }) => {
-                                if (loading) return <p>Loading...</p>
-                                if (error) return <p>Error: {error.message}</p>
-                                if (!data) return <p>No Data</p>
-                                const { sponsors } = data
-                                return (
-                                    <LogoContainerLg>
-                                        {sponsors.map((sponsor, i) => {
-                                            return (
-                                                <div
-                                                    key={i}
-                                                    onClick={() => {
-                                                        this.showModal(sponsor)
-                                                    }}
-                                                >
-                                                    <img src={sponsor.logo} />
-                                                </div>
-                                            )
-                                        })}
-                                    </LogoContainerLg>
-                                )
-                            }}
-                        </Query>
+                            <li>Generate new business enquiries and establish collaborative partnerships</li>
+                        </ul>
+                        <br />
+                        <h3> ReThink 2020 attracted:</h3>
 
-                        <Query
-                            query={GET_SPONSORS_WHERE_RANKING}
-                            variables={{
-                                ranking: 'eventSponsor',
-                            }}
-                        >
-                            {({ data, error, loading }) => {
-                                if (loading) return <p>Loading...</p>
-                                if (error) return <p>Error: {error.message}</p>
-                                if (!data) return <p>No Data</p>
-                                const { sponsors } = data
-                                console.log('sponsors = ', sponsors)
-                                return (
-                                    <>
-                                        {sponsors.length !== 0 && (
-                                            <div className="text-content">
-                                                <h2 data-aos="my-anim">Event Sponsors</h2>
-                                            </div>
-                                        )}
+                        <ul>
+                            <li>875 applications to attend</li>
+                            <li>435 unique in person attendees (reduced due to social distancing) </li>
+                            <li>316 additional online attendees </li>
+                        </ul>
 
-                                        <LogoContainerMd>
-                                            {sponsors.map((sponsor, i) => {
-                                                return (
-                                                    <div
-                                                        key={i}
-                                                        onClick={() => {
-                                                            this.showModal(sponsor)
-                                                        }}
-                                                    >
-                                                        <img src={sponsor.logo} />
-                                                    </div>
-                                                )
-                                            })}
-                                        </LogoContainerMd>
-                                    </>
-                                )
-                            }}
-                        </Query>
-
-                        <div className="text-content">
-                            <h2 data-aos="my-anim">Solutions Showcase</h2>
-                        </div>
-
-                        <Query
-                            query={GET_SPONSORS_WHERE_RANKING}
-                            variables={{
-                                ranking: 'innovShow',
-                            }}
-                        >
-                            {({ data, error, loading }) => {
-                                if (loading) return <p>Loading...</p>
-                                if (error) return <p>Error: {error.message}</p>
-                                if (!data) return <p>No Data</p>
-                                const { sponsors } = data
-                                return (
-                                    <LogoContainerSm>
-                                        {sponsors.map((sponsor, i) => {
-                                            return (
-                                                <div
-                                                    key={i}
-                                                    onClick={() => {
-                                                        this.showModal(sponsor)
-                                                    }}
-                                                >
-                                                    <img src={sponsor.logo} />
-                                                </div>
-                                            )
-                                        })}
-                                    </LogoContainerSm>
-                                )
-                            }}
-                        </Query>
-
+                        <h3 className="link-green">
+                            <a
+                                href="mailto:hello@rethink-event.com?subject=Please%20send%20me%20the%20ReThink
+                            %202021%20Sponsorship%20Prospectus"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Please send me the ReThink 2021 Sponsorship Prospectus
+                            </a>
+                        </h3>
+                        <h3>
+                            ReThink has an extensive range of engagement tools that can be combined to help achieve
+                            clients’ aims and objectives, and tailored to match most budgets.
+                        </h3>
+                        <p>
+                            Whatever your goals, our experienced team will be able to design a cost-effective package of
+                            exposure and activities to help your business or organisation become an impactful
+                            stakeholder in the mission of driving sustainable development across Hong Kong’s ecosystem.
+                        </p>
+                        <p>
+                            ReThink 2020 attracted over 750 unique attendees –{' '}
+                            <a
+                                style={{ textDecoration: 'underline' }}
+                                href="mailto:hello@rethink-event.com?subject=Please%20send%20me%20the%20ReThink%202020%20delegate%20list"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                request the 2020 attendee list.
+                            </a>
+                        </p>
+                        <p>
+                            ReThink 2021 is being designed to host 2,000 professional attendees. Each delegate
+                            application will be reviewed to ensure all delegates are true agents of change, empowered
+                            and authorised to drive transformation, invest in new solutions and forge new relationships.{' '}
+                        </p>
+                        <h3>How can ReThink 2021 help? </h3>
+                        <ul>
+                            <li>Drive revenues through transparent ROI</li>
+                            <li>Enhance ecosystem relationships</li>
+                            <li>Extract audience insight</li>
+                            <li>Increase market share over absent rivals</li>
+                            <li>Direct access to ideal customer profile (ICP) data</li>
+                            <li>Direct face time with multiple prospects</li>
+                            <li>Lead generation</li>
+                            <li>Stay engaged with existing customers</li>
+                            <li>Boost social media/website traffic from a focused content strategy</li>
+                            <li>Increased credibility as a brand that supports sustainability</li>
+                            <li>Showcase new product or service offering</li>
+                            <li>Instigate post-event qualified interactions</li>
+                            <li>Brand building</li>
+                            <li>Develop in-house knowledge and resources</li>
+                        </ul>
                         <GreenButton style={{ display: 'block', margin: '0 auto' }}>
                             {' '}
                             <a
@@ -407,101 +356,12 @@ class PageSponsors extends React.Component {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Request details about Sponsorship or Solutions Showcase opportunities
+                                Request details about sponsorship and showcase opportunities at ReThink 2021
                             </a>
                         </GreenButton>
-                        <p>
-                            ReThink is an event exclusively for sustainability professionals who will attend with their
-                            colleagues from Finance, People, Operations and Procurement to achieve wider understanding
-                            and deliver significant and purposeful change back into their organisation.
-                        </p>
-
-                        <p>
-                            Use the power of this live event platform to interact with customers and stakeholders from
-                            across the ecosystem; demonstrate your commitment to accelerating sustainable development in
-                            Hong Kong, launch new solutions, host workshops, build partnerships and generate significant
-                            brand awareness at the highest level.
-                        </p>
-                        <p>
-                            Directly influence sustainability leaders, C-Suite decision makers and government
-                            departments who will attend to source cutting edge technology, sustainable supply chain
-                            solutions and innovative products that reflect the demands of their customers.
-                        </p>
-
-                        <p>
-                            Showcasing at ReThink will put your innovations, services or solutions in front of
-                            procurement teams, business owners and those responsible for meeting sustainability goals
-                            and driving efficiencies across their organisation or across multi-site facilities.
-                        </p>
-
-                        <h3>The Innovation Showcase is open for suppliers and service providers, including:</h3>
-                        <ProfileBar profileData={profileDataSponsor} profileMessage="sponsor" />
-
                         <br />
                         <br />
-                        <br />
-                        <h2>How We Deliver the Audience</h2>
-
-                        <p>
-                            We attract our audience using a comprehensive multi-channel marketing and recruitment
-                            campaign that includes:
-                        </p>
-
-                        <ul>
-                            <li>A delegate nomination and approval process to guarantee quality attendees*</li>
-                            <li>Partnerships with business chambers, industry associations and professional groups</li>
-                            <li>Collaboration with media channels and carefully selected forums, blogs and websites</li>
-                            <li>Comprehensive PR campaign</li>
-                            <li>Continuous social media engagement</li>
-                        </ul>
-
-                        <p>
-                            The ReThink proposition is genuinely exciting and offers something different to other events
-                            including:
-                        </p>
-
-                        <ul>
-                            <li>Focussed conference with purposeful learnings that business can put into action</li>
-                            <li>
-                                Creative and varied conference formats to provide two-full-days of engaging debate and
-                                discussions
-                            </li>
-                            <li>Workshop sessions to provide deeper insight into pan-industry challenges</li>
-                            <li>Combined Conference &amp; Innovation Showcase</li>
-                            <li>NGO &amp; Partnerships Lounge to facilitate collaboration</li>
-                        </ul>
-
-                        <p>
-                            * All applications to attend are checked and upon confirmation delegates are required to
-                            make a donation to the 2020 ReThink Beneficiary Fund - with all proceeds going to ReThink’s
-                            Charity Partners.
-                        </p>
-
-                        <h3 className="link-green">
-                            Want to be a ReThink sponsor?{' '}
-                            <a
-                                href="https://rethink-event.us20.list-manage.com/subscribe?u=689c9c9b54458f75cbd8a723f&id=cc903b4d8a"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                click here
-                            </a>
-                        </h3>
                     </div>
-
-                    <GreenButton style={{ display: 'block', margin: '0 auto' }}>
-                        {' '}
-                        <a
-                            href="https://rethink-event.us20.list-manage.com/subscribe?u=689c9c9b54458f75cbd8a723f&id=cc903b4d8a"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Request details about Sponsorship or Solutions Showcase opportunities
-                        </a>
-                    </GreenButton>
-
-                    <br />
-                    <br />
                 </div>
             </div>
         )

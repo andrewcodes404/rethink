@@ -34,42 +34,62 @@ class PageHome extends React.Component {
                         </h3>
 
                         <p>
-                            The challenges that face our planet become more and more critical each and every day. In
-                            order to hand future generations a realistic chance of saving this unique and fragile
-                            ecosystem, we have an opportunity to stabilise the environment through collective change and
-                            shared responsibility – but that opportunity is precious and must not be wasted.
+                            The challenge of protecting and restoring global ecosystems becomes more and more critical
+                            each and every day.
+                        </p>
+
+                        <p>However, there is hope. And, there is ambition.</p>
+                        <p>
+                            We want to hand future generations a realistic chance of sharing our planet in harmony with
+                            nature.
                         </p>
 
                         <p>
-                            ReThink is being designed specifically for professionals who are driven by, or challenged
-                            with, sustainability goals for their business or organisation, and the 2020 event is focused
-                            on answering one of the most crucial questions for companies in Hong Kong:
+                            By changing the way we use resources, stabilising the environment and improving the lives of
+                            all through collective change and shared responsibility – we have an opportunity to show
+                            what humans are really capable of, but that opportunity is precious and must not be wasted.
                         </p>
-
-                        <h3>How can we help businesses accelerate change towards a more sustainable future?</h3>
 
                         <p>
-                            Through inspiring speakers, action-focused discussions and real-life solutions, ReThink 2020
-                            will provide answers to this question, through a carefully curated two-day conference and
-                            workshop programme supported by an innovation showcase with the best in suppliers and
-                            service providers.
+                            ReThink HK has been designed specifically for Hong Kong business leaders, sustainability
+                            practitioners and those responsible for researching and resourcing new sustainable
+                            strategies.
                         </p>
+                        <p>
+                            ReThink operates under license from the business and sustainability communities that it is
+                            privileged to support – uniting stakeholders, amplifying the need for change and giving
+                            value to sponsors, partners and those that help the team to develop the event.{' '}
+                        </p>
+
+                        <p>
+                            All delegate fees contribute to a beneficiary fund that supports two incredible Hong Kong
+                            charities.
+                        </p>
+
+                        <p>
+                            The 2021 edition will expand on our founder’s ambition to curate a high-value business
+                            ecosystem event which delivers immediate and measurable impact, facilitates collaboration
+                            and that leads to real action towards a more equitable and climate smart future for Hong
+                            Kong.
+                        </p>
+
+                        <h3>Event Themes</h3>
+
+                        <div className="themes-img" data-aos="fade-in" data-aos-delay="500" data-aos-duration="500">
+                            <img src="./static/2021/themes.jpg" alt="themes" />
+                        </div>
 
                         <LinkIntext>
                             <h3 className="" data-aos="">
-                                <a
-                                    href="https://docs.google.com/forms/d/e/1FAIpQLSeF4V1J-jKBahE1DWwmTLXwSEmQ_dAAg4Zf1ogeoGCP1ZXbSA/viewform"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Click here to receive full details on ReThink 2020
+                                <a href="https://forms.gle/M6g99kuEfjXxoEF87" target="_blank" rel="noopener noreferrer">
+                                    Click here to receive full details on ReThink 2021
                                 </a>
                             </h3>
                         </LinkIntext>
 
                         <blockquote>
-                            “…customers want sustainable products from sustainable companies. This includes everything
-                            from labor practices to the environmental impact of their production.” <h3>Nielsen</h3>
+                            “Ultimately, purpose is the engine of long-term profitability.”{' '}
+                            <h3>Larry Fink, January 2020</h3>
                         </blockquote>
                     </div>
                 </div>
@@ -77,7 +97,7 @@ class PageHome extends React.Component {
                 <div className="text-content-title-wrapper-small">
                     <h2 data-aos="my-anim">
                         <Link href="/sponsors">
-                            <a>Sponsors</a>
+                            <a>2020 Sponsors</a>
                         </Link>
                     </h2>
                     <div className="text-content">
@@ -88,7 +108,7 @@ class PageHome extends React.Component {
                 <div className="text-content-title-wrapper-small">
                     <h2 data-aos="my-anim">
                         <Link href="/partners">
-                            <a>Partners</a>
+                            <a>2020 Partners</a>
                         </Link>
                     </h2>
                     <div className="text-content">
@@ -105,16 +125,24 @@ class PageHome extends React.Component {
 
                     <div className="text-content">
                         <p>
-                            At the heart of ReThink is the Conference & Workshop programme, curated to offer case-study
-                            and visionary insight from eco-trailblazers, leading brands and big businesses with
-                            ambitious sustainability goals as well as highlighting NGO initiatives and the latest
-                            solutions that are the key to innovation.
+                            The 2021 edition will expand on our founder’s ambition to curate a high-value business
+                            ecosystem event which is outcome focussed, delivers immediate and measurable impact,
+                            facilitates collaboration and leads to real action towards a more equitable and climate
+                            smart future for Hong Kong.
                         </p>
 
+                        <p>
+                            The content-led hybrid-format event model put thought-leadership and debate alongside
+                            innovation and real solutions.
+                        </p>
                         <LinkIntext>
                             <h3 className="" data-aos="">
-                                <Link href="/programme">
-                                    <a>More details on the programme</a>
+                                <a href="/programme" target="_blank" rel="noopener noreferrer">
+                                    More details on the programme
+                                </a>
+
+                                <Link href="">
+                                    <a></a>
                                 </Link>
                             </h3>
                         </LinkIntext>
@@ -124,7 +152,7 @@ class PageHome extends React.Component {
                 <div className="text-content-title-wrapper-small">
                     <h2 data-aos="my-anim">
                         <Link href="/programme">
-                            <a>Speaker Highlights</a>
+                            <a>2020 Speaker Highlights</a>
                         </Link>
                     </h2>
                     <br />
@@ -132,23 +160,26 @@ class PageHome extends React.Component {
                     <CarouselHostSpeakers />
                 </div>
 
+                <LinkIntext>
+                    <h3 className="" data-aos="">
+                        <a href="/speakers">See all 2020 Conference Speakers</a>
+
+                        <Link href="">
+                            <a></a>
+                        </Link>
+                    </h3>
+                </LinkIntext>
+
                 <CarouselTank />
                 <div className="text-content-title-wrapper">
                     <div className="text-content">
                         <blockquote>
-                            &quot; This planet is not terra firma. It is a delicate flower and it must be cared for.
-                            It&apos;s lonely. It&apos;s small. It&apos;s isolated, and there is no resupply. And we are
-                            mistreating it. Clearly, the highest loyalty we should have is not to our own country or our
-                            own religion or our hometown or even to ourselves. It should be to the planet at large. This
-                            is our home, and this is all we&apos;ve got.&quot;
+                            &quot; Many individuals are doing what they can. But real success can only come if there is
+                            a change in our societies and in our economics and in our politics. &quot;
                         </blockquote>
-                        <p>Scott Carpenter, Mercury 7 astronaut. October 1992.</p>
+                        <p>Sir David Attenborough, May 2019</p>
                     </div>
                 </div>
-                <br />
-                <br />
-                <br />
-                <br />
             </div>
         )
     }

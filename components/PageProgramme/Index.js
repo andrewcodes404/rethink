@@ -1,19 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Query } from 'react-apollo'
 import Link from 'next/link'
-
-import { GET_SESSIONS_WHERE_DAY_ORDER_TIME } from '../../lib/graphqlTags'
-
 import Nav from '../Nav'
-import Host from './Host'
-import Sponsors from './Sponsors'
-import Supporters from './Supporters'
-import Speakers from './Speakers'
-
-import { ProgrammeStyled, SponsorsAndSupportersWrapper, DayBtns } from './programmeStyle'
-import { GreenButton, YellowButton } from '../style/globalComps'
-import ArrowDropDownCircle from '@material-ui/icons/ArrowDropDownCircle'
+import { GreenButton, LinkIntext } from '../style/globalComps'
+import CarouselHostSpeakers from '../carousels/CarouselHostSpeakers'
 
 class Index extends React.Component {
     constructor(props) {
@@ -50,274 +40,68 @@ class Index extends React.Component {
                     <h2 data-aos="my-anim">Programme</h2>
 
                     <h3>
-                        The two-day ReThink conference programme has been curated to offer insight and inspiration to
-                        sustainability professionals and those that are now having to integrate sustainable strategies
-                        and solutions
+                        ReThink 2021 provides insight and understanding across globally recognised risk and opportunity
+                        topics, from a Hong Kong context.
                     </h3>
 
+                    <p>
+                        The programme addresses the very specific sustainability challenges faced by Hong Kong
+                        organisations operating here, in our unique city and whilst sourcing, trading or collaborating
+                        across borders.
+                    </p>
+
+                    <p>
+                        Two unique days of keynotes, case studies, interviews, panels, workshops, and interactive
+                        sessions will address the rapidly changing landscape of environmental and societal
+                        sustainability whilst unpacking how business leaders and sustainability practitioners can
+                        accelerate and amplify change across their complex internal and external stakeholder structures.{' '}
+                    </p>
+
                     <h3 className="link-green link-underline">
-                        View all our{' '}
-                        <Link href="/speakers">
-                            <a>inspirational speakers </a>
+                        <Link href="/programme2020">
+                            <a>View the 2020 Conference programme </a>
                         </Link>
                     </h3>
 
-                    <DayBtns>
-                        <div className={`btn ${this.state.showDay === 'one' && 'active'}`}>
-                            <h2
-                                onClick={() => {
-                                    this.setState({
-                                        showDay: 'one',
-                                    })
-                                }}
-                            >
-                                Day 1
-                            </h2>
-                            <p>28th October 2020</p>
-                        </div>
+                    <p>
+                        The agenda is being expanded for ReThink HK 2021 across multiple conference theatres, workshops
+                        and lounges hosting a dynamic matrix of content structured by topic, industry and function for
+                        corporates, enterprise businesses and SMEs.
+                    </p>
 
-                        <div className={`btn ${this.state.showDay === 'two' && 'active'}`}>
-                            <h2
-                                onClick={() => {
-                                    this.setState({
-                                        showDay: 'two',
-                                    })
-                                }}
-                            >
-                                Day 2
-                            </h2>
+                    <p>
+                        ReThink is Hong Kong’s unrivalled forum for discussing how businesses can “build back better” by
+                        mitigating against climate change, investing in technology, using resources sustainably and
+                        reducing inequality.{' '}
+                    </p>
 
-                            <p>29th October 2020</p>
-                        </div>
-                    </DayBtns>
+                    <p>
+                        Through shared responsibility, collective change and a pivot in the way organisations measure
+                        success, we are taking a moonshot by encouraging businesses to embrace innovation, work
+                        together, respect and protect our waterways and biodiversity and improve the lives of all.{' '}
+                    </p>
 
-                    {this.state.showDay === 'one' && (
-                        <Query
-                            query={GET_SESSIONS_WHERE_DAY_ORDER_TIME}
-                            variables={{
-                                day: 'day1',
-                            }}
-                        >
-                            {({ data, error, loading }) => {
-                                if (loading) return <p>Loading...</p>
-                                if (error) return <p>Error: {error.message}</p>
+                    <p>Stay tuned, key speakers and the full agenda to be announced soon. </p>
 
-                                return (
-                                    <ProgrammeStyled>
-                                        {data.sessions.map((session, index) => {
-                                            const {
-                                                id,
-                                                title,
-                                                theme,
-                                                start,
-                                                end,
-                                                host,
-                                                speakers,
-                                                overview,
-                                                learnings,
-                                                supporters,
-                                                sponsors,
-                                            } = session
+                    <h2 data-aos="my-anim">2020 Speakers</h2>
 
-                                            return (
-                                                <div className="session" key={index}>
-                                                    <div>
-                                                        <div className="session-header">
-                                                            <div className="session-header--item1">
-                                                                <div className="theme-icon">
-                                                                    {theme && (
-                                                                        <img
-                                                                            src={`static/session-themes/${theme}.png`}
-                                                                            alt=""
-                                                                            srcSet=""
-                                                                        />
-                                                                    )}
-                                                                </div>
-                                                                <h3 className="theme-title">
-                                                                    <div className="theme-title--time">
-                                                                        {start}-{end}
-                                                                    </div>
-                                                                    <div className="theme-title--text">{title}</div>
-                                                                </h3>
-                                                            </div>
-                                                            <div className="session-header--item2">
-                                                                {theme !== 'break' && (
-                                                                    <ArrowDropDownCircle
-                                                                        onClick={() => {
-                                                                            this.handleTrianlgeClick(id)
-                                                                        }}
-                                                                        className={`disclosure-trangle ${this.state.showSessions.find(
-                                                                            x => x === id
-                                                                        ) === id && 'disclosure-triangle--down'}`}
-                                                                    />
-                                                                )}
-                                                            </div>
-                                                        </div>
+                    <div className="text-content-title-wrapper-small">
+                        <CarouselHostSpeakers />
+                    </div>
+                    <LinkIntext>
+                        <h3 className="" data-aos="">
+                            <a href="/speakers">See all 2020 Conference Speakers</a>
 
-                                                        <div
-                                                            className={`session-content ${this.state.showSessions.find(
-                                                                x => x === id
-                                                            ) === id && 'show-session'}`}
-                                                        >
-                                                            {host && <Host hostId={host} />}
-
-                                                            {speakers.length > 0 && <Speakers speakers={speakers} />}
-
-                                                            {overview && (
-                                                                <div className="overview text-section">
-                                                                    <p className="sub-title">Overview</p>
-                                                                    <div
-                                                                        dangerouslySetInnerHTML={{ __html: overview }}
-                                                                    ></div>
-                                                                </div>
-                                                            )}
-
-                                                            {learnings && (
-                                                                <div className="learnings text-section">
-                                                                    <p className="sub-title">Learnings</p>
-
-                                                                    <div
-                                                                        dangerouslySetInnerHTML={{ __html: learnings }}
-                                                                    ></div>
-                                                                </div>
-                                                            )}
-                                                            <SponsorsAndSupportersWrapper>
-                                                                {sponsors.length > 0 && (
-                                                                    <Sponsors sponsors={sponsors} />
-                                                                )}
-
-                                                                {supporters.length > 0 && (
-                                                                    <Supporters supporters={supporters} />
-                                                                )}
-                                                            </SponsorsAndSupportersWrapper>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            )
-                                        })}
-                                    </ProgrammeStyled>
-                                )
-                            }}
-                        </Query>
-                    )}
-                    {this.state.showDay === 'two' && (
-                        <Query
-                            query={GET_SESSIONS_WHERE_DAY_ORDER_TIME}
-                            variables={{
-                                day: 'day2',
-                            }}
-                        >
-                            {({ data, error, loading }) => {
-                                if (loading) return <p>Loading...</p>
-                                if (error) return <p>Error: {error.message}</p>
-
-                                return (
-                                    <ProgrammeStyled>
-                                        {data.sessions.map((session, index) => {
-                                            const {
-                                                id,
-                                                title,
-                                                theme,
-                                                start,
-                                                end,
-                                                host,
-                                                speakers,
-                                                overview,
-                                                learnings,
-                                                supporters,
-                                                sponsors,
-                                            } = session
-
-                                            return (
-                                                <div className="session" key={index}>
-                                                    <div>
-                                                        <div className="session-header">
-                                                            <div className="session-header--item1">
-                                                                <div className="theme-icon">
-                                                                    {theme && (
-                                                                        <img
-                                                                            src={`static/session-themes/${theme}.png`}
-                                                                            alt=""
-                                                                            srcSet=""
-                                                                        />
-                                                                    )}
-                                                                </div>
-                                                                <h3 className="theme-title">
-                                                                    <div className="theme-title--time">
-                                                                        {start}-{end}
-                                                                    </div>
-                                                                    <div className="theme-title--text">{title}</div>
-                                                                </h3>
-                                                            </div>
-                                                            <div className="session-header--item2">
-                                                                {theme !== 'break' && (
-                                                                    <ArrowDropDownCircle
-                                                                        onClick={() => {
-                                                                            this.handleTrianlgeClick(id)
-                                                                        }}
-                                                                        className={`disclosure-trangle ${this.state.showSessions.find(
-                                                                            x => x === id
-                                                                        ) === id && 'disclosure-triangle--down'}`}
-                                                                    />
-                                                                )}
-                                                            </div>
-                                                        </div>
-
-                                                        <div
-                                                            className={`session-content ${this.state.showSessions.find(
-                                                                x => x === id
-                                                            ) === id && 'show-session'}`}
-                                                        >
-                                                            {host && <Host hostId={host} />}
-
-                                                            {speakers.length > 0 && <Speakers speakers={speakers} />}
-
-                                                            {overview && (
-                                                                <div className="overview text-section">
-                                                                    <p className="sub-title">Overview</p>
-                                                                    <div
-                                                                        dangerouslySetInnerHTML={{ __html: overview }}
-                                                                    ></div>
-                                                                </div>
-                                                            )}
-
-                                                            {learnings && (
-                                                                <div className="learnings text-section">
-                                                                    <p className="sub-title">Learnings</p>
-
-                                                                    <div
-                                                                        dangerouslySetInnerHTML={{ __html: learnings }}
-                                                                    ></div>
-                                                                </div>
-                                                            )}
-                                                            <SponsorsAndSupportersWrapper>
-                                                                {sponsors.length > 0 && (
-                                                                    <Sponsors sponsors={sponsors} />
-                                                                )}
-
-                                                                {supporters.length > 0 && (
-                                                                    <Supporters supporters={supporters} />
-                                                                )}
-                                                            </SponsorsAndSupportersWrapper>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            )
-                                        })}
-                                    </ProgrammeStyled>
-                                )
-                            }}
-                        </Query>
-                    )}
+                            <Link href="">
+                                <a></a>
+                            </Link>
+                        </h3>
+                    </LinkIntext>
 
                     <GreenButton style={{ display: 'block', margin: '0 auto' }}>
                         {' '}
-                        <a
-                            href="https://app.micepad.co/pages/#/prefill/ReThink2020"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            REGISTER FOR YOUR PLACE AT RETHINK 2020
+                        <a href="https://forms.gle/WtpDmvuo9SqMY8L57" target="_blank" rel="noopener noreferrer">
+                            Get in touch if you would like to be part of the ReThink HK conference programme
                         </a>
                     </GreenButton>
                 </div>

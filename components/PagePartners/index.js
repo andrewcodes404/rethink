@@ -1,9 +1,7 @@
 import React from 'react'
 import Nav from '../Nav'
-import { Query } from 'react-apollo'
-import { GET_PARTNERS } from '../../lib/graphqlTags'
 import ModalCompanyCard from '../lib/ModalCompanyCard'
-import { CardContainerWrapper, CardContainer, Card } from '../style/globalComps'
+import CarouselPartners from '../carousels/CarouselPartners'
 
 class Index extends React.Component {
     constructor(props) {
@@ -74,234 +72,42 @@ class Index extends React.Component {
                 <div className="text-content-title-wrapper">
                     <h2 data-aos="my-anim">Partners</h2>
                     <div className="text-content">
-                        <h3>
-                            ReThink welcomes collaboration with NGOs, charitable organisations, professional trade
-                            associations, business chambers, action groups and media channels to form a cross-industry
-                            line-up of partners.
-                        </h3>
                         <p>
-                            Event &amp; Community partners will be provided with a platform from which to interact and
-                            connect with delegates; businesses and community stakeholders from across the ecosystem –
-                            encouraging collaboration, streamlining of resources and collective messaging.
+                            ReThink has established effective and collaborative partnerships with influential industry
+                            organisations, Chambers of Commerce, NGOs, media platforms and Hong Kong charities.
                         </p>
 
+                        <h3>Why Partner with ReThink? </h3>
                         <p>
-                            Contact the ReThink team to discuss the ways in which your organisation can be part of the
-                            conversation and drive impact at ReThink.
+                            Effective collaboration key for driving sustainable development. Partnering with ReThink
+                            will amplify your initiatives and connect you to new business stakeholders, communities and
+                            potential supporters.
                         </p>
+
+                        <h3>Partnership opportunities</h3>
+
+                        <ul>
+                            <li>
+                                Environmental and/or social impact registered Section 88 charities are invited to join
+                                the NGO Lounge (expanded for 2021)
+                            </li>
+
+                            <li>Co-host content across the event agenda; workshops, panels, fireside discussions</li>
+
+                            <li>Offer discounted delegate passes to your members or official supporters </li>
+                        </ul>
+
                         <h3 className="link-green">
-                            Want to become a partner?{' '}
                             <a href="https://forms.gle/cvuvpHGz4jcSyUCy8" target="_blank" rel="noopener noreferrer">
-                                click here
+                                Request details on different partnership opportunities at ReThink 2021
                             </a>
                         </h3>
+
+                        <div className="text-content">
+                            <h3>2020 Partners</h3>
+                            <CarouselPartners />
+                        </div>
                     </div>
-
-                    <Query query={GET_PARTNERS}>
-                        {({ data, error, loading }) => {
-                            if (loading) return <p>Loading...</p>
-                            if (error) return <p>Error: {error.message}</p>
-                            if (!data) return <p>No Data</p>
-
-                            let strategic = {}
-                            let hostVenues = {}
-                            let innovation = {}
-                            let esg = {}
-                            let largeCards = []
-                            let charity = {}
-                            let eventConf = {}
-                            let mediaPartners = {}
-                            let community = {}
-                            let otherLargeCards = []
-
-                            const { partners } = data
-
-                            // add ranking display text to single largeCard partners
-                            const addRankingTitle = (objName, rankingValue, rankingDisplayText) => {
-                                objName = partners.find(x => x.ranking === rankingValue)
-                                if (objName) {
-                                    objName.rankingTitle = rankingDisplayText
-                                    largeCards.push(objName)
-                                }
-                            }
-
-                            if (partners) {
-                                //rename partners title
-                                addRankingTitle(strategic, 'strategic', 'Programme & Education Partner')
-                                addRankingTitle(hostVenues, 'hostVenue', 'Host Venues')
-                                addRankingTitle(innovation, 'innovation', 'Innovation Partners')
-                                addRankingTitle(esg, 'esg', 'Knowledge Partner')
-
-                                // create a group of host venues
-                                hostVenues = partners.filter(x => x.ranking === 'hostVenue')
-
-                                // create a group of other prstners for large cards
-                                const esg = partners.find(x => x.ranking === 'esg')
-                                const strategic = partners.find(x => x.ranking === 'strategic')
-                                otherLargeCards.push(esg)
-                                otherLargeCards.push(strategic)
-
-                                // Filter partners by ranking type
-                                charity = partners.filter(x => x.ranking === 'charity')
-                                eventConf = partners.filter(x => x.ranking === 'eventConf')
-                                innovation = partners.filter(x => x.ranking === 'innovation')
-                                mediaPartners = partners.filter(x => x.ranking === 'mediaPartners')
-
-                                community = partners.filter(x => x.ranking === 'community')
-                            }
-
-                            return (
-                                <CardContainerWrapper>
-                                    <h2 data-aos="my-anim">Host Venues</h2>
-                                    <CardContainer>
-                                        {hostVenues.map((partner, i) => {
-                                            return (
-                                                <div className="card-with-title" key={i}>
-                                                    {/* <h2 data-aos="my-anim">
-                                                        {partner.rankingTitle && partner.rankingTitle}
-                                                    </h2> */}
-                                                    <Card
-                                                        onClick={() => {
-                                                            this.showModal(partner)
-                                                        }}
-                                                        className="card-with-title--card"
-                                                    >
-                                                        <div className="img-wrapper-lrg">
-                                                            <img src={partner.logo} />
-                                                        </div>
-                                                    </Card>
-                                                </div>
-                                            )
-                                        })}
-                                    </CardContainer>
-
-                                    <CardContainer>
-                                        {otherLargeCards.map((partner, i) => {
-                                            return (
-                                                <div className="card-with-title" key={i}>
-                                                    <h2 data-aos="my-anim">
-                                                        {partner.rankingTitle && partner.rankingTitle}
-                                                    </h2>
-                                                    <Card
-                                                        onClick={() => {
-                                                            this.showModal(partner)
-                                                        }}
-                                                        className="card-with-title--card"
-                                                    >
-                                                        <div className="img-wrapper-lrg">
-                                                            <img src={partner.logo} />
-                                                        </div>
-                                                    </Card>
-                                                </div>
-                                            )
-                                        })}
-                                    </CardContainer>
-
-                                    <h2 data-aos="my-anim" className="container-title">
-                                        Innovation Partners
-                                    </h2>
-                                    <CardContainer>
-                                        {innovation.map((partner, i) => {
-                                            return (
-                                                <Card
-                                                    key={i}
-                                                    onClick={() => {
-                                                        this.showModal(partner)
-                                                    }}
-                                                    className="large"
-                                                >
-                                                    <div className="img-wrapper-lrg2">
-                                                        <img src={partner.logo} />
-                                                    </div>
-                                                </Card>
-                                            )
-                                        })}
-                                    </CardContainer>
-
-                                    <h2 data-aos="my-anim" className="container-title">
-                                        Charity Partners
-                                    </h2>
-                                    <CardContainer>
-                                        {charity.map((partner, i) => {
-                                            return (
-                                                <Card
-                                                    key={i}
-                                                    onClick={() => {
-                                                        this.showModal(partner)
-                                                    }}
-                                                    className="large"
-                                                >
-                                                    <div className="img-wrapper-lrg2">
-                                                        <img src={partner.logo} />
-                                                    </div>
-                                                </Card>
-                                            )
-                                        })}
-                                    </CardContainer>
-                                    <h2 data-aos="my-anim" className="container-title">
-                                        Event &amp; Conference Partners
-                                    </h2>
-                                    <CardContainer>
-                                        {eventConf.map((partner, i) => {
-                                            return (
-                                                <Card
-                                                    key={i}
-                                                    onClick={() => {
-                                                        this.showModal(partner)
-                                                    }}
-                                                    className="medium"
-                                                >
-                                                    <div className="img-wrapper-med">
-                                                        <img src={partner.logo} />
-                                                    </div>
-                                                </Card>
-                                            )
-                                        })}
-                                    </CardContainer>
-                                    <h2 data-aos="my-anim" className="container-title">
-                                        Media Partners
-                                    </h2>
-                                    <CardContainer>
-                                        {mediaPartners.map((partner, i) => {
-                                            return (
-                                                <Card
-                                                    key={i}
-                                                    onClick={() => {
-                                                        this.showModal(partner)
-                                                    }}
-                                                    className="medium"
-                                                >
-                                                    <div className="img-wrapper-med">
-                                                        <img src={partner.logo} />
-                                                    </div>
-                                                </Card>
-                                            )
-                                        })}
-                                    </CardContainer>
-                                    <h2 data-aos="my-anim" className="container-title">
-                                        Community Partners
-                                    </h2>
-                                    <CardContainer>
-                                        {community.map((partner, i) => {
-                                            return (
-                                                <Card
-                                                    key={i}
-                                                    onClick={() => {
-                                                        this.showModal(partner)
-                                                    }}
-                                                    className="small"
-                                                >
-                                                    <div className="img-wrapper-sml">
-                                                        <img src={partner.logo} />
-                                                    </div>
-                                                </Card>
-                                            )
-                                        })}
-                                    </CardContainer>
-                                </CardContainerWrapper>
-                            )
-                        }}
-                    </Query>
                 </div>
             </div>
         )

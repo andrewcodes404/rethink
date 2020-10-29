@@ -26,32 +26,30 @@ const Meta = () => (
         {/* google analytics */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-96559774-20"></script>
 
-
-
         {/* <!-- META -- META -- META -- META --  --> */}
 
         <meta
             property="og:image"
-            content="http://res.cloudinary.com/dcqi9fn2y/image/upload/v1554473156/rethink/rethink_fb_card.jpg"
+            content="https://res.cloudinary.com/dcqi9fn2y/image/upload/v1603839103/rethink/rethink2021card.png"
         />
-        <meta property="og:title" content="ReThink HK  Sustainability Forum 2020" />
+        <meta property="og:title" content="ReThink HK  Sustainability Forum 2021" />
         <meta
             property="og:description"
-            content="ReThink Hong Kong is a two-day business conference and showcase dedicated to achieving a sustainable environment and circular economy. 23-24 June 2020."
+            content="ReThink Hong Kong is a two-day business conference and showcase dedicated to achieving a sustainable environment and circular economy. 08 - 09 JUNE 2021"
         />
 
         <meta property="og:url" content="https://rethink-event.com" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ReThink_HK" />
-        <meta name="twitter:title" content="ReThink HK | Sustainability Forum 2020" />
+        <meta name="twitter:title" content="ReThink HK | Sustainability Forum 2021" />
         <meta
             name="twitter:description"
-            content="ReThink Hong Kong is a two-day business conference and showcase dedicated to achieving a sustainable environment and circular economy. 23-24 June 2020."
+            content="ReThink Hong Kong is a two-day business conference and showcase dedicated to achieving a sustainable environment and circular economy. 23-24 June 2021."
         />
         <meta
             name="twitter:image"
-            content="http://res.cloudinary.com/dcqi9fn2y/image/upload/v1554473156/rethink/rethink_fb_card.jpg"
+            content="https://res.cloudinary.com/dcqi9fn2y/image/upload/v1603839103/rethink/rethink2021card.png"
         />
 
         <title>ReThink</title>

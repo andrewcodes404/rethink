@@ -40,9 +40,9 @@ class AdvisoryCom extends React.Component {
                     </h3>
 
                     <p>
-                        Meeting as a group and individually, the ReThink 2020 Committee members have advised on current
-                        and future trends, conference topics, potential speakers and cutting-edge technology/suppliers
-                        for the Innovation Showcase.
+                        Meeting as a group and individually, the ReThink 2021 Advisory Committee members have advised on
+                        current and future trends, conference topics, potential speakers and cutting-edge
+                        technology/suppliers for the Innovation Showcase.
                     </p>
                 </div>
 

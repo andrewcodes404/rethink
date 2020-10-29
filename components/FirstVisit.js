@@ -105,6 +105,7 @@ const StyledForm = styled.div`
     }
 
     .poster--bkg-img {
+        background: #000;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -115,6 +116,7 @@ const StyledForm = styled.div`
         img {
             object-fit: cover;
             height: 100%;
+            opacity: 0.5;
         }
     }
 
@@ -274,7 +276,7 @@ class FirstVisit extends React.Component {
                                 </div>
 
                                 <div className="poster--text">
-                                    <img src="./static/graphics/sept-logo-white.png" alt="" />
+                                    <img src="./static/2021/hero-logo.png" alt="" />
                                 </div>
                                 <div className="poster--bkg-img">
                                     <img src="static/photos/building.jpg" alt="" srcSet="" />

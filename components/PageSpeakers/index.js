@@ -106,14 +106,22 @@ class Index extends React.Component {
 
                 <div className="text-content-title-wrapper">
                     <h2 data-aos="my-anim">
-                        <a>Speakers</a>
+                        <a>2020 Speakers</a>
                     </h2>
 
                     <div className="text-content">
                         <p>
-                            Some of sustainability’s best and brightest will be condensing their years of experience and
-                            expertise into presentations and panel discussions; covering sourcing, finance, marketing,
-                            culture, policy and supply chain amongst the +30 sessions over the two-day programme.
+                            At ReThink 2020 81 of sustainability’s best and brightest condensed their years of
+                            experience and expertise into vibrant and engaging presentations and panel discussions;
+                            covering climate change, business risk, sourcing, finance, marketing, waste, building
+                            effective partnerships, culture, policy and supply chain.
+                        </p>
+                        <p>
+                            The two-day event hosted 4 Keynotes, six sponsor presentations, 18 expert panels and 2
+                            innovation pitch sessions.
+                        </p>
+                        <p>
+                            Review the amazing speaker line up from 2020 and watch out 2021 announcements coming soon!
                         </p>
                     </div>
 
