@@ -289,12 +289,42 @@ class PageSponsors extends React.Component {
                             <li>Generate new business enquiries and establish collaborative partnerships</li>
                         </ul>
                         <br />
-                        <h3> ReThink 2020 attracted:</h3>
+                        <h3> ReThink 2020 Snapshot</h3>
 
                         <ul>
-                            <li>875 applications to attend</li>
-                            <li>435 unique in person attendees (reduced due to social distancing) </li>
-                            <li>316 additional online attendees </li>
+                            <li>1097 applications to attend</li>
+                            <li>427 unique in person attendees (reduced due to social distancing) </li>
+                            <li>361 additional online attendees </li>
+                        </ul>
+
+                        <p style={{ fontWeight: 'bold' }}>Environmental Impact </p>
+                        <p>
+                            788 trees planted by EcoMatcher in the Philippines to create a ReThink forest which will
+                            result in 12,554 Kg of CO2 carbon sequestration in an attempt to make the event carbon
+                            positive
+                        </p>
+                        <p>
+                            {' '}
+                            Supply 500 people in Hong Kong, for two months with free, high quality liquid soaps via
+                            SoapCycling
+                        </p>
+
+                        <p style={{ fontWeight: 'bold' }}>Attendee Feedback</p>
+
+                        <ul>
+                            <li>
+                                268 attendees made a personal pledge to start a new change conversation within their
+                                organisation
+                            </li>
+                            <li>88%* of attendees surveyed onsite rated the event as very good or excellent</li>
+                            <li>
+                                94%* of attendees surveyed onsite said they would probably or definitely attend ReThink
+                                2021 as an in-person event
+                            </li>
+                            <li>
+                                73%* of attendees surveyed onsite said they would encourage additional colleagues to
+                                attend ReThink 2021{' '}
+                            </li>
                         </ul>
 
                         <h3 className="link-green">
