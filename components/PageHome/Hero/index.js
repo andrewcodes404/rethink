@@ -24,7 +24,7 @@ const iconData = [
         img: 'speaker',
     },
     {
-        text: '4 Themed Theatre',
+        text: '4 Themed Theatres',
         img: 'case-studies',
     },
 ]

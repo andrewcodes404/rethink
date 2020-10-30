@@ -276,56 +276,77 @@ class PageSponsors extends React.Component {
                             will enable you to:
                         </h3>
                         <ul>
-                            <li>
+                            <li style={{ marginBottom: '15px' }}>
                                 Increase brand awareness - not just at the event but across the six-month ecosystem-wide
                                 campaign{' '}
                             </li>
-                            <li>Position yourself as a thought leader and share your best practice expertise </li>
-                            <li>
+                            <li style={{ marginBottom: '15px' }}>
+                                Position yourself as a thought leader and share your best practice expertise{' '}
+                            </li>
+                            <li style={{ marginBottom: '15px' }}>
                                 Launch innovations, showcase products, services and solutions to a qualified audience of
                                 corporate, specifiers, buyers and investors
                             </li>
 
-                            <li>Generate new business enquiries and establish collaborative partnerships</li>
+                            <li style={{ marginBottom: '15px' }}>
+                                Generate new business enquiries and establish collaborative partnerships
+                            </li>
                         </ul>
                         <br />
                         <h3> ReThink 2020 Snapshot</h3>
 
                         <ul>
-                            <li>1097 applications to attend</li>
-                            <li>427 unique in person attendees (reduced due to social distancing) </li>
-                            <li>361 additional online attendees </li>
+                            <li style={{ marginBottom: '15px' }}>1097 applications to attend</li>
+                            <li style={{ marginBottom: '15px' }}>
+                                427 unique in person attendees (reduced due to social distancing){' '}
+                            </li>
+                            <li style={{ marginBottom: '15px' }}>361 additional online attendees </li>
                         </ul>
 
                         <p style={{ fontWeight: 'bold' }}>Environmental Impact </p>
-                        <p>
-                            788 trees planted by EcoMatcher in the Philippines to create a ReThink forest which will
-                            result in 12,554 Kg of CO2 carbon sequestration in an attempt to make the event carbon
-                            positive
-                        </p>
-                        <p>
-                            {' '}
-                            Supply 500 people in Hong Kong, for two months with free, high quality liquid soaps via
-                            SoapCycling
-                        </p>
+                        <ul>
+                            <p>
+                                788 trees planted by EcoMatcher in the Philippines to create a ReThink forest which will
+                                result in 12,554 Kg of CO2 carbon sequestration in an attempt to make the event carbon
+                                positive
+                            </p>
+                        </ul>
+                        <p style={{ fontWeight: 'bold' }}>Social Impact </p>
 
+                        <ul>
+                            <p>
+                                HK$120,000 beneficiary fund made up from delegate fees, donated to deliver over 8,000
+                                meals to Hong Kong’s most in need communities via FeedingHK
+                            </p>
+
+                            <p>
+                                Supply 500 people in Hong Kong, for two months with free, high quality liquid soaps via
+                                SoapCycling
+                            </p>
+                        </ul>
                         <p style={{ fontWeight: 'bold' }}>Attendee Feedback</p>
 
                         <ul>
-                            <li>
+                            <li style={{ marginBottom: '15px' }}>
                                 268 attendees made a personal pledge to start a new change conversation within their
                                 organisation
                             </li>
-                            <li>88%* of attendees surveyed onsite rated the event as very good or excellent</li>
-                            <li>
+                            <li style={{ marginBottom: '15px' }}>
+                                88%* of attendees surveyed onsite rated the event as very good or excellent
+                            </li>
+                            <li style={{ marginBottom: '15px' }}>
                                 94%* of attendees surveyed onsite said they would probably or definitely attend ReThink
                                 2021 as an in-person event
                             </li>
-                            <li>
+                            <li style={{ marginBottom: '15px' }}>
                                 73%* of attendees surveyed onsite said they would encourage additional colleagues to
                                 attend ReThink 2021{' '}
                             </li>
                         </ul>
+
+                        <p style={{ textAlign: 'right', fontSize: '15px' }}>
+                            *94 surveys completed as at 12:45 (HKT) on 30.10
+                        </p>
 
                         <h3 className="link-green">
                             <a
@@ -364,21 +385,27 @@ class PageSponsors extends React.Component {
                         </p>
                         <h3>How can ReThink 2021 help? </h3>
                         <ul>
-                            <li>Drive revenues through transparent ROI</li>
-                            <li>Enhance ecosystem relationships</li>
-                            <li>Extract audience insight</li>
-                            <li>Increase market share over absent rivals</li>
-                            <li>Direct access to ideal customer profile (ICP) data</li>
-                            <li>Direct face time with multiple prospects</li>
-                            <li>Lead generation</li>
-                            <li>Stay engaged with existing customers</li>
-                            <li>Boost social media/website traffic from a focused content strategy</li>
-                            <li>Increased credibility as a brand that supports sustainability</li>
-                            <li>Showcase new product or service offering</li>
-                            <li>Instigate post-event qualified interactions</li>
-                            <li>Brand building</li>
-                            <li>Develop in-house knowledge and resources</li>
+                            <li style={{ marginBottom: '15px' }}>Drive revenues through transparent ROI</li>
+                            <li style={{ marginBottom: '15px' }}>Enhance ecosystem relationships</li>
+                            <li style={{ marginBottom: '15px' }}>Extract audience insight</li>
+                            <li style={{ marginBottom: '15px' }}>Increase market share over absent rivals</li>
+                            <li style={{ marginBottom: '15px' }}>Direct access to ideal customer profile (ICP) data</li>
+                            <li style={{ marginBottom: '15px' }}>Direct face time with multiple prospects</li>
+                            <li style={{ marginBottom: '15px' }}>Lead generation</li>
+                            <li style={{ marginBottom: '15px' }}>Stay engaged with existing customers</li>
+                            <li style={{ marginBottom: '15px' }}>
+                                Boost social media/website traffic from a focused content strategy
+                            </li>
+                            <li style={{ marginBottom: '15px' }}>
+                                Increased credibility as a brand that supports sustainability
+                            </li>
+                            <li style={{ marginBottom: '15px' }}>Showcase new product or service offering</li>
+                            <li style={{ marginBottom: '15px' }}>Instigate post-event qualified interactions</li>
+                            <li style={{ marginBottom: '15px' }}>Brand building</li>
+                            <li style={{ marginBottom: '15px' }}>Develop in-house knowledge and resources</li>
                         </ul>
+                        <br />
+                        <br />
                         <GreenButton style={{ display: 'block', margin: '0 auto' }}>
                             {' '}
                             <a
